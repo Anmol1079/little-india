@@ -71,7 +71,7 @@ function ScrollZoomSection({ videoSrc }) {
             style={{ x: oceanX, y: oceanY, opacity: textOpacity }}
             className="absolute right-1/2 text-5xl md:text-7xl lg:text-8xl text-[#1A2E35] font-semibold tracking-tight select-none whitespace-nowrap z-0 font-sans"
           >
-            Chef’s
+           CHEF'S
           </motion.span>
 
           {/* Centered Animating Video Container */}
@@ -100,7 +100,7 @@ function ScrollZoomSection({ videoSrc }) {
             style={{ x: momentsX, y: momentsY, opacity: textOpacity }}
             className="absolute left-1/2 text-5xl md:text-7xl lg:text-8xl text-[#1A2E35] font-semibold tracking-tight select-none whitespace-nowrap z-0 font-sans"
           >
-            Arts
+            ARTS
           </motion.span>
 
         </div>
