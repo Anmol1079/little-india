@@ -12,8 +12,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Create Next App",
+  title: "Little India",
   description: "Authentic Indian cuisine crafted with tradition, passion, and the finest ingredients. Experience rich flavors, warm hospitality, and unforgettable dining in every bite.",
+  icons: {
+    icon: "/littleindia-favicon.svg", // Use your custom filename here
+  },
 };
 
 export default function RootLayout({ children }) {
