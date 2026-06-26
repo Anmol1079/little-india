@@ -1,0 +1,276 @@
+"use client";
+
+import React, { useState, useEffect, useRef } from 'react';
+
+// Custom hook to calculate the scroll progress of an element in the viewport.
+// Returns a progress value between 0 (bottom enters viewport) and 1 (top leaves viewport).
+function useScrollProgress() {
+  const ref = useRef(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let rafId = null;
+
+    const calculateProgress = () => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const viewHeight = window.innerHeight;
+      const totalHeight = rect.height + viewHeight;
+      const currentOffset = viewHeight - rect.top;
+      const p = Math.min(1, Math.max(0, currentOffset / totalHeight));
+      setProgress(p);
+    };
+
+    const handleScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(calculateProgress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run initial calculation on mount
+    calculateProgress();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  return [ref, progress];
+}
+
+// Interactive menu item row with parallax plates and fading title text
+function MenuItem({ item }) {
+  const [ref, progress] = useScrollProgress();
+
+  // 1. Plate Parallax Translation & Rotation values
+  const yOffset = (0.5 - progress) * 80; // Translates plate relative to viewport progress
+  const rotationRange = item.rotationEnd - item.rotationStart;
+  const currentRotation = item.rotationStart + progress * rotationRange;
+
+  // 2. Symmetric fade-in and fade-out calculations for the whole word
+  let textOpacity = 0;
+  if (progress > 0.15 && progress < 0.35) {
+    textOpacity = (progress - 0.15) / 0.2; // Smooth fade-in as it enters
+  } else if (progress >= 0.35 && progress <= 0.65) {
+    textOpacity = 1; // Stay fully visible in the center of viewport
+  } else if (progress > 0.65 && progress < 0.85) {
+    textOpacity = 1 - (progress - 0.65) / 0.2; // Smooth fade-out as it leaves
+  } else if (progress >= 0.85) {
+    textOpacity = 0;
+  }
+
+  return (
+    <div
+      ref={ref}
+      className="grid grid-cols-1 xl:grid-cols-5 xl:gap-8 items-center w-full xl:h-[60vh] py-12 xl:py-0"
+    >
+      {/* Description Column */}
+      <div
+        className={`xl:col-span-2 flex flex-col items-center text-center order-2 ${
+          item.align === 'left'
+            ? 'xl:order-2 xl:text-left xl:items-start'
+            : 'xl:order-1 xl:text-right xl:items-end'
+        }`}
+      >
+        <h3
+          className="font-heavy text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none uppercase tracking-wide leading-none"
+          style={{ 
+            opacity: textOpacity, 
+            transition: 'opacity 0.15s ease-out',
+            color: '#E75B44'
+          }}
+        >
+          {item.title}
+        </h3>
+        <p className="font-sans-custom text-stone-300 text-sm md:text-base leading-relaxed max-w-md xl:max-w-[90%]">
+          {item.description}
+        </p>
+      </div>
+
+      {/* Plate Image Column */}
+      <div
+        className={`xl:col-span-3 relative flex items-center justify-center w-[300px] h-[300px] md:w-[450px] md:h-[450px] xl:size-[80vh] mx-auto order-1 ${
+          item.align === 'left' ? 'xl:order-1' : 'xl:order-2'
+        }`}
+      >
+        <div
+          className="relative z-10 w-full h-full transition-transform duration-75 ease-out"
+          style={{
+            transform: `translateY(${yOffset}px) rotate(${currentRotation}deg)`,
+          }}
+        >
+          <img
+            alt={item.alt}
+            loading="lazy"
+            decoding="async"
+            className={`object-contain ${item.scaleClass || ''}`}
+            style={{
+              position: 'absolute',
+              height: '100%',
+              width: '100%',
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
+              color: 'transparent',
+            }}
+            src={item.imgSrc}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Animated salt trail element revealing along the scroll direction
+function SaltSeparator({ direction = '135deg', rotateClass = '' }) {
+  const [ref, progress] = useScrollProgress();
+
+  // Map progress to a wider viewport range (from 10% to 90% scroll depth) for a slower, smoother reveal
+  const activeProgress = Math.min(1, Math.max(0, (progress - 0.1) / 0.8));
+  const percentage = activeProgress * 100;
+
+  // A clean sliding mask gradient wipe
+  const maskStyle = `linear-gradient(${direction}, rgba(0, 0, 0, 1) ${percentage}%, rgba(0, 0, 0, 0) ${percentage + 15}%)`;
+
+  return (
+    <div
+      ref={ref}
+      className="relative w-full h-8 flex items-center justify-center pointer-events-none my-12 xl:my-0"
+    >
+      <div
+        className="absolute size-[280px] md:size-[320px] xl:size-[50vh]"
+        style={{
+          maskImage: maskStyle,
+          WebkitMaskImage: maskStyle,
+          maskRepeat: 'no-repeat',
+          WebkitMaskRepeat: 'no-repeat',
+          maskPosition: 'center',
+          WebkitMaskPosition: 'center',
+          maskSize: 'contain',
+          WebkitMaskSize: 'contain',
+        }}
+      >
+        <img
+          alt="salt separator decor"
+          loading="lazy"
+          decoding="async"
+          className={`object-contain ${rotateClass}`}
+          style={{
+            position: 'absolute',
+            height: '100%',
+            width: '100%',
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            color: 'transparent',
+          }}
+          src="/salt-2.webp"
+        />
+      </div>
+    </div>
+  );
+}
+
+// Main Menu Component wrapper
+export default function OurMenuSection() {
+  const MENU_ITEMS = [
+    {
+      title: 'BBQ Ribs',
+      description:
+        'Slow roasted pork baby back ribs basted in sticky, sweet honey BBQ sauce, glazed to caramelized excellence and topped with sesame seeds.',
+      imgSrc: '/ribs.png',
+      alt: 'BBQ Ribs plate',
+      align: 'left',
+      rotationStart: -5,
+      rotationEnd: -35,
+    },
+    {
+      title: 'Buff Chilly',
+      description:
+        'Juicy buffalo strips flash-fried and wok-tossed with spicy green chilies, sweet bell peppers, onions, soy sauce, and aromatic local spices.',
+      imgSrc: '/chicken-chilly.png',
+      alt: 'Chicken Chilly plate',
+      align: 'right',
+      rotationStart: 5,
+      rotationEnd: 40,
+    },
+    {
+      title: 'Grilled Chicken',
+      description:
+        'Succulent chicken marinated in secret spices and grilled to perfection.',
+      imgSrc: '/chicken-tandoori.png',
+      alt: 'Grilled Chicken plate',
+      align: 'left',
+      rotationStart: -5,
+      rotationEnd: -25,
+      scaleClass: 'scale-[0.8]',
+    },
+    {
+      title: 'BBQ Prawn',
+      description:
+        'Plump, premium jumbo prawns marinated in a spicy zesty BBQ dry rub and char-grilled on skewers, finished with fresh garlic butter.',
+      imgSrc: '/prawn.png',
+      alt: 'BBQ Prawn plate',
+      align: 'right',
+      rotationStart: 5,
+      rotationEnd: 30,
+    },
+  ];
+
+  return (
+    <section className="relative w-full py-0 bg-black overflow-hidden select-none">
+      
+      {/* Scope-contained style block for custom Anton & Montserrat typography */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap');
+        .font-heavy {
+          font-family: 'Anton', sans-serif;
+        }
+        .font-sans-custom {
+          font-family: 'Montserrat', sans-serif;
+        }
+      ` }} />
+
+      {/* Centered Header wrapper */}
+      <div className="w-full px-4 md:px-8 xl:px-16 pt-16 pb-8">
+        <div className="flex flex-col items-center text-center group cursor-pointer max-w-[1400px] mx-auto">
+          
+          {/* Tagline Bracket */}
+          <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block mb-3">
+            Our Highlights
+          </span>
+
+          <div className="flex justify-center items-baseline mb-4">
+            <h2 className="font-heavy text-[60px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] uppercase">
+              Special Dishes
+            </h2>
+          </div>
+          
+          <p className="font-sans-custom text-[15px] text-[#fff]/60 tracking-wider leading-relaxed font-semibold max-w-2xl mx-auto">
+            Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch.
+          </p>
+        </div>
+      </div>
+
+      {/* Menu List - Increased bottom padding to accommodate the floating BBQ Prawn plate */}
+      <div className="relative z-10 w-full flex flex-col px-2 sm:px-4 md:px-8 xl:px-16 pb-20 sm:pb-24 md:pb-48 xl:pb-[24vh]">
+        <MenuItem item={MENU_ITEMS[0]} />
+
+        <SaltSeparator direction="135deg" rotateClass="rotate-10 xl:-rotate-15" />
+
+        <MenuItem item={MENU_ITEMS[1]} />
+
+        <SaltSeparator direction="225deg" rotateClass="rotate-10 xl:rotate-55" />
+
+        <MenuItem item={MENU_ITEMS[2]} />
+
+        <SaltSeparator direction="135deg" rotateClass="rotate-10 xl:-rotate-15" />
+
+        <MenuItem item={MENU_ITEMS[3]} />
+      </div>
+    </section>
+  );
+}
