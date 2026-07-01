@@ -320,7 +320,7 @@ export default function MenuDish() {
         }
       ` }} />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1500px] mx-auto">
         
         {/* Header Block with Scroll Reveal */}
         <motion.div 
@@ -330,7 +330,7 @@ export default function MenuDish() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         >
-          <div className="flex flex-col max-w-[600px] sm:max-w-[1400px] md:max-w-[1500px]">
+          <div className="flex flex-col max-w-[600px] sm:max-w-[100px] md:max-w-[1500px]">
             <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-3">
               Explore
             </span>
