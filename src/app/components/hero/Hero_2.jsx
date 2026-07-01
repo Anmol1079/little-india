@@ -1,19 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
-
-const playfair = Playfair_Display({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    display: 'swap',
-});
-
-const jakarta = Plus_Jakarta_Sans({
-    subsets: ['latin'],
-    weight: ['300', '400', '500', '600', '700', '800'],
-    display: 'swap',
-});
 
 export default function Hero_2() {
     const [progress, setProgress] = useState(0);
@@ -41,7 +28,7 @@ export default function Hero_2() {
         // Scroll Container - 180vh tall to provide smooth scroll driving space
         <div
             ref={containerRef}
-            className={`relative w-full h-[180vh] bg-[#FAF8F5] transition-colors duration-500 ${jakarta.className}`}
+            className="relative w-full h-[180vh] bg-[#FAF8F5] transition-colors duration-500"
         >
             {/* Sticky Viewport Container */}
             <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-center">
@@ -92,7 +79,7 @@ export default function Hero_2() {
                             className="transition-opacity duration-100 ease-out will-change-opacity flex flex-col items-center"
                             style={{ opacity: 1 - progress }}
                         >
-                            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-medium leading-[1.12] text-stone-950 mb-6 ${playfair.className}`}>
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-heavy font-medium leading-[1.12] text-stone-950 mb-6">
                                 Where Every Meal Becomes a Memory
                             </h1>
                             <p className="text-sm md:text-[15px] text-stone-600 font-light leading-relaxed max-w-2xl">
@@ -105,7 +92,7 @@ export default function Hero_2() {
                             className="absolute inset-0 flex flex-col items-center transition-opacity duration-100 ease-out will-change-opacity"
                             style={{ opacity: progress }}
                         >
-                            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-medium leading-[1.12] text-white mb-6 ${playfair.className}`}>
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-heavy font-medium leading-[1.12] text-white mb-6">
                                 Where Every Meal Becomes a Memory
                             </h1>
                             <p className="text-sm md:text-[15px] text-stone-200 font-light leading-relaxed max-w-2xl">

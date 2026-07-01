@@ -1,23 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Cinzel, Plus_Jakarta_Sans } from 'next/font/google';
 import Link from 'next/link';
 import Image from 'next/image';
 import gsap from 'gsap';
-
-// Load classical serif & modern body typography
-const cinzel = Cinzel({
-  subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
-  display: 'swap',
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  display: 'swap',
-});
 
 const slides = [
   {
@@ -228,7 +214,7 @@ export default function NewHero() {
   return (
     <section 
       ref={bannerRef}
-      className={`relative w-full h-screen min-h-[700px] bg-[#080808] text-white overflow-hidden flex items-center perspective-1000 ${jakarta.className}`}
+      className="relative w-full h-screen min-h-[700px] bg-[#080808] text-white overflow-hidden flex items-center perspective-1000"
     >
       
       {/* 1. Infinite scrolling luxury marquee layer */}
@@ -347,7 +333,7 @@ export default function NewHero() {
 
               {/* Classic Tall Roman Headline (La Perla Inspired) */}
               <h1 
-                className={`animate-reveal-text text-5xl sm:text-6xl md:text-7.5xl leading-[1.05] tracking-wide font-medium text-white mb-6 uppercase ${cinzel.className}`}
+                className="animate-reveal-text text-5xl sm:text-6xl md:text-7.5xl leading-[1.05] tracking-wide font-heavy font-medium text-white mb-6 uppercase"
               >
                 {slide.title}
               </h1>

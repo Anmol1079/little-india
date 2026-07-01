@@ -58,17 +58,6 @@ export default function SpecialSection() {
       
       {/* Custom Stylesheet */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap');
-        .font-impact {
-          font-family: 'Anton', sans-serif;
-        }
-        .font-sans-custom {
-          font-family: 'Montserrat', sans-serif;
-        }
-        .font-serif-italic {
-          font-family: 'Playfair Display', Georgia, serif;
-          font-style: italic;
-        }
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }

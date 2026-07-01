@@ -31,7 +31,7 @@ const orderOptions = [
     description: 'Book your spot in advance for a highly memorable fine dining experience.',
     actionText: 'GET STARTED',
     href: '#reserve-table',
-    yTranslation: 'md:translate-y-12 lg:translate-y-12',
+    yTranslation: 'md:translate-y-0 lg:translate-y-0',
     rotateHover: 1.5,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-[#E65C38]">
@@ -50,7 +50,7 @@ const orderOptions = [
     description: 'The absolute perfect treat for friends, family, and gourmet food lovers.',
     actionText: 'GET STARTED',
     href: '#gift-cards',
-    yTranslation: 'md:translate-y-0 lg:translate-y-24',
+    yTranslation: 'md:translate-y-0 lg:translate-y-0',
     rotateHover: -1.5,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-[#E65C38]">
@@ -68,7 +68,7 @@ const orderOptions = [
     description: 'Let our team bring the grand, aromatic Indian feast to your next event.',
     actionText: 'GET STARTED',
     href: '#catering',
-    yTranslation: 'md:translate-y-12 lg:translate-y-36',
+    yTranslation: 'md:translate-y-0 lg:translate-y-0',
     rotateHover: 1.5,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-[#E65C38]">
@@ -108,32 +108,11 @@ const cardItemVariants = {
 export default function OrderSection() {
   return (
     // Modified pb-[200px] to pb-16 (mobile), md:pb-28 (tablet), and lg:pb-[200px] (desktop)
-    <section className="w-full bg-[#fef6df] pt-16 pb-16 md:pb-28 lg:pb-[200px] px-6 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden select-none">
+    <section className="w-full bg-[#FAEBD4] pt-16 pb-16 md:pb-16 lg:pb-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden select-none">
       
-      {/* Scope-contained style block for custom Anton & Montserrat typography with LAB colors */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap');
-        .font-heavy {
-          font-family: 'Anton', sans-serif;
-        }
-        .font-sans-custom {
-          font-family: 'Montserrat', sans-serif;
-        }
-        .brand-lab-text {
-          color: #fbbf24;
-          color: lab(72.7183% 31.8672 97.9407);
-        }
-        .brand-lab-bg {
-          background-color: #fbbf24;
-          background-color: lab(72.7183% 31.8672 97.9407);
-        }
-        .brand-lab-border {
-          border-color: #fbbf24;
-          border-color: lab(72.7183% 31.8672 97.9407);
-        }
-      ` }} />
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
+
+      <div className="max-w-[1500px] mx-auto flex flex-col items-center">
         
         {/* Header Block with Scroll Reveal */}
         <motion.div 
@@ -141,7 +120,7 @@ export default function OrderSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="flex flex-col max-w-[240px] sm:max-w-[1400px] md:max-w-[1500px] self-start mb-16"
+          className="flex flex-col max-w-[1500px] sm:max-w-[1500px] md:max-w-[1500px] self-start mb-16"
         >
           <div className="flex flex-col items-start mb-4">
             <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block">
@@ -150,7 +129,7 @@ export default function OrderSection() {
           </div>
 
           <div className="flex items-baseline space-x-2 md:space-x-3 mt-1">
-            <h2 className="font-heavy text-[45px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]">
+            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]">
               Order Indian Food in Denver
             </h2>
           </div>
@@ -191,7 +170,7 @@ export default function OrderSection() {
                 </div>
 
                 {/* 2. Card Title */}
-                <h3 className="font-heavy text-[28px] text-stone-900 uppercase tracking-tight mb-4 leading-none transition-colors duration-300 group-hover:text-[#E65C38]">
+                <h3 className="font-heavy text-[28px] text-stone-900 uppercase tracking-tight mb-4 leading-none font-bold transition-colors duration-300 group-hover:text-[#E65C38]">
                   {option.title}
                 </h3>
                 
@@ -201,27 +180,28 @@ export default function OrderSection() {
                 </p>
 
                 {/* 4. Action Link */}
-                <div className="inline-flex self-center backdrop-blur-md rounded-full p-1 shadow-md pointer-events-auto">
-                  <Link
-                    href={option.href}
-                    className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
-                  >
-                    <span>{option.actionText}</span>
-                    <svg
-                      className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </Link>
-                </div>
+                <div className="flex justify-center">
+        <Link
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              >
+                <span>KNOW MORE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+
+        </div>
 
               </motion.div>
             </motion.div>

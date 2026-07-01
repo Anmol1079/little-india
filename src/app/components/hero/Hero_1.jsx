@@ -1,21 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
 import gsap from 'gsap';
-
-// Load professional fonts matching the reference design
-const playfair = Playfair_Display({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    display: 'swap',
-});
-
-const jakarta = Plus_Jakarta_Sans({
-    subsets: ['latin'],
-    weight: ['300', '400', '500', '600', '700'],
-    display: 'swap',
-});
 
 const slides = [
     {
@@ -152,7 +138,7 @@ export default function Hero_1() {
     return (
         <section
             ref={containerRef}
-            className={`relative w-full h-[calc(100vh-80px)] min-h-[650px] flex flex-col justify-between text-white overflow-hidden ${jakarta.className}`}
+            className="relative w-full h-[calc(100vh-80px)] min-h-[650px] flex flex-col justify-between text-white overflow-hidden"
         >
 
             {/* Base Slide Layer (Static background) */}
@@ -198,7 +184,7 @@ export default function Hero_1() {
             {/* Central Content */}
             <div className="relative z-20 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto mt-[-20px]">
                 <h1
-                    className={`animate-text-item text-[64px]  font-medium tracking-wide leading-[1.15] text-white whitespace-pre-line mb-5 ${playfair.className}`}
+                    className="animate-text-item text-[64px] font-heavy font-medium tracking-wide leading-[1.15] text-white whitespace-pre-line mb-5"
                 >
                     {slides[isTransitioning ? currentSlide : prevSlide].title}
                 </h1>
@@ -236,7 +222,7 @@ export default function Hero_1() {
                     {/* Stats */}
                     <div className="flex flex-wrap gap-12 md:gap-16">
                         <div>
-                            <h3 className={`text-2xl md:text-3xl text-white font-medium mb-1 ${playfair.className}`}>
+                            <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 30+
                             </h3>
                             <p className="text-[10px] md:text-xs text-gray-400 tracking-widest uppercase font-medium">
@@ -244,7 +230,7 @@ export default function Hero_1() {
                             </p>
                         </div>
                         <div>
-                            <h3 className={`text-2xl md:text-3xl text-white font-medium mb-1 ${playfair.className}`}>
+                            <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 15+
                             </h3>
                             <p className="text-[10px] md:text-xs text-gray-400 tracking-widest uppercase font-medium">
@@ -252,7 +238,7 @@ export default function Hero_1() {
                             </p>
                         </div>
                         <div>
-                            <h3 className={`text-2xl md:text-3xl text-white font-medium mb-1 ${playfair.className}`}>
+                            <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 95%
                             </h3>
                             <p className="text-[10px] md:text-xs text-gray-400 tracking-widest uppercase font-medium">

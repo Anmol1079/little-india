@@ -16,30 +16,39 @@ import WhyChooseUsSection from "@/app/components/whychooseus/WhyChooseUs";
 import BlogSection from "@/app/components/Blogs/Blogs";
 import FaqSection from "@/app/components/faq/Faq";
 import CtaSection from "@/app/components/ctasection/Cta";
+import NewDineno2 from "./components/hero/NewDineno2";
+import Mainheader from "./components/headers/MainHeader";
+import SecondaryHeader from "./components/headers/SecondaryHeader";
+import FourthHeader from "./components/headers/FourthHeader";
+import FifthHeader from "./components/headers/FifthHeader";
+import AboutSection from "./components/about/AboutSection";
+import InteractMenu from "./components/menu/InteractMenu";
+import Footer1 from "./components/footer/Footer1";
+import HeroVideo from "./components/hero/HeroVideo";
+import LuxuryYachtLanding from "@/app/components/video/VideoChef";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-stone-950">
-      <ThirdHeader />
-      <NewDineno />
+      <SecondaryHeader />
+      <NewDineno2 />
       {/* Renders the newly built, animated section */}
-      <AboutUs /> 
+      <AboutSection /> 
       <SpecialDishes />
       {/* The Zooming Video Component */}
-      <VideoSection />
+      {/* <LuxuryYachtLanding /> */}
       <MenuDish />
       <ContactSection />
       <OrderSection />
       <LocationsSection />
       <TestimonialsSection  />
       <HappyHourSection />
-      <LunchBuffetSection />
-      <OurStorySection />
       <WhyChooseUsSection />
+      <OurStorySection />
       <FaqSection />
       <BlogSection />
       <CtaSection />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

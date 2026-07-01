@@ -86,15 +86,6 @@ const titleVariants = {
   },
 };
 
-const buttonGroupVariants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
 export default function TestimonialsSection() {
   const [reviews, setReviews] = useState(INITIAL_REVIEWS);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -170,21 +161,16 @@ export default function TestimonialsSection() {
       ];
 
   return (
-    <section className="w-full bg-[#fef6df] py-16 px-4 md:px-8 lg:px-16 text-[#0B0C0E] select-none border-b border-stone-200/50 overflow-hidden">
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap');
-        .font-heavy { font-family: 'Anton', sans-serif; }
-        .font-sans-custom { font-family: 'Montserrat', sans-serif; }
-      ` }} />
+    <section className="w-full bg-[#FAEBD4] py-16 px-4 md:px-8 lg:px-16 text-[#0B0C0E] select-none border-b border-stone-200/50 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 relative">
+      <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
         
         {/* Animated Staggered Header Block */}
         <motion.div 
           variants={headerContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.4, margin: '0px 0px -150px 0px' }}
+          viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 w-full pb-6 border-b border-stone-200/40"
         >
           {/* Title Area */}
@@ -192,7 +178,7 @@ export default function TestimonialsSection() {
             <div className="overflow-hidden">
               <motion.span 
                 variants={taglineVariants}
-                className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block mb-3"
+                className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-3"
               >
                 Our Testimonials
               </motion.span>
@@ -200,45 +186,42 @@ export default function TestimonialsSection() {
             <div className="overflow-hidden py-1">
               <motion.h2 
                 variants={titleVariants}
-                className="font-heavy text-[50px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-tight"
+                className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-tight"
               >
                 Client Reviews
               </motion.h2>
             </div>
           </div>
 
-          {/* Button Group Row (Hidden on Mobile) */}
-          <motion.div 
-            variants={buttonGroupVariants}
-            className="hidden md:flex flex-wrap items-center gap-4 shrink-0 pointer-events-auto"
-          >
-            {/* WRITE A REVIEW BUTTON */}
+          {/* Desktop Right Header Button Area (Write a Review Restored Here - with exact matches applied) */}
+          <div className="hidden md:flex items-center shrink-0 pointer-events-auto">
             <motion.div 
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 380, damping: 16 }}
-              className="inline-flex self-center backdrop-blur-md rounded-full p-1 shadow-2xl"
+              className="flex justify-center"
             >
-              <button onClick={() => setIsModalOpen(true)} className="group bg-white border border-[#E65C38] hover:bg-stone-50 text-[#E65C38] text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center transition-colors duration-200">
+              <button 
+                onClick={() => setIsModalOpen(true)} 
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              >
                 <span>WRITE A REVIEW</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
               </button>
             </motion.div>
-
-            {/* READ ALL REVIEWS BUTTON */}
-            <motion.div 
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 380, damping: 16 }}
-              className="inline-flex self-center backdrop-blur-md rounded-full p-1 shadow-2xl"
-            >
-              <Link href={loc.orderUrl} className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200">
-                <span>READ ALL REVIEWS</span>
-                <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Carousel Items (Dynamic horizontal padding) */}
@@ -282,35 +265,60 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Mobile Button Group (Displays only on Mobile viewports) */}
-        <div className="flex md:hidden flex-col items-center gap-4 w-full mt-4">
-          {/* WRITE A REVIEW BUTTON */}
+        {/* Centered CTA Block */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full mt-6 select-none pointer-events-auto">
+          {/* Mobile-only WRITE A REVIEW button, since header buttons are hidden on desktop */}
           <motion.div 
-            whileHover={{ scale: 1.02, y: -1 }}
+            whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full max-w-xs"
+            transition={{ type: 'spring', stiffness: 380, damping: 16 }}
+            className="flex md:hidden backdrop-blur-md rounded-full p-1 shadow-md w-full sm:w-auto text-center"
           >
             <button 
               onClick={() => setIsModalOpen(true)} 
-              className="w-full justify-center group bg-white border border-[#E65C38] hover:bg-stone-50 text-[#E65C38] text-[11px] font-bold tracking-widest px-6 py-4 rounded-full inline-flex items-center transition-colors duration-200"
+              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans shadow-md"
             >
               <span>WRITE A REVIEW</span>
+              <svg
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
             </button>
           </motion.div>
 
-          {/* READ ALL REVIEWS BUTTON */}
+          {/* READ ALL REVIEWS (Sits cleanly below the carousel on both mobile and desktop) */}
           <motion.div 
-            whileHover={{ scale: 1.02, y: -1 }}
+            whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full max-w-xs"
+            transition={{ type: 'spring', stiffness: 380, damping: 16 }}
+            className="flex justify-center"
           >
-            <Link 
-              href={loc.orderUrl} 
-              className="w-full justify-center group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-4 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
+            <Link
+              href={loc.orderUrl}
+              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
             >
               <span>READ ALL REVIEWS</span>
-              <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
             </Link>
           </motion.div>
@@ -338,14 +346,14 @@ export default function TestimonialsSection() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
               
-              <h3 className="font-heavy text-2xl uppercase mb-4 tracking-wide text-stone-950">Share Your Experience</h3>
+              <h3 className="font-title font-black text-2xl uppercase mb-4 tracking-wide text-stone-950">Share Your Experience</h3>
               
-              <div className="flex gap-2 p-1 bg-stone-100 rounded-xl mb-5 text-[10px] font-bold font-sans-custom">
+              <div className="flex gap-2 p-1 bg-stone-100 rounded-xl mb-5 text-[10px] font-bold font-sans">
                 <button type="button" onClick={() => setReviewType('text')} className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'text' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}>TEXT REVIEW</button>
                 <button type="button" onClick={() => setReviewType('video')} className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'video' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}>VIDEO REVIEW</button>
               </div>
 
-              <form onSubmit={handleSubmitReview} className="flex flex-col gap-4 font-sans-custom text-[11px] font-bold uppercase text-stone-800">
+              <form onSubmit={handleSubmitReview} className="flex flex-col gap-4 font-sans text-[11px] font-bold uppercase text-stone-800">
                 <input type="text" value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} placeholder="Your Name" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" required />
                 <input type="text" value={newRole} onChange={(e) => setNewRole(e.target.value)} placeholder="Subtitle (e.g. Food Lover)" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" />
                 
@@ -422,7 +430,7 @@ function TextReviewCard({ item }) {
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center gap-3.5">
           <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-stone-100" />
-          <div className="flex flex-col gap-0.5 text-left font-sans-custom">
+          <div className="flex flex-col gap-0.5 text-left font-sans">
             <h4 className="text-[14.5px] font-extrabold text-[#0B0C0E] leading-tight">{item.name}</h4>
             <span className="text-[11px] font-bold text-stone-400 leading-none uppercase">{item.role}</span>
           </div>
@@ -430,11 +438,11 @@ function TextReviewCard({ item }) {
         <GoogleIcon />
       </div>
       <div className="my-6">
-        <p className="font-sans-custom text-[15px] sm:text-[16px] text-stone-900 font-bold leading-relaxed text-left">{item.text}</p>
+        <p className="font-sans text-[15px] sm:text-[16px] text-stone-900 font-bold leading-relaxed text-left">{item.text}</p>
       </div>
       <div className="flex justify-between items-center w-full pt-4 border-t border-stone-100">
         <Stars count={item.stars} />
-        <span className="font-sans-custom text-[11.5px] font-bold text-stone-400">{item.date}</span>
+        <span className="font-sans text-[11.5px] font-bold text-stone-400">{item.date}</span>
       </div>
     </motion.div>
   );
@@ -454,7 +462,7 @@ function VideoReviewCard({ item, onPlay }) {
       <div className="relative z-20 flex justify-between items-center w-full">
         <div className="flex items-center gap-3.5">
           <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-white/20" />
-          <div className="flex flex-col gap-0.5 text-left font-sans-custom">
+          <div className="flex flex-col gap-0.5 text-left font-sans">
             <h4 className="text-[14.5px] font-extrabold text-white leading-tight">{item.name}</h4>
             <span className="text-[11px] font-bold text-stone-300/80 leading-none uppercase">{item.role}</span>
           </div>
@@ -475,7 +483,7 @@ function VideoReviewCard({ item, onPlay }) {
       </div>
       <div className="relative z-20 flex justify-between items-center w-full pt-4 border-t border-white/10">
         <Stars count={item.stars} />
-        <span className="font-sans-custom text-[11.5px] font-bold text-stone-300">{item.date}</span>
+        <span className="font-sans text-[11.5px] font-bold text-stone-300">{item.date}</span>
       </div>
     </motion.div>
   );

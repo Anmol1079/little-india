@@ -67,19 +67,9 @@ export default function WhyChooseUsSection() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
       />
 
-      {/* Scope-contained style block for Anton & Montserrat typography */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap');
-        
-        .font-heavy {
-          font-family: 'Anton', sans-serif;
-        }
-        .font-sans-custom {
-          font-family: 'Montserrat', sans-serif;
-        }
-      ` }} />
 
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 relative">
+
+      <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
         
         {/* TOP SECTION: Title & Description */}
         <motion.div 
@@ -98,7 +88,7 @@ export default function WhyChooseUsSection() {
 
           <motion.h2 
             variants={headerItemVariants}
-            className="font-heavy text-[45px] sm:text-[60px] text-[#000] uppercase leading-[0.95] tracking-[0.01rem] mb-1"
+            className="font-heavy text-[45px] sm:text-[60px] text-[#000] uppercase leading-[0.95] tracking-[0.01rem] mb-1 font-black"
           >
             Why Choose Us?
           </motion.h2>
@@ -137,7 +127,7 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#e3ebd9] text-[#4d6645] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-leaf text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300">
+              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
                 Fresh Food
               </h4>
               <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
@@ -147,15 +137,27 @@ export default function WhyChooseUsSection() {
               <motion.div 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-4 z-10 animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto"
+                className="flex"
               >
                 <Link
-                  href="#menu"
-                  className="group bg-[#4d6645] hover:bg-[#3d5336] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans-custom uppercase"
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              >
+                <span>KNOW MORE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
                 >
-                  <span>Explore Menu</span>
-                  <i className="fa-solid fa-arrow-right text-[11px] transition-transform duration-200 group-hover:translate-x-1 shrink-0"></i>
-                </Link>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
               </motion.div>
             </motion.div>
 
@@ -173,7 +175,7 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#f5ebcb] text-[#d47926] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-seedling text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300">
+              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
                 Vegan Friendly
               </h4>
               <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
@@ -183,15 +185,27 @@ export default function WhyChooseUsSection() {
               <motion.div 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-4 z-10 animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto"
+                className="flex"
               >
                 <Link
-                  href="#menu"
-                  className="group bg-[#d47926] hover:bg-[#b5651c] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans-custom uppercase"
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              >
+                <span>KNOW MORE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
                 >
-                  <span>Vegan Selections</span>
-                  <i className="fa-solid fa-arrow-right text-[11px] transition-transform duration-200 group-hover:translate-x-1 shrink-0"></i>
-                </Link>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
               </motion.div>
             </motion.div>
 
@@ -238,7 +252,7 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#ede2f2] text-[#6d4f8d] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-wheat-awn text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300">
+              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
                 Gluten Free
               </h4>
               <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
@@ -248,15 +262,27 @@ export default function WhyChooseUsSection() {
               <motion.div 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-4 z-10 animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto"
+                className="flex"
               >
-                <Link
-                  href="#menu"
-                  className="group bg-[#6d4f8d] hover:bg-[#583f72] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans-custom uppercase"
+              <Link
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              >
+                <span>KNOW MORE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
                 >
-                  <span>Gluten-Free Options</span>
-                  <i className="fa-solid fa-arrow-right text-[11px] transition-transform duration-200 group-hover:translate-x-1 shrink-0"></i>
-                </Link>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
               </motion.div>
             </motion.div>
 
@@ -274,7 +300,7 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#f5e4d2] text-[#d85507] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-award text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300">
+              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
                 Quality Maintain
               </h4>
               <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
@@ -284,15 +310,27 @@ export default function WhyChooseUsSection() {
               <motion.div 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-4 z-10 animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto"
+                className="flex"
               >
                 <Link
-                  href="#about"
-                  className="group bg-[#d85507] hover:bg-[#b54404] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans-custom uppercase"
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              >
+                <span>KNOW MORE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
                 >
-                  <span>Our Standards</span>
-                  <i className="fa-solid fa-arrow-right text-[11px] transition-transform duration-200 group-hover:translate-x-1 shrink-0"></i>
-                </Link>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
               </motion.div>
             </motion.div>
 

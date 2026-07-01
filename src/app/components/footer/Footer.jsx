@@ -7,15 +7,8 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <div className="w-full bg-[#fdfbf7] py-0 pt-0 px-0 md:px-0 font-sans flex justify-center items-center select-none">
-      {/* Scope-contained style block for high-fidelity LAB colors and typography */}
+      {/* Scope-contained style block for high-fidelity LAB colors */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap');
-        .font-heavy {
-          font-family: 'Anton', sans-serif;
-        }
-        .font-sans-custom {
-          font-family: 'Montserrat', sans-serif;
-        }
         .brand-color-text {
           color: #fbbf24; /* Fallback */
           color: lab(72.7183% 31.8672 97.9407);

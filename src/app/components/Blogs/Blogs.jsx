@@ -133,30 +133,9 @@ export default function BlogSection() {
   const visibleCards = getVisiblePosts();
 
   return (
-    <section className="w-full bg-[#fef6df] py-16 px-6 md:px-12 lg:px-20 select-none border-b border-stone-200/50 overflow-hidden">
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20 select-none border-b border-stone-200/50 overflow-hidden">
       
-      {/* Scope-contained style block for custom Anton & Montserrat typography */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap');
-        .font-heavy {
-          font-family: 'Anton', sans-serif;
-        }
-        .font-sans-custom {
-          font-family: 'Montserrat', sans-serif;
-        }
-        .brand-lab-text {
-          color: #e65c38;
-        }
-        .brand-lab-bg {
-          background-color: #e65c38;
-        }
-        .blog-glass-card {
-          background-color: #ffffff;
-          border-color: rgba(0, 0, 0, 0.08);
-        }
-      ` }} />
-
-      <div className="max-w-7xl mx-auto flex flex-col gap-10 relative">
+      <div className="max-w-[1500px] mx-auto flex flex-col gap-10 relative">
         
         {/* Header Block with Scroll Staggers */}
         <motion.div 
@@ -170,7 +149,7 @@ export default function BlogSection() {
             <div className="overflow-hidden">
               <motion.span 
                 variants={taglineVariants}
-                className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block mb-3"
+                className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-3"
               >
                 Culinary Insights
               </motion.span>
@@ -179,7 +158,7 @@ export default function BlogSection() {
             <div className="overflow-hidden py-1">
               <motion.h2 
                 variants={titleVariants}
-                className="font-heavy text-[50px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]"
+                className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]"
               >
                 Our Blogs
               </motion.h2>
@@ -189,12 +168,13 @@ export default function BlogSection() {
           {/* DESKTOP ONLY: Button is shown here, hidden on mobile */}
           <motion.div 
             variants={buttonGroupVariants}
-            className="hidden md:inline-flex backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto shrink-0"
+            className="flex justify-center"
           >
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                href="#blog"
-                className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
+
+        <Link
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>VIEW ALL BLOGS</span>
                 <svg
@@ -211,6 +191,8 @@ export default function BlogSection() {
                   />
                 </svg>
               </Link>
+
+
             </motion.div>
           </motion.div>
         </motion.div>
@@ -340,14 +322,14 @@ function BlogCard({ post }) {
         boxShadow: '0 25px 50px -15px rgba(230, 92, 56, 0.08)'
       }}
       transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-      className="blog-glass-card border border-stone-200/80 rounded-[2.5rem] overflow-hidden flex flex-col justify-between p-6 h-full min-h-[500px] group shadow-md"
+      className="bg-[#FAEBD4] border border-stone-200/80 rounded-[2.5rem] overflow-hidden flex flex-col justify-between p-6 h-full min-h-[500px] group shadow-md"
     >
       {/* Thumbnail image container */}
       <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-stone-100 shadow-inner shrink-0">
         <img 
           src={post.image} 
           alt={post.title} 
-          className="w-full h-full object-cover transition-transform duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105 filter brightness-[0.95]"
+          className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 filter brightness-[0.95]"
           onError={(e) => {
             e.currentTarget.src = FALLBACK_IMAGE;
           }}
@@ -355,12 +337,12 @@ function BlogCard({ post }) {
       </div>
 
       {/* Narrative block details */}
-      <div className="flex flex-col gap-3.5 text-left font-sans-custom mt-5">
+      <div className="flex flex-col gap-3.5 text-left font-sans mt-5">
         <span className="text-stone-400 text-xs font-semibold">
           {post.date}
         </span>
 
-        <h3 className="font-heavy text-2xl text-stone-950 uppercase tracking-wide leading-tight group-hover:text-[#E65C38] transition-colors duration-300">
+        <h3 className="font-title font-black text-2xl text-stone-950 uppercase tracking-wide leading-tight group-hover:text-[#E65C38] transition-colors duration-300">
           {post.title}
         </h3>
 

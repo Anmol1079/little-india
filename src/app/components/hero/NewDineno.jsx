@@ -1,22 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Oswald, Plus_Jakarta_Sans } from 'next/font/google';
 import Link from 'next/link';
 import gsap from 'gsap';
-
-// Load typography
-const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  display: 'swap',
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-});
 
 const slides = [
   {
@@ -291,7 +277,7 @@ export default function NewDineno() {
       onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
       onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
       onTouchEnd={onDragEnd}
-      className={`relative w-full h-screen min-h-[650px] bg-black text-white overflow-hidden perspective-1000 select-none cursor-grab active:cursor-grabbing ${jakarta.className}`}
+      className="relative w-full h-screen min-h-[650px] bg-black text-white overflow-hidden perspective-1000 select-none cursor-grab active:cursor-grabbing"
     >
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes kenburns {
@@ -395,7 +381,7 @@ export default function NewDineno() {
 
             <h1 
               key={`title-${currentSlide}`}
-              className={`animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[115px] leading-[0.98] tracking-tight font-extrabold text-white whitespace-pre-line mb-8 ${oswald.className}`}
+              className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[115px] leading-[0.98] tracking-tight font-heavy font-extrabold text-white whitespace-pre-line mb-8"
             >
               {slides[currentSlide].title}
             </h1>

@@ -1,16 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Plus_Jakarta_Sans } from 'next/font/google';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Load elegant sans-serif typography for navigation
-const jakarta = Plus_Jakarta_Sans({
-    subsets: ['latin'],
-    weight: ['500', '600', '700', '800'],
-    display: 'swap',
-});
 
 export default function ThirdHeader() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -57,15 +49,8 @@ export default function ThirdHeader() {
             <header
                 className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-350 ease-in-out ${
                     isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
-                } ${jakarta.className}`}
+                }`}
             >
-                {/* Scope-contained style block for custom Montserrat typography */}
-                <style dangerouslySetInnerHTML={{ __html: `
-                    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-                    .font-sans-custom {
-                      font-family: 'Montserrat', sans-serif;
-                    }
-                ` }} />
 
                 {/* TIER 2: Main Navigation Menu */}
                 <div className={`w-full transition-all duration-300 ${
@@ -242,7 +227,7 @@ export default function ThirdHeader() {
 
             {/* Slide-out Mobile Navigation Drawer */}
             <div
-                className={`fixed inset-x-0 bottom-0 top-[82px] z-40 bg-neutral-950/95 backdrop-blur-lg border-t border-white/5 transition-transform duration-300 md:hidden overflow-y-auto ${jakarta.className} ${
+                className={`fixed inset-x-0 bottom-0 top-[82px] z-40 bg-neutral-950/95 backdrop-blur-lg border-t border-white/5 transition-transform duration-300 md:hidden overflow-y-auto ${
                     mobileMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
                 }`}
             >

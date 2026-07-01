@@ -13,21 +13,31 @@ const FAQ_ITEMS = [
     answer: "We offer daily delivery and takeout services from 11:30 AM to 9:30 PM. You can order directly through our website to enjoy fresh, hot tandoori naans and rich, savory curries delivered right to your door."
   },
   {
-    question: "Do you host private events or offer catering services?",
-    answer: "Yes, we offer full-service catering and private dining hosting for weddings, corporate events, birthday celebrations, and gatherings of any scale. We can customize our menus to match your group size and dietary requirements."
-  },
-  {
-    question: "How spicy are your dishes? Can I customize the heat?",
-    answer: "Our dishes can be fully customized to your preferred spice level, from very mild and creamy to deeply hot and fiery. Simply select your desired heat preference (Mild, Medium, Hot, or Indian Hot) when placing your order."
-  },
-  {
+    question: "Do you offer private events or catering services?",
+    answer: "Yes, we provide full-service catering and private dining experiences for weddings, corporate events, birthday celebrations, and gatherings of all sizes. Our team can tailor the menu to suit your group size, preferences, and dietary requirements."
+    },
+    {
+    question: "Can I adjust the spice level of the dishes?",
+    answer: "Absolutely. Our dishes can be customized to match your preferred spice level, ranging from mild and creamy to rich and intensely spicy. Simply choose your heat preference—Mild, Medium, Hot, or Indian Hot—when placing your order."
+    },
+    {
     question: "Is your meat Halal certified?",
-    answer: "Yes, we use only high-quality, certified Halal meats in all of our chicken, lamb, and goat specialties to ensure our traditional recipes are prepared to the highest standard."
-  },
-  {
-    question: "Can we book a table in advance?",
-    answer: "Yes, reservations are highly recommended, especially for weekend grand feasts and dinners. You can easily reserve your table directly through our online reservation portal."
-  }
+    answer: "Yes, we use only premium-quality, certified Halal meats across all our chicken, lamb, and goat dishes, ensuring authenticity and the highest standards of preparation."
+    },
+    {
+    question: "Do you accept table reservations?",
+    answer: "Yes, we highly recommend making reservations, especially during weekends and busy dining hours. You can conveniently book your table through our online reservation system."
+    },
+    {
+      question: "Do you offer vegetarian or vegan options?",
+      answer: "Yes, we offer a wide selection of vegetarian and vegan dishes made with fresh ingredients and authentic spices. Our menu is designed to cater to diverse dietary preferences without compromising on flavor."
+      },
+      {
+      question: "What are your opening hours?",
+      answer: "We are open daily for lunch and dinner. Our hours may vary on weekends and holidays, so we recommend checking our website or contacting us directly for the most up-to-date timings."
+      }
+      
+    
 ];
 
 // Custom Deceleration Cubic-Bezier Easing
@@ -91,17 +101,10 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] select-none border-b border-stone-200/50">
+    <section className="w-full bg-[#FAEBD4] py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] select-none border-b border-stone-200/50">
       
-      {/* Scope-contained style block for custom Anton & Montserrat typography with LAB colors */}
+      {/* Scope-contained style block for custom LAB colors */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap');
-        .font-heavy {
-          font-family: 'Anton', sans-serif;
-        }
-        .font-sans-custom {
-          font-family: 'Montserrat', sans-serif;
-        }
         .brand-lab-text {
           color: #fbbf24;
           color: lab(72.7183% 31.8672 97.9407);
@@ -112,7 +115,7 @@ export default function FaqSection() {
         }
       ` }} />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-16 items-center">
+      <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-16 items-center">
         
         {/* LEFT COLUMN: Section Description & Image */}
         <motion.div 
@@ -120,7 +123,7 @@ export default function FaqSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
-          className="lg:col-span-5 flex flex-col items-start text-left gap-6 h-full justify-between"
+          className="lg:col-span-6 flex flex-col items-start text-left gap-6 h-full justify-between"
         >
           
           <div className="flex flex-col gap-6">
@@ -137,7 +140,7 @@ export default function FaqSection() {
             {/* Title */}
             <motion.h2 
               variants={revealItemVariants}
-              className="font-heavy text-4xl sm:text-5xl lg:text-6xl text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]"
+              className="font-heavy text-4xl sm:text-5xl lg:text-6xl text-stone-950 uppercase leading-[0.95] tracking-[0.01rem] font-black"
             >
               Frequently asked<br />questions
             </motion.h2>
@@ -171,7 +174,7 @@ export default function FaqSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25, margin: "0px 0px -100px 0px" }}
-          className="lg:col-span-7 flex flex-col gap-5 w-full relative h-full justify-center"
+          className="lg:col-span-6 flex flex-col gap-5 w-full relative h-full justify-center"
         >
           {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;

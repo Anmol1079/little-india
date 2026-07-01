@@ -27,7 +27,6 @@ function useScrollProgress() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Run initial calculation on mount
     calculateProgress();
 
     return () => {
@@ -43,19 +42,19 @@ function useScrollProgress() {
 function MenuItem({ item }) {
   const [ref, progress] = useScrollProgress();
 
-  // 1. Plate Parallax Translation & Rotation values
+  // 1. Uniform Plate Parallax Translation & Rotation values
   const yOffset = (0.5 - progress) * 80; // Translates plate relative to viewport progress
   const rotationRange = item.rotationEnd - item.rotationStart;
   const currentRotation = item.rotationStart + progress * rotationRange;
 
-  // 2. Symmetric fade-in and fade-out calculations for the whole word
+  // 2. Symmetric fade-in and fade-out calculations
   let textOpacity = 0;
   if (progress > 0.15 && progress < 0.35) {
-    textOpacity = (progress - 0.15) / 0.2; // Smooth fade-in as it enters
+    textOpacity = (progress - 0.15) / 0.2; // Smooth fade-in
   } else if (progress >= 0.35 && progress <= 0.65) {
-    textOpacity = 1; // Stay fully visible in the center of viewport
+    textOpacity = 1; // Stay fully visible
   } else if (progress > 0.65 && progress < 0.85) {
-    textOpacity = 1 - (progress - 0.65) / 0.2; // Smooth fade-out as it leaves
+    textOpacity = 1 - (progress - 0.65) / 0.2; // Smooth fade-out
   } else if (progress >= 0.85) {
     textOpacity = 0;
   }
@@ -74,7 +73,7 @@ function MenuItem({ item }) {
         }`}
       >
         <h3
-          className="font-heavy text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none uppercase tracking-wide leading-none"
+          className="font-title font-black text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none uppercase tracking-wide leading-none"
           style={{ 
             opacity: textOpacity, 
             transition: 'opacity 0.15s ease-out',
@@ -83,7 +82,7 @@ function MenuItem({ item }) {
         >
           {item.title}
         </h3>
-        <p className="font-sans-custom text-stone-300 text-sm md:text-base leading-relaxed max-w-md xl:max-w-[90%]">
+        <p className="font-sans text-stone-300 text-sm md:text-base leading-relaxed max-w-md xl:max-w-[90%]">
           {item.description}
         </p>
       </div>
@@ -127,11 +126,9 @@ function MenuItem({ item }) {
 function SaltSeparator({ direction = '135deg', rotateClass = '' }) {
   const [ref, progress] = useScrollProgress();
 
-  // Map progress to a wider viewport range (from 10% to 90% scroll depth) for a slower, smoother reveal
   const activeProgress = Math.min(1, Math.max(0, (progress - 0.1) / 0.8));
   const percentage = activeProgress * 100;
 
-  // A clean sliding mask gradient wipe
   const maskStyle = `linear-gradient(${direction}, rgba(0, 0, 0, 1) ${percentage}%, rgba(0, 0, 0, 0) ${percentage + 15}%)`;
 
   return (
@@ -184,8 +181,8 @@ export default function OurMenuSection() {
       imgSrc: '/ribs.png',
       alt: 'BBQ Ribs plate',
       align: 'left',
-      rotationStart: -5,
-      rotationEnd: -35,
+      rotationStart: 0,
+      rotationEnd: 90, // standardized to exactly 90-deg sweep
     },
     {
       title: 'Buff Chilly',
@@ -194,8 +191,8 @@ export default function OurMenuSection() {
       imgSrc: '/chicken-chilly.png',
       alt: 'Chicken Chilly plate',
       align: 'right',
-      rotationStart: 5,
-      rotationEnd: 40,
+      rotationStart: 0,
+      rotationEnd: 90, // standardized to exactly 90-deg sweep
     },
     {
       title: 'Grilled Chicken',
@@ -204,9 +201,9 @@ export default function OurMenuSection() {
       imgSrc: '/chicken-tandoori.png',
       alt: 'Grilled Chicken plate',
       align: 'left',
-      rotationStart: -5,
-      rotationEnd: -25,
-      scaleClass: 'scale-[0.8]',
+      rotationStart: 0,
+      rotationEnd: 90, // standardized to exactly 90-deg sweep
+      // scaleClass: 'scale-[0.8]',
     },
     {
       title: 'BBQ Prawn',
@@ -215,47 +212,36 @@ export default function OurMenuSection() {
       imgSrc: '/prawn.png',
       alt: 'BBQ Prawn plate',
       align: 'right',
-      rotationStart: 5,
-      rotationEnd: 30,
+      rotationStart: 0,
+      rotationEnd: 90, // standardized to exactly 90-deg sweep
     },
   ];
 
   return (
     <section className="relative w-full py-0 bg-black overflow-hidden select-none">
-      
-      {/* Scope-contained style block for custom Anton & Montserrat typography */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap');
-        .font-heavy {
-          font-family: 'Anton', sans-serif;
-        }
-        .font-sans-custom {
-          font-family: 'Montserrat', sans-serif;
-        }
-      ` }} />
 
       {/* Centered Header wrapper */}
       <div className="w-full px-4 md:px-8 xl:px-16 pt-16 pb-8">
         <div className="flex flex-col items-center text-center group cursor-pointer max-w-[1400px] mx-auto">
           
           {/* Tagline Bracket */}
-          <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block mb-3">
+          <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-3">
             Our Highlights
           </span>
 
           <div className="flex justify-center items-baseline mb-4">
-            <h2 className="font-heavy text-[60px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] uppercase">
+            <h2 className="font-title font-black text-[60px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] uppercase">
               Special Dishes
             </h2>
           </div>
           
-          <p className="font-sans-custom text-[15px] text-[#fff]/60 tracking-wider leading-relaxed font-semibold max-w-2xl mx-auto">
+          <p className="font-sans text-[15px] text-[#fff]/60 tracking-wider leading-relaxed font-semibold max-w-2xl mx-auto">
             Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch.
           </p>
         </div>
       </div>
 
-      {/* Menu List - Increased bottom padding to accommodate the floating BBQ Prawn plate */}
+      {/* Menu List */}
       <div className="relative z-10 w-full flex flex-col px-2 sm:px-4 md:px-8 xl:px-16 pb-20 sm:pb-24 md:pb-48 xl:pb-[24vh]">
         <MenuItem item={MENU_ITEMS[0]} />
 

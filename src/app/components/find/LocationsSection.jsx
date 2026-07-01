@@ -19,34 +19,34 @@ const LOCATIONS = [
     directionsUrl: '#',
     orderUrl: '#'
   },
-  {
-    id: 'bluebird-district',
-    neighborhood: 'BLUEBIRD DISTRICT',
-    opened: 'Open since 2022',
-    tagline: 'Across from the theater',
-    description: "A taller room on East Colfax, with a full bar and a view of the Bluebird's marquee through the front windows. Walk-ins at the bar, two-tops in the window.",
-    address: '3100 E Colfax Ave, Denver',
-    phone: '(303) 285-3700',
-    hours: 'Daily 11:00 AM – 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1485686531765-ba63b07845a7?w=800&auto=format&fit=crop&q=80', // Elegant taller bar and pub area
-    visitUrl: '#',
-    directionsUrl: '#',
-    orderUrl: '#'
-  },
-  {
-    id: 'south-denver',
-    neighborhood: 'SOUTH DENVER',
-    opened: 'Open since 2023',
-    tagline: 'South Indian under one roof',
-    description: "The newest room, and the only one serving fresh dosa and idli alongside the full menu. Family-sized booths, tap beer, a quieter pace.",
-    address: '7355 Ralston Rd Unit H, Arvada',
-    phone: '(303) 558-0992',
-    hours: 'Daily 11:00 AM – 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&auto=format&fit=crop&q=80', // Modern, open space dining layout
-    visitUrl: '#',
-    directionsUrl: '#',
-    orderUrl: '#'
-  }
+  // {
+  //   id: 'bluebird-district',
+  //   neighborhood: 'BLUEBIRD DISTRICT',
+  //   opened: 'Open since 2022',
+  //   tagline: 'Across from the theater',
+  //   description: "A taller room on East Colfax, with a full bar and a view of the Bluebird's marquee through the front windows. Walk-ins at the bar, two-tops in the window.",
+  //   address: '3100 E Colfax Ave, Denver',
+  //   phone: '(303) 285-3700',
+  //   hours: 'Daily 11:00 AM – 9:30 PM',
+  //   image: 'https://images.unsplash.com/photo-1485686531765-ba63b07845a7?w=800&auto=format&fit=crop&q=80', // Elegant taller bar and pub area
+  //   visitUrl: '#',
+  //   directionsUrl: '#',
+  //   orderUrl: '#'
+  // },
+  // {
+  //   id: 'south-denver',
+  //   neighborhood: 'SOUTH DENVER',
+  //   opened: 'Open since 2023',
+  //   tagline: 'South Indian under one roof',
+  //   description: "The newest room, and the only one serving fresh dosa and idli alongside the full menu. Family-sized booths, tap beer, a quieter pace.",
+  //   address: '7355 Ralston Rd Unit H, Arvada',
+  //   phone: '(303) 558-0992',
+  //   hours: 'Daily 11:00 AM – 9:30 PM',
+  //   image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&auto=format&fit=crop&q=80', // Modern, open space dining layout
+  //   visitUrl: '#',
+  //   directionsUrl: '#',
+  //   orderUrl: '#'
+  // }
 ];
 
 // Stateful Stacking Card with Montserrat + Anton typography
@@ -133,7 +133,7 @@ function LocationStackCard({ loc, index, isOpenNow, isMobile }) {
       </div>
 
       {/* Right Column: Content Area */}
-      <div className="md:col-span-6 flex flex-col justify-center px-6 sm:px-10 md:px-12 py-6 md:py-8 gap-5 bg-[#fef6df] h-auto md:h-full md:overflow-y-auto">
+      <div className="md:col-span-6 flex flex-col justify-center px-6 sm:px-10 md:px-12 py-6 md:py-8 gap-5 bg-[#FAEBD4] h-auto md:h-full md:overflow-y-auto">
         <div className="flex items-center gap-3">
           <span className="text-[#e75b44] text-xs font-bold tracking-widest uppercase font-sans-custom">
             {loc.neighborhood}
@@ -184,13 +184,13 @@ function LocationStackCard({ loc, index, isOpenNow, isMobile }) {
            <motion.div 
              whileHover={{ scale: 1.03 }}
              whileTap={{ scale: 0.98 }}
-             className="inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto"
+             className="flex justify-center"
            >
-              <Link
-                href={loc.orderUrl}
-                className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
+        <Link
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
-                <span>ORDER FROM HERE</span>
+                <span>KNOW MORE</span>
                 <svg
                   className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
                   fill="none"
@@ -198,9 +198,14 @@ function LocationStackCard({ loc, index, isOpenNow, isMobile }) {
                   strokeWidth={2.5}
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </Link>
+
            </motion.div>
           
           {/* Modified links alignment: added left padding 'pl-5' and increased spacing to 'gap-5' on mobile only */}
@@ -256,30 +261,33 @@ export default function LocationsSection() {
   return (
     <section className="w-full bg-white text-stone-800 py-16 px-4 md:px-8 xl:px-16 font-sans overflow-visible">
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap');
-        .font-heavy { font-family: 'Anton', sans-serif; }
-        .font-sans-custom { font-family: 'Montserrat', sans-serif; }
         .brand-lab-text { color: #e75b44; }
         .brand-lab-border { border-color: #e75b44; }
         .brand-lab-bg { background-color: #e75b44; }
       ` }} />
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
+      <div className="max-w-[1500px] mx-auto flex flex-col items-center">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center mb-12"
+          className="text-center mb-12 d-flex flex-column align-items-center justify-center"
         >
-          <div className="flex flex-col items-center mb-4">
-            <span className="text-[#e75b44] text-xs font-bold tracking-[0.2em] uppercase">FIND US</span>
+           <div className="flex flex-col items-start mb-4">
+            <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block">
+              Find Us
+            </span>
           </div>
-          <h2 className="font-heavy text-[50px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] mb-4 tracking-[0.01rem]">
-            Restaurant Locations
-          </h2>
-          <p className="font-sans-custom text-[14px] text-stone-500 font-semibold max-w-lg leading-relaxed">
-            Fresh, from-scratch Indian cuisine basted with traditional techniques across Denver & Arvada.
+
+          <div className="flex items-baseline space-x-2 md:space-x-3 mt-1">
+            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]">
+             Retaurant Location
+            </h2>
+          </div>
+          <p className="text-[13.5px] sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
+            Order online, reserve a table, or surprise someone special with a gift card. 
+            Find an Indian restaurant near you or explore Indian food near you.
           </p>
         </motion.div>
 
