@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
@@ -6,51 +6,24 @@ import { motion } from 'framer-motion';
 
 const LOCATIONS = [
   {
-    id: 'west-highlands',
-    neighborhood: 'WEST HIGHLANDS',
-    opened: 'Open since 2017',
-    tagline: 'The first dining room',
-    description: "Where the menu was born. A small, lamp-lit room on West 38th with a tandoor that hasn't cooled since 2017. Walk-ins always welcome.",
-    address: '3157 W 38th Ave, Denver',
-    phone: '(303) 455-3127',
-    hours: 'Daily 11:00 AM – 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80', // Cozy ambient dining tables
+    id: 'lakewood',
+    neighborhood: 'LAKEWOOD',
+    opened: 'Open since 1998',
+    tagline: 'Savour Taste Of Tradition',
+    description: "Authentic Indian cuisine, thoughtfully crafted with time-honored traditions, heartfelt passion, and the finest handpicked ingredients. Each dish is a celebration of rich heritage, where aromatic spices, vibrant flavors, and meticulous preparation come together to create a truly immersive culinary experience. From the warmth of our hospitality to the depth of every bite, we invite you to indulge in a journey that captures the essence of India—comforting, flavorful, and unforgettable.",
+    address: '425 South Teller Street, Lakewood, Colorado',
+    phone: '+1 303-937-9777',
+    email: 'info@littleindiadenvercolorado.com',
+    hours: 'Monday - Sunday ( 11:00 AM - 9:30 PM )',
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80', // Cozy ambient dining tables
     visitUrl: '#',
     directionsUrl: '#',
     orderUrl: '#'
-  },
-  // {
-  //   id: 'bluebird-district',
-  //   neighborhood: 'BLUEBIRD DISTRICT',
-  //   opened: 'Open since 2022',
-  //   tagline: 'Across from the theater',
-  //   description: "A taller room on East Colfax, with a full bar and a view of the Bluebird's marquee through the front windows. Walk-ins at the bar, two-tops in the window.",
-  //   address: '3100 E Colfax Ave, Denver',
-  //   phone: '(303) 285-3700',
-  //   hours: 'Daily 11:00 AM – 9:30 PM',
-  //   image: 'https://images.unsplash.com/photo-1485686531765-ba63b07845a7?w=800&auto=format&fit=crop&q=80', // Elegant taller bar and pub area
-  //   visitUrl: '#',
-  //   directionsUrl: '#',
-  //   orderUrl: '#'
-  // },
-  // {
-  //   id: 'south-denver',
-  //   neighborhood: 'SOUTH DENVER',
-  //   opened: 'Open since 2023',
-  //   tagline: 'South Indian under one roof',
-  //   description: "The newest room, and the only one serving fresh dosa and idli alongside the full menu. Family-sized booths, tap beer, a quieter pace.",
-  //   address: '7355 Ralston Rd Unit H, Arvada',
-  //   phone: '(303) 558-0992',
-  //   hours: 'Daily 11:00 AM – 9:30 PM',
-  //   image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&auto=format&fit=crop&q=80', // Modern, open space dining layout
-  //   visitUrl: '#',
-  //   directionsUrl: '#',
-  //   orderUrl: '#'
-  // }
+  }
 ];
 
-// Stateful Stacking Card with Montserrat + Anton typography
-function LocationStackCard({ loc, index, isOpenNow, isMobile }) {
+// Stateful Stacking Card
+function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
   const cardRef = useRef(null);
   const [scale, setScale] = useState(1);
   const [brightness, setBrightness] = useState(1);
@@ -115,7 +88,7 @@ function LocationStackCard({ loc, index, isOpenNow, isMobile }) {
             <svg className="w-12 h-12 mb-2 stroke-current" fill="none" strokeWidth="1.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
-            <span className="text-xs font-semibold uppercase tracking-wider font-sans-custom text-stone-500">Image Unavailable</span>
+            <span className="text-[15px] font-semibold upp tracking-wider font-sans-custom text-stone-500">Image Unavailable</span>
           </div>
         ) : (
           <img
@@ -127,106 +100,133 @@ function LocationStackCard({ loc, index, isOpenNow, isMobile }) {
           />
         )}
 
-        <div className="absolute top-6 left-6 z-20 bg-stone-900/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-xs font-semibold tracking-wider brand-lab-text font-sans-custom">
+        <div className="absolute top-6 left-6 z-20 bg-stone-900/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-[15px] font-semibold tracking-wider brand-lab-text font-sans-custom">
           {loc.opened}
         </div>
       </div>
 
       {/* Right Column: Content Area */}
-      <div className="md:col-span-6 flex flex-col justify-center px-6 sm:px-10 md:px-12 py-6 md:py-8 gap-5 bg-[#FAEBD4] h-auto md:h-full md:overflow-y-auto">
-        <div className="flex items-center gap-3">
-          <span className="text-[#e75b44] text-xs font-bold tracking-widest uppercase font-sans-custom">
-            {loc.neighborhood}
-          </span>
-          <span className="text-stone-300">|</span>
-          <div className="flex items-center gap-1.5 text-xs font-medium tracking-wide font-sans-custom">
+      <div className="md:col-span-6 flex flex-col justify-center px-6 sm:px-10 md:px-12 py-8 md:py-8 gap-6 bg-[#FFF6EA] h-auto md:h-full md:overflow-y-auto">
+        
+        {/* Title & Tagline */}
+        <div className="space-y-3">
+          {/* <div className="flex items-center gap-1.5 text-[15px] font-medium tracking-wide font-sans-custom">
             <span className={`inline-block w-2 h-2 rounded-full ${isOpenNow ? 'bg-emerald-500 animate-pulse' : 'bg-red-600'}`}></span>
             <span className={isOpenNow ? 'text-emerald-600' : 'text-red-600'}>
               {isOpenNow ? 'Open Now' : 'Closed'}
             </span>
-          </div>
+          </div> */}
+          <h3 className="font-heavy text-2xl sm:text-3xl md:text-4xl text-stone-950 leading-tight tracking-tight font-black">
+            {loc.tagline}
+          </h3>
+          <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
+            {loc.description}
+          </p>
         </div>
 
-        <h3 className="font-heavy text-3xl sm:text-4xl text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]">
-          {loc.tagline}
-        </h3>
-
-        <p className="font-sans-custom text-[14px] text-stone-500 font-semibold leading-relaxed">
-          {loc.description}
-        </p>
-
-        <div className="font-sans-custom flex flex-col gap-3.5 pt-2 border-t border-stone-100 text-[13px] font-bold text-stone-800">
-          <div className="flex items-start gap-3.5">
-            <svg className="w-5 h-5 text-[#e75b44] shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        {/* Contact Details Stack */}
+        <div className="flex flex-col gap-4 text-sm font-bold text-stone-850">
+          
+          {/* Address */}
+          <div className="flex items-center gap-3.5">
+            <svg className="w-5 h-5 text-[#E94222] shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <span>{loc.address}</span>
+            <span className="font-sans font-bold text-stone-850">{loc.address}</span>
           </div>
           
-          <div className="flex items-start gap-3.5">
-            <svg className="w-5 h-5 text-[#e75b44] shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          {/* Phone */}
+          <div className="flex items-center gap-3.5">
+            <svg className="w-5 h-5 text-[#E94222] shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            <span>{loc.phone}</span>
+            <span className="font-sans font-bold text-stone-850">{loc.phone}</span>
           </div>
 
-          <div className="flex items-start gap-3.5">
-            <svg className="w-5 h-5 text-[#e75b44] shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          {loc.email && (
+            <div className="flex items-center gap-3.5">
+              <svg className="w-5 h-5 text-[#E94222] shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <span className="font-sans font-bold text-stone-850 break-all">{loc.email}</span>
+            </div>
+          )}
+
+          <div className="flex items-center gap-3.5 text-sm font-bold text-stone-850">
+            <svg className="w-5 h-5 text-[#E94222] shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>{loc.hours}</span>
+            <span className="font-sans font-bold text-stone-850">{loc.hours}</span>
           </div>
+
         </div>
 
-        {/* Outer alignment container */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-2">
-           <motion.div 
-             whileHover={{ scale: 1.03 }}
-             whileTap={{ scale: 0.98 }}
-             className="flex justify-center"
-           >
-        <Link
-                href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
-              >
-                <span>KNOW MORE</span>
-                <svg
-                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
+        {/* Operating Hours Block */}
+        {/* <div className="flex flex-col gap-2 pt-2 border-t border-stone-100">
+          <div className="text-[15px] font-black tracking-widest text-stone-950 upp">
+            Operating Hours
+          </div>
+          <div className="flex items-center gap-3.5 text-sm font-bold text-stone-900">
+            <svg className="w-5 h-5 text-[#E94222] shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span className="font-sans font-bold text-stone-850">{loc.hours}</span>
+          </div>
+        </div> */}
 
-           </motion.div>
+        {/* Action Row */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-4 border-t border-gray-200">
           
-          {/* Modified links alignment: added left padding 'pl-5' and increased spacing to 'gap-5' on mobile only */}
-          <div className="font-sans-custom flex items-center gap-5 text-xs font-bold text-stone-500 pl-5 sm:pl-0">
-            <a href={loc.visitUrl} className="hover:text-[#e75b44] transition-colors flex items-center gap-1 group uppercase">
+          {/* Know More Pill Button */}
+          <motion.div 
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex justify-center"
+          >
+            <Link
+              href="/menu"
+              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2 transition-colors duration-200 font-sans shadow-md"
+            >
+              <span>KNOW MORE</span>
+              <svg
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+          
+          {/* Quick Links */}
+          <div className="font-sans flex items-center gap-4 text-[15px] font-extrabold text-stone-500 pl-4 sm:pl-0">
+            <a href={loc.visitUrl} className="hover:text-[#E94222] transition-colors flex items-center gap-1 group upp">
               VISIT PAGE <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
             <span className="text-stone-200">|</span>
-            <a href={loc.directionsUrl} className="hover:text-[#e75b44] transition-colors flex items-center gap-1 group uppercase">
+            <a href={loc.directionsUrl} className="hover:text-[#E94222] transition-colors flex items-center gap-1 group upp">
               DIRECTIONS <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
           </div>
+
         </div>
+
       </div>
     </motion.div>
   );
 }
 
 export default function LocationsSection() {
-  const [isOpenNow, setIsOpenNow] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isOpenNow, setIsOpenNow] = useState(false);
 
   useEffect(() => {
     // Determine screen size to conditionalize layouts
@@ -242,11 +242,8 @@ export default function LocationsSection() {
       const currentMinutes = new Date(denverTime).getMinutes() / 60;
       const decimalTime = currentHour + currentMinutes;
 
-      if (decimalTime >= 11 && decimalTime < 21.5) {
-        setIsOpenNow(true);
-      } else {
-        setIsOpenNow(false);
-      }
+      // Monday - Sunday 11:00 AM - 9:30 PM (11 to 21.5 decimal hours)
+      setIsOpenNow(decimalTime >= 11 && decimalTime < 21.5);
     };
 
     checkOpenStatus();
@@ -272,20 +269,20 @@ export default function LocationsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center mb-12 d-flex flex-column align-items-center justify-center"
+          className="text-center mb-16 d-flex flex-column align-items-center justify-center"
         >
-           <div className="flex flex-col items-start mb-4">
-            <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block">
+           <div className="flex flex-col items-center mb-4">
+            <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans-custom block">
               Find Us
             </span>
           </div>
 
-          <div className="flex items-baseline space-x-2 md:space-x-3 mt-1">
-            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]">
-             Retaurant Location
+          <div className="flex items-center space-x-2 md:space-x-3 mt-1 justify-center">
+            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
+             Restaurant Location
             </h2>
           </div>
-          <p className="text-[13.5px] sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
+          <p className="text-[15px]sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
             Order online, reserve a table, or surprise someone special with a gift card. 
             Find an Indian restaurant near you or explore Indian food near you.
           </p>
@@ -298,8 +295,8 @@ export default function LocationsSection() {
               key={loc.id} 
               loc={loc} 
               index={index} 
-              isOpenNow={isOpenNow} 
               isMobile={isMobile}
+              isOpenNow={isOpenNow}
             />
           ))}
         </div>

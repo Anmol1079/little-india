@@ -40,7 +40,7 @@ export default function Hero() {
           <div className="pt-6">
             <Link
               href="/reservations"
-              className="inline-block bg-[#E65C38] hover:bg-[#cf4d2c] text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 shadow-2xl shadow-[#E65C38]/40 hover:-translate-y-1 active:scale-95"
+              className="inline-block bg-[#E65C38] hover:bg-[#cf4d2c] text-white px-10 py-4 rounded-full text-[15px] font-bold upp tracking-[0.2em] transition-all duration-300 shadow-2xl shadow-[#E65C38]/40 hover:-translate-y-1 active:scale-95"
             >
               Book A Table Today
             </Link>

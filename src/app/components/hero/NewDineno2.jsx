@@ -115,7 +115,7 @@ export default function NewDineno2() {
 
       {/* Infinite scrolling typography layer */}
       <div className="absolute inset-y-0 flex items-center overflow-hidden z-0 select-none pointer-events-none w-[200vw]">
-        <div className="scrolling-text text-[13vw] font-title font-black tracking-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] uppercase whitespace-nowrap">
+        <div className="scrolling-text text-[13vw] font-title font-black tracking-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
           ELEGANCE • FLAVOR • HERITAGE • ELEGANCE • FLAVOR • HERITAGE •
         </div>
       </div>
@@ -137,11 +137,11 @@ export default function NewDineno2() {
           
           {/* Left Column: Heading and description */}
           <div className="lg:col-span-7 flex flex-col justify-center pointer-events-auto">
-            <span className="animate-text-item text-[#E94222] text-[15px] tracking-widest font-semibold block mb-3 uppercase font-sans">
+            <span className="animate-text-item text-[#E94222] text-[15px] tracking-widest font-semibold block mb-3 upp font-sans">
               {BANNER_DATA.tag}
             </span>
 
-            <h1 className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[99px] leading-[0.98] tracking-tight font-title font-black text-white whitespace-pre-line mb-8 uppercase">
+            <h1 className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[99px] leading-[0.98] tracking-tight font-title font-black text-white whitespace-pre-line mb-8 upp">
               {BANNER_DATA.title}
             </h1>
 
@@ -156,7 +156,7 @@ export default function NewDineno2() {
             <div className="animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto">
               <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>EXPLORE MENU</span>
                 <svg
@@ -184,7 +184,7 @@ export default function NewDineno2() {
                 <div className="overflow-hidden max-w-[85%]">
                   <h3 
                     key={`dish-title-${currentDish}`}
-                    className="text-[11px] font-extrabold uppercase tracking-wider text-stone-900 leading-tight font-sans animate-fadeIn"
+                    className="text-[11px] font-extrabold upp tracking-wider text-stone-900 leading-tight font-sans animate-fadeIn"
                   >
                     {cardDishes[currentDish].title}
                   </h3>

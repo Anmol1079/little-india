@@ -298,7 +298,7 @@ export default function NewDineno() {
 
       {/* Infinite scrolling typography layer */}
       <div className="absolute inset-y-0 flex items-center overflow-hidden z-0 select-none pointer-events-none w-[200vw]">
-        <div className="scrolling-text text-[13vw] font-extrabold tracking-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] uppercase whitespace-nowrap">
+        <div className="scrolling-text text-[13vw] font-extrabold tracking-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
           ELEGANCE • FLAVOR • HERITAGE • ELEGANCE • FLAVOR • HERITAGE •
         </div>
       </div>
@@ -433,7 +433,7 @@ export default function NewDineno() {
                   {/* Single Heading 3 element to display the active dish title */}
                   <h3 
                     key={`dish-title-${currentDish}`}
-                    className="text-[11px] font-extrabold uppercase tracking-wider text-stone-900 leading-tight animate-fadeIn"
+                    className="text-[11px] font-extrabold upp tracking-wider text-stone-900 leading-tight animate-fadeIn"
                   >
                     {cardDishes[currentDish].title}
                   </h3>

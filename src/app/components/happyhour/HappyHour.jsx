@@ -139,7 +139,7 @@ export default function HappyHourSection() {
           {/* Integrated Tagline & Timing details */}
           <motion.span 
             variants={headerItemVariants}
-            className="text-[#E75B44] font-bold text-xs sm:text-[13px] tracking-[0.15em] uppercase font-sans block mb-3"
+            className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tracking-[0.15em] upp font-sans block mb-3"
           >
             MON – FRI • 3:00 PM – 5:00 PM
           </motion.span>
@@ -147,7 +147,7 @@ export default function HappyHourSection() {
           {/* Clean bold header using layout's Inter */}
           <motion.h2 
             variants={headerItemVariants}
-            className="font-title font-black text-5xl sm:text-6xl lg:text-[68px] leading-none text-stone-950 tracking-tight mb-4"
+            className="font-title font-black text-[60px] sm:text-[60px] lg:text-[60px] leading-none text-stone-950 tracking-tight mb-4"
           >
             Happy Hour
           </motion.h2>
@@ -155,7 +155,7 @@ export default function HappyHourSection() {
           {/* Subtitle using layout's Plus Jakarta Sans */}
           <motion.p 
             variants={headerItemVariants}
-            className="font-sans font-semibold text-[14.5px] leading-relaxed text-stone-500 max-w-[1500px]"
+            className="font-sans font-semibold text-[15px] leading-relaxed text-stone-500 max-w-[1500px]"
           >
             Good drinks. Great bites. Even better company. Unwind in a warm and inviting atmosphere where every sip and every flavor is crafted to elevate your evening experience.
           </motion.p>
@@ -177,7 +177,7 @@ export default function HappyHourSection() {
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
                 <i className="fa-solid fa-glass-martini-alt text-sm"></i>
               </div>
-              <h3 className="font-title font-black text-3xl sm:text-4xl uppercase tracking-tight text-stone-950">
+              <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950">
                 Drink Specials
               </h3>
             </div>
@@ -193,7 +193,7 @@ export default function HappyHourSection() {
                     <h4 className="font-sans font-bold text-[16px] sm:text-[17px] text-stone-900 group-hover:text-[#E75B44] transition-colors duration-200">
                       {item.name || item.title}
                     </h4>
-                    <p className="font-sans text-[13px] sm:text-[14px] text-stone-600 font-medium leading-relaxed">
+                    <p className="font-sans text-[15px] sm:text-[15px] text-stone-600 font-medium leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -220,7 +220,7 @@ export default function HappyHourSection() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] tracking-widest uppercase py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
               {DRINK_SPECIALS[activeDrink].title}
             </span>
           </div>
@@ -246,7 +246,7 @@ export default function HappyHourSection() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] tracking-widest uppercase py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
               {FOOD_SPECIALS[activeFood].title}
             </span>
           </div>
@@ -256,7 +256,7 @@ export default function HappyHourSection() {
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
                 <i className="fa-solid fa-plate-wheat text-sm"></i>
               </div>
-              <h3 className="font-title font-black text-3xl sm:text-4xl uppercase tracking-tight text-stone-950">
+              <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950">
                 Food Specials
               </h3>
             </div>
@@ -272,7 +272,7 @@ export default function HappyHourSection() {
                     <h4 className="font-sans font-bold text-[16px] sm:text-[17px] text-stone-900 group-hover:text-[#E75B44] transition-colors duration-200">
                       {item.title}
                     </h4>
-                    <p className="font-sans text-[13px] sm:text-[14px] text-stone-600 font-medium leading-relaxed">
+                    <p className="font-sans text-[15px] sm:text-[15px] text-stone-600 font-medium leading-relaxed">
                       {item.description}
                     </p>
                   </div>

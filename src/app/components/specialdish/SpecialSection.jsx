@@ -104,7 +104,7 @@ export default function SpecialSection() {
                 >
                   {/* Text Layout */}
                   <h2
-                    className={`font-impact text-[3rem] sm:text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[3rem] leading-none tracking-wide uppercase transition-colors duration-300 ${
+                    className={`font-impact text-[3rem] sm:text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[3rem] leading-none tracking-wide upp transition-colors duration-300 ${
                       isActive ? 'text-[#E65C38]' : 'text-[#0B0C0E]'
                     }`}
                   >

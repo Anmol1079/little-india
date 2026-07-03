@@ -60,7 +60,7 @@ export default function LunchBuffetSection() {
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
-            <span className="text-[#B23E25] font-bold text-xs tracking-[0.2em] uppercase font-sans">
+            <span className="text-[#B23E25] font-bold text-[15px] tracking-[0.2em] upp font-sans">
               DAILY BUFFET
             </span>
           </motion.div>
@@ -68,7 +68,7 @@ export default function LunchBuffetSection() {
           {/* Imposing Multi-Colored Header */}
           <motion.h2 
             variants={revealVariants}
-            className="font-title font-black leading-[0.92] uppercase text-[50px] sm:text-[60px] lg:text-[66px] tracking-tight mb-2"
+            className="font-title font-black leading-[0.92] upp text-[50px] sm:text-[60px] lg:text-[66px] tracking-tight mb-2"
           >
             <span className="text-[#2E2A25]">THE LUNCH</span> <br />
             <span className="text-[#B23E25]">BUFFET</span>
@@ -86,7 +86,7 @@ export default function LunchBuffetSection() {
           {/* Section Description */}
           <motion.p 
             variants={revealVariants}
-            className="font-sans text-[14px] text-stone-600 font-semibold leading-relaxed max-w-sm"
+            className="font-sans text-[15px] text-stone-600 font-semibold leading-relaxed max-w-sm"
           >
             A vibrant daily spread of rich aromatic curries, tandoori specialties, and fresh clay-oven naans. Experience the true warmth of authentic Indian spices during your lunch hour.
           </motion.p>
@@ -104,8 +104,8 @@ export default function LunchBuffetSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-stone-400 font-bold uppercase tracking-wider text-[9px]">Days Available</span>
-                <span className="text-stone-900 font-black text-[13.5px] mt-0.5">Mon – Fri</span>
+                <span className="text-stone-400 font-bold upp tracking-wider text-[9px]">Days Available</span>
+                <span className="text-stone-900 font-black text-[15px]mt-0.5">Mon – Fri</span>
               </div>
             </div>
 
@@ -117,8 +117,8 @@ export default function LunchBuffetSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-stone-400 font-bold uppercase tracking-wider text-[9px]">Hours</span>
-                <span className="text-stone-900 font-black text-[13.5px] mt-0.5">11:30 AM – 2:30 PM</span>
+                <span className="text-stone-400 font-bold upp tracking-wider text-[9px]">Hours</span>
+                <span className="text-stone-900 font-black text-[15px]mt-0.5">11:30 AM – 2:30 PM</span>
               </div>
             </div>
 
@@ -130,8 +130,8 @@ export default function LunchBuffetSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-stone-400 font-bold uppercase tracking-wider text-[9px]">Buffet Style</span>
-                <span className="text-stone-900 font-black text-[13.5px] mt-0.5">All You Can Eat</span>
+                <span className="text-stone-400 font-bold upp tracking-wider text-[9px]">Buffet Style</span>
+                <span className="text-stone-900 font-black text-[15px]mt-0.5">All You Can Eat</span>
               </div>
             </div>
 
@@ -143,8 +143,8 @@ export default function LunchBuffetSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-stone-400 font-bold uppercase tracking-wider text-[9px]">Price</span>
-                <span className="text-stone-900 font-black text-[13.5px] mt-0.5">$16.95 Per Person</span>
+                <span className="text-stone-400 font-bold upp tracking-wider text-[9px]">Price</span>
+                <span className="text-stone-900 font-black text-[15px]mt-0.5">$16.95 Per Person</span>
               </div>
             </div>
           </motion.div>
@@ -162,7 +162,7 @@ export default function LunchBuffetSection() {
             </div>
             {/* Mood Text */}
             <div className="flex flex-col font-sans">
-              <span className="text-[#B23E25] font-black text-[11px] tracking-wider uppercase">GOOD FOOD. GOOD MOOD.</span>
+              <span className="text-[#B23E25] font-black text-[11px] tracking-wider upp">GOOD FOOD. GOOD MOOD.</span>
               <span className="text-stone-500 text-[11.5px] font-semibold mt-0.5 leading-snug">
                 Wholesome ingredients, bold spices and a buffet that feels like home.
               </span>
@@ -259,7 +259,7 @@ export default function LunchBuffetSection() {
                 </svg>
               </div>
 
-              <h3 className="font-title font-black text-xl text-stone-900 uppercase tracking-wider leading-[1.1] mb-2">
+              <h3 className="font-title font-black text-xl text-stone-900 upp tracking-wider leading-[1.1] mb-2">
                 Reserve Your <br /> Buffet Table
               </h3>
 
@@ -271,11 +271,11 @@ export default function LunchBuffetSection() {
               </div>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-5 text-xs font-sans text-stone-600 font-bold">
+            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-5 text-[15px] font-sans text-stone-600 font-bold">
               
               {/* Name Field */}
               <div className="flex flex-col gap-2 text-left">
-                <label className="text-stone-500 tracking-widest uppercase text-[10px] font-extrabold">Your Full Name</label>
+                <label className="text-stone-500 tracking-widest upp text-[10px] font-extrabold">Your Full Name</label>
                 <input 
                   type="text" 
                   value={fullName}
@@ -288,7 +288,7 @@ export default function LunchBuffetSection() {
 
               {/* Party Size Selector */}
               <div className="flex flex-col gap-2 text-left">
-                <label className="text-stone-500 tracking-widest uppercase text-[10px] font-extrabold">Party Size</label>
+                <label className="text-stone-500 tracking-widest upp text-[10px] font-extrabold">Party Size</label>
                 <div className="flex flex-wrap gap-2">
                   {[2, 4, 6, 8, 10].map((size) => {
                     const isActive = partySize === size;
@@ -317,7 +317,7 @@ export default function LunchBuffetSection() {
 
               {/* Preferred Gathering Selector */}
               <div className="flex flex-col gap-2.5 text-left">
-                <label className="text-stone-500 tracking-wider uppercase text-[10px] font-extrabold">Preferred Gathering</label>
+                <label className="text-stone-500 tracking-wider upp text-[10px] font-extrabold">Preferred Gathering</label>
                 <div className="flex flex-col gap-2">
                   <motion.button
                     type="button"
@@ -338,7 +338,7 @@ export default function LunchBuffetSection() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setPreferredDay('weekend')}
-                    className={`w-full px-5 py-3 rounded-xl text-xs font-bold transition-all border font-sans ${
+                    className={`w-full px-5 py-3 rounded-xl text-[15px] font-bold transition-all border font-sans ${
                       preferredDay === 'weekend'
                         ? 'bg-[#B23E25] text-white border-[#B23E25] shadow-md'
                         : 'bg-white text-stone-700 border-stone-200 hover:border-stone-400'
@@ -351,7 +351,7 @@ export default function LunchBuffetSection() {
 
               {/* Kitchen Notes */}
               <div className="flex flex-col gap-2.5 text-left">
-                <label className="text-stone-500 tracking-wider uppercase text-[10px] font-bold">Tell The Kitchen Anything</label>
+                <label className="text-stone-500 tracking-wider upp text-[10px] font-bold">Tell The Kitchen Anything</label>
                 <textarea 
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
@@ -365,7 +365,7 @@ export default function LunchBuffetSection() {
                 type="submit"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-[#B23E25] hover:bg-[#9E3420] text-white font-bold text-xs uppercase tracking-widest py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-sans w-full cursor-pointer"
+                className="bg-[#B23E25] hover:bg-[#9E3420] text-white font-bold text-[15px] upp tracking-widest py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-sans w-full cursor-pointer"
               >
                 <svg className="w-4.5 h-4.5 fill-none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

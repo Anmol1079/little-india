@@ -101,7 +101,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="w-full bg-[#FAEBD4] py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] select-none border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] select-none border-b border-stone-200/50">
       
       {/* Scope-contained style block for custom LAB colors */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -131,7 +131,7 @@ export default function FaqSection() {
             <div className="flex items-center gap-2">
               <motion.span 
                 variants={revealItemVariants}
-                className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block"
+                className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans-custom block"
               >
                 Faqs
               </motion.span>
@@ -140,15 +140,15 @@ export default function FaqSection() {
             {/* Title */}
             <motion.h2 
               variants={revealItemVariants}
-              className="font-heavy text-4xl sm:text-5xl lg:text-6xl text-stone-950 uppercase leading-[0.95] tracking-[0.01rem] font-black"
+              className="font-heavy text-4xl sm:text-5xl lg:text-6xl text-stone-950 upp leading-[0.95] tracking-[0.01rem] font-black"
             >
-              Frequently asked<br />questions
+              Frequently Asked<br />Questions
             </motion.h2>
 
             {/* Subtext description */}
             <motion.p 
               variants={revealItemVariants}
-              className="font-sans-custom text-[13.5px] text-stone-500 font-semibold leading-relaxed max-w-md"
+              className="font-sans-custom text-[15px] text-stone-500 font-semibold leading-relaxed max-w-2xl mx-auto"
             >
               Explore answers to the most common questions from our trusted guests, partners, and diners.
             </motion.p>
@@ -218,7 +218,7 @@ export default function FaqSection() {
                   transition={{ duration: 0.5, ease: cubicBezierEase }}
                   className="overflow-hidden"
                 >
-                  <div className="font-sans-custom text-[12.5px] sm:text-[13px] text-stone-500 font-semibold leading-relaxed max-w-3xl pr-4 pb-1">
+                  <div className="font-sans-custom text-[12.5px] sm:text-[15px] text-stone-500 font-semibold leading-relaxed max-w-3xl pr-4 pb-1">
                     {item.answer}
                   </div>
                 </motion.div>

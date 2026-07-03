@@ -81,21 +81,21 @@ export default function WhyChooseUsSection() {
         >
           <motion.span 
             variants={headerItemVariants}
-            className="text-[#e65c38] font-bold text-xs tracking-widest uppercase font-sans-custom block"
+            className="text-[#e65c38] font-bold text-[15px] tracking-widest upp font-sans-custom block"
           >
             Crafted for you
           </motion.span>
 
           <motion.h2 
             variants={headerItemVariants}
-            className="font-heavy text-[45px] sm:text-[60px] text-[#000] uppercase leading-[0.95] tracking-[0.01rem] mb-1 font-black"
+            className="font-heavy text-[45px] sm:text-[60px] text-[#000] upp leading-[0.95] tracking-[0.01rem] mb-1 font-black"
           >
             Why Choose Us?
           </motion.h2>
 
           <motion.p 
             variants={headerItemVariants}
-            className="font-sans-custom text-[14px] text-stone-500 font-semibold leading-relaxed max-w-2xl mx-auto"
+            className="font-sans-custom text-[15px] text-stone-500 font-semibold leading-relaxed max-w-2xl mx-auto"
           >
             Little India Restaurant and Bar is proud to be one of the best Indian restaurants in Denver and Lakewood, Colorado, serving authentic Indian cuisine for over 20 years.
           </motion.p>
@@ -127,10 +127,10 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#e3ebd9] text-[#4d6645] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-leaf text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
+              <h4 className="font-heavy text-2xl text-stone-900 upp tracking-wide leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
                 Fresh Food
               </h4>
-              <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="font-sans-custom text-[15px] text-stone-600 font-semibold leading-relaxed pr-6">
                 We use fresh, high-quality ingredients to craft authentic Indian flavors, ensuring every dish is rich and aromatic.
               </p>
               
@@ -141,7 +141,7 @@ export default function WhyChooseUsSection() {
               >
                 <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>KNOW MORE</span>
                 <svg
@@ -175,10 +175,10 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#f5ebcb] text-[#d47926] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-seedling text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
+              <h4 className="font-heavy text-2xl text-stone-900 upp tracking-wide leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
                 Vegan Friendly
               </h4>
-              <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="font-sans-custom text-[15px] text-stone-600 font-semibold leading-relaxed pr-6">
                 Our menu features a variety of delicious vegan-friendly Indian dishes, packed with authentic flavors.
               </p>
               
@@ -189,7 +189,7 @@ export default function WhyChooseUsSection() {
               >
                 <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>KNOW MORE</span>
                 <svg
@@ -252,10 +252,10 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#ede2f2] text-[#6d4f8d] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-wheat-awn text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
+              <h4 className="font-heavy text-2xl text-stone-900 upp tracking-wide leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
                 Gluten Free
               </h4>
-              <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="font-sans-custom text-[15px] text-stone-600 font-semibold leading-relaxed pr-6">
                 We offer delicious gluten-free Indian meals, perfect for those with dietary restrictions without sacrificing taste.
               </p>
               
@@ -266,7 +266,7 @@ export default function WhyChooseUsSection() {
               >
               <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>KNOW MORE</span>
                 <svg
@@ -300,10 +300,10 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#f5e4d2] text-[#d85507] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-award text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 uppercase tracking-wide leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
+              <h4 className="font-heavy text-2xl text-stone-900 upp tracking-wide leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
                 Quality Maintain
               </h4>
-              <p className="font-sans-custom text-[13px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="font-sans-custom text-[15px] text-stone-600 font-semibold leading-relaxed pr-6">
                 We maintain top quality by using fresh ingredients and authentic recipes in every dish we serve.
               </p>
               
@@ -314,7 +314,7 @@ export default function WhyChooseUsSection() {
               >
                 <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>KNOW MORE</span>
                 <svg

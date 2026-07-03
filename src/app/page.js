@@ -26,14 +26,20 @@ import InteractMenu from "./components/menu/InteractMenu";
 import Footer1 from "./components/footer/Footer1";
 import HeroVideo from "./components/hero/HeroVideo";
 import LuxuryYachtLanding from "@/app/components/video/VideoChef";
+import MegaHeader from "./components/headers/MegaHeader";
+import LunchBuffet1 from "./components/lunchbuffet/LunchBuffet1";
+import Footer2 from "./components/footer/Footer2";
+import StatsSection from "./components/stats/Stats";
+import FooterWithCta from "./components/footer/FooterWithCta";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-stone-950">
-      <SecondaryHeader />
+      <MegaHeader />
       <NewDineno2 />
       {/* Renders the newly built, animated section */}
       <AboutSection /> 
+      <StatsSection />
       <SpecialDishes />
       {/* The Zooming Video Component */}
       {/* <LuxuryYachtLanding /> */}
@@ -43,12 +49,15 @@ export default function Home() {
       <LocationsSection />
       <TestimonialsSection  />
       <HappyHourSection />
+      <LunchBuffet1 />
       <WhyChooseUsSection />
       <OurStorySection />
       <FaqSection />
       <BlogSection />
-      <CtaSection />
+      {/* <CtaSection /> */}
       {/* <Footer /> */}
+      {/* <Footer2 /> */}
+      <FooterWithCta />
     </main>
   );
 }

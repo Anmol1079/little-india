@@ -108,7 +108,7 @@ const cardItemVariants = {
 export default function OrderSection() {
   return (
     // Modified pb-[200px] to pb-16 (mobile), md:pb-28 (tablet), and lg:pb-[200px] (desktop)
-    <section className="w-full bg-[#FAEBD4] pt-16 pb-16 md:pb-16 lg:pb-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden select-none">
+    <section className="w-full bg-[#fff6ea] pt-16 pb-16 md:pb-16 lg:pb-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden select-none">
       
 
 
@@ -123,17 +123,17 @@ export default function OrderSection() {
           className="flex flex-col max-w-[1500px] sm:max-w-[1500px] md:max-w-[1500px] self-start mb-16"
         >
           <div className="flex flex-col items-start mb-4">
-            <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans-custom block">
+            <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans-custom block">
               Crafted for you
             </span>
           </div>
 
           <div className="flex items-baseline space-x-2 md:space-x-3 mt-1">
-            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]">
+            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
               Order Indian Food in Denver
             </h2>
           </div>
-          <p className="text-[13.5px] sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
+          <p className="text-[15px]sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
             Order online, reserve a table, or surprise someone special with a gift card. 
             Find an Indian restaurant near you or explore Indian food near you.
           </p>
@@ -170,12 +170,12 @@ export default function OrderSection() {
                 </div>
 
                 {/* 2. Card Title */}
-                <h3 className="font-heavy text-[28px] text-stone-900 uppercase tracking-tight mb-4 leading-none font-bold transition-colors duration-300 group-hover:text-[#E65C38]">
+                <h3 className="font-heavy text-[28px] text-stone-900 upp tracking-tight mb-4 leading-none font-bold transition-colors duration-300 group-hover:text-[#E65C38]">
                   {option.title}
                 </h3>
                 
                 {/* 3. Subtext description */}
-                <p className="font-sans-custom text-[14px] leading-[1.65] text-stone-500 max-w-[90%] mb-12 h-14 flex items-center justify-center font-semibold">
+                <p className="font-sans-custom text-[15px] leading-[1.65] text-stone-500 max-w-[90%] mb-12 h-14 flex items-center justify-center font-semibold">
                   {option.description}
                 </p>
 
@@ -183,7 +183,7 @@ export default function OrderSection() {
                 <div className="flex justify-center">
         <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>KNOW MORE</span>
                 <svg

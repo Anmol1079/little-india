@@ -60,28 +60,28 @@ export default function OurStorySection() {
             
             {/* Tagline Indicator with Symmetrical Star Divider */}
             <div className="flex flex-col gap-3">
-              <span className="text-[#e94222] font-extrabold text-xs sm:text-[13px] tracking-[0.2em] uppercase font-sans">
+              <span className="text-[#e94222] font-extrabold text-[15px] sm:text-[15px] tracking-[0.2em] upp font-sans">
                 OUR STORY
               </span>
-              <div className="flex items-center gap-3 w-full max-w-[120px] -mt-1">
+              {/* <div className="flex items-center gap-3 w-full max-w-[120px] -mt-1">
                 <div className="h-[1px] bg-stone-300 flex-1"></div>
                 <div className="w-1.5 h-1.5 rounded-full bg-[#e94222]/60"></div>
                 <div className="h-[1px] bg-stone-300 flex-1"></div>
-              </div>
+              </div> */}
             </div>
 
             {/* Headline Title */}
             <div className="relative w-full">
               <motion.h2 
                 variants={revealVariants}
-                className="font-title font-black text-[45px] sm:text-[55px] lg:text-[62px] text-black leading-[0.95] tracking-tight uppercase"
+                className="font-title font-black text-[45px] sm:text-[55px] lg:text-[62px] text-black leading-[0.95] tracking-tight upp"
               >
-                Rooted in <br /> Tradition
+                Rooted In Tradition
               </motion.h2>
             </div>
 
             {/* Custom Narrative Paragraphs */}
-            <div className="font-sans text-[14.5px] text-stone-600 font-semibold leading-relaxed flex flex-col gap-5">
+            <div className="font-sans text-[15px] text-stone-600 font-semibold leading-relaxed flex flex-col gap-5">
               <motion.p variants={revealVariants}>
                 Since opening our doors in 2017, Little India has been on a mission to bring the real flavors of India to Denver. Our recipes are passed down through generations, each dish telling a story of tradition, culture, and love.
               </motion.p>
@@ -103,8 +103,8 @@ export default function OurStorySection() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tracking-wide text-xs uppercase">Fresh Spices</span>
-                  <span className="text-stone-600 font-bold text-[12px] leading-tight mt-1 font-sans">Sourced from India, ground in-house</span>
+                  <span className="text-stone-900 font-black tracking-wide text-[16px] upp">Fresh Spices</span>
+                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Sourced from India, ground in-house</span>
                 </div>
               </div>
 
@@ -116,8 +116,8 @@ export default function OurStorySection() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                <span className="text-stone-900 font-black tracking-wide text-xs uppercase font-sans">Experts Chefs</span>
-                  <span className="text-stone-600 font-bold text-[12px] leading-tight mt-1 font-sans">Crafting authentic flavors with passion</span>
+                <span className="text-stone-900 font-black tracking-wide text-[16px] upp font-sans">Experts Chefs</span>
+                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Crafting authentic flavors with passion</span>
                 </div>
               </div>
 
@@ -129,8 +129,8 @@ export default function OurStorySection() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tracking-wide text-xs uppercase font-sans">Made with Love</span>
-                  <span className="text-stone-600 font-bold text-[12px] leading-tight mt-1 font-sans">Every dish prepared with care & devotion</span>
+                  <span className="text-stone-900 font-black tracking-wide text-[16px] upp font-sans">Made with Love</span>
+                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Every dish prepared with care & devotion</span>
                 </div>
               </div>
             </motion.div>

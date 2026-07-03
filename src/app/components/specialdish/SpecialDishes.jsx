@@ -73,7 +73,7 @@ function MenuItem({ item }) {
         }`}
       >
         <h3
-          className="font-title font-black text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none uppercase tracking-wide leading-none"
+          className="font-title font-black text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none upp tracking-wide leading-none"
           style={{ 
             opacity: textOpacity, 
             transition: 'opacity 0.15s ease-out',
@@ -225,12 +225,12 @@ export default function OurMenuSection() {
         <div className="flex flex-col items-center text-center group cursor-pointer max-w-[1400px] mx-auto">
           
           {/* Tagline Bracket */}
-          <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-3">
+          <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-3">
             Our Highlights
           </span>
 
           <div className="flex justify-center items-baseline mb-4">
-            <h2 className="font-title font-black text-[60px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] uppercase">
+            <h2 className="font-title font-black text-[60px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] upp">
               Special Dishes
             </h2>
           </div>

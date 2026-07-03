@@ -63,7 +63,7 @@ export default function ThirdHeader() {
                         <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center">
 
                             {/* Left Side Navigation (Desktop only) */}
-                            <nav className="hidden md:flex items-center justify-end gap-[45px] lg:gap-[45px] pr-8 lg:pr-12 text-[12px] lg:text-[13px] font-bold tracking-widest uppercase font-sans-custom">
+                            <nav className="hidden md:flex items-center justify-end gap-[45px] lg:gap-[45px] pr-8 lg:pr-12 text-[12px] lg:text-[15px] font-bold tracking-widest upp font-sans-custom">
                                 <a href="#home" className="text-white hover:text-[#E75B44] transition-colors duration-200">
                                     HOME
                                 </a>
@@ -98,21 +98,21 @@ export default function ThirdHeader() {
                                                     className="group flex items-center gap-2.5 px-3 py-2 text-[11px] font-extrabold tracking-widest text-stone-300 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/[0.02]"
                                                 >
                                                     <span className="w-1 h-1.5 bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110 shrink-0"></span>
-                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 uppercase">Lunch Specials</span>
+                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 upp">Lunch Specials</span>
                                                 </a>
                                                 <a 
                                                     href="#dinner" 
                                                     className="group flex items-center gap-2.5 px-3 py-2 text-[11px] font-extrabold tracking-widest text-stone-300 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/[0.02]"
                                                 >
                                                     <span className="w-1 h-1.5 bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110 shrink-0"></span>
-                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 uppercase">Dinner Menu</span>
+                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 upp">Dinner Menu</span>
                                                 </a>
                                                 <a 
                                                     href="#drinks" 
                                                     className="group flex items-center gap-2.5 px-3 py-2 text-[11px] font-extrabold tracking-widest text-stone-300 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/[0.02]"
                                                 >
                                                     <span className="w-1 h-1.5 bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110 shrink-0"></span>
-                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 uppercase">Wine & Spirits</span>
+                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 upp">Wine & Spirits</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -146,21 +146,21 @@ export default function ThirdHeader() {
                                                     className="group flex items-center gap-2.5 px-3 py-2 text-[11px] font-extrabold tracking-widest text-stone-300 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/[0.02]"
                                                 >
                                                     <span className="w-1 h-1.5 bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110 shrink-0"></span>
-                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 uppercase">Catering Services</span>
+                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 upp">Catering Services</span>
                                                 </a>
                                                 <a 
                                                     href="#events" 
                                                     className="group flex items-center gap-2.5 px-3 py-2 text-[11px] font-extrabold tracking-widest text-stone-300 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/[0.02]"
                                                 >
                                                     <span className="w-1 h-1.5 bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110 shrink-0"></span>
-                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 uppercase">Private Events</span>
+                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 upp">Private Events</span>
                                                 </a>
                                                 <a 
                                                     href="#delivery" 
                                                     className="group flex items-center gap-2.5 px-3 py-2 text-[11px] font-extrabold tracking-widest text-stone-300 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/[0.02]"
                                                 >
                                                     <span className="w-1 h-1.5 bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110 shrink-0"></span>
-                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 uppercase">Home Delivery</span>
+                                                    <span className="group-hover:translate-x-1.5 transition-transform duration-200 upp">Home Delivery</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@ export default function ThirdHeader() {
 
                             {/* Right Side Navigation (Desktop only) */}
                             <div className="hidden md:flex items-center justify-start pl-8 lg:pl-12">
-                                <nav className="hidden md:flex items-center gap-[45px] lg:gap-[45px] text-[12px] lg:text-[13px] font-bold tracking-widest uppercase font-sans-custom">
+                                <nav className="hidden md:flex items-center gap-[45px] lg:gap-[45px] text-[12px] lg:text-[15px] font-bold tracking-widest upp font-sans-custom">
                                     <a href="#gallery" className="text-white hover:text-[#E75B44] transition-colors duration-200">
                                         GALLERY
                                     </a>
@@ -231,7 +231,7 @@ export default function ThirdHeader() {
                     mobileMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
                 }`}
             >
-                <div className="px-6 py-8 flex flex-col gap-6 text-sm font-bold tracking-widest uppercase font-sans-custom">
+                <div className="px-6 py-8 flex flex-col gap-6 text-sm font-bold tracking-widest upp font-sans-custom">
                     <a
                         href="#home"
                         onClick={() => setMobileMenuOpen(false)}
@@ -274,7 +274,7 @@ export default function ThirdHeader() {
                                         <a 
                                             href="#lunch" 
                                             onClick={() => setMobileMenuOpen(false)} 
-                                            className="group flex items-center gap-2 py-1.5 text-xs text-gray-400 hover:text-white transition-all duration-200"
+                                            className="group flex items-center gap-2 py-1.5 text-[15px] text-gray-400 hover:text-white transition-all duration-200"
                                         >
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110"></span>
                                             <span className="group-hover:translate-x-1.5 transition-transform duration-200">Lunch Specials</span>
@@ -282,7 +282,7 @@ export default function ThirdHeader() {
                                         <a 
                                             href="#dinner" 
                                             onClick={() => setMobileMenuOpen(false)} 
-                                            className="group flex items-center gap-2 py-1.5 text-xs text-gray-400 hover:text-white transition-all duration-200"
+                                            className="group flex items-center gap-2 py-1.5 text-[15px] text-gray-400 hover:text-white transition-all duration-200"
                                         >
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110"></span>
                                             <span className="group-hover:translate-x-1.5 transition-transform duration-200">Dinner Menu</span>
@@ -290,7 +290,7 @@ export default function ThirdHeader() {
                                         <a 
                                             href="#drinks" 
                                             onClick={() => setMobileMenuOpen(false)} 
-                                            className="group flex items-center gap-2 py-1.5 text-xs text-gray-400 hover:text-white transition-all duration-200"
+                                            className="group flex items-center gap-2 py-1.5 text-[15px] text-gray-400 hover:text-white transition-all duration-200"
                                         >
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110"></span>
                                             <span className="group-hover:translate-x-1.5 transition-transform duration-200">Wine & Spirits</span>
@@ -328,7 +328,7 @@ export default function ThirdHeader() {
                                         <a 
                                             href="#catering" 
                                             onClick={() => setMobileMenuOpen(false)} 
-                                            className="group flex items-center gap-2 py-1.5 text-xs text-gray-400 hover:text-white transition-all duration-200"
+                                            className="group flex items-center gap-2 py-1.5 text-[15px] text-gray-400 hover:text-white transition-all duration-200"
                                         >
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110"></span>
                                             <span className="group-hover:translate-x-1.5 transition-transform duration-200">Catering Services</span>
@@ -336,7 +336,7 @@ export default function ThirdHeader() {
                                         <a 
                                             href="#events" 
                                             onClick={() => setMobileMenuOpen(false)} 
-                                            className="group flex items-center gap-2 py-1.5 text-xs text-gray-400 hover:text-white transition-all duration-200"
+                                            className="group flex items-center gap-2 py-1.5 text-[15px] text-gray-400 hover:text-white transition-all duration-200"
                                         >
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110"></span>
                                             <span className="group-hover:translate-x-1.5 transition-transform duration-200">Private Events</span>
@@ -344,7 +344,7 @@ export default function ThirdHeader() {
                                         <a 
                                             href="#delivery" 
                                             onClick={() => setMobileMenuOpen(false)} 
-                                            className="group flex items-center gap-2 py-1.5 text-xs text-gray-400 hover:text-white transition-all duration-200"
+                                            className="group flex items-center gap-2 py-1.5 text-[15px] text-gray-400 hover:text-white transition-all duration-200"
                                         >
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#E75B44] opacity-30 group-hover:opacity-100 transition-all duration-200 scale-75 group-hover:scale-110"></span>
                                             <span className="group-hover:translate-x-1.5 transition-transform duration-200">Home Delivery</span>
@@ -388,7 +388,7 @@ export default function ThirdHeader() {
                     <a
                         href="#book-table"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="w-full text-center bg-[#E75B44] text-white text-xs font-bold tracking-widest py-4 rounded-full hover:bg-[#d44e39] transition-all duration-300 shadow-md uppercase focus:outline-none mt-4"
+                        className="w-full text-center bg-[#E75B44] text-white text-[15px] font-bold tracking-widest py-4 rounded-full hover:bg-[#d44e39] transition-all duration-300 shadow-md upp focus:outline-none mt-4"
                     >
                         BOOK A TABLE
                     </a>

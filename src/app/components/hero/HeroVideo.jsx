@@ -47,7 +47,7 @@ export default function HeroVideo() {
           {/* Subtle Decorative Element */}
           <div className="flex items-center justify-center space-x-4 animate-in fade-in zoom-in duration-1000">
             <span className="w-12 h-[1px] bg-[#E65C38]" />
-            <span className="text-[10px] uppercase tracking-[0.5em] text-[#E65C38] font-bold">
+            <span className="text-[10px] upp tracking-[0.5em] text-[#E65C38] font-bold">
               Est. 1998
             </span>
             <span className="w-12 h-[1px] bg-[#E65C38]" />
@@ -62,7 +62,7 @@ export default function HeroVideo() {
           </div>
 
           {/* Refined Sub-headline */}
-          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light tracking-widest uppercase opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
+          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light tracking-widest upp opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
             Savor the perfect blend of tradition <br className="hidden md:block" /> and contemporary Indian excellence
           </p>
 
@@ -70,7 +70,7 @@ export default function HeroVideo() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700">
             <Link
               href="/reservations"
-              className="group relative inline-flex items-center justify-center bg-[#E65C38] text-white px-10 py-5 rounded-full text-xs font-bold uppercase tracking-[0.25em] transition-all duration-500 hover:bg-white hover:text-[#E65C38] shadow-2xl shadow-[#E65C38]/20"
+              className="group relative inline-flex items-center justify-center bg-[#E65C38] text-white px-10 py-5 rounded-full text-[15px] font-bold upp tracking-[0.25em] transition-all duration-500 hover:bg-white hover:text-[#E65C38] shadow-2xl shadow-[#E65C38]/20"
             >
               <span className="relative z-10">Book A Table Now</span>
               <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
@@ -78,7 +78,7 @@ export default function HeroVideo() {
 
             <Link
               href="/menu"
-              className="text-white text-[11px] uppercase tracking-[0.3em] font-semibold border-b border-white/20 hover:border-[#E65C38] pb-1 transition-all duration-300"
+              className="text-white text-[11px] upp tracking-[0.3em] font-semibold border-b border-white/20 hover:border-[#E65C38] pb-1 transition-all duration-300"
             >
               Explore Our Menu
             </Link>
@@ -88,7 +88,7 @@ export default function HeroVideo() {
 
       {/* Cinematic Scroll Indicator */}
       {/* <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3 opacity-50 animate-bounce">
-        <span className="text-[9px] uppercase tracking-[0.4em] text-white font-medium rotate-90 mb-4 h-24 flex items-center">
+        <span className="text-[9px] upp tracking-[0.4em] text-white font-medium rotate-90 mb-4 h-24 flex items-center">
           Scroll
         </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
@@ -97,20 +97,20 @@ export default function HeroVideo() {
       {/* Floating Experience Badges */}
       <div className="hidden lg:block absolute bottom-20 left-12 space-y-6">
         <div className="flex items-center space-x-4 group cursor-default">
-          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white text-xs group-hover:bg-[#E65C38] transition-colors">
+          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white text-[15px] group-hover:bg-[#E65C38] transition-colors">
             01
           </div>
           <div className="flex flex-col">
-            <span className="text-[9px] uppercase tracking-widest text-[#E65C38] font-bold">Fine Dining</span>
+            <span className="text-[9px] upp tracking-widest text-[#E65C38] font-bold">Fine Dining</span>
             <span className="text-[11px] text-stone-400 font-light">Exquisite Ambiance</span>
           </div>
         </div>
         <div className="flex items-center space-x-4 group cursor-default">
-          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white text-xs group-hover:bg-[#E65C38] transition-colors">
+          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white text-[15px] group-hover:bg-[#E65C38] transition-colors">
             02
           </div>
           <div className="flex flex-col">
-            <span className="text-[9px] uppercase tracking-widest text-[#E65C38] font-bold">Authentic</span>
+            <span className="text-[9px] upp tracking-widest text-[#E65C38] font-bold">Authentic</span>
             <span className="text-[11px] text-stone-400 font-light">Heritage Recipes</span>
           </div>
         </div>

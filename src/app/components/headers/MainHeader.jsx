@@ -54,7 +54,7 @@ export default function Mainheader() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               href="#home"
-              className="text-white hover:text-amber-400 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300 py-1.5 relative group"
+              className="text-white hover:text-amber-400 text-[15px] font-medium tracking-widest upp transition-colors duration-300 py-1.5 relative group"
             >
               HOME
               <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-amber-500 transition-all duration-300 -translate-x-1/2 group-hover:w-full"></span>
@@ -62,7 +62,7 @@ export default function Mainheader() {
 
             <Link
               href="/about"
-              className="text-white hover:text-amber-400 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300 py-1.5 relative group"
+              className="text-white hover:text-amber-400 text-[15px] font-medium tracking-widest upp transition-colors duration-300 py-1.5 relative group"
             >
               ABOUT US
               <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-amber-500 transition-all duration-300 -translate-x-1/2 group-hover:w-full"></span>
@@ -76,7 +76,7 @@ export default function Mainheader() {
             >
               <button
                 onClick={() => handleDropdownToggle("menu")}
-                className={`flex items-center gap-1 text-[13px] font-medium tracking-widest uppercase focus:outline-none transition-colors duration-300 ${activeDropdown === "menu" ? "text-amber-500" : "text-  hover:text-white"
+                className={`flex items-center gap-1 text-[15px] font-medium tracking-widest upp focus:outline-none transition-colors duration-300 ${activeDropdown === "menu" ? "text-amber-500" : "text-  hover:text-white"
                   }`}
               >
                 MENU
@@ -87,13 +87,13 @@ export default function Mainheader() {
 
               {activeDropdown === "menu" && (
                 <div className="absolute left-0 mt-3 w-56 bg-stone-900 border border-stone-800 rounded shadow-xl py-2 z-50 animate-fadeIn">
-                  <Link href="/menu#lunch" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all uppercase">
+                  <Link href="/menu#lunch" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all upp">
                     LUNCH SPECIALS
                   </Link>
-                  <Link href="/menu#dinner" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all uppercase">
+                  <Link href="/menu#dinner" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all upp">
                     DINNER MENU
                   </Link>
-                  <Link href="/menu#drinks" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all uppercase">
+                  <Link href="/menu#drinks" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all upp">
                     WINE & SPIRITS
                   </Link>
                 </div>
@@ -108,7 +108,7 @@ export default function Mainheader() {
             >
               <button
                 onClick={() => handleDropdownToggle("services")}
-                className={`flex items-center gap-1 text-[13px] font-medium tracking-widest uppercase focus:outline-none transition-colors duration-300 ${activeDropdown === "services" ? "text-amber-500" : "text-stone-300 hover:text-white"
+                className={`flex items-center gap-1 text-[15px] font-medium tracking-widest upp focus:outline-none transition-colors duration-300 ${activeDropdown === "services" ? "text-amber-500" : "text-stone-300 hover:text-white"
                   }`}
               >
                 SERVICES
@@ -119,13 +119,13 @@ export default function Mainheader() {
 
               {activeDropdown === "services" && (
                 <div className="absolute left-0 mt-3 w-56 bg-stone-900 border border-stone-800 rounded shadow-xl py-2 z-50 animate-fadeIn">
-                  <Link href="/services#catering" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all uppercase">
+                  <Link href="/services#catering" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all upp">
                     CATERING SERVICES
                   </Link>
-                  <Link href="/services#events" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all uppercase">
+                  <Link href="/services#events" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all upp">
                     PRIVATE EVENTS
                   </Link>
-                  <Link href="/services#delivery" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all uppercase">
+                  <Link href="/services#delivery" className="block px-5 py-2.5 text-[11px] font-bold tracking-widest text-stone-300 hover:text-amber-400 hover:bg-stone-800 transition-all upp">
                     HOME DELIVERY
                   </Link>
                 </div>
@@ -134,7 +134,7 @@ export default function Mainheader() {
 
             <Link
               href="/gallery"
-              className="text-white hover:text-amber-400 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300 py-1.5 relative group"
+              className="text-white hover:text-amber-400 text-[15px] font-medium tracking-widest upp transition-colors duration-300 py-1.5 relative group"
             >
               GALLERY
               <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-amber-500 transition-all duration-300 -translate-x-1/2 group-hover:w-full"></span>
@@ -142,7 +142,7 @@ export default function Mainheader() {
 
             <a
               href="#reviews"
-              className="text-white hover:text-amber-400 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300 py-1.5 relative group"
+              className="text-white hover:text-amber-400 text-[15px] font-medium tracking-widest upp transition-colors duration-300 py-1.5 relative group"
             >
               REVIEWS
               <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-amber-500 transition-all duration-300 -translate-x-1/2 group-hover:w-full"></span>
@@ -150,7 +150,7 @@ export default function Mainheader() {
 
             <a
               href="#blog"
-              className="text-white hover:text-amber-400 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300 py-1.5 relative group"
+              className="text-white hover:text-amber-400 text-[15px] font-medium tracking-widest upp transition-colors duration-300 py-1.5 relative group"
             >
               BLOG
               <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-amber-500 transition-all duration-300 -translate-x-1/2 group-hover:w-full"></span>
@@ -158,7 +158,7 @@ export default function Mainheader() {
 
             <Link
               href="/contact"
-              className="text-white hover:text-amber-400 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300 py-1.5 relative group"
+              className="text-white hover:text-amber-400 text-[15px] font-medium tracking-widest upp transition-colors duration-300 py-1.5 relative group"
             >
               CONTACT
               <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-amber-500 transition-all duration-300 -translate-x-1/2 group-hover:w-full"></span>
@@ -169,7 +169,7 @@ export default function Mainheader() {
           <div className="hidden md:flex items-center">
             <Link
               href="/reservations"
-              className="text-xs uppercase tracking-widest font-medium border border-amber-500/60 hover:border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-stone-950 px-5 py-2.5 transition-all duration-300 rounded"
+              className="text-[15px] upp tracking-widest font-medium border border-amber-500/60 hover:border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-stone-950 px-5 py-2.5 transition-all duration-300 rounded"
             >
               Reserve a Table
             </Link>
@@ -206,14 +206,14 @@ export default function Mainheader() {
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium tracking-widest uppercase text-stone-300 hover:text-amber-500 transition-colors duration-200"
+            className="block text-sm font-medium tracking-widest upp text-stone-300 hover:text-amber-500 transition-colors duration-200"
           >
             HOME
           </Link>
           <Link
             href="/about"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium tracking-widest uppercase text-stone-300 hover:text-amber-500 transition-colors duration-200"
+            className="block text-sm font-medium tracking-widest upp text-stone-300 hover:text-amber-500 transition-colors duration-200"
           >
             ABOUT US
           </Link>
@@ -222,7 +222,7 @@ export default function Mainheader() {
           <div className="border-b border-stone-850 pb-2">
             <button
               onClick={() => handleDropdownToggle("menu")}
-              className="flex items-center justify-between w-full text-stone-300 hover:text-amber-500 transition-colors py-1 focus:outline-none text-sm font-medium tracking-widest uppercase"
+              className="flex items-center justify-between w-full text-stone-300 hover:text-amber-500 transition-colors py-1 focus:outline-none text-sm font-medium tracking-widest upp"
             >
               MENU
               <svg className={`w-4 h-4 transition-transform ${activeDropdown === "menu" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,7 +230,7 @@ export default function Mainheader() {
               </svg>
             </button>
             {activeDropdown === "menu" && (
-              <div className="flex flex-col gap-3 pl-4 pt-3 text-xs text-stone-400 tracking-widest uppercase font-medium">
+              <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-400 tracking-widest upp font-medium">
                 <Link href="/menu#lunch" onClick={() => setIsOpen(false)} className="hover:text-amber-500">LUNCH SPECIALS</Link>
                 <Link href="/menu#dinner" onClick={() => setIsOpen(false)} className="hover:text-amber-500">DINNER MENU</Link>
                 <Link href="/menu#drinks" onClick={() => setIsOpen(false)} className="hover:text-amber-500">WINE & SPIRITS</Link>
@@ -242,7 +242,7 @@ export default function Mainheader() {
           <div className="border-b border-stone-850 pb-2">
             <button
               onClick={() => handleDropdownToggle("services")}
-              className="flex items-center justify-between w-full text-stone-300 hover:text-amber-500 transition-colors py-1 focus:outline-none text-sm font-medium tracking-widest uppercase"
+              className="flex items-center justify-between w-full text-stone-300 hover:text-amber-500 transition-colors py-1 focus:outline-none text-sm font-medium tracking-widest upp"
             >
               SERVICES
               <svg className={`w-4 h-4 transition-transform ${activeDropdown === "services" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,7 +250,7 @@ export default function Mainheader() {
               </svg>
             </button>
             {activeDropdown === "services" && (
-              <div className="flex flex-col gap-3 pl-4 pt-3 text-xs text-stone-400 tracking-widest uppercase font-medium">
+              <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-400 tracking-widest upp font-medium">
                 <Link href="/services#catering" onClick={() => setIsOpen(false)} className="hover:text-amber-500">CATERING SERVICES</Link>
                 <Link href="/services#events" onClick={() => setIsOpen(false)} className="hover:text-amber-500">PRIVATE EVENTS</Link>
                 <Link href="/services#delivery" onClick={() => setIsOpen(false)} className="hover:text-amber-500">HOME DELIVERY</Link>
@@ -261,28 +261,28 @@ export default function Mainheader() {
           <Link
             href="/gallery"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium tracking-widest uppercase text-stone-300 hover:text-amber-500 transition-colors duration-200"
+            className="block text-sm font-medium tracking-widest upp text-stone-300 hover:text-amber-500 transition-colors duration-200"
           >
             GALLERY
           </Link>
           <a
             href="#reviews"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium tracking-widest uppercase text-stone-300 hover:text-amber-500 transition-colors duration-200"
+            className="block text-sm font-medium tracking-widest upp text-stone-300 hover:text-amber-500 transition-colors duration-200"
           >
             REVIEWS
           </a>
           <a
             href="#blog"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium tracking-widest uppercase text-stone-300 hover:text-amber-500 transition-colors duration-200"
+            className="block text-sm font-medium tracking-widest upp text-stone-300 hover:text-amber-500 transition-colors duration-200"
           >
             BLOG
           </a>
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="block text-sm font-medium tracking-widest uppercase text-stone-300 hover:text-amber-500 transition-colors duration-200"
+            className="block text-sm font-medium tracking-widest upp text-stone-300 hover:text-amber-500 transition-colors duration-200"
           >
             CONTACT
           </Link>
@@ -290,7 +290,7 @@ export default function Mainheader() {
             <Link
               href="/reservations"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center text-xs uppercase tracking-widest font-medium bg-amber-500 text-stone-950 py-3 hover:bg-amber-400 transition-colors duration-200 rounded"
+              className="block w-full text-center text-[15px] upp tracking-widest font-medium bg-amber-500 text-stone-950 py-3 hover:bg-amber-400 transition-colors duration-200 rounded"
             >
               Reserve a Table
             </Link>

@@ -307,7 +307,7 @@ export default function MenuDish() {
   const visibleDishes = isExpanded ? activeDishes : activeDishes.slice(0, 9);
 
   return (
-    <section className="w-full bg-[#FAEBD4] py-20 px-6 md:px-12 lg:px-20 text-stone-900 select-none overflow-hidden border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-stone-900 select-none overflow-hidden border-b border-stone-200/50">
       
       {/* Scrollbar-hide global override styles */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -331,11 +331,11 @@ export default function MenuDish() {
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         >
           <div className="flex flex-col max-w-[600px] sm:max-w-[100px] md:max-w-[1500px]">
-            <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-3">
+            <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-3">
               Explore
             </span>
             
-            <h2 className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] mb-4 tracking-[0.01rem]">
+            <h2 className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 upp leading-[0.95] mb-4 tracking-[0.01rem]">
               Our Menu
             </h2>
 
@@ -364,7 +364,7 @@ export default function MenuDish() {
                     if (isMouseDown) return; // Prevent triggering clicks during a drag-scroll
                     handleCategoryChange(cat);
                   }}
-                  className={`px-5 py-3 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap transition-all duration-300 font-sans border pointer-events-auto ${
+                  className={`px-5 py-3 rounded-full text-[15px] font-bold tracking-wider upp whitespace-nowrap transition-all duration-300 font-sans border pointer-events-auto ${
                     isActive
                       ? 'bg-[#E94222] text-white border-transparent shadow-lg shadow-[#E94222]/15 scale-102'
                       : 'bg-white hover:bg-stone-50 text-stone-600 border-stone-200/60 hover:text-stone-900'
@@ -406,9 +406,9 @@ export default function MenuDish() {
           <div className="flex justify-center mt-14 select-none pointer-events-auto">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 font-sans shadow-lg shadow-[#E94222]/15"
+              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 font-sans shadow-lg shadow-[#E94222]/15"
             >
-              <span>{isExpanded ? 'SHOW LESS DISHES' : 'VIEW MORE DISHES'}</span>
+              <span>{isExpanded ? 'SHOW LESS DISHES' : 'VIEW FULL MENU'}</span>
               <svg
                 className={`w-3.5 h-3.5 transition-transform duration-300 shrink-0 ${isExpanded ? 'rotate-180' : ''}`}
                 fill="none"
@@ -456,7 +456,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
 
       {/* Base Card Metadata */}
       <div className="mt-4 flex flex-col gap-1 border-b border-stone-200/50 pb-4">
-        <h3 className="font-title font-black text-2xl text-stone-950 uppercase tracking-wide leading-none mb-1.5 transition-colors duration-300 group-hover:text-[#E65C38]">
+        <h3 className="font-title font-black text-2xl text-stone-950 upp tracking-wide leading-none mb-1.5 transition-colors duration-300 group-hover:text-[#E65C38]">
           {item.title}
         </h3>
         <p className="font-sans text-sm font-bold text-[#E65C38] leading-none">
@@ -464,7 +464,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
         </p>
         <div className="flex items-center gap-2 mt-1 select-none">
           <Stars />
-          <span className="font-sans text-xs font-semibold text-stone-600 mt-0.5">
+          <span className="font-sans text-[15px] font-semibold text-stone-600 mt-0.5">
             {item.rating} ({item.reviews} reviews)
           </span>
         </div>
@@ -485,7 +485,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
             className="absolute top-1/2 left-1/2 w-[90%] bg-white rounded-2xl p-6 shadow-[0_25px_60px_rgba(0,0,0,0.18)] z-20 flex flex-col items-center text-center border border-stone-100/50 pointer-events-none"
           >
             {/* Title */}
-            <h4 className="font-title font-black text-2xl text-stone-950 uppercase tracking-wide leading-none mb-2">
+            <h4 className="font-title font-black text-2xl text-stone-950 upp tracking-wide leading-none mb-2">
               {item.title}
             </h4>
             
@@ -514,7 +514,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
             <div className="flex justify-center">
             <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>BOOK A TABLE</span>
                 <svg
@@ -536,7 +536,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
             {/* Ratings inside Hover Card */}
             <div className="flex items-center gap-1.5 mt-1 border-t border-stone-100 pt-3 w-full justify-center">
               <Stars />
-              <span className="font-sans text-[10px] font-bold text-stone-400 uppercase tracking-wider">
+              <span className="font-sans text-[10px] font-bold text-stone-400 upp tracking-wider">
                 {item.rating} ({item.reviews} reviews)
               </span>
             </div>

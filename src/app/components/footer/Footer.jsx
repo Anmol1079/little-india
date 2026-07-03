@@ -111,7 +111,7 @@ export default function Footer() {
             {/* Column 2: Explore (Spans 1 column of 2 on mobile, 2 columns on desktop) */}
             <div className="col-span-1 lg:col-span-2 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-5">
-                <h4 className="font-heavy text-white text-base tracking-widest uppercase mb-1 leading-none">
+                <h4 className="font-heavy text-white text-base tracking-widest upp mb-1 leading-none">
                   EXPLORE
                 </h4>
               </div>
@@ -157,7 +157,7 @@ export default function Footer() {
             {/* Column 3: Our Menu (Spans 1 column of 2 on mobile, 2 columns on desktop) */}
             <div className="col-span-1 lg:col-span-2 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-5">
-                <h4 className="font-heavy text-white text-base tracking-widest uppercase mb-1 leading-none">
+                <h4 className="font-heavy text-white text-base tracking-widest upp mb-1 leading-none">
                   OUR MENU
                 </h4>
               </div>
@@ -203,7 +203,7 @@ export default function Footer() {
             {/* Column 4: Visit Us (Spans both columns on mobile/tablet, 3 columns on desktop) */}
             <div className="col-span-2 lg:col-span-3 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-5">
-                <h4 className="font-heavy text-white text-base tracking-widest uppercase mb-1 leading-none">
+                <h4 className="font-heavy text-white text-base tracking-widest upp mb-1 leading-none">
                   VISIT US
                 </h4>
               </div>
@@ -265,8 +265,8 @@ export default function Footer() {
           {/* Golden Divider Line updated to brand color accent with 20% opacity */}
           <hr className="brand-color-border opacity-20 mt-12 mb-5" />
 
-          {/* Bottom Bar Content - base size text-xs left aligned */}
-          <div className="flex flex-col md:flex-row items-start justify-start gap-6 text-[14px] text-[#9e9587] font-sans w-full">
+          {/* Bottom Bar Content - base size text-[15px] left aligned */}
+          <div className="flex flex-col md:flex-row items-start justify-start gap-6 text-[15px] text-[#9e9587] font-sans w-full">
             {/* Copyright with clickable Webtech Nepal link */}
             <p className="font-sans-custom text-left tracking-wide w-full leading-relaxed">
               Copyright © 2026 One World Cuisine LLC DBA Little India Restaurant

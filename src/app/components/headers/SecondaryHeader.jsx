@@ -86,7 +86,7 @@ export default function SecondaryHeader() {
               >
                 <Link
                   href={item.href}
-                  className="px-4 py-2 text-[11px] uppercase tracking-[0.15em] font-bold text-stone-200 hover:text-white transition-all flex items-center gap-1.5"
+                  className="px-4 py-2 text-[11px] upp tracking-[0.15em] font-bold text-stone-200 hover:text-white transition-all flex items-center gap-1.5"
                 >
                   {item.name}
                   {item.items && (
@@ -111,7 +111,7 @@ export default function SecondaryHeader() {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className={`group relative px-4 py-3 text-[10px] uppercase tracking-[0.18em] transition-all rounded-xl flex items-center justify-between ${
+                            className={`group relative px-4 py-3 text-[10px] upp tracking-[0.18em] transition-all rounded-xl flex items-center justify-between ${
                               subItem.featured 
                                 ? "mt-2 bg-white/5 border border-white/10 text-white font-black" 
                                 : "text-stone-400 hover:text-white hover:bg-white/5"
@@ -177,7 +177,7 @@ export default function SecondaryHeader() {
               <div key={item.name} className="py-2">
                 <button
                   onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                  className="w-full flex items-center justify-between text-sm font-bold text-white py-2 uppercase tracking-widest"
+                  className="w-full flex items-center justify-between text-sm font-bold text-white py-2 upp tracking-widest"
                 >
                   {item.name}
                   {item.items && <svg className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>}
@@ -186,7 +186,7 @@ export default function SecondaryHeader() {
                   <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[500px] mt-2' : 'max-h-0'}`}>
                     <div className="pl-4 border-l border-[#E94222]/30 space-y-3">
                       {item.items.map((subItem) => (
-                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-xs text-stone-400 hover:text-[#E94222] font-sans">
+                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans">
                           {subItem.name}
                         </Link>
                       ))}

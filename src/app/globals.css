@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-plus-jakarta);
+  --font-sans: var(--font-inter);
   --font-title: var(--font-inter);
 }
 
@@ -22,12 +22,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-plus-jakarta), sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 /* Global Typography classes */
 .font-sans-custom {
-  font-family: var(--font-plus-jakarta), sans-serif !important;
+  font-family: var(--font-inter), sans-serif !important;
 }
 
 .font-heavy,

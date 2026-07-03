@@ -1,90 +1,76 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const COMPLETED_POSTS = [
+const LEFT_COLUMN_POSTS = [
   {
     id: "blog-1",
-    tag: "Spice Craft",
-    title: "The Alchemist of Spices: Master the Art of Crafting Garam Masala",
-    description: "Discover the ancient roasting techniques and secret spice ratios that make our house garam masala truly legendary.",
-    date: "June 24, 2026",
-    readTime: "8 min read",
-    image: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=800&q=80", 
+    tag: "CUISINE",
+    title: "Food & Drink Combos For Special Occasions",
+    author: "rizal",
+    date: "January 7, 2026",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
     url: "#"
   },
   {
     id: "blog-2",
-    tag: "Tandoori Secrets",
-    title: "Demystifying the Clay Tandoor Oven",
-    description: "Explore the ancient clay-oven baking secrets and high-heat techniques used by our chefs.",
-    date: "June 12, 2026",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80", 
+    tag: "FOOD",
+    title: "How We Ensure Food Safety And Hygiene",
+    author: "rizal",
+    date: "January 7, 2026",
+    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
     url: "#"
   },
   {
     id: "blog-3",
-    tag: "Wine Pairing",
-    title: "How to Pair Fine Wines with Indian Curries",
-    description: "Unlock the perfect flavor notes. Discover how robust reds and off-dry whites complement complex spices.",
-    date: "May 28, 2026",
-    readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80", 
-    url: "#"
-  },
-  {
-    id: "blog-4",
-    tag: "South Indian",
-    title: "From Kerala with Love: The Rise of South Indian Dosa",
-    description: "Trace the crisp journey of the fermented rice crepe and why it has captured food lovers worldwide.",
-    date: "May 15, 2026",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80", 
-    url: "#"
-  },
-  {
-    id: "blog-5",
-    tag: "Biryani Craft",
-    title: "Decoding the Secrets of a Perfect Dum Biryani",
-    description: "Master the aromatic art of slow-cooking layered basmati rice with heavily marinated tandoori meats.",
-    date: "April 30, 2026",
-    readTime: "9 min read",
-    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80", 
+    tag: "DINING",
+    title: "Why Atmosphere Matters In A Dining Experience",
+    author: "rizal",
+    date: "January 8, 2026",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
     url: "#"
   }
 ];
 
-const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80";
+const MAIN_HIGHLIGHT_POST = {
+  id: "blog-highlight",
+  tag: "FOOD",
+  title: "New Menu Launch: What's New This Season",
+  author: "rizal",
+  date: "January 11, 2026",
+  image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80",
+  url: "#"
+};
 
-// Custom Deceleration Cubic-Bezier Easing
+const BOTTOM_RIGHT_POST = {
+  id: "blog-4",
+  tag: "CUISINE",
+  title: "How Local Ingredients Inspire Refined Cuisine",
+  author: "rizal",
+  date: "January 9, 2026",
+  image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80",
+  url: "#"
+};
+
+// Deceleration Easing
 const cubicBezierEase = [0.16, 1, 0.3, 1];
 
-// Entrance Configurations
-const headerContainerVariants = {
+// Staggered Title Configurations
+const revealContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.08,
       delayChildren: 0.1,
     },
   },
 };
 
-const taglineVariants = {
+const headerItemVariants = {
   hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
-};
-
-const titleVariants = {
-  hidden: { opacity: 0, y: '100%' },
   visible: {
     opacity: 1,
     y: 0,
@@ -92,91 +78,176 @@ const titleVariants = {
   },
 };
 
-const buttonGroupVariants = {
-  hidden: { opacity: 0, x: 20 },
+const cardContainerVariants = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.7, ease: cubicBezierEase },
+    transition: {
+      staggerChildren: 0.1,
+    },
   },
 };
 
-export default function BlogSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(1); // 1 = right, -1 = left
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 35 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 6500);
-    return () => clearInterval(timer);
-  }, [currentIndex]);
-
-  const handleNext = () => {
-    setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % COMPLETED_POSTS.length);
-  };
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + COMPLETED_POSTS.length) % COMPLETED_POSTS.length);
-  };
-
-  const getVisiblePosts = () => {
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      visible.push(COMPLETED_POSTS[(currentIndex + i) % COMPLETED_POSTS.length]);
-    }
-    return visible;
-  };
-
-  const visibleCards = getVisiblePosts();
-
+export default function Blog1() {
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20 select-none border-b border-stone-200/50 overflow-hidden">
-      
-      <div className="max-w-[1500px] mx-auto flex flex-col gap-10 relative">
+    <section className="w-full bg-[#FAF7F2] py-16 px-6 md:px-12 lg:px-20 select-none overflow-hidden font-sans">
+      <div className="max-w-[1500px] mx-auto flex flex-col gap-10">
         
-        {/* Header Block with Scroll Staggers */}
+        {/* UPGRADED HEADER SECTION: Styled exactly like WhyChooseUsSection */}
         <motion.div 
-          variants={headerContainerVariants}
+          variants={revealContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.35, margin: "0px 0px -100px 0px" }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 w-full pb-6 border-b border-stone-200/60"
+          className="flex flex-col items-center text-center max-w-4xl mx-auto gap-3 mb-4"
         >
-          <div className="flex flex-col text-left">
-            <div className="overflow-hidden">
-              <motion.span 
-                variants={taglineVariants}
-                className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-3"
-              >
-                Culinary Insights
-              </motion.span>
-            </div>
+          <motion.span 
+            variants={headerItemVariants}
+            className="text-[#e65c38] font-bold text-[15px] tracking-widest uppercase block font-sans"
+          >
+            Our Blogs
+          </motion.span>
 
-            <div className="overflow-hidden py-1">
-              <motion.h2 
-                variants={titleVariants}
-                className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 uppercase leading-[0.95] tracking-[0.01rem]"
+          <motion.h2 
+            variants={headerItemVariants}
+            className="font-heavy text-[45px] sm:text-[55px] lg:text-[62px] text-black leading-[0.95] tracking-tight mb-1 font-black"
+          >
+           Latest Blogs and Insights
+          </motion.h2>
+
+          <motion.p 
+            variants={headerItemVariants}
+            className="font-sans text-[15px] text-stone-600 font-semibold leading-relaxed max-w-3xl mx-auto"
+          >
+            Since opening our doors in 2017, Little India has been on a mission to bring the real flavors of India to Denver. Our recipes are passed down through generations, each dish telling a story of tradition, culture, and love.
+          </motion.p>
+        </motion.div>
+
+        {/* main grid container */}
+        <motion.div 
+          variants={cardContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+        >
+          
+          {/* Left Column (Left 3 list rows) */}
+          <div className="lg:col-span-6 flex flex-col gap-6">
+            {LEFT_COLUMN_POSTS.map((post) => (
+              <motion.a
+                key={post.id}
+                href={post.url}
+                variants={fadeUpVariants}
+                whileHover={{ x: 3 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-row items-center gap-4 sm:gap-6 group"
               >
-                Our Blogs
-              </motion.h2>
-            </div>
+                {/* Thumbnail Image */}
+                <div className="relative w-[120px] sm:w-[170px] h-[80px] sm:h-[110px] rounded-lg overflow-hidden shrink-0 bg-stone-100">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Post details */}
+                <div className="flex flex-col gap-1">
+                  {/* <span className="text-[#E65C38] text-[10px] font-bold tracking-widest uppercase">
+                    {post.tag}
+                  </span> */}
+                  <h3 className="text-[20px] sm:text-[20px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200 leading-snug line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-[16px] sm:text-[16px] text-stone-400 font-medium mt-0.5">
+                    {post.date}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
           </div>
 
-          {/* DESKTOP ONLY: Button is shown here, hidden on mobile */}
-          <motion.div 
-            variants={buttonGroupVariants}
-            className="flex justify-center"
-          >
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          {/* Right Column (Highlight card + 1 secondary row) */}
+          <div className="lg:col-span-6 flex flex-col gap-8">
+            
+            {/* Highlight Post card (Top) */}
+            <motion.a
+              href={MAIN_HIGHLIGHT_POST.url}
+              variants={fadeUpVariants}
+              className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden group block shadow-sm bg-stone-100"
+            >
+              {/* Image */}
+              <img
+                src={MAIN_HIGHLIGHT_POST.image}
+                alt={MAIN_HIGHLIGHT_POST.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-103"
+              />
+              {/* Bottom Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
 
+              {/* Overlay content details */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white z-10 flex flex-col gap-1.5">
+                {/* <span className="text-xs font-bold tracking-widest uppercase opacity-90">
+                  {MAIN_HIGHLIGHT_POST.tag}
+                </span> */}
+                <h3 className="text-[20px] sm:text-[20px] font-bold tracking-tight leading-snug group-hover:text-amber-100 transition-colors duration-200">
+                  {MAIN_HIGHLIGHT_POST.title}
+                </h3>
+                <p className="text-[16px] opacity-75 font-medium mt-1">
+                 {MAIN_HIGHLIGHT_POST.date}
+                </p>
+              </div>
+            </motion.a>
+
+            {/* Bottom Secondary Post row (Uncomment below if you wish to display) */}
+            {/* <motion.a
+              href={BOTTOM_RIGHT_POST.url}
+              variants={fadeUpVariants}
+              whileHover={{ x: 3 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-row items-center gap-4 sm:gap-6 group"
+            >
+              <div className="relative w-[120px] sm:w-[170px] h-[80px] sm:h-[110px] rounded-lg overflow-hidden shrink-0 bg-stone-100">
+                <img
+                  src={BOTTOM_RIGHT_POST.image}
+                  alt={BOTTOM_RIGHT_POST.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[#E65C38] text-[10px] font-bold tracking-widest uppercase">
+                  {BOTTOM_RIGHT_POST.tag}
+                </span>
+                <h3 className="text-sm sm:text-base font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200 leading-snug line-clamp-2">
+                  {BOTTOM_RIGHT_POST.title}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-stone-400 font-medium mt-0.5">
+                  by {BOTTOM_RIGHT_POST.author} • {BOTTOM_RIGHT_POST.date}
+                </p>
+              </div>
+            </motion.a> */}
+
+          </div>
+
+        </motion.div>
+
+        {/* Load More Button */}
+        <div className="flex justify-center pt-4">
         <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
-                <span>VIEW ALL BLOGS</span>
+                <span>KNOW MORE</span>
                 <svg
                   className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
                   fill="none"
@@ -192,167 +263,9 @@ export default function BlogSection() {
                 </svg>
               </Link>
 
-
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Carousel Items Grid with Slider Entrance animations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch w-full min-h-[460px]">
-          <AnimatePresence mode="popLayout" initial={false}>
-            {/* Card 1 */}
-            {visibleCards[0] && (
-              <motion.div
-                key={`${visibleCards[0].id}-${currentIndex}`}
-                initial={{ opacity: 0, x: direction * 35 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -direction * 35 }}
-                transition={{ duration: 0.6, ease: cubicBezierEase }}
-                className="block h-full"
-              >
-                <BlogCard post={visibleCards[0]} />
-              </motion.div>
-            )}
-
-            {/* Card 2 */}
-            {visibleCards[1] && (
-              <motion.div
-                key={`${visibleCards[1].id}-${currentIndex}`}
-                initial={{ opacity: 0, x: direction * 35 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -direction * 35 }}
-                transition={{ duration: 0.6, ease: cubicBezierEase }}
-                className="hidden md:block h-full"
-              >
-                <BlogCard post={visibleCards[1]} />
-              </motion.div>
-            )}
-
-            {/* Card 3 */}
-            {visibleCards[2] && (
-              <motion.div
-                key={`${visibleCards[2].id}-${currentIndex}`}
-                initial={{ opacity: 0, x: direction * 35 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -direction * 35 }}
-                transition={{ duration: 0.6, ease: cubicBezierEase }}
-                className="hidden lg:block h-full"
-              >
-                <BlogCard post={visibleCards[2]} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <hr className="border-stone-200/60 w-full" />
-
-        {/* Footer controls */}
-        <div className="flex flex-col items-center justify-center gap-6 w-full select-none">
-          
-          {/* Navigation Controls */}
-          <div className="flex items-center gap-4">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handlePrev}
-              className="w-10 h-10 rounded-full bg-white hover:bg-[#E65C38] text-stone-700 hover:text-white border border-stone-200/50 shadow-md flex items-center justify-center transition-colors duration-300 cursor-pointer"
-              aria-label="Previous slide"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </motion.button>
-            
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleNext}
-              className="w-10 h-10 rounded-full bg-white hover:bg-[#E65C38] text-stone-700 hover:text-white border border-stone-200/50 shadow-md flex items-center justify-center transition-colors duration-300 cursor-pointer"
-              aria-label="Next slide"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </motion.button>
-          </div>
-
-          {/* MOBILE ONLY: Button centered at the bottom */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex md:hidden justify-center w-full"
-          >
-            <Link
-              href="#blog"
-              className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 shadow-[0_10px_25px_rgba(231,91,68,0.25)]"
-            >
-              <span>VIEW ALL BLOGS</span>
-              <svg
-                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          </motion.div>
-
         </div>
 
       </div>
     </section>
-  );
-}
-
-function BlogCard({ post }) {
-  return (
-    <motion.a 
-      href={post.url}
-      whileHover={{ 
-        y: -6, 
-        scale: 1.01,
-        borderColor: 'rgba(230, 92, 56, 0.22)',
-        boxShadow: '0 25px 50px -15px rgba(230, 92, 56, 0.08)'
-      }}
-      transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-      className="bg-[#FAEBD4] border border-stone-200/80 rounded-[2.5rem] overflow-hidden flex flex-col justify-between p-6 h-full min-h-[500px] group shadow-md"
-    >
-      {/* Thumbnail image container */}
-      <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-stone-100 shadow-inner shrink-0">
-        <img 
-          src={post.image} 
-          alt={post.title} 
-          className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 filter brightness-[0.95]"
-          onError={(e) => {
-            e.currentTarget.src = FALLBACK_IMAGE;
-          }}
-        />
-      </div>
-
-      {/* Narrative block details */}
-      <div className="flex flex-col gap-3.5 text-left font-sans mt-5">
-        <span className="text-stone-400 text-xs font-semibold">
-          {post.date}
-        </span>
-
-        <h3 className="font-title font-black text-2xl text-stone-950 uppercase tracking-wide leading-tight group-hover:text-[#E65C38] transition-colors duration-300">
-          {post.title}
-        </h3>
-
-        <p className="text-xs text-stone-500 font-semibold leading-relaxed">
-          {post.description || "Explore the rich heritage and traditional kitchen secrets behind our flagship dishes."}
-        </p>
-      </div>
-
-      {/* Decorative colored visual divider line */}
-      <div className="h-[2px] bg-stone-100 w-8 mt-5 group-hover:bg-[#E65C38] transition-colors duration-300"></div>
-    </motion.a>
   );
 }

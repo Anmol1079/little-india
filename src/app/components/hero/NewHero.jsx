@@ -219,10 +219,10 @@ export default function NewHero() {
       
       {/* 1. Infinite scrolling luxury marquee layer */}
       <div className="absolute inset-y-0 flex flex-col justify-center gap-32 z-0 select-none pointer-events-none w-[200vw] opacity-[0.03]">
-        <div className="marquee-l text-[9vw] font-extrabold tracking-[0.3em] text-transparent [-webkit-text-stroke:1px_white] uppercase whitespace-nowrap">
+        <div className="marquee-l text-[9vw] font-extrabold tracking-[0.3em] text-transparent [-webkit-text-stroke:1px_white] upp whitespace-nowrap">
           SAVOR THE EXTRAORDINARY • ARTISTRY ON EVERY PLATE • SAVOR THE EXTRAORDINARY • ARTISTRY ON EVERY PLATE •
         </div>
-        <div className="marquee-r text-[9vw] font-extrabold tracking-[0.3em] text-transparent [-webkit-text-stroke:1px_white] uppercase whitespace-nowrap -translate-x-1/2">
+        <div className="marquee-r text-[9vw] font-extrabold tracking-[0.3em] text-transparent [-webkit-text-stroke:1px_white] upp whitespace-nowrap -translate-x-1/2">
           LA PERLA RESTAURANT • SWISS FINE DINING • LA PERLA RESTAURANT • SWISS FINE DINING •
         </div>
       </div>
@@ -274,7 +274,7 @@ export default function NewHero() {
       {/* 3. Left-Side Vertical Navigation Panel (La Perla Inspired) */}
       <div className="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col items-center gap-16 select-none">
         {/* Reservation vertical text */}
-        <span className="text-[10px] text-stone-400 font-bold tracking-[0.4em] uppercase rotate-180 [writing-mode:vertical-lr]">
+        <span className="text-[10px] text-stone-400 font-bold tracking-[0.4em] upp rotate-180 [writing-mode:vertical-lr]">
           RESERVATIONS: +41 62 791 31 51
         </span>
         {/* Glassmorphic message circle button */}
@@ -326,20 +326,20 @@ export default function NewHero() {
               {/* Glassmorphic Heritage Tag */}
               <div className="animate-reveal-text inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 shadow-lg mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                <span className="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-stone-300 uppercase">
+                <span className="text-[10px] sm:text-[15px] font-bold tracking-[0.25em] text-stone-300 upp">
                   {slide.tag}
                 </span>
               </div>
 
               {/* Classic Tall Roman Headline (La Perla Inspired) */}
               <h1 
-                className="animate-reveal-text text-5xl sm:text-6xl md:text-7.5xl leading-[1.05] tracking-wide font-heavy font-medium text-white mb-6 uppercase"
+                className="animate-reveal-text text-5xl sm:text-6xl md:text-7.5xl leading-[1.05] tracking-wide font-heavy font-medium text-white mb-6 upp"
               >
                 {slide.title}
               </h1>
 
               {/* Subtitle / Phrase */}
-              <h2 className={`animate-reveal-text text-[15px] sm:text-lg font-light tracking-[0.35em] text-stone-400 mb-8 uppercase`}>
+              <h2 className={`animate-reveal-text text-[15px] sm:text-lg font-light tracking-[0.35em] text-stone-400 mb-8 upp`}>
                 {slide.subtitle}
               </h2>
 
