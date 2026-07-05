@@ -93,18 +93,18 @@ export default function LunchBuffet1() {
   const getDaysInMonthGrid = (dateObj) => {
     const year = dateObj.getFullYear();
     const month = dateObj.getMonth();
-    
+
     // First weekday of the month
     const firstDayIndex = new Date(year, month, 1).getDay();
-    
+
     // Total days in the current month
     const totalDays = new Date(year, month + 1, 0).getDate();
-    
+
     // Total days in the previous month
     const prevTotalDays = new Date(year, month, 0).getDate();
-    
+
     const grid = [];
-    
+
     // Previous month's leading days
     for (let i = firstDayIndex - 1; i >= 0; i--) {
       grid.push({
@@ -113,7 +113,7 @@ export default function LunchBuffet1() {
         dateValue: new Date(year, month - 1, prevTotalDays - i)
       });
     }
-    
+
     // Current month days
     for (let i = 1; i <= totalDays; i++) {
       grid.push({
@@ -122,7 +122,7 @@ export default function LunchBuffet1() {
         dateValue: new Date(year, month, i)
       });
     }
-    
+
     // Next month's trailing days to fill complete 6-week calendar matrix (42 cells)
     const remaining = 42 - grid.length;
     for (let i = 1; i <= remaining; i++) {
@@ -132,7 +132,7 @@ export default function LunchBuffet1() {
         dateValue: new Date(year, month + 1, i)
       });
     }
-    
+
     return grid;
   };
 
@@ -174,28 +174,28 @@ export default function LunchBuffet1() {
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end justify-between pb-16 md:pb-32 pt-24 md:pt-0 gap-8">
-        
+
         {/* Left Side: Headline Text */}
         <div className="max-w-xl self-end md:mb-4">
-          <h1 className="text-white text-4xl md:text-[60px] lg:text-[60px] font-bold leading-tight tracking-tight drop-shadow-md">
+          <h2 className="text-white text-4xl md:text-[60px] lg:text-[60px] font-heavy  leading-tight tracking-tight drop-shadow-md">
             Savor the Finest Flavors With Us
-          </h1>
+          </h2>
         </div>
 
         {/* Right Side: Information & Reservation Card */}
         <div className="w-full max-w-md self-end">
           <div className="relative w-full p-[1.5px] rounded-2xl bg-gradient-to-b from-white/20 via-white/5 to-transparent backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
-            
+
             {/* Inner Premium Card Container */}
             <div className="bg-[#FCFCFB] text-neutral-800 rounded-[14px] p-6 md:p-8 flex flex-col gap-6 select-none transition-all duration-300">
-              
+
               {/* Subtle Category Tag & Title */}
               <div className="space-y-1.5">
                 <span className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tracking-[0.15em] upp font-sans block mb-2">
                   Lunch Buffet
                 </span>
                 <h2 className="text-3xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-snug">
-                Book Your Indulgence
+                  Book Your Indulgence
                 </h2>
                 <p className="text-sm text-neutral-500 leading-relaxed font-normal pt-1">
                   Step into a space where refined ambiance, masterfully crafted gourmet dishes, and impeccable hospitality await you.
@@ -204,12 +204,12 @@ export default function LunchBuffet1() {
 
               {/* Divider & Info Grid */}
               <div className="border-t border-stone-200/70 pt-5 grid grid-cols-2 gap-4">
-                
+
                 {/* Left Block: Rating */}
                 <div className="flex items-start gap-3">
                   <span className="text-amber-500 mt-0.5 shrink-0">
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z"/>
+                      <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z" />
                     </svg>
                   </span>
                   <div className="flex flex-col">
@@ -243,7 +243,7 @@ export default function LunchBuffet1() {
               {/* Call to Action Buttons */}
               <div className="border-t border-stone-200/70 pt-3">
                 <div className="grid grid-cols-2 gap-3.5 pt-2">
-                  
+
                   {/* Left Action Button (Triggers Modal) */}
                   <button
                     type="button"
@@ -300,7 +300,7 @@ export default function LunchBuffet1() {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="relative w-full max-w-lg bg-[#FCFCFB] text-neutral-800 rounded-2xl shadow-2xl border border-stone-200 p-6 md:p-8 animate-fadeIn">
-            
+
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
@@ -335,7 +335,7 @@ export default function LunchBuffet1() {
             ) : (
               /* Reservation Form */
               <form onSubmit={handleSubmit} className="space-y-4">
-                
+
                 {/* Full Name */}
                 <div>
                   <label className="block text-[15px] font-semibold text-neutral-700 upp tracking-wider mb-1.5">
@@ -410,7 +410,7 @@ export default function LunchBuffet1() {
 
                 {/* Date & Time Grid with Custom Upgrades */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  
+
                   {/* Custom Calendar Date Selector */}
                   <div className="relative" ref={datePickerRef}>
                     <label className="block text-[15px] font-semibold text-neutral-700 upp tracking-wider mb-1.5">
@@ -435,7 +435,7 @@ export default function LunchBuffet1() {
                     {/* Upgraded Calendar Dropdown Dialog */}
                     {isDatePickerOpen && (
                       <div className="absolute left-0 mt-1 w-[290px] bg-white border border-neutral-200 rounded-lg shadow-xl z-40 p-4 select-none animate-fadeIn">
-                        
+
                         {/* Calendar Header */}
                         <div className="flex items-center justify-between mb-3">
                           <div className="relative group">
@@ -449,7 +449,7 @@ export default function LunchBuffet1() {
                               </svg>
                             </button>
                           </div>
-                          
+
                           {/* Arrows conforming to the system design UI style */}
                           <div className="flex items-center gap-1.5">
                             <button
