@@ -195,7 +195,7 @@ export default function InteractMenu() {
   const [activeDrink, setActiveDrink] = useState(5);
 
   return (
-    <section className="w-full bg-[#fbf9f6] py-20 px-6 md:px-12 lg:px-20 text-stone-900 select-none overflow-hidden">
+    <section className="w-full bg-white py-20 px-6 md:px-12 lg:px-20 text-stone-900 select-none overflow-hidden">
       <div className="max-w-[1300px] mx-auto flex flex-col items-center">
         
         {/* Top Tagline */}

@@ -119,7 +119,7 @@ export default function HappyHourSection() {
   const [activeFood, setActiveFood] = useState(0);   // Default to Samosas
 
   return (
-    <section className="w-full bg-[#fbf9f6] py-16 px-6 md:px-12 lg:px-16 text-stone-900 select-none overflow-hidden border-b border-stone-200">
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-16 text-stone-900 select-none overflow-hidden border-b border-stone-200">
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
         
         {/* TOP SECTION: Header Info */}

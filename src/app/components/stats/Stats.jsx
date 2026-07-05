@@ -112,7 +112,7 @@ const itemVariants = {
 
 export default function StatsSection() {
   return (
-    <section className="w-full bg-[#FCFAF6] pt-0 pb-16 px-6 md:px-12 select-none overflow-hidden font-sans border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] pt-0 pb-16 px-6 md:px-12 select-none overflow-hidden font-sans border-b border-stone-200/50">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header Block: Centered title with horizontal line dividers */}

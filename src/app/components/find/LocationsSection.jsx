@@ -88,7 +88,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
       </div>
 
       {/* Right Column: Content Area */}
-      <div className="md:col-span-6 flex flex-col justify-center px-6 sm:px-10 md:px-12 py-8 md:py-8 gap-6 bg-[#FFF6EA] h-auto md:h-full md:overflow-y-auto">
+      <div className="md:col-span-6 flex flex-col justify-center px-6 sm:px-10 md:px-12 py-8 md:py-8 gap-6 bg-[#fff6ea] h-auto md:h-full md:overflow-y-auto">
         
         {/* Title & Tagline */}
         <div className="space-y-3">

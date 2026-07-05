@@ -59,7 +59,7 @@ const centerImageVariants = {
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="w-full bg-[#fef6df] py-16 px-4 md:px-8 xl:px-16 text-[#0B0C0E] select-none ">
+    <section className="w-full bg-[#fff6ea] py-16 px-4 md:px-8 xl:px-16 text-[#0B0C0E] select-none ">
 
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
 
