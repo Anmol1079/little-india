@@ -150,17 +150,17 @@ export default function AboutSection() {
             </span>
 
             {/* Main Title */}
-            <h2 className="font-title font-black text-[50px] sm:text-[60px] md:text-[60px] lg:text-[60px] text-stone-950 tracking-tight leading-none uppercase mb-10">
+            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] lg:text-[60px] text-stone-950 tracking-tight leading-none mb-10">
               About Us
             </h2>
             
             {/* Balanced editorial layout */}
             <div className="flex flex-col gap-5 max-w-5xl mx-auto px-2">
-              <p className="font-sans text-stone-800 text-[18px] sm:text-[19px] lg:text-[21px] font-semibold leading-relaxed tracking-wide">
-                One World Cuisine LLC DBA Little India Restaurant and Bar is one of the most authentic Indian restaurants in Denver, Colorado [1]. Since 1998, we have proudly served the best Indian food in Denver, made with carefully selected Indian spices and ingredients sourced locally, in-house, or imported directly from India [1].
+              <p className="font-sans text-stone-800 text-[16px] md:text-[18px] sm:text-[19px] lg:text-[21px] font-semibold leading-relaxed tracking-wide">
+                One World Cuisine LLC DBA Little India Restaurant and Bar is one of the most authentic Indian restaurants in Denver, Colorado. Since 1998, we have proudly served the best Indian food in Denver, made with carefully selected Indian spices and ingredients sourced locally, in-house, or imported directly from India.
               </p>
-              <p className="font-sans text-stone-800 text-[18px] sm:text-[19px] lg:text-[21px] font-semibold leading-relaxed tracking-wide">
-                Ranked among the top Indian restaurants in the Denver metro area, Little India Denver offers an exceptional dining experience with traditional North Indian recipes crafted by experienced chefs [1]. Our menu features fresh, gluten-free, and vegan-friendly options prepared with minimal oil and no baking soda, ensuring delicious, healthy meals [1].
+              <p className="font-sans text-stone-800 text-[16px] md:text-[18px] sm:text-[19px] lg:text-[21px] font-semibold leading-relaxed tracking-wide">
+                Ranked among the top Indian restaurants in the Denver metro area, Little India Denver offers an exceptional dining experience with traditional North Indian recipes crafted by experienced chefs. Our menu features fresh, gluten-free, and vegan-friendly options prepared with minimal oil and no baking soda, ensuring delicious, healthy meals.
               </p>
             </div>
 

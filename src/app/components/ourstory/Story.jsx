@@ -74,14 +74,14 @@ export default function OurStorySection() {
             <div className="relative w-full">
               <motion.h2 
                 variants={revealVariants}
-                className="font-title font-black text-[45px] sm:text-[55px] lg:text-[62px] text-black leading-[0.95] tracking-tight upp"
+                className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[0.95] tracking-tight upp"
               >
                 Rooted In Tradition
               </motion.h2>
             </div>
 
             {/* Custom Narrative Paragraphs */}
-            <div className="font-sans text-[15px] text-stone-600 font-semibold leading-relaxed flex flex-col gap-5">
+            <div className="font-sans text-[16px] md:text-[18px]  text-stone-600 font-semibold leading-relaxed flex flex-col gap-5">
               <motion.p variants={revealVariants}>
                 Since opening our doors in 2017, Little India has been on a mission to bring the real flavors of India to Denver. Our recipes are passed down through generations, each dish telling a story of tradition, culture, and love.
               </motion.p>

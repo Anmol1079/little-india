@@ -196,19 +196,19 @@ export default function OurMenuSection() {
           </span>
 
           <div className="flex justify-center items-baseline mb-4">
-            <h2 className="font-title font-black text-[60px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] upp">
+            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] upp">
               Special Dishes
             </h2>
           </div>
           
-          <p className="font-sans text-[15px] text-[#fff]/60 tracking-wider leading-relaxed font-semibold max-w-2xl mx-auto">
+          <p className="font-sans text-[16px] md:text-[18px] text-[#fff]/60 tracking-wider leading-relaxed font-semibold max-w-2xl mx-auto">
             Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch.
           </p>
         </div>
       </div>
 
       {/* Menu List */}
-      <div className="relative z-10 w-full flex flex-col px-2 sm:px-4 md:px-8 xl:px-16 pb-20 sm:pb-24 md:pb-48 xl:pb-[24vh]">
+      <div className="relative z-10 w-full flex flex-col px-2 sm:px-4 md:px-8 xl:px-16 pb-16 sm:pb-16 md:pb-16 xl:pb-[24vh]">
         <MenuItem item={MENU_ITEMS[0]} />
 
         <SaltSeparator direction="135deg" rotateClass="rotate-10 xl:-rotate-15" />

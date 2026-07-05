@@ -335,11 +335,11 @@ export default function MenuDish() {
               Explore
             </span>
             
-            <h2 className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 upp leading-[0.95] mb-4 tracking-[0.01rem]">
+            <h2 className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] mb-4 tracking-[0.01rem]">
               Our Menu
             </h2>
 
-            <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed mt-2">
+            <p className="font-sans text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed mt-2">
               Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch.
             </p>
           </div>

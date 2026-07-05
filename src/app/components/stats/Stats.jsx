@@ -21,9 +21,9 @@ const STATS_DATA = [
     labelLine2: "Dishes"
   },
   {
-    number: "98%",
-    labelLine1: "Satisfaction",
-    labelLine2: "Rate"
+    number: "98",
+    labelLine1: "Rated",
+    labelLine2: "Excellent"
   }
 ];
 
@@ -64,14 +64,13 @@ function CountUpMetric({ targetString }) {
     if (!hasAnimated) return;
 
     let startTimestamp = null;
-    // Decreased duration from 1800ms to 800ms for a snappier, faster count-up
-    const duration = 800; 
+    const duration = 800; // Snappy counting speed
 
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
       
-      // Easing function: easeOutQuad (starts fast, slows down at the end)
+      // Easing function: easeOutQuad
       const easeProgress = progress * (2 - progress);
       
       setCount(Math.floor(easeProgress * numericValue));
@@ -113,11 +112,11 @@ const itemVariants = {
 
 export default function StatsSection() {
   return (
-    <section className="w-full bg-white pt-0 pb-16 px-6 md:px-12 select-none overflow-hidden font-sans">
+    <section className="w-full bg-[#FCFAF6] pt-0 pb-16 px-6 md:px-12 select-none overflow-hidden font-sans border-b border-stone-200/50">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header Block: Centered title with horizontal line dividers */}
-        <div className="flex items-center justify-center gap-4 mb-10">
+        <div className="flex items-center justify-center gap-4 mb-10 pt-16">
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
           <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase whitespace-nowrap">
             Flavors Backed by Experience
@@ -125,37 +124,43 @@ export default function StatsSection() {
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
         </div>
 
-        {/* Stats Grid Container bordered on top & bottom */}
+        {/* Stats Grid Container: 2x2 on mobile/tablet, 1x4 on desktop */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 items-center justify-center py-10 border-t border-b border-stone-200/80"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4 lg:gap-0 items-center justify-center py-12 border-t border-b border-stone-200/80"
         >
           {STATS_DATA.map((item, idx) => (
             <motion.div
               key={idx}
               variants={itemVariants}
-              // Shows vertical dividers between items only on larger screens (lg+) where columns align horizontally
               className={`
-                flex items-center justify-center gap-4 px-6
+                flex items-center justify-center w-full
                 ${idx !== STATS_DATA.length - 1 ? 'lg:border-r lg:border-stone-200/80' : ''}
               `}
             >
-              {/* Large Metric Number with Count-Up */}
-              <span className="text-5xl sm:text-6xl md:text-7xl font-black text-[#E94222] tracking-tight leading-none">
-                <CountUpMetric targetString={item.number} />
-              </span>
+              {/* Inner Flex Wrapper: Restrains width and left-aligns items for vertical alignment */}
+              <div className="flex items-center gap-3 sm:gap-4 w-full max-w-[165px] xs:max-w-[185px] sm:max-w-[230px] lg:max-w-none justify-start lg:justify-center">
+                
+                {/* Fixed-Width Number Container: Expanded from w-14 to w-20 (80px) to prevent character overlap */}
+                <div className="w-15 sm:w-24 lg:w-auto shrink-0 text-right">
+                  <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#E94222] tracking-tight leading-none">
+                    <CountUpMetric targetString={item.number} />
+                  </span>
+                </div>
 
-              {/* Stacked Labels */}
-              <div className="flex flex-col text-left">
-                <span className="text-[13px] sm:text-sm font-extrabold tracking-wider text-stone-800 leading-snug uppercase">
-                  {item.labelLine1}
-                </span>
-                <span className="text-[13px] sm:text-sm font-extrabold tracking-wider text-stone-800 leading-snug uppercase">
-                  {item.labelLine2}
-                </span>
+                {/* Stacked Labels */}
+                <div className="flex flex-col text-left shrink-0">
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold tracking-wider text-stone-850 leading-tight uppercase text-black">
+                    {item.labelLine1}
+                  </span>
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold tracking-wider text-stone-850 leading-tight uppercase text-black">
+                    {item.labelLine2}
+                  </span>
+                </div>
+
               </div>
             </motion.div>
           ))}

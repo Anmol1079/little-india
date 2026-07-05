@@ -101,7 +101,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] select-none border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] select-none ">
       
       {/* Scope-contained style block for custom LAB colors */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -140,7 +140,7 @@ export default function FaqSection() {
             {/* Title */}
             <motion.h2 
               variants={revealItemVariants}
-              className="font-heavy text-4xl sm:text-5xl lg:text-6xl text-stone-950 upp leading-[0.95] tracking-[0.01rem] font-black"
+              className="font-heavy text-[40px] sm:text-[60px] lg:text-6xl text-stone-950 upp leading-[0.95] tracking-[0.01rem] font-black"
             >
               Frequently Asked<br />Questions
             </motion.h2>
@@ -148,7 +148,7 @@ export default function FaqSection() {
             {/* Subtext description */}
             <motion.p 
               variants={revealItemVariants}
-              className="font-sans-custom text-[15px] text-stone-500 font-semibold leading-relaxed max-w-2xl mx-auto"
+              className="font-sans-custom text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed max-w-2xl mx-auto"
             >
               Explore answers to the most common questions from our trusted guests, partners, and diners.
             </motion.p>
@@ -189,7 +189,7 @@ export default function FaqSection() {
                   onClick={() => handleToggle(index)}
                   className="w-full flex items-center justify-between text-left focus:outline-none group"
                 >
-                  <span className="font-sans-custom text-sm sm:text-base font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200">
+                  <span className="font-sans-custom text-[16px] md:text-[18px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200">
                     {item.question}
                   </span>
                   
@@ -218,7 +218,7 @@ export default function FaqSection() {
                   transition={{ duration: 0.5, ease: cubicBezierEase }}
                   className="overflow-hidden"
                 >
-                  <div className="font-sans-custom text-[12.5px] sm:text-[15px] text-stone-500 font-semibold leading-relaxed max-w-3xl pr-4 pb-1">
+                  <div className="font-sans-custom text-[14px] md:text-[16px]  text-stone-500 font-semibold leading-relaxed max-w-3xl pr-4 pb-1">
                     {item.answer}
                   </div>
                 </motion.div>

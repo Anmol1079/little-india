@@ -9,7 +9,7 @@ const BANNER_DATA = {
   tag: 'Denver Best Neapolitan Pizza',
   title: 'CRAFTED TO BE DEVOURED',
   bgImage: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&q=80&w=1600',
-  avatarText: 'Experience the warmth of a bubbling wood-fired crust, rich melted mozzarella, and fresh San Marzano tomatoes.\nEvery slice is a masterpiece crafted to captivate your senses.',
+  avatarText: 'Experience the warmth of a bubbling wood-fired crust, rich melted mozzarella, and fresh San Marzano tomatoes. Every slice is a masterpiece crafted to captivate your senses.',
 };
 
 const cardDishes = [
@@ -147,7 +147,7 @@ export default function NewDineno2() {
 
             {/* Narrative / Info Block */}
             <div className="animate-text-item flex items-start gap-4 mb-8 max-w-lg">
-              <p className="text-[18px] text-gray-300 font-light leading-relaxed whitespace-pre-line tracking-wide font-sans">
+              <p className="text-[16px] md:text-[18px] text-gray-300 font-light leading-relaxed whitespace-pre-line tracking-wide font-sans">
                 {BANNER_DATA.avatarText}
               </p>
             </div>

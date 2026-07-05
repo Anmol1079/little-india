@@ -99,7 +99,7 @@ const fadeUpVariants = {
 
 export default function Blog1() {
   return (
-    <section className="w-full bg-[#FAF7F2] py-16 px-6 md:px-12 lg:px-20 select-none overflow-hidden font-sans">
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20 select-none overflow-hidden font-sans">
       <div className="max-w-[1500px] mx-auto flex flex-col gap-10">
         
         {/* UPGRADED HEADER SECTION: Styled exactly like WhyChooseUsSection */}
@@ -108,7 +108,7 @@ export default function Blog1() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.35, margin: "0px 0px -100px 0px" }}
-          className="flex flex-col items-center text-center max-w-4xl mx-auto gap-3 mb-4"
+          className="flex flex-col items-center text-center max-w-7xl mx-auto gap-3 mb-4"
         >
           <motion.span 
             variants={headerItemVariants}
@@ -119,14 +119,14 @@ export default function Blog1() {
 
           <motion.h2 
             variants={headerItemVariants}
-            className="font-heavy text-[45px] sm:text-[55px] lg:text-[62px] text-black leading-[0.95] tracking-tight mb-1 font-black"
+            className="font-heavy text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[0.95] tracking-tight mb-1 font-black"
           >
            Latest Blogs and Insights
           </motion.h2>
 
           <motion.p 
             variants={headerItemVariants}
-            className="font-sans text-[15px] text-stone-600 font-semibold leading-relaxed max-w-3xl mx-auto"
+            className="font-sans-custom text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed max-w-2xl max-w-[1500px]"
           >
             Since opening our doors in 2017, Little India has been on a mission to bring the real flavors of India to Denver. Our recipes are passed down through generations, each dish telling a story of tradition, culture, and love.
           </motion.p>
@@ -166,7 +166,7 @@ export default function Blog1() {
                   {/* <span className="text-[#E65C38] text-[10px] font-bold tracking-widest uppercase">
                     {post.tag}
                   </span> */}
-                  <h3 className="text-[20px] sm:text-[20px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200 leading-snug line-clamp-2">
+                  <h3 className="text-[16px] md:text-[18px]  font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200 leading-snug line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-[16px] sm:text-[16px] text-stone-400 font-medium mt-0.5">

@@ -10,7 +10,7 @@ const LOCATIONS = [
     neighborhood: 'LAKEWOOD',
     opened: 'Open since 1998',
     tagline: 'Savour Taste Of Tradition',
-    description: "Authentic Indian cuisine, thoughtfully crafted with time-honored traditions, heartfelt passion, and the finest handpicked ingredients. Each dish is a celebration of rich heritage, where aromatic spices, vibrant flavors, and meticulous preparation come together to create a truly immersive culinary experience. From the warmth of our hospitality to the depth of every bite, we invite you to indulge in a journey that captures the essence of India—comforting, flavorful, and unforgettable.",
+    description: "Authentic Indian cuisine, thoughtfully crafted with time-honored traditions, heartfelt passion, and the finest handpicked ingredients. Each dish is a celebration of rich heritage, where aromatic spices, vibrant flavors, and meticulous preparation come together to create a truly immersive culinary experience. From the warmth of our hospitality to the depth of every bite, we invite you to indulge in a journey.",
     address: '425 South Teller Street, Lakewood, Colorado',
     phone: '+1 303-937-9777',
     email: 'info@littleindiadenvercolorado.com',
@@ -98,10 +98,10 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
               {isOpenNow ? 'Open Now' : 'Closed'}
             </span>
           </div> */}
-          <h3 className="font-heavy text-2xl sm:text-3xl md:text-4xl text-stone-950 leading-tight tracking-tight font-black">
+          <h3 className="font-heavy text-[28px] sm:text-3xl md:text-4xl text-stone-950 leading-tight tracking-tight font-black">
             {loc.tagline}
           </h3>
-          <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
+          <p className="font-sans text-[16px] md:text-[16px] text-stone-500 font-semibold leading-relaxed">
             {loc.description}
           </p>
         </div>
@@ -159,7 +159,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
         </div> */}
 
         {/* Action Row */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-4 border-t border-gray-200">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-6 pt-4 border-t border-gray-200">
           
           {/* Know More Pill Button */}
           <motion.div 
@@ -169,7 +169,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
           >
             <Link
               href="/menu"
-              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2 transition-colors duration-200 font-sans shadow-md"
+              className="w-full sm:w-fits group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2 transition-colors duration-200 font-sans shadow-md"
             >
               <span>KNOW MORE</span>
               <svg
@@ -260,11 +260,11 @@ export default function LocationsSection() {
           </div>
 
           <div className="flex items-center space-x-2 md:space-x-3 mt-1 justify-center">
-            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
+            <h2 className="font-heavy font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
              Restaurant Location
             </h2>
           </div>
-          <p className="text-[15px]sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
+          <p className="text-[16px] md:text-[18px] text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
             Order online, reserve a table, or surprise someone special with a gift card. 
             Find an Indian restaurant near you or explore Indian food near you.
           </p>

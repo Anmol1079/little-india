@@ -17,6 +17,18 @@ export default function MegaHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open to prevent underlying page scrolling
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const renderIcon = (iconName) => {
     const iconProps = {
       className: "w-5 h-5 text-stone-400 group-hover:text-[#E94222] transition-colors duration-300",
@@ -206,7 +218,7 @@ export default function MegaHeader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
         isScrolled
           ? "bg-stone-950/90 backdrop-blur-xl border-b border-white/5 py-4"
           : "bg-black py-6"
@@ -479,7 +491,7 @@ export default function MegaHeader() {
 
                             {subItem.featured && (
                               <svg className="w-3 h-3 text-[#E94222]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                               </svg>
                             )}
                           </Link>
@@ -492,9 +504,11 @@ export default function MegaHeader() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="flex justify-center">
-        <Link
+          {/* Right Header Section: CTA and Hamburger trigger on mobile */}
+          <div className="flex items-center gap-4">
+            {/* Desktop CTA Button */}
+            <div className="hidden md:flex justify-center">
+              <Link
                 href="/menu"
                 className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
@@ -513,32 +527,87 @@ export default function MegaHeader() {
                   />
                 </svg>
               </Link>
+            </div>
 
-        </div>
+            {/* Premium Hamburger Toggle (xl:hidden) */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.02] text-stone-200 hover:text-white hover:border-[#E94222]/35 hover:bg-[#E94222]/5 transition-all duration-300 cursor-pointer"
+              aria-label="Toggle Menu"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
-      <div className={`fixed inset-0 z-40 xl:hidden transition-all duration-500 ${mobileMenuOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
+      {/* Mobile Menu Drawer with Layer Isolation (z-[10000]) */}
+      <div className={`fixed inset-0 z-[10000] xl:hidden transition-all duration-500 ${mobileMenuOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
+        {/* Backdrop Overlay with blur */}
         <div className="absolute inset-0 bg-stone-950/80 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
-        <div className={`absolute top-0 right-0 h-full w-full max-w-sm bg-stone-950 border-l border-white/10 p-8 pt-24 transition-transform duration-500 ease-out ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
-          <nav className="space-y-1 overflow-y-auto max-h-[70vh]">
+        
+        {/* Drawer Sidebar Container */}
+        <div className={`absolute top-0 right-0 h-full w-full max-w-sm bg-stone-950 border-l border-white/10 p-6 sm:p-8 transition-transform duration-500 ease-out z-50 ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
+          
+          {/* Header Row: Logo & Close Button aligned together */}
+          <div className="flex items-center justify-between mb-5 border-b border-white/5 pb-8">
+            {/* Sidebar Drawer Brand Logo */}
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center">
+              <Image
+                src="/littleindia.svg"
+                alt="Little India Logo"
+                width={120}
+                height={45}
+                className="object-contain"
+              />
+            </Link>
+
+            {/* Close Button Inside Drawer */}
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 text-stone-300 hover:text-white hover:border-[#E94222]/35 transition-all duration-300 cursor-pointer"
+              aria-label="Close Menu"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Scrollable Navigation Container inside Sidebar */}
+          <nav className="space-y-1 overflow-y-auto max-h-[calc(100vh-190px)] pr-2">
             {navigation.map((item) => (
               <div key={item.name} className="py-2">
                 <button
                   onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                  className="w-full flex items-center justify-between text-sm font-bold text-white py-2 upp tracking-widest"
+                  className="w-full flex items-center justify-between text-sm font-bold text-white py-2 upp tracking-widest focus:outline-none"
                 >
                   {item.name}
-                  {(item.items || item.isMega || item.isMegaAbout) && <svg className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>}
+                  {(item.items || item.isMega || item.isMegaAbout) && (
+                    <svg className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
                 </button>
 
-                {/* Mobile Menu for Mega About */}
+                {/* Mobile Menu for About (isMegaAbout) */}
                 {item.isMegaAbout && (
                   <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[600px] mt-2' : 'max-h-0'}`}>
-                    <div className="pl-4 border-l border-[#E94222]/30 space-y-3">
+                    <div className="pl-4 border-l border-[#E94222]/30 space-y-4">
                       {item.items.map((subItem) => (
-                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans upp tracking-wider">
+                        <Link 
+                          key={subItem.name} 
+                          href={subItem.href} 
+                          onClick={() => setMobileMenuOpen(false)} 
+                          className="block text-[14px] font-bold tracking-wider text-stone-300"
+                        >
                           {subItem.name}
                         </Link>
                       ))}
@@ -546,20 +615,58 @@ export default function MegaHeader() {
                   </div>
                 )}
 
-                {/* Mobile Menu for Mega Menu */}
+                {/* Mobile Menu for Menu (isMega) showing detailed columns with icons */}
                 {item.isMega && (
-                  <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[600px] mt-2' : 'max-h-0'}`}>
-                    <div className="pl-4 border-l border-[#E94222]/30 space-y-3">
-                      {item.columns.flatMap(col => col.items).map((subItem) => (
-                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans upp tracking-wider">
-                          {subItem.name}
-                        </Link>
+                  <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[1200px] mt-2' : 'max-h-0'}`}>
+                    <div className="pl-4 border-l border-[#E94222]/30 space-y-5">
+                      
+                      {/* Mapping categories with titles, list items, and icons */}
+                      {item.columns.map((column) => (
+                        <div key={column.title} className="flex flex-col gap-2.5 pt-2">
+                          <span className="text-[10px] font-bold tracking-[0.2em] text-stone-500 uppercase block">
+                            {column.title}
+                          </span>
+                          <div className="flex flex-col gap-2.5">
+                            {column.items.map((subItem) => (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="flex items-center gap-3.5 p-1.5 rounded-xl hover:bg-white/[0.02] transition-colors"
+                              >
+                                <div className="flex-shrink-0 w-8 h-8 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#E94222]">
+                                  {renderIcon(subItem.icon)}
+                                </div>
+                                <span className="text-[14px] font-bold tracking-wider text-stone-300">
+                                  {subItem.name}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
                       ))}
+
+                      {/* Featured Highlight in Mobile Menu */}
                       {item.featured && (
-                        <Link href={item.featured.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-white font-black hover:text-[#E94222] mt-3 upp tracking-wider">
-                          ⭐ {item.featured.title}
-                        </Link>
+                        <div className="pt-2">
+                          <span className="text-[10px] font-bold tracking-[0.2em] text-stone-500 uppercase block mb-2">
+                            Featured Offer
+                          </span>
+                          <Link
+                            href={item.featured.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="relative block w-full rounded-xl overflow-hidden p-4 border border-white/10 bg-stone-900/50"
+                          >
+                            <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                              ⭐ {item.featured.title}
+                            </h4>
+                            <p className="text-[11px] text-stone-400 mt-1 font-sans font-medium leading-relaxed">
+                              {item.featured.desc}
+                            </p>
+                          </Link>
+                        </div>
                       )}
+
                     </div>
                   </div>
                 )}
@@ -569,7 +676,7 @@ export default function MegaHeader() {
                   <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[500px] mt-2' : 'max-h-0'}`}>
                     <div className="pl-4 border-l border-[#E94222]/30 space-y-3">
                       {item.items.map((subItem) => (
-                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans upp tracking-wider">
+                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans uppercase tracking-wider">
                           {subItem.name}
                         </Link>
                       ))}
@@ -579,6 +686,31 @@ export default function MegaHeader() {
               </div>
             ))}
           </nav>
+
+          {/* Book Table Button inside Drawer (Mobile Only) */}
+          <div className="mt-6 border-t border-white/5 pt-5 md:hidden flex justify-center">
+            <Link
+              href="/menu"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full justify-center group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+            >
+              <span>Book a table</span>
+              <svg
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </div>
+
         </div>
       </div>
     </header>

@@ -216,10 +216,10 @@ export default function LunchBuffet1() {
                 <span className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tracking-[0.15em] upp font-sans block mb-2">
                   Lunch Buffet
                 </span>
-                <h3 className="text-3xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-snug">
+                <h3 className="text-3xl md:text-3xl font-extrabold text-neutral-900 tracking-tight leading-snug">
                   Book Your Indulgence
                 </h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-normal pt-1">
+                <p className="text-[16px] md:text-[18px]  text-neutral-500 leading-relaxed font-normal pt-1">
                   Step into a space where refined ambiance, masterfully crafted gourmet dishes, and impeccable hospitality await you.
                 </p>
               </div>
@@ -244,7 +244,7 @@ export default function LunchBuffet1() {
                 </div>
 
                 {/* Right Block: Hours */}
-                <div className="border-l border-neutral-200 pl-5 flex items-start gap-3">
+                <div className="border-l border-neutral-200 pl-[8px] flex items-start gap-3">
                   <span className="text-neutral-800 mt-1 shrink-0">
                     <svg className="w-5 h-5 fill-none stroke-current stroke-[1.5]" viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="10" />
@@ -255,7 +255,7 @@ export default function LunchBuffet1() {
                     <span className="text-sm font-semibold text-neutral-900 leading-none">Open Daily</span>
                     <span className="text-[15px] text-neutral-400 mt-1.5 font-medium flex items-center gap-1">
                       <span className="w-1 h-1 rounded-full bg-neutral-300"></span>
-                      12PM – 4PM
+                      12PM–4PM
                     </span>
                   </div>
                 </div>
@@ -293,7 +293,7 @@ export default function LunchBuffet1() {
                     href="/menu"
                     className="group w-full bg-white hover:bg-[#d14b35] text-[#d14b35] border border-[#d14b35] hover:text-white text-[15px] font-bold tracking-widest py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
                   >
-                    <span>KNOW MORE</span>
+                    <span>EXPLORE</span>
                     <svg
                       className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
                       fill="none"

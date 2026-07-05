@@ -129,11 +129,11 @@ export default function OrderSection() {
           </div>
 
           <div className="flex items-baseline space-x-2 md:space-x-3 mt-1">
-            <h2 className="font-heavy font-black text-[45px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
+            <h2 className="font-heavy font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
               Order Indian Food in Denver
             </h2>
           </div>
-          <p className="text-[15px]sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
+          <p className="text-[16px] md:text-[18px] text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
             Order online, reserve a table, or surprise someone special with a gift card.
             Find an Indian restaurant near you or explore Indian food near you.
           </p>
@@ -175,7 +175,7 @@ export default function OrderSection() {
                 </h3>
 
                 {/* 3. Subtext description */}
-                <p className="font-sans-custom text-[15px] leading-[1.65] text-stone-500 max-w-[90%] mb-12 h-14 flex items-center justify-center font-semibold">
+                <p className="font-sans-custom text-[16px] md:text-[18px] leading-[1.65] text-stone-500 max-w-[90%] mb-12 h-14 flex items-center justify-center font-semibold">
                   {option.description}
                 </p>
 

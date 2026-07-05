@@ -46,8 +46,8 @@ export default function FooterWithCta() {
 
   return (
     <footer className="relative w-full bg-[#070707] text-[#FAF8F5] select-none overflow-hidden font-sans border-t-2 border-[#c5a880]/20">
-      
-      {/* 1. Shared Background Image across both CTA and Footer */}
+
+      {/* Shared Background Image across both CTA and Footer */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
         <img
           src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
@@ -55,11 +55,12 @@ export default function FooterWithCta() {
           className="w-full h-full object-cover opacity-25 filter brightness-[0.35] saturate-[0.65]"
         />
         {/* Continuous gradient wash to ensure strong legibility and clean contrast across the entire footprint */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/90 via-black/15 to-[#070707]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/90 via-black/20 to-[#070707]" />
       </div>
 
       {/* Cursive Signature Font Import */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         .littleindia-cursive {
           font-family: 'Great Vibes', cursive;
@@ -79,8 +80,8 @@ export default function FooterWithCta() {
       {/* ========================================================================= */}
       {/* PART A: CTA SECTION */}
       {/* ========================================================================= */}
-      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pt-20 pb-16">
-        
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pt-16 pb-16">
+
         {/* Subtle, warm copper radial backdrop to light up the glassmorphic card refraction from behind */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(192,138,39,0.12),transparent_55%)] pointer-events-none select-none z-0" />
 
@@ -105,13 +106,13 @@ export default function FooterWithCta() {
           {/* Symmetrical Bold Title */}
           <motion.h2
             variants={childVariants}
-            className="font-title font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase leading-none tracking-tight mb-4"
+            className="font-title font-black text-[36px] sm:text-[60px] md:text-[60px] text-white uppercase leading-none tracking-tight mb-4"
           >
             WE’RE READY
           </motion.h2>
 
           {/* Cursive Handwriting with Ornaments */}
-          <motion.div 
+          <motion.div
             variants={childVariants}
             className="flex items-center justify-center gap-4 my-8 select-none"
           >
@@ -137,7 +138,7 @@ export default function FooterWithCta() {
           </motion.p>
 
           {/* Action Buttons */}
-          <motion.div 
+          <motion.div
             variants={childVariants}
             className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center"
           >
@@ -173,16 +174,17 @@ export default function FooterWithCta() {
       </div>
 
       {/* Symmetrical Connecting Divider Line between CTA and Footer columns */}
-      {/* <div className="border-t border-neutral-900/60 max-w-7xl mx-auto px-6 md:px-12 relative z-10" /> */}
+      <div className="border-t border-neutral-900/60 max-w-7xl mx-auto px-6 md:px-12 relative z-10" />
 
       {/* ========================================================================= */}
       {/* PART B: FOOTER SECTION */}
       {/* ========================================================================= */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 pt-16 pb-12">
-        
-        {/* COLUMN 1: Logo & Branding (Spans 4/12) */}
-        <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left gap-6 md:ml-[20px] ml-0 ">
-          
+      {/* Configured with a 12-column grid so we can manipulate mobile spans perfectly */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-12 gap-y-10 gap-x-6 lg:gap-12 pt-16 pb-4">
+
+        {/* COLUMN 1: Logo & Branding (Full width on mobile/tablet, spans 4/12 on desktop) */}
+        <div className="col-span-12 lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left gap-6 md:ml-[20px] ml-0">
+
           {/* Header Logo Integration */}
           <Link href="/" className="flex items-center group">
             <Image
@@ -211,9 +213,9 @@ export default function FooterWithCta() {
 
         </div>
 
-        {/* COLUMN 2: Explore (Spans 2/12) */}
-        <div className="lg:col-span-2">
-          <h3 className="text-xs font-black tracking-[0.2em] text-[#c5a880] uppercase mb-6 ">
+        {/* COLUMN 2: Explore (Occupies half the width on mobile, spans 2/12 on desktop) */}
+        <div className="col-span-6 lg:col-span-2">
+          <h3 className="text-xs font-black tracking-[0.2em] text-[#c5a880] uppercase mb-6">
             Explore
           </h3>
           <ul className="flex flex-col gap-3.5 text-sm font-semibold text-neutral-400">
@@ -236,7 +238,7 @@ export default function FooterWithCta() {
         </div>
 
         {/* COLUMN 3: Our Menu (Spans 3/12) */}
-        <div className="lg:col-span-2 md:ml-[40px] ml-0">
+        <div className="col-span-6 lg:col-span-2">
           <h3 className="text-xs font-black tracking-[0.2em] text-[#c5a880] uppercase mb-6">
             Our Menu
           </h3>
@@ -258,13 +260,13 @@ export default function FooterWithCta() {
           </ul>
         </div>
 
-        {/* COLUMN 4: Contact Us & Operating Hours (Spans 3/12) */}
-        <div className="lg:col-span-4 md:ml-[60px] ml-0">
+        {/* COLUMN 4: Contact Us & Operating Hours (Full width on mobile, spans 4/12 on desktop) */}
+        <div className="col-span-12 lg:col-span-4 md:ml-[50px] ml-0">
           <h3 className="text-xs font-black tracking-[0.2em] text-[#c5a880] uppercase mb-6">
             Contact Us
           </h3>
           <div className="flex flex-col gap-5 text-sm font-medium text-neutral-400">
-            
+
             {/* Address */}
             <div className="flex items-start gap-3">
               <span className="text-[#E94222] mt-0.5 shrink-0">
@@ -322,20 +324,20 @@ export default function FooterWithCta() {
                   { label: 'ig', path: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z M17.5 6.5h.01M9 22h6a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5H9a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5z' },
                   { label: 'tw', path: 'M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z' },
                   { label: 'yt', path: 'M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z M10 15V8.5l6 3.25L10 15z' }
-            ].map((icon) => (
-              <a
-                key={icon.label}
-                href="#"
-                className="w-8 h-8 rounded-full border border-neutral-800 hover:border-[#E94222] text-neutral-400 hover:text-[#E94222] flex items-center justify-center transition-all duration-300 shadow-md cursor-pointer"
-                aria-label={`Little India on ${icon.label}`}
-              >
-                <svg className="w-4 h-4 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                  <path d={icon.path} />
-                </svg>
-              </a>
-            ))}
-          </div>
-        </div>
+                ].map((icon) => (
+                  <a
+                    key={icon.label}
+                    href="#"
+                    className="w-8 h-8 rounded-full border border-neutral-800 hover:border-[#E94222] text-neutral-400 hover:text-[#E94222] flex items-center justify-center transition-all duration-300 shadow-md cursor-pointer"
+                    aria-label={`Little India on ${icon.label}`}
+                  >
+                    <svg className="w-4 h-4 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                      <path d={icon.path} />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
 
           </div>
         </div>
@@ -343,11 +345,17 @@ export default function FooterWithCta() {
       </div>
 
       {/* FOOTER BOTTOM BAR */}
-      <div className="border-t border-neutral-900/60 mt-8 pt-8 max-w-7xl mx-auto px-6 md:px-12 pb-6 flex flex-col md:flex-row items-center justify-center gap-6 relative z-10">
-        
-        {/* Copyright & Developed by */}
-        <p className="text-xs font-semibold text-neutral-500 uppercase tracking-widest text-center md:text-left leading-relaxed">
-          Copyright © {currentYear} <span className="text-[#c5a880]">One World Cuisine LLC DBA Little India Restaurant and Bar</span>. All Rights Reserved. | Developed by{' '}
+      {/* copyright align-left, developed by align-right */}
+      <div className="border-t border-neutral-900/60 mt-8 pt-8 max-w-7xl mx-auto px-6 md:px-12 pb-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 text-xs font-semibold text-neutral-500 uppercase tracking-widest">
+
+        {/* Copyright (Left side) */}
+        <p className="text-center md:text-left leading-relaxed">
+          Copyright © {currentYear} <span className="text-[#c5a880]">One World Cuisine LLC DBA Little India Restaurant and Bar</span>. All Rights Reserved.
+        </p>
+
+        {/* Developed by (Right side) */}
+        <p className="text-center md:text-right leading-relaxed shrink-0">
+          Developed by{' '}
           <a
             href="https://webtechnepal.com/"
             target="_blank"

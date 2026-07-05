@@ -186,7 +186,7 @@ export default function TestimonialsSection() {
             <div className="overflow-hidden py-1">
               <motion.h2
                 variants={titleVariants}
-                className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-tight"
+                className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-tight"
               >
                 Client Reviews
               </motion.h2>
@@ -199,7 +199,7 @@ export default function TestimonialsSection() {
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 380, damping: 16 }}
-              className="flex justify-center"
+              className="flex justify-center w-full"
             >
               <button
                 onClick={() => setIsModalOpen(true)}
@@ -225,12 +225,12 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* Carousel Items (Dynamic horizontal padding) */}
-        <div className="relative w-full px-12 md:px-6">
+        <div className="relative w-full px-6 md:px-6">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handlePrev}
-            className="absolute left-1.5 md:-left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
+            className="d-flex absolute left-1.5 md:-left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
           </motion.button>
@@ -239,7 +239,7 @@ export default function TestimonialsSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleNext}
-            className="absolute right-1.5 md:-right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
+            className="d-flex absolute right-1.5 md:-right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-evenly border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
           </motion.button>
@@ -272,11 +272,11 @@ export default function TestimonialsSection() {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 380, damping: 16 }}
-            className="flex md:hidden backdrop-blur-md rounded-full p-1 shadow-md w-full sm:w-auto text-center"
+            className="flex justify-center w-full"
           >
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans shadow-md"
+              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
             >
               <span>WRITE A REVIEW</span>
               <svg
@@ -300,7 +300,7 @@ export default function TestimonialsSection() {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 380, damping: 16 }}
-            className="flex justify-center"
+            className="flex justify-center w-full"
           >
             <Link
               href={loc.orderUrl}

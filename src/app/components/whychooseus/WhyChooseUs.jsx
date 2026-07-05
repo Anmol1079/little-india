@@ -59,7 +59,7 @@ const centerImageVariants = {
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="w-full bg-[#fef6df] py-16 px-4 md:px-8 xl:px-16 text-[#0B0C0E] select-none border-b border-stone-200/50">
+    <section className="w-full bg-[#fef6df] py-16 px-4 md:px-8 xl:px-16 text-[#0B0C0E] select-none ">
 
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
 
@@ -69,7 +69,7 @@ export default function WhyChooseUsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.35, margin: "0px 0px -100px 0px" }}
-          className="flex flex-col items-center text-center max-w-4xl mx-auto gap-3"
+          className="flex flex-col items-center text-center max-w-[1500px] mx-auto gap-3"
         >
           <motion.span
             variants={headerItemVariants}
@@ -80,14 +80,14 @@ export default function WhyChooseUsSection() {
 
           <motion.h2
             variants={headerItemVariants}
-            className="font-heavy text-[45px] sm:text-[60px] text-[#000] upp leading-[0.95] tracking-[0.01rem] mb-1 font-black"
+            className="font-heavy text-[40px] sm:text-[60px] text-[#000] upp leading-[0.95] tracking-[0.01rem] mb-1 font-black"
           >
             Why Choose Us?
           </motion.h2>
 
           <motion.p
             variants={headerItemVariants}
-            className="font-sans-custom text-[15px] text-stone-500 font-semibold leading-relaxed max-w-2xl mx-auto"
+            className="text-[16px] md:text-[18px] text-stone-500 font-semibold font-sans-custom mt-2 leading-relaxed max-w-[1500px]"
           >
             Little India Restaurant and Bar is proud to be one of the best Indian restaurants in Denver and Lakewood, Colorado, serving authentic Indian cuisine for over 20 years.
           </motion.p>
@@ -122,7 +122,7 @@ export default function WhyChooseUsSection() {
               <h3 className="font-heavy text-2xl text-stone-900 upp tracking-wide leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
                 Fresh Food
               </h3>
-              <p className="font-sans-custom text-[15px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="font-sans-custom text-[16px] md:text-[18px]  text-stone-600 font-semibold leading-relaxed pr-6">
                 We use fresh, high-quality ingredients to craft authentic Indian flavors, ensuring every dish is rich and aromatic.
               </p>
 

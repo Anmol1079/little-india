@@ -119,7 +119,7 @@ export default function HappyHourSection() {
   const [activeFood, setActiveFood] = useState(0);   // Default to Samosas
 
   return (
-    <section className="w-full bg-[#fbf9f6] py-20 px-6 md:px-12 lg:px-20 text-stone-900 select-none overflow-hidden border-b border-stone-200">
+    <section className="w-full bg-[#fbf9f6] py-16 px-6 md:px-12 lg:px-16 text-stone-900 select-none overflow-hidden border-b border-stone-200">
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
         
         {/* TOP SECTION: Header Info */}
@@ -141,7 +141,7 @@ export default function HappyHourSection() {
           {/* Clean bold header using layout's Inter */}
           <motion.h2 
             variants={headerItemVariants}
-            className="font-title font-black text-[60px] sm:text-[60px] lg:text-[60px] leading-none text-stone-950 tracking-tight mb-4"
+            className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] leading-none text-stone-950 tracking-tight mb-4"
           >
             Happy Hour
           </motion.h2>
@@ -149,7 +149,7 @@ export default function HappyHourSection() {
           {/* Subtitle using layout's Plus Jakarta Sans */}
           <motion.p 
             variants={headerItemVariants}
-            className="font-sans font-semibold text-[15px] leading-relaxed text-stone-500 max-w-[1500px]"
+            className="font-sans font-semibold text-[16px] md:text-[18px] leading-relaxed text-stone-500 max-w-[1500px]"
           >
             Good drinks. Great bites. Even better company. Unwind in a warm and inviting atmosphere where every sip and every flavor is crafted to elevate your evening experience.
           </motion.p>
