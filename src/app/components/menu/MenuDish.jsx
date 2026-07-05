@@ -331,7 +331,7 @@ export default function MenuDish() {
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         >
           <div className="flex flex-col max-w-[600px] sm:max-w-[100px] md:max-w-[1500px]">
-            <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-3">
+            <span className="text-[#B83A18] font-bold text-[15px] tracking-widest upp font-sans block mb-3">
               Explore
             </span>
             
@@ -366,7 +366,7 @@ export default function MenuDish() {
                   }}
                   className={`px-5 py-3 rounded-full text-[15px] font-bold tracking-wider upp whitespace-nowrap transition-all duration-300 font-sans border pointer-events-auto ${
                     isActive
-                      ? 'bg-[#E94222] text-white border-transparent shadow-lg shadow-[#E94222]/15 scale-102'
+                      ? 'bg-[#C13419] text-white border-transparent shadow-lg shadow-[#C13419]/15 scale-102'
                       : 'bg-white hover:bg-stone-50 text-stone-600 border-stone-200/60 hover:text-stone-900'
                   }`}
                 >
@@ -406,7 +406,7 @@ export default function MenuDish() {
           <div className="flex justify-center mt-14 select-none pointer-events-auto">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 font-sans shadow-lg shadow-[#E94222]/15"
+              className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 font-sans shadow-lg shadow-[#C13419]/15"
             >
               <span>{isExpanded ? 'SHOW LESS DISHES' : 'VIEW FULL MENU'}</span>
               <svg
@@ -459,7 +459,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
         <h3 className="font-title font-black text-2xl text-stone-950 upp tracking-wide leading-none mb-1.5 transition-colors duration-300 group-hover:text-[#E65C38]">
           {item.title}
         </h3>
-        <p className="font-sans text-sm font-bold text-[#E65C38] leading-none">
+        <p className="font-sans text-sm font-bold text-[#B83A18] leading-none">
           {item.price}
         </p>
         <div className="flex items-center gap-2 mt-1 select-none">
@@ -514,7 +514,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
             <div className="flex justify-center">
             <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>BOOK A TABLE</span>
                 <svg

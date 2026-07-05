@@ -178,7 +178,7 @@ export default function TestimonialsSection() {
             <div className="overflow-hidden">
               <motion.span
                 variants={taglineVariants}
-                className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-3"
+                className="text-[#B83A18] font-bold text-[15px] tracking-widest upp font-sans block mb-3"
               >
                 Our Testimonials
               </motion.span>
@@ -230,6 +230,7 @@ export default function TestimonialsSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handlePrev}
+            aria-label="Previous review"
             className="d-flex absolute left-1.5 md:-left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
@@ -239,6 +240,7 @@ export default function TestimonialsSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleNext}
+            aria-label="Next review"
             className="d-flex absolute right-1.5 md:-right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-evenly border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
@@ -342,7 +344,7 @@ export default function TestimonialsSection() {
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative"
             >
-              <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 text-stone-400 hover:text-stone-900 transition-colors">
+              <button onClick={() => setIsModalOpen(false)} aria-label="Close review modal" className="absolute top-4 right-4 text-stone-400 hover:text-stone-900 transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
 
@@ -373,6 +375,7 @@ export default function TestimonialsSection() {
                 <div className="inline-flex self-center backdrop-blur-md rounded-full p-1 shadow-2xl mt-4">
                   <button
                     type="submit"
+                    aria-label="Submit your review"
                     className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-10 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
                   >
                     <span>SUBMIT REVIEW</span>
@@ -403,7 +406,7 @@ export default function TestimonialsSection() {
               transition={{ type: 'spring', stiffness: 280, damping: 26 }}
               className="relative w-full max-w-3xl aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl"
             >
-              <button onClick={() => setPlayingVideo(null)} className="absolute top-4 right-4 z-50 bg-black/60 text-white rounded-full p-2.5 hover:bg-[#E65C38] transition-colors">
+              <button onClick={() => setPlayingVideo(null)} aria-label="Close video" className="absolute top-4 right-4 z-50 bg-black/60 text-white rounded-full p-2.5 hover:bg-[#E65C38] transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
               <video src={playingVideo} controls autoPlay className="w-full h-full object-contain" />
@@ -476,6 +479,7 @@ function VideoReviewCard({ item, onPlay }) {
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => onPlay(item.videoUrl)}
+          aria-label={`Play video review by ${item.name}`}
           className="w-12 h-12 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-2xl transition-all duration-300"
         >
           <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>

@@ -156,7 +156,7 @@ export default function NewDineno2() {
             <div className="animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto">
               <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>EXPLORE MENU</span>
                 <svg
@@ -182,12 +182,12 @@ export default function NewDineno2() {
               
               <div className="flex justify-between items-start px-1 select-none">
                 <div className="overflow-hidden max-w-[85%]">
-                  <h3 
+                  <h2 
                     key={`dish-title-${currentDish}`}
                     className="text-[11px] font-extrabold upp tracking-wider text-stone-900 leading-tight font-sans animate-fadeIn"
                   >
                     {cardDishes[currentDish].title}
-                  </h3>
+                  </h2>
                 </div>
                 <span className="shrink-0">
                   <svg className="w-5 h-5 text-[#E94222]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
@@ -219,17 +219,21 @@ export default function NewDineno2() {
                 </motion.div>
               </div>
 
-              {/* Dish Card Progress Dots */}
-              <div className="flex justify-center gap-1.5 mt-1 select-none">
+              {/* Dish Card Progress Dots - touch target ≥24×24px via button padding, visual dot via inner span */}
+              <div className="flex justify-center gap-0.5 mt-1 select-none">
                 {cardDishes.map((_, idx) => (
-                  <button 
+                  <button
                     key={idx}
                     onClick={() => setCurrentDish(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
-                      idx === currentDish ? 'w-4 bg-[#E94222]' : 'w-1.5 bg-stone-200 hover:bg-stone-300'
-                    }`}
+                    className="min-h-[24px] min-w-[24px] flex items-center justify-center focus:outline-none"
                     aria-label={`Go to dish slide ${idx + 1}`}
-                  />
+                  >
+                    <span
+                      className={`h-1.5 rounded-full transition-all duration-300 block ${
+                        idx === currentDish ? 'w-4 bg-[#C13419]' : 'w-1.5 bg-stone-200 hover:bg-stone-300'
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
 

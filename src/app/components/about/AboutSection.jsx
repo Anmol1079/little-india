@@ -145,7 +145,7 @@ export default function AboutSection() {
           <div className="flex flex-col items-center text-center max-w-[1400px] mx-auto">
             
             {/* Tagline */}
-            <span className="text-[#E65C38] font-bold text-[15px] sm:text-[15px] tracking-[0.2em] uppercase font-sans block mb-5">
+            <span className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tracking-[0.2em] uppercase font-sans block mb-5">
               Who We Are
             </span>
 

@@ -207,7 +207,7 @@ export default function MegaHeader() {
         title: "Lunch Buffet",
         href: "/lunch-buffet",
         desc: "Experience our daily mid-day grand feast featuring rotated traditional specials.",
-        image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1000&auto=format&fit=crop", 
+        image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1000&auto=format&fit=crop",
       },
     },
     { name: "Order Online", href: "/order" },
@@ -218,15 +218,14 @@ export default function MegaHeader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${isScrolled
           ? "bg-stone-950/90 backdrop-blur-xl border-b border-white/5 py-4"
           : "bg-black py-6"
-      }`}
+        }`}
     >
       <div className="max-w-[1550px] mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
-          
+
           {/* Logo Section */}
           <Link href="/" className="flex items-center group">
             <Image
@@ -263,15 +262,14 @@ export default function MegaHeader() {
                 {/* 1. MEGAMENU DESIGN - ABOUT */}
                 {item.isMegaAbout && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 w-[920px] pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                      activeDropdown === item.name 
-                        ? "opacity-100 translate-y-0 visible pointer-events-auto" 
+                    className={`absolute top-full left-1/2 -translate-x-1/2 w-[920px] pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${activeDropdown === item.name
+                        ? "opacity-100 translate-y-0 visible pointer-events-auto"
                         : "opacity-0 -translate-y-4 invisible pointer-events-none"
-                    }`}
+                      }`}
                   >
                     <div className="bg-stone-950/98 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] p-8">
                       <div className="grid grid-cols-12 gap-8 items-stretch">
-                        
+
                         {/* Left Column: Link List with vertical divider */}
                         <div className="col-span-4 pr-6 border-r border-white/5 flex flex-col justify-center gap-2">
                           {item.items.map((subItem) => (
@@ -287,8 +285,8 @@ export default function MegaHeader() {
 
                         {/* Middle Column: Restaurant Highlights */}
                         <div className="col-span-4 flex flex-col h-full">
-                          <Link 
-                            href={item.card1.href} 
+                          <Link
+                            href={item.card1.href}
                             className="relative flex-1 min-h-[320px] w-full rounded-2xl overflow-hidden flex flex-col justify-end p-6 border border-white/10 group/card bg-stone-900 isolate"
                           >
                             {item.card1.image && (
@@ -324,8 +322,8 @@ export default function MegaHeader() {
 
                         {/* Right Column: Gift Card */}
                         <div className="col-span-4 flex flex-col h-full">
-                          <Link 
-                            href={item.card2.href} 
+                          <Link
+                            href={item.card2.href}
                             className="relative flex-1 min-h-[320px] w-full rounded-2xl overflow-hidden flex flex-col justify-end p-6 border border-white/10 group/card bg-stone-900 isolate"
                           >
                             {item.card2.image && (
@@ -341,7 +339,7 @@ export default function MegaHeader() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent -z-10" />
                               </>
                             )}
-                            
+
                             <div className="relative z-20 flex flex-col">
                               <span className="text-[11px] tracking-[0.2em] font-black upp text-[#E94222] mb-2 block">
                                 Perfect Present
@@ -367,15 +365,14 @@ export default function MegaHeader() {
                 {/* 2. MEGAMENU DESIGN - MENU */}
                 {item.isMega && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 w-[920px] pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                      activeDropdown === item.name 
-                        ? "opacity-100 translate-y-0 visible pointer-events-auto" 
+                    className={`absolute top-full left-1/2 -translate-x-1/2 w-[920px] pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${activeDropdown === item.name
+                        ? "opacity-100 translate-y-0 visible pointer-events-auto"
                         : "opacity-0 -translate-y-4 invisible pointer-events-none"
-                    }`}
+                      }`}
                   >
                     <div className="bg-stone-950/98 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] p-6">
                       <div className="grid grid-cols-12 gap-8">
-                        
+
                         {/* Column 1 & 2 Map */}
                         {item.columns.map((column, colIdx) => (
                           <div key={column.title} className={colIdx === 0 ? "col-span-4 flex flex-col gap-4" : "col-span-4 flex flex-col gap-4"}>
@@ -411,8 +408,8 @@ export default function MegaHeader() {
 
                         {/* Column 3: Featured Highlight Box */}
                         <div className="col-span-4 flex flex-col h-full">
-                          <Link 
-                            href={item.featured.href} 
+                          <Link
+                            href={item.featured.href}
                             className="relative flex-1 min-h-[340px] w-full rounded-2xl overflow-hidden flex flex-col justify-end p-6 border border-white/10 group/card bg-stone-900 isolate"
                           >
                             {/* Background Image Renderer */}
@@ -436,7 +433,7 @@ export default function MegaHeader() {
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,66,34,0.15),transparent_60%)] z-0" />
                               </>
                             )}
-                            
+
                             {/* Text content */}
                             <div className="relative z-20 flex flex-col">
                               <span className="text-[11px] tracking-[0.2em] font-black upp text-[#E94222] mb-2 block">
@@ -463,11 +460,10 @@ export default function MegaHeader() {
                 {/* 3. REGULAR DROPDOWN DESIGN (For non-mega menus, e.g. custom sub links) */}
                 {item.items && !item.isMega && !item.isMegaAbout && (
                   <div
-                    className={`absolute top-full left-0 w-72 pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                      activeDropdown === item.name 
-                        ? "opacity-100 translate-y-0 visible pointer-events-auto" 
+                    className={`absolute top-full left-0 w-72 pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${activeDropdown === item.name
+                        ? "opacity-100 translate-y-0 visible pointer-events-auto"
                         : "opacity-0 -translate-y-4 invisible pointer-events-none"
-                    }`}
+                      }`}
                   >
                     <div className="bg-stone-950/95 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-2">
                       <div className="flex flex-col">
@@ -475,16 +471,15 @@ export default function MegaHeader() {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className={`group relative px-4 py-3 text-[10px] upp tracking-[0.18em] transition-all rounded-xl flex items-center justify-between ${
-                              subItem.featured 
-                                ? "mt-2 bg-white/5 border border-white/10 text-white font-black" 
+                            className={`group relative px-4 py-3 text-[10px] upp tracking-[0.18em] transition-all rounded-xl flex items-center justify-between ${subItem.featured
+                                ? "mt-2 bg-white/5 border border-white/10 text-white font-black"
                                 : "text-stone-400 hover:text-white hover:bg-white/5"
-                            }`}
+                              }`}
                           >
                             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
                               {subItem.name}
                             </span>
-                            
+
                             {!subItem.featured && (
                               <div className="w-1 h-0 bg-[#E94222] absolute left-0 rounded-full transition-all duration-300 group-hover:h-4" />
                             )}
@@ -510,7 +505,7 @@ export default function MegaHeader() {
             <div className="hidden md:flex justify-center">
               <Link
                 href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-6 py-3 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>BOOK A TABLE</span>
                 <svg
@@ -552,10 +547,10 @@ export default function MegaHeader() {
       <div className={`fixed inset-0 z-[10000] xl:hidden transition-all duration-500 ${mobileMenuOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
         {/* Backdrop Overlay with blur */}
         <div className="absolute inset-0 bg-stone-950/80 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
-        
+
         {/* Drawer Sidebar Container */}
         <div className={`absolute top-0 right-0 h-full w-full max-w-sm bg-stone-950 border-l border-white/10 p-6 sm:p-8 transition-transform duration-500 ease-out z-50 ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
-          
+
           {/* Header Row: Logo & Close Button aligned together */}
           <div className="flex items-center justify-between mb-5 border-b border-white/5 pb-8">
             {/* Sidebar Drawer Brand Logo */}
@@ -602,10 +597,10 @@ export default function MegaHeader() {
                   <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[600px] mt-2' : 'max-h-0'}`}>
                     <div className="pl-4 border-l border-[#E94222]/30 space-y-4">
                       {item.items.map((subItem) => (
-                        <Link 
-                          key={subItem.name} 
-                          href={subItem.href} 
-                          onClick={() => setMobileMenuOpen(false)} 
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          onClick={() => setMobileMenuOpen(false)}
                           className="block text-[14px] font-bold tracking-wider text-stone-300"
                         >
                           {subItem.name}
@@ -619,7 +614,7 @@ export default function MegaHeader() {
                 {item.isMega && (
                   <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[1200px] mt-2' : 'max-h-0'}`}>
                     <div className="pl-4 border-l border-[#E94222]/30 space-y-5">
-                      
+
                       {/* Mapping categories with titles, list items, and icons */}
                       {item.columns.map((column) => (
                         <div key={column.title} className="flex flex-col gap-2.5 pt-2">

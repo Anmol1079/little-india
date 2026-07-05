@@ -123,7 +123,7 @@ export default function OrderSection() {
           className="flex flex-col max-w-[1500px] sm:max-w-[1500px] md:max-w-[1500px] self-start mb-16"
         >
           <div className="flex flex-col items-start mb-4">
-            <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans-custom block">
+            <span className="text-[#B83A18] font-bold text-[15px] tracking-widest upp font-sans-custom block">
               Crafted for you
             </span>
           </div>
@@ -183,7 +183,7 @@ export default function OrderSection() {
                 <div className="flex justify-center">
                   <Link
                     href="/menu"
-                    className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                    className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
                   >
                     <span>KNOW MORE</span>
                     <svg
