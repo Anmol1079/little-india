@@ -93,7 +93,7 @@ export default function TestimonialsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [direction, setDirection] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   const [reviewType, setReviewType] = useState('text');
   const [newAuthor, setNewAuthor] = useState('');
   const [newRole, setNewRole] = useState('');
@@ -155,18 +155,18 @@ export default function TestimonialsSection() {
   const visibleCards = isMobile
     ? [reviews[currentIndex % reviews.length]]
     : [
-        reviews[(currentIndex) % reviews.length],
-        reviews[(currentIndex + 1) % reviews.length],
-        reviews[(currentIndex + 2) % reviews.length],
-      ];
+      reviews[(currentIndex) % reviews.length],
+      reviews[(currentIndex + 1) % reviews.length],
+      reviews[(currentIndex + 2) % reviews.length],
+    ];
 
   return (
     <section className="w-full bg-[#fff6ea] py-16 px-4 md:px-8 lg:px-16 text-[#0B0C0E] select-none border-b border-stone-200/50 overflow-hidden">
 
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
-        
+
         {/* Animated Staggered Header Block */}
-        <motion.div 
+        <motion.div
           variants={headerContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -176,7 +176,7 @@ export default function TestimonialsSection() {
           {/* Title Area */}
           <div className="flex flex-col text-left">
             <div className="overflow-hidden">
-              <motion.span 
+              <motion.span
                 variants={taglineVariants}
                 className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-3"
               >
@@ -184,7 +184,7 @@ export default function TestimonialsSection() {
               </motion.span>
             </div>
             <div className="overflow-hidden py-1">
-              <motion.h2 
+              <motion.h2
                 variants={titleVariants}
                 className="font-title font-black text-[50px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-tight"
               >
@@ -195,14 +195,14 @@ export default function TestimonialsSection() {
 
           {/* Desktop Right Header Button Area (Write a Review Restored Here - with exact matches applied) */}
           <div className="hidden md:flex items-center shrink-0 pointer-events-auto">
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 380, damping: 16 }}
               className="flex justify-center"
             >
-              <button 
-                onClick={() => setIsModalOpen(true)} 
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>WRITE A REVIEW</span>
@@ -226,19 +226,19 @@ export default function TestimonialsSection() {
 
         {/* Carousel Items (Dynamic horizontal padding) */}
         <div className="relative w-full px-12 md:px-6">
-          <motion.button 
+          <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={handlePrev} 
+            onClick={handlePrev}
             className="absolute left-1.5 md:-left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
           </motion.button>
-          
-          <motion.button 
+
+          <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={handleNext} 
+            onClick={handleNext}
             className="absolute right-1.5 md:-right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center border border-stone-200/50 hover:bg-[#E65C38] hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
@@ -268,14 +268,14 @@ export default function TestimonialsSection() {
         {/* Centered CTA Block */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full mt-6 select-none pointer-events-auto">
           {/* Mobile-only WRITE A REVIEW button, since header buttons are hidden on desktop */}
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 380, damping: 16 }}
             className="flex md:hidden backdrop-blur-md rounded-full p-1 shadow-md w-full sm:w-auto text-center"
           >
-            <button 
-              onClick={() => setIsModalOpen(true)} 
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans shadow-md"
             >
               <span>WRITE A REVIEW</span>
@@ -296,7 +296,7 @@ export default function TestimonialsSection() {
           </motion.div>
 
           {/* READ ALL REVIEWS (Sits cleanly below the carousel on both mobile and desktop) */}
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 380, damping: 16 }}
@@ -329,13 +329,13 @@ export default function TestimonialsSection() {
       {/* --- REVIEW MODAL --- */}
       <AnimatePresence>
         {isModalOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/55 backdrop-blur-sm px-4"
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.92, y: 30 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.92, y: 30 }}
@@ -345,9 +345,9 @@ export default function TestimonialsSection() {
               <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 text-stone-400 hover:text-stone-900 transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
-              
+
               <h3 className="font-title font-black text-2xl upp mb-4 tracking-wide text-stone-950">Share Your Experience</h3>
-              
+
               <div className="flex gap-2 p-1 bg-stone-100 rounded-xl mb-5 text-[10px] font-bold font-sans">
                 <button type="button" onClick={() => setReviewType('text')} className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'text' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}>TEXT REVIEW</button>
                 <button type="button" onClick={() => setReviewType('video')} className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'video' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}>VIDEO REVIEW</button>
@@ -356,9 +356,9 @@ export default function TestimonialsSection() {
               <form onSubmit={handleSubmitReview} className="flex flex-col gap-4 font-sans text-[11px] font-bold upp text-stone-800">
                 <input type="text" value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} placeholder="Your Name" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" required />
                 <input type="text" value={newRole} onChange={(e) => setNewRole(e.target.value)} placeholder="Subtitle (e.g. Food Lover)" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" />
-                
+
                 <select value={newRating} onChange={(e) => setNewRating(Number(e.target.value))} className="border border-stone-200 rounded-xl px-4 py-3 outline-none bg-white">
-                  {[5,4,3,2,1].map(n => <option key={n} value={n}>{n} Stars</option>)}
+                  {[5, 4, 3, 2, 1].map(n => <option key={n} value={n}>{n} Stars</option>)}
                 </select>
 
                 {reviewType === 'text' ? (
@@ -371,7 +371,7 @@ export default function TestimonialsSection() {
                 )}
 
                 <div className="inline-flex self-center backdrop-blur-md rounded-full p-1 shadow-2xl mt-4">
-                  <button 
+                  <button
                     type="submit"
                     className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-10 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
                   >
@@ -390,13 +390,13 @@ export default function TestimonialsSection() {
       {/* Video Modal Player with Spring popups */}
       <AnimatePresence>
         {playingVideo && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md"
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.9, y: 30 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 30 }}
@@ -422,7 +422,7 @@ function ReviewCard({ item, onPlay }) {
 
 function TextReviewCard({ item }) {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ y: -8, boxShadow: '0 25px 50px rgba(0,0,0,0.06)' }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className="bg-white rounded-[2.5rem] p-8 sm:p-10 shadow-[0_15px_50px_rgba(0,0,0,0.012)] border border-stone-200/40 flex flex-col justify-between min-h-[400px] relative w-full h-full"
@@ -431,8 +431,8 @@ function TextReviewCard({ item }) {
         <div className="flex items-center gap-3.5">
           <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-stone-100" />
           <div className="flex flex-col gap-0.5 text-left font-sans">
-            <h4 className="text-[15px] font-extrabold text-[#0B0C0E] leading-tight">{item.name}</h4>
-            <span className="text-[11px] font-bold text-stone-400 leading-none upp">{item.role}</span>
+            <div className="text-[15px] font-extrabold text-[#0B0C0E] leading-tight">{item.name}</div>
+            <span className="text-[13px] font-bold text-stone-400 leading-none upp">{item.role}</span>
           </div>
         </div>
         <GoogleIcon />
@@ -450,7 +450,7 @@ function TextReviewCard({ item }) {
 
 function VideoReviewCard({ item, onPlay }) {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ y: -8, boxShadow: '0 25px 50px rgba(0,0,0,0.12)' }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className="relative rounded-[2.5rem] overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.015)] border border-stone-200/40 min-h-[400px] group flex flex-col justify-between p-8 sm:p-10 text-white w-full h-full"
@@ -463,8 +463,8 @@ function VideoReviewCard({ item, onPlay }) {
         <div className="flex items-center gap-3.5">
           <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-white/20" />
           <div className="flex flex-col gap-0.5 text-left font-sans">
-            <h4 className="text-[15px] font-extrabold text-white leading-tight">{item.name}</h4>
-            <span className="text-[11px] font-bold text-stone-300/80 leading-none upp">{item.role}</span>
+            <div className="text-[15px] font-extrabold text-white leading-tight">{item.name}</div>
+            <span className="text-[13px] font-bold text-stone-300/80 leading-none upp">{item.role}</span>
           </div>
         </div>
         <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/10 shrink-0">
@@ -472,10 +472,10 @@ function VideoReviewCard({ item, onPlay }) {
         </div>
       </div>
       <div className="relative z-20 flex items-center justify-center my-4">
-        <motion.button 
+        <motion.button
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => onPlay(item.videoUrl)} 
+          onClick={() => onPlay(item.videoUrl)}
           className="w-12 h-12 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-2xl transition-all duration-300"
         >
           <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>

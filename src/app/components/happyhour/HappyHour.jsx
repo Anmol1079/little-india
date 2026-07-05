@@ -120,12 +120,6 @@ export default function HappyHourSection() {
 
   return (
     <section className="w-full bg-[#fbf9f6] py-20 px-6 md:px-12 lg:px-20 text-stone-900 select-none overflow-hidden border-b border-stone-200">
-      
-      <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-      />
-
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
         
         {/* TOP SECTION: Header Info */}

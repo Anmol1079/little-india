@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function LunchBuffet1() {
+  const sectionRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -49,6 +51,22 @@ export default function LunchBuffet1() {
     '4 Guests',
     '5+ Guests (Group)'
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   // Form Submission
   const handleSubmit = (e) => {
@@ -157,17 +175,21 @@ export default function LunchBuffet1() {
   };
 
   return (
-    <section className="relative w-full min-h-[650px] md:h-screen overflow-hidden bg-neutral-900 font-sans">
+    <section ref={sectionRef} className="relative w-full min-h-[650px] md:h-screen overflow-hidden bg-neutral-900 font-sans">
       {/* Background Video Container */}
-      <div className="absolute inset-0 w-full h-full">
-        <video
-          src="https://res.cloudinary.com/dezd0troy/video/upload/v1783052191/15509906_1920_1080_60fps_kafshy.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover select-none pointer-events-none"
-        />
+      <div className="absolute inset-0 w-full h-full bg-[#171717]">
+        {isInView ? (
+          <video
+            src="https://res.cloudinary.com/dezd0troy/video/upload/v1783052191/15509906_1920_1080_60fps_kafshy.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover select-none pointer-events-none"
+          />
+        ) : (
+          <div className="w-full h-full bg-[#171717]" />
+        )}
         {/* Dark Overlay for better text legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20" />
       </div>
@@ -177,7 +199,7 @@ export default function LunchBuffet1() {
 
         {/* Left Side: Headline Text */}
         <div className="max-w-xl self-end md:mb-4">
-          <h2 className="text-white text-4xl md:text-[60px] lg:text-[60px] font-heavy  leading-tight tracking-tight drop-shadow-md">
+          <h2 className="text-white text-4xl md:text-[60px] lg:text-[60px] font-heavy font-extrabold leading-tight tracking-tight drop-shadow-md">
             Savor the Finest Flavors With Us
           </h2>
         </div>
@@ -194,9 +216,9 @@ export default function LunchBuffet1() {
                 <span className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tracking-[0.15em] upp font-sans block mb-2">
                   Lunch Buffet
                 </span>
-                <h2 className="text-3xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-snug">
+                <h3 className="text-3xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-snug">
                   Book Your Indulgence
-                </h2>
+                </h3>
                 <p className="text-sm text-neutral-500 leading-relaxed font-normal pt-1">
                   Step into a space where refined ambiance, masterfully crafted gourmet dishes, and impeccable hospitality await you.
                 </p>

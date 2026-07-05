@@ -7,8 +7,8 @@ import { motion } from 'framer-motion';
 const orderOptions = [
   {
     id: '01/04',
-    title: 'ORDER ONLINE',
-    description: 'Fresh & delicious authentic Indian dishes, delivered right to your door.',
+    title: 'Order Online',
+    description: 'Authentic Indian dishes, fresh and delivered to your door.',
     actionText: 'CHOOSE LOCATION',
     href: '#order-online',
     // Staircase offset
@@ -27,8 +27,8 @@ const orderOptions = [
   },
   {
     id: '02/04',
-    title: 'RESERVE A TABLE',
-    description: 'Book your spot in advance for a highly memorable fine dining experience.',
+    title: 'Reserve a Table',
+    description: 'Book your spot for a memorable dining experience.',
     actionText: 'GET STARTED',
     href: '#reserve-table',
     yTranslation: 'md:translate-y-0 lg:translate-y-0',
@@ -46,8 +46,8 @@ const orderOptions = [
   },
   {
     id: '03/04',
-    title: 'GIFT CARDS',
-    description: 'The absolute perfect treat for friends, family, and gourmet food lovers.',
+    title: 'Gift Cards',
+    description: 'The perfect treat for friends, family, and food lovers.',
     actionText: 'GET STARTED',
     href: '#gift-cards',
     yTranslation: 'md:translate-y-0 lg:translate-y-0',
@@ -64,8 +64,8 @@ const orderOptions = [
   },
   {
     id: '04/04',
-    title: 'LUNCH BUFFET',
-    description: 'Let our team bring the grand, aromatic Indian feast to your next event.',
+    title: 'Lunch Buffet',
+    description: 'Let us bring a grand Indian feast to your next event.',
     actionText: 'GET STARTED',
     href: '#catering',
     yTranslation: 'md:translate-y-0 lg:translate-y-0',
@@ -109,13 +109,13 @@ export default function OrderSection() {
   return (
     // Modified pb-[200px] to pb-16 (mobile), md:pb-28 (tablet), and lg:pb-[200px] (desktop)
     <section className="w-full bg-[#fff6ea] pt-16 pb-16 md:pb-16 lg:pb-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden select-none">
-      
+
 
 
       <div className="max-w-[1500px] mx-auto flex flex-col items-center">
-        
+
         {/* Header Block with Scroll Reveal */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -134,13 +134,13 @@ export default function OrderSection() {
             </h2>
           </div>
           <p className="text-[15px]sm:text-sm text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
-            Order online, reserve a table, or surprise someone special with a gift card. 
+            Order online, reserve a table, or surprise someone special with a gift card.
             Find an Indian restaurant near you or explore Indian food near you.
           </p>
         </motion.div>
 
         {/* 2. Optimized Cascading Card Grid */}
-        <motion.div 
+        <motion.div
           variants={revealContainerVariants}
           initial="hidden"
           whileInView="visible"
@@ -155,25 +155,25 @@ export default function OrderSection() {
             >
               {/* Card Container: Interactive Spring-Driven Hover */}
               <motion.div
-                whileHover={{ 
-                  y: -12, 
+                whileHover={{
+                  y: -12,
                   rotate: option.rotateHover,
                   boxShadow: '0 35px 60px -15px rgba(230,92,56,0.1)'
                 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 className="relative bg-white rounded-[2.5rem] px-8 py-14 shadow-[0_20px_50px_rgba(0,0,0,0.045)] border border-stone-200 flex flex-col items-center text-center transition-colors duration-300 hover:border-[#E65C38]/20 cursor-pointer group"
               >
-                
+
                 {/* 1. Icon Container with scale springs on card hover */}
                 <div className="w-24 h-24 rounded-[1.75rem] bg-[#FFF6F0] border border-[#E65C38]/10 flex items-center justify-center mb-8 shadow-[inset_0_2px_4px_rgba(230,92,56,0.03)] transition-all duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-1">
                   {option.icon}
                 </div>
 
                 {/* 2. Card Title */}
-                <h3 className="font-heavy text-[28px] text-stone-900 upp tracking-tight mb-4 leading-none font-bold transition-colors duration-300 group-hover:text-[#E65C38]">
+                <h3 className="font-heavy text-[28px] text-stone-900 upp tracking-tight mb-4 leading-none font-extrabold transition-colors duration-300 group-hover:text-[#E65C38]">
                   {option.title}
                 </h3>
-                
+
                 {/* 3. Subtext description */}
                 <p className="font-sans-custom text-[15px] leading-[1.65] text-stone-500 max-w-[90%] mb-12 h-14 flex items-center justify-center font-semibold">
                   {option.description}
@@ -181,27 +181,27 @@ export default function OrderSection() {
 
                 {/* 4. Action Link */}
                 <div className="flex justify-center">
-        <Link
-                href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
-              >
-                <span>KNOW MORE</span>
-                <svg
-                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
+                  <Link
+                    href="/menu"
+                    className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                  >
+                    <span>KNOW MORE</span>
+                    <svg
+                      className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Link>
 
-        </div>
+                </div>
 
               </motion.div>
             </motion.div>

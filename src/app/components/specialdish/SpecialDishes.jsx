@@ -1,63 +1,26 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-
-// Custom hook to calculate the scroll progress of an element in the viewport.
-// Returns a progress value between 0 (bottom enters viewport) and 1 (top leaves viewport).
-function useScrollProgress() {
-  const ref = useRef(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    let rafId = null;
-
-    const calculateProgress = () => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const viewHeight = window.innerHeight;
-      const totalHeight = rect.height + viewHeight;
-      const currentOffset = viewHeight - rect.top;
-      const p = Math.min(1, Math.max(0, currentOffset / totalHeight));
-      setProgress(p);
-    };
-
-    const handleScroll = () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(calculateProgress);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    calculateProgress();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, []);
-
-  return [ref, progress];
-}
+import { useScroll, useTransform, useMotionTemplate, motion } from 'framer-motion';
 
 // Interactive menu item row with parallax plates and fading title text
 function MenuItem({ item }) {
-  const [ref, progress] = useScrollProgress();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
 
   // 1. Uniform Plate Parallax Translation & Rotation values
-  const yOffset = (0.5 - progress) * 80; // Translates plate relative to viewport progress
-  const rotationRange = item.rotationEnd - item.rotationStart;
-  const currentRotation = item.rotationStart + progress * rotationRange;
+  const yOffset = useTransform(scrollYProgress, [0, 1], [40, -40]); // Translates plate relative to viewport scroll progress
+  const currentRotation = useTransform(scrollYProgress, [0, 1], [item.rotationStart, item.rotationEnd]);
 
   // 2. Symmetric fade-in and fade-out calculations
-  let textOpacity = 0;
-  if (progress > 0.15 && progress < 0.35) {
-    textOpacity = (progress - 0.15) / 0.2; // Smooth fade-in
-  } else if (progress >= 0.35 && progress <= 0.65) {
-    textOpacity = 1; // Stay fully visible
-  } else if (progress > 0.65 && progress < 0.85) {
-    textOpacity = 1 - (progress - 0.65) / 0.2; // Smooth fade-out
-  } else if (progress >= 0.85) {
-    textOpacity = 0;
-  }
+  const textOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.35, 0.65, 0.85, 1],
+    [0, 0, 1, 1, 0, 0]
+  );
 
   return (
     <div
@@ -72,16 +35,15 @@ function MenuItem({ item }) {
             : 'xl:order-1 xl:text-right xl:items-end'
         }`}
       >
-        <h3
+        <motion.h3
           className="font-title font-black text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none upp tracking-wide leading-none"
           style={{ 
             opacity: textOpacity, 
-            transition: 'opacity 0.15s ease-out',
             color: '#E75B44'
           }}
         >
           {item.title}
-        </h3>
+        </motion.h3>
         <p className="font-sans text-stone-300 text-sm md:text-base leading-relaxed max-w-md xl:max-w-[90%]">
           {item.description}
         </p>
@@ -93,10 +55,11 @@ function MenuItem({ item }) {
           item.align === 'left' ? 'xl:order-1' : 'xl:order-2'
         }`}
       >
-        <div
-          className="relative z-10 w-full h-full transition-transform duration-75 ease-out"
+        <motion.div
+          className="relative z-10 w-full h-full"
           style={{
-            transform: `translateY(${yOffset}px) rotate(${currentRotation}deg)`,
+            y: yOffset,
+            rotate: currentRotation,
           }}
         >
           <img
@@ -116,7 +79,7 @@ function MenuItem({ item }) {
             }}
             src={item.imgSrc}
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -124,19 +87,22 @@ function MenuItem({ item }) {
 
 // Animated salt trail element revealing along the scroll direction
 function SaltSeparator({ direction = '135deg', rotateClass = '' }) {
-  const [ref, progress] = useScrollProgress();
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
 
-  const activeProgress = Math.min(1, Math.max(0, (progress - 0.1) / 0.8));
-  const percentage = activeProgress * 100;
-
-  const maskStyle = `linear-gradient(${direction}, rgba(0, 0, 0, 1) ${percentage}%, rgba(0, 0, 0, 0) ${percentage + 15}%)`;
+  const percentage = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 0, 100, 100]);
+  const percentagePlus15 = useTransform(percentage, (p) => p + 15);
+  const maskStyle = useMotionTemplate`linear-gradient(${direction}, rgba(0, 0, 0, 1) ${percentage}%, rgba(0, 0, 0, 0) ${percentagePlus15}%)`;
 
   return (
     <div
       ref={ref}
       className="relative w-full h-8 flex items-center justify-center pointer-events-none my-12 xl:my-0"
     >
-      <div
+      <motion.div
         className="absolute size-[280px] md:size-[320px] xl:size-[50vh]"
         style={{
           maskImage: maskStyle,
@@ -166,7 +132,7 @@ function SaltSeparator({ direction = '135deg', rotateClass = '' }) {
           }}
           src="/salt-2.webp"
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -21,6 +21,13 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${inter.variable} h-full antialiased`}
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          precedence="default"
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

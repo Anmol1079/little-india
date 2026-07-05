@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const LOCATIONS = [
   {
@@ -25,40 +25,22 @@ const LOCATIONS = [
 // Stateful Stacking Card
 function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
   const cardRef = useRef(null);
-  const [scale, setScale] = useState(1);
-  const [brightness, setBrightness] = useState(1);
   const [imageError, setImageError] = useState(false);
 
-  useEffect(() => {
-    // If we are on mobile, do not run the sticky scroll scaling calculations
-    if (isMobile) {
-      setScale(1);
-      setBrightness(1);
-      return;
-    }
+  // Set up useScroll on the card element relative to the viewport
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start 100px", "end start"]
+  });
 
-    const handleScroll = () => {
-      if (!cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
-      const stickyTop = 100 + index * 32; 
-      
-      const scrolledPast = stickyTop - rect.top;
-      
-      if (scrolledPast > 0) {
-        const factor = Math.min(1, scrolledPast / 400);
-        setScale(1 - factor * 0.06); 
-        setBrightness(1 - factor * 0.12);
-      } else {
-        setScale(1);
-        setBrightness(1);
-      }
-    };
+  // Calculate scaling and brightness using transform
+  const scaleValue = useTransform(scrollYProgress, [0, 0.5], [1, 0.94]);
+  const brightnessValue = useTransform(scrollYProgress, [0, 0.5], [1, 0.88]);
+  const filterValue = useTransform(brightnessValue, (b) => `brightness(${b})`);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [index, isMobile]);
+  // Fallback values on mobile
+  const scale = isMobile ? 1 : scaleValue;
+  const filter = isMobile ? 'none' : filterValue;
 
   return (
     <motion.div
@@ -73,8 +55,8 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
           ? {} // No custom top offsets, scales, or filters applied on mobile
           : {
               top: `${100 + index * 32}px`,
-              transform: `scale(${scale})`,
-              filter: `brightness(${brightness})`,
+              scale: scale,
+              filter: filter,
               transformOrigin: 'top center',
             }
       }
