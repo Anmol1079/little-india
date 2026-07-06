@@ -28,7 +28,7 @@ const orderOptions = [
   {
     id: '02/04',
     title: 'Reserve a Table',
-    description: 'Book your spot for a memorable dining experience.',
+    description: 'Book your spot for a dining experience.',
     actionText: 'GET STARTED',
     href: '#reserve-table',
     yTranslation: 'md:translate-y-0 lg:translate-y-0',
