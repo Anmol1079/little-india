@@ -45,7 +45,7 @@ const innerGridVariants = {
 
 export default function ContactSection() {
   return (
-    <section className="w-full bg-[#FDFBF7] py-16 px-0 md:px-12 lg:px-20 text-[#0B0C0E] select-none overflow-hidden">
+    <section className="w-full bg-[#FDFBF7] py-16 px-0 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden">
       
       {/* 1. Rounded-Frame Background Image Container */}
       <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] min-h-[680px] lg:min-h-[750px] flex items-center justify-start">
@@ -59,7 +59,7 @@ export default function ContactSection() {
           className="absolute inset-0 w-full h-full"
         >
           <Image
-            src="https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=1600&q=80"
+            src="/get-in-touch.jpg"
             alt="Gourmet food background"
             fill
             priority
@@ -83,7 +83,7 @@ export default function ContactSection() {
             {/* Tagline */}
             <motion.span 
               variants={childElementVariants}
-              className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-3.5"
+              className="text-[#E65C38] font-bold text-[15px] twst upp font-sans block mb-3.5"
             >
               Get in Touch
             </motion.span>
@@ -91,15 +91,15 @@ export default function ContactSection() {
             {/* Editorial Headline */}
             <motion.h2 
               variants={childElementVariants}
-              className="font-title font-black text-4xl sm:text-[46px] md:text-[50px] text-stone-950 leading-[1.1] mb-3.5 tracking-tight"
+              className="font-title font-black text-4xl sm:text-[46px] md:text-[50px] text-stone-950 leading-[1.1] mb-3.5 tw-tight"
             >
-              Savor Taste of Tradition
+             Best Indian Restaurant in Denver
             </motion.h2>
 
             {/* Subtext description */}
             <motion.p 
               variants={childElementVariants}
-              className="font-sans text-sm text-stone-500 font-semibold mb-8 max-w-md leading-relaxed"
+              className="font-sans text-[16px] sm:text-[16px] text-stone-500 font-semibold mb-8 max-w-xl leading-relaxed"
             >
               Our dishes are made with only fresh and local ingredients.
             </motion.p>
@@ -113,7 +113,7 @@ export default function ContactSection() {
               {/* FIND US CARD */}
               <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.01)] border border-stone-200/40 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-title font-black text-lg text-stone-950 tracking-wide mb-6 leading-none">
+                  <h3 className="font-title font-black text-lg text-stone-950 tw mb-6 leading-none">
                     Find Us
                   </h3>
 
@@ -122,7 +122,7 @@ export default function ContactSection() {
                     <motion.div 
                       whileHover={{ x: 3 }}
                       transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                      className="flex items-start gap-3.5 border-b border-stone-100 pb-4 mb-4 cursor-pointer group items-center"
+                      className="flex gap-3.5 border-b border-stone-100 pb-4 mb-4 cursor-pointer group items-center"
                     >
                       <div className="w-8 h-8 rounded-full bg-[#FFF6F0] flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-[#E65C38]/10 mt-0.5">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#E65C38]">
@@ -174,7 +174,7 @@ export default function ContactSection() {
               {/* OPENING HOURS CARD */}
               <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.01)] border border-stone-200/40 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-title font-black text-lg text-stone-950 tracking-wide mb-6 leading-none">
+                  <h3 className="font-title font-black text-lg text-stone-950 tw mb-6 leading-none">
                     Opening Hours
                   </h3>
 
@@ -182,7 +182,7 @@ export default function ContactSection() {
                     {/* Monday Row */}
                     <div className="flex justify-between items-center border-b border-stone-100 pb-4 mb-4 min-h-[50px]">
                       <span className="text-stone-500">Mon</span>
-                      <span className="text-stone-400 font-bold upp tracking-wider text-[10px] bg-stone-50 border border-stone-200/40 px-2 py-0.5 rounded select-none">
+                      <span className="text-stone-400 font-bold uppercase text-[13px] bg-stone-50 border border-stone-200/40 px-2 py-0.5 rounded">
                         Closed
                       </span>
                     </div>
@@ -206,7 +206,7 @@ export default function ContactSection() {
 
           </motion.div>
           
-        </div>s
+        </div>
 
       </div>
     </section>

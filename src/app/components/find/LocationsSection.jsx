@@ -8,8 +8,8 @@ const LOCATIONS = [
   {
     id: 'lakewood',
     neighborhood: 'LAKEWOOD',
-    opened: 'Open since 1998',
-    tagline: 'Savour Taste Of Tradition',
+    opened: 'Open since 2010',
+    tagline: 'Authentic Indian Cuisine in Denver',
     description: "Authentic Indian cuisine, thoughtfully crafted with time-honored traditions, heartfelt passion, and the finest handpicked ingredients. Each dish is a celebration of rich heritage, where aromatic spices, vibrant flavors, and meticulous preparation come together to create a truly immersive culinary experience. From the warmth of our hospitality to the depth of every bite, we invite you to indulge in a journey.",
     address: '425 South Teller Street, Lakewood, Colorado',
     phone: '+1 303-937-9777',
@@ -70,7 +70,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
             <svg className="w-12 h-12 mb-2 stroke-current" fill="none" strokeWidth="1.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
-            <span className="text-[15px] font-semibold upp tracking-wider font-sans-custom text-stone-500">Image Unavailable</span>
+            <span className="text-[15px] font-semibold upp twr font-sans-custom text-stone-500">Image Unavailable</span>
           </div>
         ) : (
           <img
@@ -82,7 +82,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
           />
         )}
 
-        <div className="absolute top-6 left-6 z-20 bg-stone-900/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-[15px] font-semibold tracking-wider brand-lab-text font-sans-custom">
+        <div className="absolute top-6 left-6 z-20 bg-stone-900/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-[15px] font-semibold twr brand-lab-text font-sans-custom">
           {loc.opened}
         </div>
       </div>
@@ -92,13 +92,13 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
         
         {/* Title & Tagline */}
         <div className="space-y-3">
-          {/* <div className="flex items-center gap-1.5 text-[15px] font-medium tracking-wide font-sans-custom">
+          {/* <div className="flex items-center gap-1.5 text-[15px] font-medium tw font-sans-custom">
             <span className={`inline-block w-2 h-2 rounded-full ${isOpenNow ? 'bg-emerald-500 animate-pulse' : 'bg-red-600'}`}></span>
             <span className={isOpenNow ? 'text-emerald-600' : 'text-red-600'}>
               {isOpenNow ? 'Open Now' : 'Closed'}
             </span>
           </div> */}
-          <h3 className="font-heavy text-[28px] sm:text-3xl md:text-4xl text-stone-950 leading-tight tracking-tight font-black">
+          <h3 className="font-heavy text-[28px] sm:text-3xl md:text-4xl text-stone-950 leading-tight tw-tight font-black">
             {loc.tagline}
           </h3>
           <p className="font-sans text-[16px] md:text-[16px] text-stone-500 font-semibold leading-relaxed">
@@ -147,7 +147,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
 
         {/* Operating Hours Block */}
         {/* <div className="flex flex-col gap-2 pt-2 border-t border-stone-100">
-          <div className="text-[15px] font-black tracking-widest text-stone-950 upp">
+          <div className="text-[15px] font-black twst text-stone-950 upp">
             Operating Hours
           </div>
           <div className="flex items-center gap-3.5 text-sm font-bold text-stone-900">
@@ -165,13 +165,49 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
           <motion.div 
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="flex justify-center"
+            className="flex w-full justify-center" 
           >
             <Link
               href="/menu"
-              className="w-full sm:w-fits group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2 transition-colors duration-200 font-sans shadow-md"
+              className="w-full sm:w-fits group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-8 py-4 rounded-full inline-flex items-center gap-2 transition-colors duration-200 font-sans shadow-md justify-center"
             >
-              <span>KNOW MORE</span>
+              <span>BOOK A TABLE</span>
+              <svg
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+
+          {/* <div className="font-sans flex items-center gap-4 text-[15px] font-extrabold text-stone-500 pl-4 sm:pl-0"> */}
+            {/* <a href={loc.visitUrl} className="hover:text-[#E94222] transition-colors flex items-center gap-1 group upp">
+              VISIT PAGE <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </a> */}
+            {/* <span className="text-stone-200">|</span> */}
+            {/* <a href={loc.directionsUrl} className="hover:text-[#E94222] transition-colors flex items-center gap-1 group upp">
+              DIRECTIONS <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </a> */}
+          {/* </div> */}
+                    {/* Know More Pill Button */}
+                    <motion.div 
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex justify-center w-full"
+          >
+            <Link
+              href="/menu"
+              className="w-full sm:w-fits group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-8 py-4 rounded-full inline-flex items-center gap-2 transition-colors duration-200 font-sans shadow-md justify-center"
+            >
+              <span>DIRECTIONS</span>
               <svg
                 className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
                 fill="none"
@@ -189,7 +225,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
           </motion.div>
           
           {/* Quick Links */}
-          <div className="font-sans flex items-center gap-4 text-[15px] font-extrabold text-stone-500 pl-4 sm:pl-0">
+          {/* <div className="font-sans flex items-center gap-4 text-[15px] font-extrabold text-stone-500 pl-4 sm:pl-0">
             <a href={loc.visitUrl} className="hover:text-[#E94222] transition-colors flex items-center gap-1 group upp">
               VISIT PAGE <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
@@ -197,7 +233,7 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
             <a href={loc.directionsUrl} className="hover:text-[#E94222] transition-colors flex items-center gap-1 group upp">
               DIRECTIONS <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
-          </div>
+          </div> */}
 
         </div>
 
@@ -254,14 +290,14 @@ export default function LocationsSection() {
           className="text-center mb-16 d-flex flex-column align-items-center justify-center"
         >
            <div className="flex flex-col items-center mb-4">
-            <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans-custom block">
-              Find Us
+            <span className="text-[#E65C38] font-bold text-[15px] twst upp font-sans-custom block">
+              Location
             </span>
           </div>
 
           <div className="flex items-center space-x-2 md:space-x-3 mt-1 justify-center">
-            <h2 className="font-heavy font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
-             Restaurant Location
+            <h2 className="font-heavy font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tw-[0.01rem]">
+             Little India Denver Restaurant
             </h2>
           </div>
           <p className="text-[16px] md:text-[18px] text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">

@@ -31,6 +31,7 @@ import LunchBuffet1 from "./components/lunchbuffet/LunchBuffet1";
 import Footer2 from "./components/footer/Footer2";
 import StatsSection from "./components/stats/Stats";
 import FooterWithCta from "./components/footer/FooterWithCta";
+import SpecialMenu from "./components/specialdish/SpecialMenu";
 
 export default function Home() {
   return (
@@ -40,7 +41,7 @@ export default function Home() {
       {/* Renders the newly built, animated section */}
       <AboutSection /> 
       <StatsSection />
-      <SpecialDishes />
+      <SpecialMenu />
       {/* The Zooming Video Component */}
       {/* <LuxuryYachtLanding /> */}
       <MenuDish />

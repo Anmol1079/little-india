@@ -86,7 +86,7 @@ export default function SecondaryHeader() {
               >
                 <Link
                   href={item.href}
-                  className="px-4 py-2 text-[11px] upp tracking-[0.15em] font-bold text-stone-200 hover:text-white transition-all flex items-center gap-1.5"
+                  className="px-4 py-2 text-[11px] upp tw-[0.15em] font-bold text-stone-200 hover:text-white transition-all flex items-center gap-1.5"
                 >
                   {item.name}
                   {item.items && (
@@ -111,7 +111,7 @@ export default function SecondaryHeader() {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className={`group relative px-4 py-3 text-[10px] upp tracking-[0.18em] transition-all rounded-xl flex items-center justify-between ${
+                            className={`group relative px-4 py-3 text-[10px] upp tw-[0.18em] transition-all rounded-xl flex items-center justify-between ${
                               subItem.featured 
                                 ? "mt-2 bg-white/5 border border-white/10 text-white font-black" 
                                 : "text-stone-400 hover:text-white hover:bg-white/5"
@@ -146,7 +146,7 @@ export default function SecondaryHeader() {
           <div className="flex items-center">
             <Link
               href="/reservations"
-              className="bg-[#E94222] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-3 rounded-full transition-all duration-300 hover:shadow-[0_8px_20px_rgba(233,66,34,0.3)] font-sans"
+              className="bg-[#E94222] hover:bg-[#d14b35] text-white text-[11px] font-bold twst px-6 py-3 rounded-full transition-all duration-300 hover:shadow-[0_8px_20px_rgba(233,66,34,0.3)] font-sans"
             >
               BOOK A TABLE
             </Link>
@@ -177,7 +177,7 @@ export default function SecondaryHeader() {
               <div key={item.name} className="py-2">
                 <button
                   onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                  className="w-full flex items-center justify-between text-sm font-bold text-white py-2 upp tracking-widest"
+                  className="w-full flex items-center justify-between text-sm font-bold text-white py-2 upp twst"
                 >
                   {item.name}
                   {item.items && <svg className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>}

@@ -130,12 +130,12 @@ export default function AboutUs() {
           
           {/* Left Column: Storytelling */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <span className="modern-reveal text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-4">
-              ABOUT US
+            <span className="modern-reveal text-[#E65C38] font-bold text-[15px] twst upp font-sans block mb-4">
+            Best Indian Restaurant In Denver
             </span>
 
-            <h2 className="modern-reveal font-title font-black text-4xl sm:text-5xl lg:text-6xl text-stone-950 upp leading-[0.95] mb-6 tracking-[0.01rem]">
-              ABOUT LITTLE INDIA
+            <h2 className="modern-reveal font-title font-black text-4xl sm:text-5xl lg:text-6xl text-stone-950 upp leading-[0.95] mb-6 tw-[0.01rem]">
+            Little India Restaurant & Bar
             </h2>
 
             <div className="modern-reveal flex flex-col gap-5 text-[15px] text-stone-500 font-semibold max-w-md mb-8 font-sans leading-relaxed">
@@ -162,7 +162,7 @@ export default function AboutUs() {
             <div className="modern-reveal inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto">
               <Link
                 href="/menu"
-                className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
+                className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
               >
                 <span>KNOW MORE</span>
                 <svg
@@ -218,11 +218,11 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4">
             <span
               id="counter-1"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tracking-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
             >
               0+
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp tracking-wider leading-none">
+            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Feasts Served
             </h4>
             <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
@@ -235,11 +235,11 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4 sm:pl-6 sm:border-l border-stone-200/80">
             <span
               id="counter-2"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tracking-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
             >
               0+
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp tracking-wider leading-none">
+            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Signature Spices
             </h4>
             <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
@@ -252,11 +252,11 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4 lg:pl-6 lg:border-l border-stone-200/80">
             <span
               id="counter-3"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tracking-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
             >
               0%
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp tracking-wider leading-none">
+            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Guest Satisfaction
             </h4>
             <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
@@ -269,11 +269,11 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4 sm:pl-6 sm:border-l border-stone-200/80">
             <span
               id="counter-4"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tracking-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
             >
               0+
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp tracking-wider leading-none">
+            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Years of Craft
             </h4>
             <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">

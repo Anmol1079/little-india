@@ -161,7 +161,7 @@ export default function TestimonialsSection() {
     ];
 
   return (
-    <section className="w-full bg-[#fff6ea] py-16 px-4 md:px-8 lg:px-16 text-[#0B0C0E] select-none border-b border-stone-200/50 overflow-hidden">
+    <section className="w-full bg-[#fff6ea] py-16 px-4 md:px-8 lg:px-16 text-[#0B0C0E] border-b border-stone-200/50 overflow-hidden">
 
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
 
@@ -178,17 +178,17 @@ export default function TestimonialsSection() {
             <div className="overflow-hidden">
               <motion.span
                 variants={taglineVariants}
-                className="text-[#B83A18] font-bold text-[15px] tracking-widest upp font-sans block mb-3"
+                className="text-[#B83A18] font-bold text-[15px] twst upp font-sans block mb-3"
               >
-                Our Testimonials
+                Tasty words
               </motion.span>
             </div>
             <div className="overflow-hidden py-1">
               <motion.h2
                 variants={titleVariants}
-                className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-tight"
+                className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tw-tight"
               >
-                Client Reviews
+                Customer Reviews
               </motion.h2>
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function TestimonialsSection() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>WRITE A REVIEW</span>
                 <svg
@@ -269,34 +269,6 @@ export default function TestimonialsSection() {
 
         {/* Centered CTA Block */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full mt-6 select-none pointer-events-auto">
-          {/* Mobile-only WRITE A REVIEW button, since header buttons are hidden on desktop */}
-          <motion.div
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 380, damping: 16 }}
-            className="flex justify-center w-full"
-          >
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
-            >
-              <span>WRITE A REVIEW</span>
-              <svg
-                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </button>
-          </motion.div>
-
           {/* READ ALL REVIEWS (Sits cleanly below the carousel on both mobile and desktop) */}
           <motion.div
             whileHover={{ scale: 1.04, y: -2 }}
@@ -306,7 +278,7 @@ export default function TestimonialsSection() {
           >
             <Link
               href={loc.orderUrl}
-              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
+              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
             >
               <span>READ ALL REVIEWS</span>
               <svg
@@ -324,7 +296,7 @@ export default function TestimonialsSection() {
               </svg>
             </Link>
           </motion.div>
-        </div>
+        </div> 
 
       </div>
 
@@ -348,7 +320,7 @@ export default function TestimonialsSection() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
 
-              <h3 className="font-title font-black text-2xl upp mb-4 tracking-wide text-stone-950">Share Your Experience</h3>
+              <h3 className="font-title font-black text-2xl upp mb-4 tw text-stone-950">Share Your Experience</h3>
 
               <div className="flex gap-2 p-1 bg-stone-100 rounded-xl mb-5 text-[10px] font-bold font-sans">
                 <button type="button" onClick={() => setReviewType('text')} className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'text' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}>TEXT REVIEW</button>
@@ -376,7 +348,7 @@ export default function TestimonialsSection() {
                   <button
                     type="submit"
                     aria-label="Submit your review"
-                    className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-10 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
+                    className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold twst px-10 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
                   >
                     <span>SUBMIT REVIEW</span>
                     <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">

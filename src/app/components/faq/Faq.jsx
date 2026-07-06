@@ -101,7 +101,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] select-none ">
+    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E]">
       
       {/* Scope-contained style block for custom LAB colors */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -131,16 +131,16 @@ export default function FaqSection() {
             <div className="flex items-center gap-2">
               <motion.span 
                 variants={revealItemVariants}
-                className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans-custom block"
+                className="text-[#E65C38] font-bold text-[15px] twst upp font-sans-custom block"
               >
-                Faqs
+                FAQs
               </motion.span>
             </div>
 
             {/* Title */}
             <motion.h2 
               variants={revealItemVariants}
-              className="font-heavy text-[40px] sm:text-[60px] lg:text-6xl text-stone-950 upp leading-[0.95] tracking-[0.01rem] font-black"
+              className="font-heavy text-[40px] sm:text-[60px] lg:text-6xl text-stone-950 upp leading-[0.95] tw-[0.01rem] font-black"
             >
               Frequently Asked<br />Questions
             </motion.h2>
@@ -160,7 +160,7 @@ export default function FaqSection() {
             className="relative aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-lg border border-stone-200/40 mt-4 shrink-0"
           >
             <img 
-              src="https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=800&q=80" 
+              src="/menu/Hummus-WGarlic-Naan.avif" 
               alt="Gourmet Indian buffet spread" 
               className="w-full h-full object-cover filter saturate-[0.95]"
             />
@@ -182,12 +182,12 @@ export default function FaqSection() {
               <motion.div 
                 key={index}
                 variants={accordionRowVariants}
-                className="flex flex-col pb-5 pt-5 border-b border-stone-200/60 first:pt-0 last:border-b-0 last:pb-0"
+                className="flex flex-col pb-5 pt-5 border-b border-stone-200/60 first:pt-0 last:border-b-0 last:pb-0 cursor-pointer"
               >
                 {/* Trigger Button */}
                 <button
                   onClick={() => handleToggle(index)}
-                  className="w-full flex items-center justify-between text-left focus:outline-none group"
+                  className="w-full flex items-center justify-between text-left focus:outline-none group cursor-pointer"
                 >
                   <span className="font-sans-custom text-[16px] md:text-[18px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200">
                     {item.question}
@@ -218,7 +218,7 @@ export default function FaqSection() {
                   transition={{ duration: 0.5, ease: cubicBezierEase }}
                   className="overflow-hidden"
                 >
-                  <div className="font-sans-custom text-[14px] md:text-[16px]  text-stone-500 font-semibold leading-relaxed max-w-3xl pr-4 pb-1">
+                  <div className="font-sans-custom text-[14px] md:text-[16px] text-stone-500 font-semibold leading-relaxed max-w-3xl pr-4 pb-1">
                     {item.answer}
                   </div>
                 </motion.div>

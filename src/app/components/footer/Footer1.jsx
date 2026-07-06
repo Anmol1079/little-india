@@ -52,7 +52,7 @@ export default function Footer() {
               <Link href="/" className="flex items-center gap-4 group">
                 {/* Outlined "LI" Circle */}
                 <div className="w-14 h-14 rounded-full border-2 border-[#B49774] flex flex-col items-center justify-center relative shrink-0 transition-colors duration-300 group-hover:border-white">
-                  <span className="font-title font-black text-white text-lg tracking-wider leading-none">LI</span>
+                  <span className="font-title font-black text-white text-lg twr leading-none">LI</span>
                   {/* Small Lotus underneath */}
                   <div className="absolute bottom-1 text-[#B49774] group-hover:text-white transition-colors duration-300">
                     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -62,10 +62,10 @@ export default function Footer() {
                 </div>
                 {/* Branding Text */}
                 <div className="flex flex-col">
-                  <h3 className="font-serif text-white text-[28px] sm:text-[30px] font-medium leading-none tracking-wide">
+                  <h3 className="font-serif text-white text-[28px] sm:text-[30px] font-medium leading-none tw">
                     Little India
                   </h3>
-                  <span className="text-[#B49774] font-bold text-[9px] sm:text-[10px] tracking-[0.25em] upp mt-1 leading-none font-sans">
+                  <span className="text-[#B49774] font-bold text-[9px] sm:text-[10px] tw-[0.25em] upp mt-1 leading-none font-sans">
                     RESTAURANT & BAR
                   </span>
                 </div>
@@ -84,7 +84,7 @@ export default function Footer() {
 
               {/* FOLLOW US Section */}
               <div className="flex flex-col items-start gap-3 w-full">
-                <span className="text-[#B49774] font-bold text-[11px] tracking-[0.2em] upp font-sans">
+                <span className="text-[#B49774] font-bold text-[11px] tw-[0.2em] upp font-sans">
                   FOLLOW US
                 </span>
                 <div className="flex gap-3">
@@ -137,7 +137,7 @@ export default function Footer() {
             {/* ================= COLUMN 2: EXPLORE ================= */}
             <div className="col-span-1 lg:col-span-2 lg:pl-4 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-6">
-                <h4 className="font-title font-black text-[#B49774] text-[15px] tracking-[0.18em] upp mb-1 leading-none font-sans">
+                <h4 className="font-title font-black text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none font-sans">
                   EXPLORE
                 </h4>
                 {/* Small Symmetrical Lotus Line below header */}
@@ -182,7 +182,7 @@ export default function Footer() {
             {/* ================= COLUMN 3: OUR MENU ================= */}
             <div className="col-span-1 lg:col-span-3 lg:pl-4 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-6">
-                <h4 className="font-title font-black text-[#B49774] text-[15px] tracking-[0.18em] upp mb-1 leading-none font-sans">
+                <h4 className="font-title font-black text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none font-sans">
                   OUR MENU
                 </h4>
                 {/* Small Symmetrical Lotus Line below header */}
@@ -227,7 +227,7 @@ export default function Footer() {
             {/* ================= COLUMN 4: VISIT US ================= */}
             <div className="col-span-1 lg:col-span-3 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-6">
-                <h4 className="font-title font-black text-[#B49774] text-[15px] tracking-[0.18em] upp mb-1 leading-none font-sans">
+                <h4 className="font-title font-black text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none font-sans">
                   VISIT US
                 </h4>
                 {/* Small Symmetrical Lotus Line below header */}

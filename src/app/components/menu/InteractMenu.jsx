@@ -199,12 +199,12 @@ export default function InteractMenu() {
       <div className="max-w-[1300px] mx-auto flex flex-col items-center">
         
         {/* Top Tagline */}
-        <span className="text-[#E75B44] font-bold text-[11px] tracking-[0.2em] upp font-sans block mb-4">
+        <span className="text-[#E75B44] font-bold text-[11px] tw-[0.2em] upp font-sans block mb-4">
           A COZY CORNER FOR MODERN TASTE
         </span>
 
         {/* Main Editorial Header */}
-        <h2 className="font-title font-black text-5xl sm:text-6xl lg:text-[68px] leading-tight text-center text-stone-950 tracking-tight mb-4 max-w-4xl">
+        <h2 className="font-title font-black text-5xl sm:text-6xl lg:text-[68px] leading-tight text-center text-stone-950 tw-tight mb-4 max-w-4xl">
           Better food on<br className="sm:hidden" /> every plate
         </h2>
 
@@ -217,13 +217,13 @@ export default function InteractMenu() {
         <div className="flex items-center gap-4 mb-16 font-sans">
           <Link 
             href="#book"
-            className="bg-[#F8D2C4] hover:bg-[#f1beb2] text-stone-950 font-bold text-[15px] tracking-wider px-7 py-3 rounded-full transition-colors duration-200"
+            className="bg-[#F8D2C4] hover:bg-[#f1beb2] text-stone-950 font-bold text-[15px] twr px-7 py-3 rounded-full transition-colors duration-200"
           >
             Book table
           </Link>
           <Link 
             href="#menu"
-            className="bg-white hover:bg-stone-50 text-stone-900 border border-stone-200 font-bold text-[15px] tracking-wider px-7 py-3 rounded-full transition-colors duration-200"
+            className="bg-white hover:bg-stone-50 text-stone-900 border border-stone-200 font-bold text-[15px] twr px-7 py-3 rounded-full transition-colors duration-200"
           >
             Our menu
           </Link>
@@ -241,7 +241,7 @@ export default function InteractMenu() {
         {/* ================= CATEGORY 1: STARTERS (Image Right) ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center mb-16">
           <div className="lg:col-span-7 flex flex-col">
-            <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
+            <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
               {MENU_DATA.starters.title}
             </h3>
 
@@ -283,7 +283,7 @@ export default function InteractMenu() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
               {MENU_DATA.starters.items[activeStarter].name}
             </span>
           </div>
@@ -306,13 +306,13 @@ export default function InteractMenu() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
               {MENU_DATA.mains.items[activeMain].name}
             </span>
           </div>
 
           <div className="lg:col-span-7 flex flex-col lg:order-2 order-1">
-            <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
+            <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
               {MENU_DATA.mains.title}
             </h3>
 
@@ -343,7 +343,7 @@ export default function InteractMenu() {
         {/* ================= CATEGORY 3: SIDES (Image Right) ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center mb-16">
           <div className="lg:col-span-7 flex flex-col">
-            <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
+            <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
               {MENU_DATA.sides.title}
             </h3>
 
@@ -385,7 +385,7 @@ export default function InteractMenu() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
               {MENU_DATA.sides.items[activeSide].name}
             </span>
           </div>
@@ -408,13 +408,13 @@ export default function InteractMenu() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
               {MENU_DATA.desserts.items[activeDessert].name}
             </span>
           </div>
 
           <div className="lg:col-span-7 flex flex-col lg:order-2 order-1">
-            <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
+            <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
               {MENU_DATA.desserts.title}
             </h3>
 
@@ -445,7 +445,7 @@ export default function InteractMenu() {
         {/* ================= CATEGORY 5: DRINKS (Image Right) ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
           <div className="lg:col-span-7 flex flex-col">
-            <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
+            <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950 mb-8 border-b border-stone-100 pb-4">
               {MENU_DATA.drinks.title}
             </h3>
 
@@ -487,7 +487,7 @@ export default function InteractMenu() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#F8D2C4]/95 text-stone-950 font-bold text-[10px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
               {MENU_DATA.drinks.items[activeDrink].name}
             </span>
           </div>

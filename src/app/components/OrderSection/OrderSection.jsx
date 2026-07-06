@@ -107,10 +107,7 @@ const cardItemVariants = {
 
 export default function OrderSection() {
   return (
-    // Modified pb-[200px] to pb-16 (mobile), md:pb-28 (tablet), and lg:pb-[200px] (desktop)
-    <section className="w-full bg-[#fff6ea] pt-16 pb-16 md:pb-16 lg:pb-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden select-none">
-
-
+    <section className="w-full bg-[#fff6ea] pt-16 pb-16 md:pb-16 lg:pb-16 px-6 md:px-12 lg:px-20 text-[#0B0C0E] overflow-hidden">
 
       <div className="max-w-[1500px] mx-auto flex flex-col items-center">
 
@@ -123,13 +120,13 @@ export default function OrderSection() {
           className="flex flex-col max-w-[1500px] sm:max-w-[1500px] md:max-w-[1500px] self-start mb-16"
         >
           <div className="flex flex-col items-start mb-4">
-            <span className="text-[#B83A18] font-bold text-[15px] tracking-widest upp font-sans-custom block">
+            <span className="text-[#B83A18] font-bold text-[15px] twst upp font-sans-custom block">
               Crafted for you
             </span>
           </div>
 
           <div className="flex items-baseline space-x-2 md:space-x-3 mt-1">
-            <h2 className="font-heavy font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tracking-[0.01rem]">
+            <h2 className="font-heavy font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tw-[0.01rem]">
               Order Indian Food in Denver
             </h2>
           </div>
@@ -170,7 +167,7 @@ export default function OrderSection() {
                 </div>
 
                 {/* 2. Card Title */}
-                <h3 className="font-heavy text-[28px] text-stone-900 upp tracking-tight mb-4 leading-none font-extrabold transition-colors duration-300 group-hover:text-[#E65C38]">
+                <h3 className="font-heavy text-[28px] text-stone-900 upp tw-tight mb-4 leading-none font-extrabold transition-colors duration-300 group-hover:text-[#E65C38]">
                   {option.title}
                 </h3>
 
@@ -183,7 +180,7 @@ export default function OrderSection() {
                 <div className="flex justify-center">
                   <Link
                     href="/menu"
-                    className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                    className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
                   >
                     <span>KNOW MORE</span>
                     <svg

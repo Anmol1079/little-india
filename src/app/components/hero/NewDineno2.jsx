@@ -3,41 +3,31 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
-import { motion } from 'framer-motion';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register ScrollTrigger safely for the browser environment
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const BANNER_DATA = {
-  tag: 'Denver Best Neapolitan Pizza',
-  title: 'CRAFTED TO BE DEVOURED',
-  bgImage: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&q=80&w=1600',
-  avatarText: 'Experience the warmth of a bubbling wood-fired crust, rich melted mozzarella, and fresh San Marzano tomatoes. Every slice is a masterpiece crafted to captivate your senses.',
+  tag: 'The Best Indian Food Restaurant In Denver Colorado',
+  title: 'EXPERIENCE THE FLAVOURS OF INDIA',
+  bgImage: '/19996.jpg',
+  avatarText: 'Experience the rich and authentic flavors of India at Little India Denver, one of the most loved Indian restaurants in Denver, Colorado. From aromatic curries and perfectly spiced biryanis to freshly baked naan and sizzling tandoori specialties.',
+  featuredVideo: 'https://res.cloudinary.com/dezd0troy/video/upload/v1783310647/7818015-hd_1920_1080_24fps_xrsft9.mp4',
 };
 
-const cardDishes = [
-  {
-    title: 'Experience Our Signature Dishes',
-    img: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=600&auto=format&fit=crop',
-  },
-  {
-    title: 'Tandoori Specialty Platters',
-    img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop',
-  },
-  {
-    title: 'Aromatic Mughlai Biryani',
-    img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=600&auto=format&fit=crop',
-  },
-  {
-    title: 'Zesty Garlic Butter Prawns',
-    img: 'https://images.unsplash.com/photo-1551248429-40975aa4de74?q=80&w=600&auto=format&fit=crop',
-  },
-  {
-    title: 'Crispy Sizzler Buff Chilly',
-    img: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=600&auto=format&fit=crop',
-  }
-];
-
 export default function NewDineno2() {
-  const [currentDish, setCurrentDish] = useState(0); 
   const heroRef = useRef(null);
+  const pinSpacerRef = useRef(null); 
+  const videoRef = useRef(null);
+  const videoContainerRef = useRef(null);
+
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isFullyZoomed, setIsFullyZoomed] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const isAtEndRef = useRef(false);
 
   // 1. Infinite Text Scroll Animation
   useEffect(() => {
@@ -64,185 +54,263 @@ export default function NewDineno2() {
     );
   }, []);
 
-  // 3. Gentle Autoplay for Dish Card Slider
+  // 3. ScrollTrigger Zoom Animation
   useEffect(() => {
-    const dishInterval = setInterval(() => {
-      handleNextDish();
-    }, 5500);
+    const videoContainer = videoContainerRef.current;
+    const heroElement = heroRef.current;
+    const pinSpacerElement = pinSpacerRef.current;
+    if (!videoContainer || !heroElement || !pinSpacerElement) return;
 
-    return () => clearInterval(dishInterval);
-  }, [currentDish]);
+    const mm = gsap.matchMedia();
 
-  const handleNextDish = () => {
-    setCurrentDish((prev) => (prev + 1) % cardDishes.length);
-  };
+    mm.add("(min-width: 1024px)", () => {
+      // Helper calculations for dynamic translations
+      const calculateTranslationX = (el) => {
+        const rect = el.getBoundingClientRect();
+        const currentX = gsap.getProperty(el, 'x') || 0;
+        const initialLeft = rect.left - currentX;
+        const initialWidth = rect.width / (gsap.getProperty(el, 'scaleX') || 1);
+        
+        const centerX = window.innerWidth / 2;
+        const elementCenterX = initialLeft + initialWidth / 2;
+        return centerX - elementCenterX;
+      };
 
-  const handlePrevDish = () => {
-    setCurrentDish((prev) => (prev - 1 + cardDishes.length) % cardDishes.length);
-  };
+      const calculateTranslationY = (el) => {
+        const rect = el.getBoundingClientRect();
+        const currentY = gsap.getProperty(el, 'y') || 0;
+        const initialTop = rect.top - currentY;
+        const initialHeight = rect.height / (gsap.getProperty(el, 'scaleY') || 1);
 
-  // Snaps container left or right based on swipe direction
-  const handleDragEnd = (event, info) => {
-    const threshold = 40;
-    if (info.offset.x < -threshold) {
-      handleNextDish();
-    } else if (info.offset.x > threshold) {
-      handlePrevDish();
+        const centerY = window.innerHeight / 2;
+        const elementCenterY = initialTop + initialHeight / 2;
+        return centerY - elementCenterY;
+      };
+
+      const calculateScale = (el) => {
+        const rect = el.getBoundingClientRect();
+        const currentScaleX = gsap.getProperty(el, 'scaleX') || 1;
+        const initialWidth = rect.width / currentScaleX;
+        return window.innerWidth / initialWidth;
+      };
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroElement,
+          start: 'top top',
+          end: '+=120%',
+          pin: true,
+          pinSpacer: pinSpacerElement, 
+          scrub: true,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const isAtEnd = self.progress > 0.98;
+            if (isAtEnd !== isAtEndRef.current) {
+              isAtEndRef.current = isAtEnd;
+              setIsFullyZoomed(isAtEnd);
+            }
+          }
+        }
+      });
+
+      tl.to('.left-column-content', {
+        opacity: 0,
+        y: -30,
+        duration: 0.4,
+      }, 0);
+
+      tl.to('.video-card-header, .video-card-footer', {
+        opacity: 0,
+        duration: 0.3
+      }, 0);
+
+      tl.to('.video-card', {
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
+        boxShadow: 'none',
+        duration: 0.3
+      }, 0);
+
+      tl.to(videoContainer, {
+        x: () => calculateTranslationX(videoContainer),
+        y: () => calculateTranslationY(videoContainer),
+        scaleX: () => calculateScale(videoContainer),
+        scaleY: () => calculateScale(videoContainer),
+        borderRadius: 0,
+        ease: 'power1.inOut',
+      }, 0);
+    });
+
+    return () => mm.revert();
+  }, []);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
     }
   };
 
   return (
-    <section 
-      ref={heroRef}
-      className="relative w-full h-screen min-h-[650px] bg-black text-white overflow-hidden select-none"
-    >
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes kenburns {
-          0% { transform: scale(1.0); }
-          100% { transform: scale(1.08); }
-        }
-        .animate-kenburns {
-          animation: kenburns 12s ease-out forwards;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(4px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-      ` }} />
+    <div ref={pinSpacerRef} className="relative w-full h-screen min-h-[650px]">
+      <section 
+        ref={heroRef}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative w-full h-full bg-black text-white overflow-hidden z-10"
+      >
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes kenburns {
+            0% { transform: scale(1.0); }
+            100% { transform: scale(1.08); }
+          }
+          .animate-kenburns {
+            animation: kenburns 12s ease-out forwards;
+          }
+        ` }} />
 
-      {/* Infinite scrolling typography layer */}
-      <div className="absolute inset-y-0 flex items-center overflow-hidden z-0 select-none pointer-events-none w-[200vw]">
-        <div className="scrolling-text text-[13vw] font-title font-black tracking-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
-          ELEGANCE • FLAVOR • HERITAGE • ELEGANCE • FLAVOR • HERITAGE •
-        </div>
-      </div>
-
-      {/* Main Background - Single Banner Image (Mouthwatering Pizza) */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none bg-black">
-        <img
-          src={BANNER_DATA.bgImage}
-          alt="Artisanal wood-fired pizza with bubbling cheese"
-          loading="eager"
-          className="absolute inset-0 w-full h-full object-cover animate-kenburns filter saturate-[1.1]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent z-10" />
-      </div>
-
-      {/* Grid Content Wrapper */}
-      <div className="relative z-20 w-full h-full max-w-[1500px] mx-auto px-6 md:px-12 flex items-center pointer-events-none">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 w-full items-center">
-          
-          {/* Left Column: Heading and description */}
-          <div className="lg:col-span-7 flex flex-col justify-center pointer-events-auto">
-            <span className="animate-text-item text-[#E94222] text-[15px] tracking-widest font-semibold block mb-3 upp font-sans">
-              {BANNER_DATA.tag}
-            </span>
-
-            <h1 className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[99px] leading-[0.98] tracking-tight font-title font-black text-white whitespace-pre-line mb-8 upp">
-              {BANNER_DATA.title}
-            </h1>
-
-            {/* Narrative / Info Block */}
-            <div className="animate-text-item flex items-start gap-4 mb-8 max-w-lg">
-              <p className="text-[16px] md:text-[18px] text-gray-300 font-light leading-relaxed whitespace-pre-line tracking-wide font-sans">
-                {BANNER_DATA.avatarText}
-              </p>
-            </div>
-
-            {/* Action pill container */}
-            <div className="animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto">
-              <Link
-                href="/menu"
-                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
-              >
-                <span>EXPLORE MENU</span>
-                <svg
-                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-            </div>
+        {/* Infinite scrolling typography layer */}
+        <div className="absolute inset-y-0 flex items-center overflow-hidden z-0 select-none pointer-events-none w-[200vw]">
+          <div className="scrolling-text text-[13vw] font-title font-black tw-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
+            ELEGANCE • FLAVOR • HERITAGE • ELEGANCE • FLAVOR • HERITAGE •
           </div>
+        </div>
 
-          {/* Right Column: Draggable Slider Dish Card */}
-          <div className="hidden lg:flex lg:col-span-5 items-center justify-center relative lg:translate-x-10 lg:translate-y-[15rem] h-full pointer-events-auto">
-            <div className="w-[320px] md:w-[350px] bg-white p-4 rounded-[1.5rem] shadow-2xl border border-stone-200/20 flex flex-col gap-3 relative z-30">
-              
-              <div className="flex justify-between items-start px-1 select-none">
-                <div className="overflow-hidden max-w-[85%]">
-                  <h2 
-                    key={`dish-title-${currentDish}`}
-                    className="text-[11px] font-extrabold upp tracking-wider text-stone-900 leading-tight font-sans animate-fadeIn"
-                  >
-                    {cardDishes[currentDish].title}
-                  </h2>
-                </div>
-                <span className="shrink-0">
-                  <svg className="w-5 h-5 text-[#E94222]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                    <path d="M4 6h10a4 4 0 014 4v8m0 0l-4-4m4 4l4-4" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
+        {/* Main Background - Single Banner Image */}
+        <div className="absolute inset-0 z-0 select-none pointer-events-none bg-black">
+          <img
+            src={BANNER_DATA.bgImage}
+            alt="Artisanal wood-fired pizza with bubbling cheese"
+            loading="eager"
+            className="absolute inset-0 w-full h-full object-cover animate-kenburns filter saturate-[1.1]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent z-10" />
+        </div>
+
+        {/* Grid Content Wrapper */}
+        <div className="relative z-20 w-full h-full max-w-[1500px] mx-auto px-6 md:px-12 flex items-center pointer-events-none">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 w-full items-center">
+            
+            {/* Left Column: Heading and description */}
+            <div className="left-column-content lg:col-span-7 flex flex-col justify-center pointer-events-auto">
+              <span className="animate-text-item text-[#E94222] text-[15px] twst font-semibold block mb-3 uppercase font-sans">
+                {BANNER_DATA.tag}
+              </span>
+
+              <h1 className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[99px] leading-[0.98] tw-tight font-title font-black text-white whitespace-pre-line mb-8 uppercase">
+                {BANNER_DATA.title}
+              </h1>
+
+              {/* Narrative / Info Block */}
+              <div className="animate-text-item flex items-start gap-4 mb-8 max-w-lg">
+                <p className="text-[16px] md:text-[18px] text-gray-300 font-light leading-relaxed whitespace-pre-line tw font-sans">
+                  {BANNER_DATA.avatarText}
+                </p>
               </div>
 
-              {/* Continuous Flex Track: Drag-to-Slide Container */}
-              <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden bg-stone-100 cursor-grab active:cursor-grabbing select-none">
-                <motion.div 
-                  className="flex h-full w-full"
-                  animate={{ x: `-${currentDish * 100}%` }}
-                  transition={{ type: "spring", stiffness: 220, damping: 24 }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.4}
-                  onDragEnd={handleDragEnd}
+              {/* Action pill container */}
+              <div className="animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto">
+                <Link
+                  href="/menu"
+                  className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
                 >
-                  {cardDishes.map((dish, index) => (
-                    <div key={index} className="w-full h-full shrink-0 relative">
-                      <img 
-                        src={dish.img} 
-                        alt={dish.title} 
-                        className="w-full h-full object-cover pointer-events-none"
-                      />
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-
-              {/* Dish Card Progress Dots - touch target ≥24×24px via button padding, visual dot via inner span */}
-              <div className="flex justify-center gap-0.5 mt-1 select-none">
-                {cardDishes.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentDish(idx)}
-                    className="min-h-[24px] min-w-[24px] flex items-center justify-center focus:outline-none"
-                    aria-label={`Go to dish slide ${idx + 1}`}
+                  <span>EXPLORE MENU</span>
+                  <svg
+                    className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                    viewBox="0 0 24 24"
                   >
-                    <span
-                      className={`h-1.5 rounded-full transition-all duration-300 block ${
-                        idx === currentDish ? 'w-4 bg-[#C13419]' : 'w-1.5 bg-stone-200 hover:bg-stone-300'
-                      }`}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
-                  </button>
-                ))}
+                  </svg>
+                </Link>
               </div>
-
             </div>
+
+            {/* Right Column: Culinary Video Card */}
+            <div className="video-card-container hidden lg:flex lg:col-span-5 items-center justify-center relative lg:translate-x-10 lg:translate-y-[15rem] h-full pointer-events-auto">
+              <div className="video-card w-[320px] md:w-[350px] bg-white p-4 rounded-[1.5rem] shadow-2xl border border-stone-200/20 flex flex-col gap-3 relative z-30 transition-shadow duration-300">
+                
+                {/* select-none removed to enable highlighting and selection in card header */}
+                <div className="video-card-header flex justify-between items-center px-1">
+                  <div className="overflow-hidden max-w-[85%]">
+                    <h2 className="text-[13px] font-extrabold uppercase text-stone-900 leading-tight font-sans">
+                      Little India Denver Restaurant
+                    </h2>
+                  </div>
+                  <span className="flex h-2 w-2 relative select-none">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E94222]"></span>
+                  </span>
+                </div>
+
+                {/* Video container and play control wrapper (Clicking anywhere within this aspect-ratio container plays/pauses) */}
+                <div 
+                  onClick={togglePlay}
+                  className="relative w-full aspect-video z-40 cursor-pointer"
+                >
+                  {/* Video viewport (Decorative layer remains select-none to protect clicks) */}
+                  <div 
+                    ref={videoContainerRef}
+                    className="video-container w-full h-full rounded-xl overflow-hidden bg-stone-100 select-none shadow-inner origin-center"
+                  >
+                    <video
+                      ref={videoRef}
+                      src={BANNER_DATA.featuredVideo}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Footnote / Label */}
+                <div className="video-card-footer flex justify-between items-center px-1 text-[11px] text-stone-500 font-bold font-sans tracking-wider">
+                  <span>FRESH, AUTHENTIC INDIAN FOOD PREPARED LIVE</span>
+                </div>
+
+              </div>
+            </div>
+
           </div>
-
         </div>
-      </div>
 
-    </section>
+        {/* Play/Pause Control Button overlay (Centered via viewport-fixed coordinates relative to the pinned section) */}
+        <button
+          type="button"
+          onClick={togglePlay}
+          className={`play-pause-btn fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-white text-stone-900 w-16 h-16 rounded-full border border-stone-200 shadow-2xl flex items-center justify-center cursor-pointer hover:bg-stone-50 hover:scale-105 active:scale-95 transition-all duration-300 ${
+            isFullyZoomed && isHovered 
+              ? "opacity-100 scale-100 visible pointer-events-auto" 
+              : "opacity-0 scale-90 invisible pointer-events-none"
+          }`}
+          aria-label={isPlaying ? "Pause Video" : "Play Video"}
+        >
+          {isPlaying ? (
+            /* Big clean Pause Icon */
+            <svg className="w-6 h-6 text-stone-900" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+          ) : (
+            /* Big clean Play Icon */
+            <svg className="w-6 h-6 text-stone-900 translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          )}
+        </button>
+
+      </section>
+    </div>
   );
 }

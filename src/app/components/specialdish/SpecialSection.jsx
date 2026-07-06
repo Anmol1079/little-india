@@ -76,12 +76,12 @@ export default function SpecialSection() {
           {/* Left Side: Bold 'Special Dishes' Title & Description */}
           <div className="flex flex-col group cursor-pointer max-w-[240px] sm:max-w-[1400px] md:max-w-[1500px]">
             <div className="flex items-baseline space-x-2 md:space-x-3">
-              <h1 className="font-impact text-[60px] sm:text-[60px] md:text-[60px] text-[#0B0C0E] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38]">
+              <h1 className="font-impact text-[60px] sm:text-[60px] md:text-[60px] text-[#0B0C0E] tw-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38]">
                 SPECIAL DISHES
               </h1>
              
             </div>
-            <p className="text-[16px] md:text-[16px] text-[#0B0C0E]/60 tracking-wider font-sans-custom mt-2 leading-relaxed font-semibold">
+            <p className="text-[16px] md:text-[16px] text-[#0B0C0E]/60 twr font-sans-custom mt-2 leading-relaxed font-semibold">
               A curated selection of our chef&apos;s signature recipes, blending traditional culinary heritage with contemporary flair.
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function SpecialSection() {
                 >
                   {/* Text Layout */}
                   <h2
-                    className={`font-impact text-[3rem] sm:text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[3rem] leading-none tracking-wide upp transition-colors duration-300 ${
+                    className={`font-impact text-[3rem] sm:text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[3rem] leading-none tw upp transition-colors duration-300 ${
                       isActive ? 'text-[#E65C38]' : 'text-[#0B0C0E]'
                     }`}
                   >

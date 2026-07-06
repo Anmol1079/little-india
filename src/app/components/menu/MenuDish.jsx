@@ -9,81 +9,81 @@ const MENU_CATEGORIES = {
   'Appetizer': [
     {
       id: 'app-1',
-      title: 'Vegetable Samosa',
-      description: 'Crisp golden pastries filled with potatoes, peas, coriander, and mild traditional spices.',
+      title: 'Chicken Ginger Kabob',
+      description: 'Boneless chicken breast cubes marinated in ginger mint sauce',
       price: '$5.00',
       rating: 4.9,
       reviews: 142,
-      image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80',
+      image: '/menu/chicken-zinger-kabob-little-india-belmar.jpg',
     },
     {
       id: 'app-2',
-      title: 'Paneer Pakora',
-      description: 'Golden-fried fresh cottage cheese cubes dipped in heavily spiced chickpea flour batter.',
+      title: 'Tandoori Chicken',
+      description: 'Bone-in marinated chicken.',
       price: '$7.00',
       rating: 4.8,
       reviews: 86,
-      image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=800',
+      image: '/menu/chicken-tandoori-little-india-belmar-scaled.jpg (1).webp',
     }
   ],
   'Biryani': [
     {
       id: 'bir-1',
-      title: 'Chicken Dum Biryani',
-      description: 'Aromatic basmati rice cooked on slow dum with chicken, saffron, mint, and hand-ground spices.',
+      title: 'Chicken Tikka',
+      description: 'Boneless marinated chicken breast cubes.',
       price: '$16.00',
       rating: 4.9,
       reviews: 215,
-      image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80',
+      image: '/menu/chicken-tikka-little-india-belmar-scaled.jpg',
     },
     {
       id: 'bir-2',
-      title: 'Jackfruit Veg Biryani',
-      description: 'Fragrant slow-cooked basmati rice layered with spiced baby jackfruit, saffron, and fresh mint leaves.',
+      title: 'Paneer Shashlik',
+      description: 'Marinated paneer cubes served with masala sauce.',
       price: '$14.00',
       rating: 4.7,
       reviews: 94,
-      image: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80',
+      image: '/menu/paneer-shashilk-little-india-belmar-scaled.jpeg',
     }
   ],
   'Tandoori Specialties': [
     {
       id: 'tan-1',
-      title: 'Chicken Tikka',
-      description: 'Tender chicken breast chunks marinated in yogurt, ginger-garlic paste, and roasted in the clay tandoor.',
+      title: 'Seekh Kabob',
+      description: 'Minced lamb blended with onion, garlic, ginger, and spices, wrapped around skewers and baked.',
       price: '$15.00',
       rating: 4.8,
       reviews: 180,
-      image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+      image: '/menu/seekh-kabob-little-india-belmar.jpg',
     },
     {
       id: 'tan-2',
-      title: 'Tandoori Salmon',
-      description: 'Premium salmon fillets marinated with carom seeds, lemon juice, custom red spices, and clay-oven grilled.',
+      title: 'Shrimp Tandoori',
+      description: 'Finest marinated jumbo shrimp.',
       price: '$19.00',
       rating: 4.9,
       reviews: 64,
-      image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80',
+      image: '/menu/shrimp-tandoori-little-india-belmar-scaled.jpg',
     }
   ],
   'Soup & Salad': [
     {
       id: 'soup-1',
-      title: 'Mulligatawny Soup',
-      description: 'Traditional split yellow lentil soup tempered with lemon, curry leaves, and fresh ground coconut.',
+      title: 'Fish Tandoori',
+      description: 'Fish steak, India-style.',
       price: '$6.00',
       rating: 4.6,
       reviews: 73,
-      image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80',
+      image: '/menu/fish-tandoori-scaled.jpg',
     },
     {
       id: 'soup-2',
-      title: 'Kachumber Salad',
-      description: 'Crisp diced English cucumber, plum tomatoes, red onion, and cilantro tossed in tangy lemon chaat dressing.',
+      title: 'Hummus W/Garlic Naan',
+      description: 'Homemade spiced hummus served with Garlic Naan.',
       price: '$5.00',
       rating: 4.7,
       reviews: 41,
-      image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80',
+      image: '/menu/Hummus-WGarlic-Naan.avif',
     }
   ],
   'Non-Veg Entrees': [
@@ -233,7 +233,6 @@ const Stars = () => (
   </div>
 );
 
-// Framer Motion Variants for Staggered Viewport Reveal
 const revealContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -251,17 +250,15 @@ const revealItemVariants = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: [0.16, 1, 0.3, 1], // Deceleration curve
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
 
 export default function MenuDish() {
-  const [activeCategory, setActiveCategory] = useState('All'); // 'All' set as default
+  const [activeCategory, setActiveCategory] = useState('All');
   const [hoveredId, setHoveredId] = useState(null);
-  const [isExpanded, setIsExpanded] = useState(false); // Controls the 9-dish slice view
 
-  // Ref and mouse state variables to handle desktop mouse click-drag horizontal scrolling
   const scrollRef = useRef(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -285,31 +282,27 @@ export default function MenuDish() {
     if (!isMouseDown) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Controls drag speed
+    const walk = (x - startX) * 1.5;
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
   const handleCategoryChange = (cat) => {
     setActiveCategory(cat);
     setHoveredId(null);
-    setIsExpanded(false); // Auto-resets grid expansion on category changes
   };
 
-  // 'All' prepended to the category list
   const categories = ['All', ...Object.keys(MENU_CATEGORIES)];
 
-  // Flattens all food items for the 'All' default category, otherwise shows selected category
   const activeDishes = activeCategory === 'All'
     ? Object.values(MENU_CATEGORIES).flat()
     : MENU_CATEGORIES[activeCategory];
 
-  // Slices the visible dishes at 9 items unless isExpanded state is triggered
-  const visibleDishes = isExpanded ? activeDishes : activeDishes.slice(0, 9);
+  // Restricts display strictly to the first 9 dishes
+  const visibleDishes = activeDishes.slice(0, 9);
 
   return (
-    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-stone-900 select-none overflow-hidden border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-stone-900 overflow-hidden border-b border-stone-200/50">
       
-      {/* Scrollbar-hide global override styles */}
       <style dangerouslySetInnerHTML={{ __html: `
         .scrollbar-none::-webkit-scrollbar {
           display: none !important;
@@ -322,7 +315,6 @@ export default function MenuDish() {
 
       <div className="max-w-[1500px] mx-auto">
         
-        {/* Header Block with Scroll Reveal */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -331,12 +323,12 @@ export default function MenuDish() {
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         >
           <div className="flex flex-col max-w-[600px] sm:max-w-[100px] md:max-w-[1500px]">
-            <span className="text-[#B83A18] font-bold text-[15px] tracking-widest upp font-sans block mb-3">
-              Explore
+            <span className="text-[#B83A18] font-bold text-[15px] upp font-sans block mb-3">
+              Our menu
             </span>
             
-            <h2 className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] mb-4 tracking-[0.01rem]">
-              Our Menu
+            <h2 className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] mb-4">
+              Our Special Food Items
             </h2>
 
             <p className="font-sans text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed mt-2">
@@ -345,43 +337,15 @@ export default function MenuDish() {
           </div>
         </motion.div>
 
-        {/* 11-Tab Horizontal Scroll Bar - Styled with justify-start and outer padding to prevent visual clipping */}
+        {/* Categories slider wrapper preserved if uncommented in future */}
         <div className="w-full mb-16 overflow-visible select-none">
-          <div
-            ref={scrollRef}
-            onMouseDown={handleMouseDown}
-            onMouseLeave={handleMouseLeave}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            className="flex items-center gap-2.5 overflow-x-auto pb-4 scrollbar-none justify-start border-b border-stone-200/50 cursor-grab active:cursor-grabbing px-2 sm:px-2"
-          >
-            {categories.map((cat) => {
-              const isActive = cat === activeCategory;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => {
-                    if (isMouseDown) return; // Prevent triggering clicks during a drag-scroll
-                    handleCategoryChange(cat);
-                  }}
-                  className={`px-5 py-3 rounded-full text-[15px] font-bold tracking-wider upp whitespace-nowrap transition-all duration-300 font-sans border pointer-events-auto ${
-                    isActive
-                      ? 'bg-[#C13419] text-white border-transparent shadow-lg shadow-[#C13419]/15 scale-102'
-                      : 'bg-white hover:bg-stone-50 text-stone-600 border-stone-200/60 hover:text-stone-900'
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
+          {/* Category tabs scroll element ... */}
         </div>
 
-        {/* Symmetric Responsive Grid with AnimatePresence for Tab Swapping */}
         <div className="min-h-[500px]">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeCategory + '-' + isExpanded}
+              key={activeCategory}
               variants={revealContainerVariants}
               initial="hidden"
               animate="visible"
@@ -401,24 +365,28 @@ export default function MenuDish() {
           </AnimatePresence>
         </div>
 
-        {/* Toggle Expansion Trigger - Displayed only if dishes count exceeds 9 */}
+        {/* View Full Menu Redirection Button */}
         {activeDishes.length > 9 && (
           <div className="flex justify-center mt-14 select-none pointer-events-auto">
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 font-sans shadow-lg shadow-[#C13419]/15"
+            <Link
+              href="/menu"
+              className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 font-sans shadow-lg shadow-[#C13419]/15"
             >
-              <span>{isExpanded ? 'SHOW LESS DISHES' : 'VIEW FULL MENU'}</span>
+              <span>VIEW FULL MENU</span>
               <svg
-                className={`w-3.5 h-3.5 transition-transform duration-300 shrink-0 ${isExpanded ? 'rotate-180' : ''}`}
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2.5}
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
-            </button>
+            </Link>
           </div>
         )}
 
@@ -427,7 +395,6 @@ export default function MenuDish() {
   );
 }
 
-// Individual card component with hover mechanics
 function MenuItemCard({ item, isHovered, onHover }) {
   return (
     <div 
@@ -438,7 +405,6 @@ function MenuItemCard({ item, isHovered, onHover }) {
         transform: isHovered ? 'translateY(-4px)' : 'translateY(0px)',
       }}
     >
-      {/* Base Card Image container */}
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stone-100 shadow-md min-h-[522px]">
         <Image
           src={item.image}
@@ -447,16 +413,14 @@ function MenuItemCard({ item, isHovered, onHover }) {
           className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {/* Subtle Dark Overlay on hover to emphasize details */}
         <div 
           className="absolute inset-0 bg-black/10 transition-opacity duration-500 pointer-events-none" 
           style={{ opacity: isHovered ? 1 : 0 }}
         />
       </div>
 
-      {/* Base Card Metadata */}
       <div className="mt-4 flex flex-col gap-1 border-b border-stone-200/50 pb-4">
-        <h3 className="font-title font-black text-2xl text-stone-950 upp tracking-wide leading-none mb-1.5 transition-colors duration-300 group-hover:text-[#E65C38]">
+        <h3 className="font-title font-black text-2xl text-stone-950 upp leading-none mb-1.5 transition-colors duration-300 group-hover:text-[#E65C38]">
           {item.title}
         </h3>
         <p className="font-sans text-sm font-bold text-[#B83A18] leading-none">
@@ -470,7 +434,6 @@ function MenuItemCard({ item, isHovered, onHover }) {
         </div>
       </div>
 
-      {/* Floating details overlay on hover */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
@@ -484,17 +447,14 @@ function MenuItemCard({ item, isHovered, onHover }) {
             }}
             className="absolute top-1/2 left-1/2 w-[90%] bg-white rounded-2xl p-6 shadow-[0_25px_60px_rgba(0,0,0,0.18)] z-20 flex flex-col items-center text-center border border-stone-100/50 pointer-events-none"
           >
-            {/* Title */}
-            <h4 className="font-title font-black text-2xl text-stone-950 upp tracking-wide leading-none mb-2">
+            <h4 className="font-title font-black text-2xl text-stone-950 upp leading-none mb-2">
               {item.title}
             </h4>
             
-            {/* Description */}
             <p className="font-sans text-[12px] text-stone-500 font-semibold leading-relaxed mb-4 max-w-[92%]">
               {item.description}
             </p>
 
-            {/* Inset Miniature Image */}
             <div className="relative w-28 h-20 rounded-xl overflow-hidden mb-4 bg-stone-50 shadow-inner">
               <Image
                 src={item.image}
@@ -505,16 +465,14 @@ function MenuItemCard({ item, isHovered, onHover }) {
               />
             </div>
 
-            {/* Price */}
             <p className="font-sans text-lg font-bold text-stone-950 mb-2">
               {item.price}
             </p>
 
-            {/* Action button */}
             <div className="flex justify-center">
-            <Link
+              <Link
                 href="/menu"
-                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>BOOK A TABLE</span>
                 <svg
@@ -533,10 +491,9 @@ function MenuItemCard({ item, isHovered, onHover }) {
               </Link>
             </div>
 
-            {/* Ratings inside Hover Card */}
             <div className="flex items-center gap-1.5 mt-1 border-t border-stone-100 pt-3 w-full justify-center">
               <Stars />
-              <span className="font-sans text-[10px] font-bold text-stone-400 upp tracking-wider">
+              <span className="font-sans text-[10px] font-bold text-stone-400 upp">
                 {item.rating} ({item.reviews} reviews)
               </span>
             </div>

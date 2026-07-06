@@ -106,7 +106,7 @@ export default function Hero_2() {
                     <div className="mt-10 pointer-events-auto">
                         <a
                             href="#book-table"
-                            className="bg-[#E75B44] hover:bg-[#d14b35] text-white text-[15px]font-bold tracking-wider px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#E75B44]/20 inline-block focus:outline-none"
+                            className="bg-[#E75B44] hover:bg-[#d14b35] text-white text-[15px]font-bold twr px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#E75B44]/20 inline-block focus:outline-none"
                         >
                             Book A Table Today
                         </a>

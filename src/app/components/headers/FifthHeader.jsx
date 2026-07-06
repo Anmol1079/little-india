@@ -159,7 +159,7 @@ export default function FifthHeader() {
                   >
                     {IconComponent && <IconComponent active={isActive} />}
                     
-                    <span className={`tracking-[0.25em] text-[10px] font-semibold transition-colors duration-300 ${
+                    <span className={`tw-[0.25em] text-[10px] font-semibold transition-colors duration-300 ${
                       IconComponent ? 'mt-1.5' : 'mt-0'
                     } ${
                       isActive ? 'text-stone-800' : 'text-stone-400 group-hover:text-stone-700'

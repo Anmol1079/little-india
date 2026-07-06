@@ -6,12 +6,12 @@ import Link from 'next/link';
 
 const STATS_DATA = [
   {
-    number: "83",
+    number: "100+",
     labelLine1: "Total",
     labelLine2: "Reviews"
   },
   {
-    number: "42",
+    number: "15",
     labelLine1: "Years Of",
     labelLine2: "Experience"
   },
@@ -21,7 +21,7 @@ const STATS_DATA = [
     labelLine2: "Dishes"
   },
   {
-    number: "98",
+    number: "90",
     labelLine1: "Rated",
     labelLine2: "Excellent"
   }
@@ -112,13 +112,13 @@ const itemVariants = {
 
 export default function StatsSection() {
   return (
-    <section className="w-full bg-[#fff6ea] pt-0 pb-16 px-6 md:px-12 select-none overflow-hidden font-sans border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] pt-0 pb-16 px-6 md:px-12 overflow-hidden font-sans border-b border-stone-200/50">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header Block: Centered title with horizontal line dividers */}
         <div className="flex items-center justify-center gap-4 mb-10 pt-16">
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
-          <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase whitespace-nowrap">
+          <span className="text-[11px] sm:text-xs font-bold text-neutral-500 uppercase whitespace-nowrap">
             Flavors Backed by Experience
           </span>
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
@@ -146,17 +146,17 @@ export default function StatsSection() {
                 
                 {/* Fixed-Width Number Container: Expanded from w-14 to w-20 (80px) to prevent character overlap */}
                 <div className="w-15 sm:w-24 lg:w-auto shrink-0 text-right">
-                  <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#E94222] tracking-tight leading-none">
+                  <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#E94222] leading-none">
                     <CountUpMetric targetString={item.number} />
                   </span>
                 </div>
 
                 {/* Stacked Labels */}
                 <div className="flex flex-col text-left shrink-0">
-                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold tracking-wider text-stone-850 leading-tight uppercase text-black">
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight uppercase text-black">
                     {item.labelLine1}
                   </span>
-                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold tracking-wider text-stone-850 leading-tight uppercase text-black">
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight uppercase text-black">
                     {item.labelLine2}
                   </span>
                 </div>
@@ -170,7 +170,7 @@ export default function StatsSection() {
         <div className="flex justify-center pt-12">
           <Link
             href="/menu"
-            className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+            className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
           >
             <span>KNOW MORE</span>
             <svg

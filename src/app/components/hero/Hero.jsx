@@ -25,13 +25,13 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.1] tracking-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.1] tw-tight">
             Where Every Meal <br />
             <span className="italic">Becomes a Memory</span>
           </h1>
 
           {/* Subheader */}
-          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
+          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light tw">
             From sizzling pizzas to creamy pastas and chilled drinks, we serve
             more than food—we serve connection. Every bite brings people closer.
           </p>
@@ -40,7 +40,7 @@ export default function Hero() {
           <div className="pt-6">
             <Link
               href="/reservations"
-              className="inline-block bg-[#E65C38] hover:bg-[#cf4d2c] text-white px-10 py-4 rounded-full text-[15px] font-bold upp tracking-[0.2em] transition-all duration-300 shadow-2xl shadow-[#E65C38]/40 hover:-translate-y-1 active:scale-95"
+              className="inline-block bg-[#E65C38] hover:bg-[#cf4d2c] text-white px-10 py-4 rounded-full text-[15px] font-bold upp tw-[0.2em] transition-all duration-300 shadow-2xl shadow-[#E65C38]/40 hover:-translate-y-1 active:scale-95"
             >
               Book A Table Today
             </Link>

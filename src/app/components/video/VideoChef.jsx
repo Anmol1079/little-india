@@ -69,7 +69,7 @@ function ScrollZoomSection({ videoSrc }) {
           {/* Left Text: Ocean */}
           <motion.span
             style={{ x: oceanX, y: oceanY, opacity: textOpacity }}
-            className="absolute right-1/2 text-5xl md:text-7xl lg:text-8xl text-[#1A2E35] font-semibold tracking-tight select-none whitespace-nowrap z-0 font-sans"
+            className="absolute right-1/2 text-5xl md:text-7xl lg:text-8xl text-[#1A2E35] font-semibold tw-tight select-none whitespace-nowrap z-0 font-sans"
           >
            CHEF'S
           </motion.span>
@@ -98,7 +98,7 @@ function ScrollZoomSection({ videoSrc }) {
           {/* Right Text: Moments */}
           <motion.span
             style={{ x: momentsX, y: momentsY, opacity: textOpacity }}
-            className="absolute left-1/2 text-5xl md:text-7xl lg:text-8xl text-[#1A2E35] font-semibold tracking-tight select-none whitespace-nowrap z-0 font-sans"
+            className="absolute left-1/2 text-5xl md:text-7xl lg:text-8xl text-[#1A2E35] font-semibold tw-tight select-none whitespace-nowrap z-0 font-sans"
           >
             ARTS
           </motion.span>

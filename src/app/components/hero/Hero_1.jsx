@@ -184,7 +184,7 @@ export default function Hero_1() {
             {/* Central Content */}
             <div className="relative z-20 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto mt-[-20px]">
                 <h1
-                    className="animate-text-item text-[64px] font-heavy font-medium tracking-wide leading-[1.15] text-white whitespace-pre-line mb-5"
+                    className="animate-text-item text-[64px] font-heavy font-medium tw leading-[1.15] text-white whitespace-pre-line mb-5"
                 >
                     {slides[isTransitioning ? currentSlide : prevSlide].title}
                 </h1>
@@ -194,7 +194,7 @@ export default function Hero_1() {
                 </p>
 
                 {/* CTA Button */}
-                <button className="animate-text-item group relative flex items-center gap-4 bg-transparent text-white font-semibold text-[15px] md:text-sm tracking-widest transition-colors duration-300 hover:text-[#ff6b57]">
+                <button className="animate-text-item group relative flex items-center gap-4 bg-transparent text-white font-semibold text-[15px] md:text-sm twst transition-colors duration-300 hover:text-[#ff6b57]">
                     <span className="w-11 h-11 rounded-full bg-[#ff5c40] flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                         <svg
                             className="w-4 h-4 text-white transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -225,7 +225,7 @@ export default function Hero_1() {
                             <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 30+
                             </h3>
-                            <p className="text-[10px] md:text-[15px] text-gray-400 tracking-widest upp font-medium">
+                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-medium">
                                 Healthy Sushi's
                             </p>
                         </div>
@@ -233,7 +233,7 @@ export default function Hero_1() {
                             <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 15+
                             </h3>
-                            <p className="text-[10px] md:text-[15px] text-gray-400 tracking-widest upp font-medium">
+                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-medium">
                                 Years Of Experience
                             </p>
                         </div>
@@ -241,7 +241,7 @@ export default function Hero_1() {
                             <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 95%
                             </h3>
-                            <p className="text-[10px] md:text-[15px] text-gray-400 tracking-widest upp font-medium">
+                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-medium">
                                 Happy Customer's
                             </p>
                         </div>

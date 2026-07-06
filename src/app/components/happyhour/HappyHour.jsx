@@ -44,31 +44,31 @@ const DRINK_SPECIALS = [
 const FOOD_SPECIALS = [
   {
     id: 'food-1',
-    title: 'Vegetable Samosa',
+    title: 'Chicken Ginger Kabob',
     price: '$5',
-    description: 'Deep-fried pastries stuffed with spiced potato & peas.',
-    image: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=600&q=80'
+    description: 'Boneless chicken breast cubes marinated in ginger mint sauce.',
+    image: '/menu/chicken-zinger-kabob-little-india-belmar.jpg'
   },
   {
     id: 'food-2',
-    title: 'Onion Bhaji',
+    title: 'Tandoori Chicken',
     price: '$4',
-    description: 'Crispy onion fritters in spiced chickpea batter.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80'
+    description: 'Bone-in marinated chicken.',
+    image: '/menu/chicken-tandoori-little-india-belmar-scaled.jpg (1).webp'
   },
   {
     id: 'food-3',
-    title: 'Chicken Pakora',
+    title: 'Chicken Tikka',
     price: '$6',
-    description: 'Crispy fried chicken in spiced chickpea batter.',
-    image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80'
+    description: 'Boneless marinated chicken breast cubes.',
+    image: '/menu/chicken-tikka-little-india-belmar-scaled.jpg'
   },
   {
     id: 'food-4',
-    title: 'Tandoori Wings',
+    title: 'Paneer Shashlik',
     price: '$8',
-    description: 'Smoky tandoori wings grilled in traditional clay oven.',
-    image: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=600&q=80'
+    description: 'Marinated paneer cubes served with masala sauce.',
+    image: '/menu/paneer-shashilk-little-india-belmar-scaled.jpeg'
   }
 ];
 
@@ -96,30 +96,12 @@ const headerItemVariants = {
   },
 };
 
-const panelLeftVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 1.0, ease: cubicBezierEase },
-  },
-};
-
-const panelRightVariants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 1.0, ease: cubicBezierEase },
-  },
-};
-
 export default function HappyHourSection() {
   const [activeDrink, setActiveDrink] = useState(1); // Default to Cocktails
   const [activeFood, setActiveFood] = useState(0);   // Default to Samosas
 
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-16 text-stone-900 select-none overflow-hidden border-b border-stone-200">
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-16 text-stone-900 overflow-hidden border-b border-stone-200">
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
         
         {/* TOP SECTION: Header Info */}
@@ -133,7 +115,7 @@ export default function HappyHourSection() {
           {/* Integrated Tagline & Timing details */}
           <motion.span 
             variants={headerItemVariants}
-            className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tracking-[0.15em] upp font-sans block mb-3"
+            className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tw-[0.15em] upp font-sans block mb-3"
           >
             MON – FRI • 3:00 PM – 5:00 PM
           </motion.span>
@@ -141,7 +123,7 @@ export default function HappyHourSection() {
           {/* Clean bold header using layout's Inter */}
           <motion.h2 
             variants={headerItemVariants}
-            className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] leading-none text-stone-950 tracking-tight mb-4"
+            className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] leading-none text-stone-950 tw-tight mb-4"
           >
             Happy Hour
           </motion.h2>
@@ -155,15 +137,6 @@ export default function HappyHourSection() {
           </motion.p>
         </motion.div>
 
-        {/* 1. Large Widescreen Banner Container */}
-        {/* <div className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-[2rem] overflow-hidden mb-16 shadow-[0_15px_50px_rgba(0,0,0,0.04)] relative">
-          <img 
-            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1600&q=80"
-            alt="Signature aesthetic Happy Hour drinks and food"
-            className="w-full h-full object-cover object-center pointer-events-none"
-          />
-        </div> */}
-
         {/* ================= SECTION 1: DRINK SPECIALS (Image Right) ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
           <div className="lg:col-span-7 flex flex-col">
@@ -171,7 +144,7 @@ export default function HappyHourSection() {
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
                 <i className="fa-solid fa-glass-martini-alt text-sm"></i>
               </div>
-              <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950">
+              <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950">
                 Drink Specials
               </h3>
             </div>
@@ -214,7 +187,7 @@ export default function HappyHourSection() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
               {DRINK_SPECIALS[activeDrink].title}
             </span>
           </div>
@@ -240,7 +213,7 @@ export default function HappyHourSection() {
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] tracking-widest upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
               {FOOD_SPECIALS[activeFood].title}
             </span>
           </div>
@@ -250,7 +223,7 @@ export default function HappyHourSection() {
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
                 <i className="fa-solid fa-plate-wheat text-sm"></i>
               </div>
-              <h3 className="font-title font-black text-3xl sm:text-4xl upp tracking-tight text-stone-950">
+              <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950">
                 Food Specials
               </h3>
             </div>

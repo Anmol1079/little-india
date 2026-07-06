@@ -65,7 +65,7 @@ export default function CtaSection() {
           {/* Tagline */}
           <motion.span
             variants={childVariants}
-            className="text-[#E94222] font-black text-sm sm:text-base tracking-[0.25em] uppercase block mb-1"
+            className="text-[#E94222] font-black text-sm sm:text-base tw-[0.25em] uppercase block mb-1"
           >
             HUNGRY?
           </motion.span>
@@ -73,7 +73,7 @@ export default function CtaSection() {
           {/* Symmetrical Bold Title */}
           <motion.h2
             variants={childVariants}
-            className="font-title font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase leading-none tracking-tight mb-4"
+            className="font-title font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase leading-none tw-tight mb-4"
           >
             WE’RE READY
           </motion.h2>
@@ -111,7 +111,7 @@ export default function CtaSection() {
           >
             <Link
               href="/menu"
-              className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans shadow-md"
+              className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans shadow-md"
             >
               <span>BOOK A TABLE</span>
               <svg
@@ -131,7 +131,7 @@ export default function CtaSection() {
 
             <Link
               href="/menu"
-              className="group w-full sm:w-auto bg-transparent hover:bg-white border border-white/20 hover:border-white text-white hover:text-stone-950 text-[13px] font-bold tracking-widest px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans"
+              className="group w-full sm:w-auto bg-transparent hover:bg-white border border-white/20 hover:border-white text-white hover:text-stone-950 text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans"
             >
               <span>VIEW MENU</span>
             </Link>

@@ -36,7 +36,7 @@ function MenuItem({ item }) {
         }`}
       >
         <motion.h3
-          className="font-title font-black text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none upp tracking-wide leading-none"
+          className="font-title font-black text-[45px] md:text-[45px] xl:text-[45px] mb-2 select-none upp tw leading-none"
           style={{ 
             opacity: textOpacity, 
             color: '#E75B44'
@@ -151,9 +151,9 @@ export default function OurMenuSection() {
       rotationEnd: 90, // standardized to exactly 90-deg sweep
     },
     {
-      title: 'Buff Chilly',
+      title: 'Chicken Ginger Kabob',
       description:
-        'Juicy buffalo strips flash-fried and wok-tossed with spicy green chilies, sweet bell peppers, onions, soy sauce, and aromatic local spices.',
+        'Boneless chicken breast cubes marinated in ginger mint sauce.',
       imgSrc: '/chicken-chilly.png',
       alt: 'Chicken Chilly plate',
       align: 'right',
@@ -191,17 +191,17 @@ export default function OurMenuSection() {
         <div className="flex flex-col items-center text-center group cursor-pointer max-w-[1400px] mx-auto">
           
           {/* Tagline Bracket */}
-          <span className="text-[#E65C38] font-bold text-[15px] tracking-widest upp font-sans block mb-3">
+          <span className="text-[#E65C38] font-bold text-[15px] twst upp font-sans block mb-3">
             Our Highlights
           </span>
 
           <div className="flex justify-center items-baseline mb-4">
-            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] text-[#fff] tracking-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] upp">
+            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] text-[#fff] tw-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38] upp">
               Special Dishes
             </h2>
           </div>
           
-          <p className="font-sans text-[16px] md:text-[18px] text-[#fff]/60 tracking-wider leading-relaxed font-semibold max-w-2xl mx-auto">
+          <p className="font-sans text-[16px] md:text-[18px] text-[#fff]/60 twr leading-relaxed font-semibold max-w-2xl mx-auto">
             Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch.
           </p>
         </div>

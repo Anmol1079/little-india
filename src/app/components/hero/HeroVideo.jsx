@@ -47,7 +47,7 @@ export default function HeroVideo() {
           {/* Subtle Decorative Element */}
           <div className="flex items-center justify-center space-x-4 animate-in fade-in zoom-in duration-1000">
             <span className="w-12 h-[1px] bg-[#E65C38]" />
-            <span className="text-[10px] upp tracking-[0.5em] text-[#E65C38] font-bold">
+            <span className="text-[10px] upp tw-[0.5em] text-[#E65C38] font-bold">
               Est. 1998
             </span>
             <span className="w-12 h-[1px] bg-[#E65C38]" />
@@ -55,14 +55,14 @@ export default function HeroVideo() {
 
           {/* Epic Main Headline */}
           <div className="overflow-hidden">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.05] tracking-tight animate-in slide-in-from-bottom-full duration-1000 delay-200">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.05] tw-tight animate-in slide-in-from-bottom-full duration-1000 delay-200">
               Where Every Meal <br />
               <span className="italic font-light text-stone-200">Becomes a Memory</span>
             </h1>
           </div>
 
           {/* Refined Sub-headline */}
-          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light tracking-widest upp opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
+          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light twst upp opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
             Savor the perfect blend of tradition <br className="hidden md:block" /> and contemporary Indian excellence
           </p>
 
@@ -70,7 +70,7 @@ export default function HeroVideo() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700">
             <Link
               href="/reservations"
-              className="group relative inline-flex items-center justify-center bg-[#E65C38] text-white px-10 py-5 rounded-full text-[15px] font-bold upp tracking-[0.25em] transition-all duration-500 hover:bg-white hover:text-[#E65C38] shadow-2xl shadow-[#E65C38]/20"
+              className="group relative inline-flex items-center justify-center bg-[#E65C38] text-white px-10 py-5 rounded-full text-[15px] font-bold upp tw-[0.25em] transition-all duration-500 hover:bg-white hover:text-[#E65C38] shadow-2xl shadow-[#E65C38]/20"
             >
               <span className="relative z-10">Book A Table Now</span>
               <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
@@ -78,7 +78,7 @@ export default function HeroVideo() {
 
             <Link
               href="/menu"
-              className="text-white text-[11px] upp tracking-[0.3em] font-semibold border-b border-white/20 hover:border-[#E65C38] pb-1 transition-all duration-300"
+              className="text-white text-[11px] upp tw-[0.3em] font-semibold border-b border-white/20 hover:border-[#E65C38] pb-1 transition-all duration-300"
             >
               Explore Our Menu
             </Link>
@@ -88,7 +88,7 @@ export default function HeroVideo() {
 
       {/* Cinematic Scroll Indicator */}
       {/* <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3 opacity-50 animate-bounce">
-        <span className="text-[9px] upp tracking-[0.4em] text-white font-medium rotate-90 mb-4 h-24 flex items-center">
+        <span className="text-[9px] upp tw-[0.4em] text-white font-medium rotate-90 mb-4 h-24 flex items-center">
           Scroll
         </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
@@ -101,7 +101,7 @@ export default function HeroVideo() {
             01
           </div>
           <div className="flex flex-col">
-            <span className="text-[9px] upp tracking-widest text-[#E65C38] font-bold">Fine Dining</span>
+            <span className="text-[9px] upp twst text-[#E65C38] font-bold">Fine Dining</span>
             <span className="text-[11px] text-stone-400 font-light">Exquisite Ambiance</span>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function HeroVideo() {
             02
           </div>
           <div className="flex flex-col">
-            <span className="text-[9px] upp tracking-widest text-[#E65C38] font-bold">Authentic</span>
+            <span className="text-[9px] upp twst text-[#E65C38] font-bold">Authentic</span>
             <span className="text-[11px] text-stone-400 font-light">Heritage Recipes</span>
           </div>
         </div>

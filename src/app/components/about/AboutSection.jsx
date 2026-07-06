@@ -2,33 +2,67 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const CARDS_DATA = [
   {
-    metric: "80+",
+    metric: "30+",
     label: "Seasonal Flavors",
     desc: "Expertly ground fresh spices & vibrant seasonal curries.",
     icon: "flavors"
   },
   {
-    metric: "120+",
+    metric: "60+",
     label: "Healthy Options",
     desc: "Clean, gluten-free, vegan & minimal-oil entrees.",
     icon: "health"
   },
   {
-    metric: "96%",
+    metric: "90%",
     label: "Positive Reviews",
     desc: "Rated among the absolute best Indian dining rooms in Colorado.",
     icon: "reviews"
   },
   {
-    metric: "25+",
+    metric: "15+",
     label: "Years Experience",
     desc: "Perfecting authentic traditional family recipes since 1998.",
     icon: "experience"
   }
 ];
+
+// Deceleration Easing Curve
+const cubicEase = [0.16, 1, 0.3, 1];
+
+// Framer Motion Animation Variants for the Bento Grid & Headers
+const revealContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: cubicEase },
+  },
+};
+
+const bentoItemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: cubicEase },
+  },
+};
 
 // Helper Component: Animated Count-up when visible in viewport
 function CountUpMetric({ targetString }) {
@@ -43,7 +77,7 @@ function CountUpMetric({ targetString }) {
   useEffect(() => {
     const currentElement = elementRef.current;
     
-    // Intersection Observer to trigger counting only when visible
+    // Intersection Observer to trigger counting only when visible in viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
@@ -67,7 +101,7 @@ function CountUpMetric({ targetString }) {
     if (!hasAnimated) return;
 
     let startTimestamp = null;
-    const duration = 1800; // Animation duration in milliseconds (1.8s)
+    const duration = 800; // Snappy counting speed matching other sections
 
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
@@ -137,67 +171,144 @@ export default function AboutSection() {
   };
 
   return (
-    <section className="w-full bg-[#ffffff] py-20 px-6 md:px-12 lg:px-20 select-none pb-0">
-      <div className="max-w-[1500px] mx-auto flex flex-col items-center">
+    <section className="w-full bg-[#ffffff] py-16 px-6 md:px-12 lg:px-20">
+      <div className="max-w-[1500px] mx-auto flex flex-col gap-16 lg:gap-24">
         
-        {/* Centered Standardized Header Wrapper */}
-        <div className="w-full pb-16">
-          <div className="flex flex-col items-center text-center max-w-[1400px] mx-auto">
-            
+        {/* UPPER PART: Storyteller Column on Left, 5-Image Bento Grid on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Text narrative content */}
+          <motion.div 
+            variants={revealContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="lg:col-span-6 flex flex-col items-start text-left gap-4"
+          >
             {/* Tagline */}
-            <span className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tracking-[0.2em] uppercase font-sans block mb-5">
-              Who We Are
-            </span>
+            <motion.span 
+              variants={fadeUpVariants}
+              className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tracking-[0.2em] uppercase font-sans block"
+            >
+              Best Indian Restaurant In Denver
+            </motion.span>
 
             {/* Main Title */}
-            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] lg:text-[60px] text-stone-950 tracking-tight leading-none mb-10">
-              About Us
-            </h2>
+            <motion.h2 
+              variants={fadeUpVariants}
+              className="font-title font-black text-[40px] sm:text-[52px] lg:text-[60px] text-stone-950 leading-[0.95] tracking-tight uppercase"
+            >
+              Little India Restaurant & Bar
+            </motion.h2>
             
             {/* Balanced editorial layout */}
-            <div className="flex flex-col gap-5 max-w-5xl mx-auto px-2">
-              <p className="font-sans text-stone-800 text-[16px] md:text-[18px] sm:text-[19px] lg:text-[21px] font-semibold leading-relaxed tracking-wide">
+            <div className="flex flex-col gap-5 text-[15px] text-stone-500 font-semibold leading-relaxed max-w-3xl mt-2">
+              <motion.p variants={fadeUpVariants}>
                 One World Cuisine LLC DBA Little India Restaurant and Bar is one of the most authentic Indian restaurants in Denver, Colorado. Since 1998, we have proudly served the best Indian food in Denver, made with carefully selected Indian spices and ingredients sourced locally, in-house, or imported directly from India.
-              </p>
-              <p className="font-sans text-stone-800 text-[16px] md:text-[18px] sm:text-[19px] lg:text-[21px] font-semibold leading-relaxed tracking-wide">
+              </motion.p>
+              <motion.p variants={fadeUpVariants}>
                 Ranked among the top Indian restaurants in the Denver metro area, Little India Denver offers an exceptional dining experience with traditional North Indian recipes crafted by experienced chefs. Our menu features fresh, gluten-free, and vegan-friendly options prepared with minimal oil and no baking soda, ensuring delicious, healthy meals.
-              </p>
+              </motion.p>
             </div>
 
-          </div>
-        </div>
+            {/* CTA Button */}
+            <motion.div variants={fadeUpVariants} className="pt-2">
+              <Link
+                href="/menu"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans shadow-md"
+              >
+                <span>KNOW MORE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
+          </motion.div>
 
-        {/* Symmetrical Metric Cards Grid */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-14">
-          {CARDS_DATA.map((card, idx) => (
-            <div 
-              key={idx} 
-              className="relative bg-white border border-stone-200/50 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between gap-8 h-full min-h-[280px] shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:-translate-y-1.5 hover:shadow-[0_25px_50px_-12px_rgba(233,66,34,0.06)] hover:border-[#E94222]/35 transition-all duration-300 ease-out cursor-pointer group"
+          {/* Right Column: Custom Asymmetrical 5-Image Bento Gallery Grid */}
+          <div className="lg:col-span-6 w-full">
+            <motion.div 
+              variants={revealContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              className="grid grid-cols-12 gap-4 h-[505px] sm:h-[555px] relative"
             >
-     
-              <div className="absolute top-0 left-10 right-10 h-[3px] bg-gradient-to-r from-transparent via-[#E94222]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+              
+              {/* Image 1: Restaurant Exterior (Top Left, Spans 7/12 cols) */}
+              <motion.div 
+                variants={bentoItemVariants}
+                className="col-span-7 h-[240px] sm:h-[290px] relative overflow-hidden rounded-3xl border border-stone-200/40 bg-stone-50 group"
+              >
+                <img
+                  src="/indian-restaurant-denver-1.webp"
+                  alt="Little India Storefront Exterior"
+                  className="w-full h-full object-cover select-none pointer-events-none filter brightness-[0.96] transition-transform duration-700 group-hover:scale-103"
+                />
+              </motion.div>
 
-            
-              <div className="w-12 h-12 rounded-2xl bg-[#FFF5F0] border border-[#FFF5F0] group-hover:border-[#E94222]/10 group-hover:bg-[#E94222]/5 flex items-center justify-center shrink-0 transition-colors duration-300">
-                {renderCardIcon(card.icon)}
-              </div>
+              {/* Image 2: Gourmet Food Spread (Top Right, Spans 5/12 cols) */}
+              <motion.div 
+                variants={bentoItemVariants}
+                className="col-span-5 h-[240px] sm:h-[290px] relative overflow-hidden rounded-3xl border border-stone-200/40 bg-stone-50 group"
+              >
+                <img
+                  src="/indian-restaurant-denver-2.webp"
+                  alt="Overhead Food Spread"
+                  className="w-full h-full object-cover select-none pointer-events-none filter brightness-[0.96] transition-transform duration-700 group-hover:scale-103"
+                />
+              </motion.div>
 
-              <div className="text-left mt-2">
-                <h3 className="font-title font-black text-stone-950 text-5xl sm:text-5xl tracking-tight mb-2 leading-none group-hover:text-[#E94222] transition-colors duration-300">
-                  <CountUpMetric targetString={card.metric} />
-                </h3>
-                <span className="text-[#E65C38] font-bold text-xs tracking-widest uppercase font-sans block mb-2">
-                  {card.label}
-                </span>
-                <p className="font-sans text-stone-500 text-[13px] font-semibold leading-relaxed">
-                  {card.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div> */}
+              {/* Image 3: Interior dining with seated guests (Bottom Left, Spans 4/12 cols) */}
+              <motion.div 
+                variants={bentoItemVariants}
+                className="col-span-4 h-[160px] sm:h-[220px] relative overflow-hidden rounded-2xl border border-stone-200/40 bg-stone-50 group"
+              >
+                <img
+                  src="/indian-restaurant-denver-3.webp"
+                  alt="Diners at tables"
+                  className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 group-hover:scale-103"
+                />
+              </motion.div>
 
+              {/* Image 4: Exotic Cocktails & Rum (Bottom Center, Spans 4/12 cols) */}
+              <motion.div 
+                variants={bentoItemVariants}
+                className="col-span-4 h-[160px] sm:h-[220px] relative overflow-hidden rounded-2xl border border-stone-200/40 bg-stone-50 group"
+              >
+                <img
+                  src="/indian-restaurant-denver-4.webp"
+                  alt="Fresh cocktails bar"
+                  className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 group-hover:scale-103"
+                />
+              </motion.div>
 
+              {/* Image 5: Set Tables with Roses (Bottom Right, Spans 4/12 cols) */}
+              <motion.div 
+                variants={bentoItemVariants}
+                className="col-span-4 h-[160px] sm:h-[220px] relative overflow-hidden rounded-2xl border border-stone-200/40 bg-stone-50 group"
+              >
+                <img
+                  src="/indian-restaurant-denver-5.webp"
+                  alt="Cozy dining tables"
+                  className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 group-hover:scale-103"
+                />
+              </motion.div>
+
+            </motion.div>
+          </div>
+
+        </div>
 
       </div>
     </section>

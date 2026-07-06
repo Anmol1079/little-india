@@ -298,7 +298,7 @@ export default function NewDineno() {
 
       {/* Infinite scrolling typography layer */}
       <div className="absolute inset-y-0 flex items-center overflow-hidden z-0 select-none pointer-events-none w-[200vw]">
-        <div className="scrolling-text text-[13vw] font-extrabold tracking-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
+        <div className="scrolling-text text-[13vw] font-extrabold tw-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
           ELEGANCE • FLAVOR • HERITAGE • ELEGANCE • FLAVOR • HERITAGE •
         </div>
       </div>
@@ -374,14 +374,14 @@ export default function NewDineno() {
             {/* Exactly one dynamic <h1> element with React keys to maintain GSAP transition support */}
             <span 
               key={`tag-${currentSlide}`}
-              className="animate-text-item text-[#E75B44] text-[15px] tracking-widest font-semibold block mb-3"
+              className="animate-text-item text-[#E75B44] text-[15px] twst font-semibold block mb-3"
             >
               {slides[currentSlide].tag}
             </span>
 
             <h1 
               key={`title-${currentSlide}`}
-              className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[115px] leading-[0.98] tracking-tight font-heavy font-extrabold text-white whitespace-pre-line mb-8"
+              className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[115px] leading-[0.98] tw-tight font-heavy font-extrabold text-white whitespace-pre-line mb-8"
             >
               {slides[currentSlide].title}
             </h1>
@@ -391,7 +391,7 @@ export default function NewDineno() {
               <div className="overflow-hidden">
                 <p 
                   key={`desc-${currentSlide}`}
-                  className="text-[16px] text-gray-300 font-light leading-relaxed whitespace-pre-line tracking-wide animate-fadeIn"
+                  className="text-[16px] text-gray-300 font-light leading-relaxed whitespace-pre-line tw animate-fadeIn"
                 >
                   {slides[currentSlide].avatarText}
                 </p>
@@ -402,7 +402,7 @@ export default function NewDineno() {
             <div className="animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto">
               <Link
                 href="/menu"
-                className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
+                className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
               >
                 <span>MENUS</span>
                 <svg
@@ -433,7 +433,7 @@ export default function NewDineno() {
                   {/* Single Heading 3 element to display the active dish title */}
                   <h3 
                     key={`dish-title-${currentDish}`}
-                    className="text-[11px] font-extrabold upp tracking-wider text-stone-900 leading-tight animate-fadeIn"
+                    className="text-[11px] font-extrabold upp twr text-stone-900 leading-tight animate-fadeIn"
                   >
                     {cardDishes[currentDish].title}
                   </h3>

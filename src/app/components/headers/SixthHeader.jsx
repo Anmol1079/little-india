@@ -129,7 +129,7 @@ export default function SixthHeader() {
                     
                     {/* Text Label */}
                     <span
-                      className={`text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] font-bold tracking-[0.16em] transition-colors duration-300 ${
+                      className={`text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] font-bold tw-[0.16em] transition-colors duration-300 ${
                         isActive ? 'text-[#2C2723]' : 'text-[#7D756D]'
                       }`}
                     >
