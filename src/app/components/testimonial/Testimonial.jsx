@@ -163,7 +163,7 @@ export default function TestimonialsSection() {
   return (
     <section className="w-full bg-[#fff6ea] py-16 px-4 md:px-8 lg:px-16 text-[#0B0C0E] border-b border-stone-200/50 overflow-hidden">
 
-      <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
+      <div className="max-w-[1500px] mx-auto flex flex-col gap-3 relative">
 
         {/* Animated Staggered Header Block */}
         <motion.div
@@ -247,7 +247,7 @@ export default function TestimonialsSection() {
           </motion.button>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AnimatePresence mode="popLayout" initial={false}>
+            <AnimatePresence mode={isMobile ? "wait" : "popLayout"} initial={false}>
               {visibleCards.map((item, idx) => {
                 if (!item) return null;
                 return (
@@ -267,6 +267,36 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
+
+        <div className="sm:hidden flex items-center shrink-0 pointer-events-auto">
+            <motion.div
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 380, damping: 16 }}
+              className="flex justify-center w-full"
+            >
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              >
+                <span>WRITE A REVIEW</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </button>
+            </motion.div>
+          </div>
+
         {/* Centered CTA Block */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full mt-6 select-none pointer-events-auto">
           {/* READ ALL REVIEWS (Sits cleanly below the carousel on both mobile and desktop) */}
@@ -274,7 +304,7 @@ export default function TestimonialsSection() {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 380, damping: 16 }}
-            className="flex justify-center w-full"
+            className="flex justify-center"
           >
             <Link
               href={loc.orderUrl}
@@ -297,6 +327,8 @@ export default function TestimonialsSection() {
             </Link>
           </motion.div>
         </div> 
+
+
 
       </div>
 

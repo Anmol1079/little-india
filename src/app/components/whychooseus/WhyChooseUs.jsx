@@ -80,7 +80,7 @@ export default function WhyChooseUsSection() {
 
           <motion.h2
             variants={headerItemVariants}
-            className="font-heavy text-[40px] sm:text-[60px] text-[#000] upp leading-[0.95] tw-[0.01rem] mb-1 font-black"
+            className="font-heavy text-[39px] sm:text-[60px] text-[#000] upp leading-[0.95] tw-[0.01rem] mb-1 font-black"
           >
           Authentic Flavors & Inviting Ambiance
           </motion.h2>

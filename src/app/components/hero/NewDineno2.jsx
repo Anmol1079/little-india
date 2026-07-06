@@ -191,8 +191,8 @@ export default function NewDineno2() {
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent z-10" />
         </div>
 
-        {/* Grid Content Wrapper */}
-        <div className="relative z-20 w-full h-full max-w-[1500px] mx-auto px-6 md:px-12 flex items-center pointer-events-none">
+        {/* Grid Content Wrapper (Added pt-28 on mobile/tablet to push content below the fixed header) */}
+        <div className="relative z-20 w-full h-full max-w-[1500px] mx-auto px-6 md:px-12 flex items-center pt-28 lg:pt-0 pointer-events-none">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 w-full items-center">
             
             {/* Left Column: Heading and description */}
@@ -201,7 +201,7 @@ export default function NewDineno2() {
                 {BANNER_DATA.tag}
               </span>
 
-              <h1 className="animate-text-item text-5xl sm:text-6xl md:text-7xl lg:text-[99px] leading-[0.98] tw-tight font-title font-black text-white whitespace-pre-line mb-8 uppercase">
+              <h1 className="animate-text-item text-4xl sm:text-5xl md:text-7xl lg:text-[99px] leading-[0.98] tw-tight font-title font-black text-white whitespace-pre-line mb-8 uppercase">
                 {BANNER_DATA.title}
               </h1>
 
@@ -290,7 +290,7 @@ export default function NewDineno2() {
         <button
           type="button"
           onClick={togglePlay}
-          className={`play-pause-btn fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-white text-stone-900 w-16 h-16 rounded-full border border-stone-200 shadow-2xl flex items-center justify-center cursor-pointer hover:bg-stone-50 hover:scale-105 active:scale-95 transition-all duration-300 ${
+          className={`play-pause-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-white text-stone-900 w-16 h-16 rounded-full border border-stone-200 shadow-2xl flex items-center justify-center cursor-pointer hover:bg-stone-50 hover:scale-105 active:scale-95 transition-all duration-300 ${
             isFullyZoomed && isHovered 
               ? "opacity-100 scale-100 visible pointer-events-auto" 
               : "opacity-0 scale-90 invisible pointer-events-none"

@@ -35,7 +35,7 @@ function MenuItem({ item }) {
         }`}
       >
         <motion.h3
-          className="font-title font-black text-[45px] md:text-[45px] xl:text-[45px] mb-2 uppercase leading-none"
+          className="font-title font-black text-[35px] md:text-[40px] xl:text-[40px] mb-2 uppercase leading-none"
           style={{ 
             opacity: textOpacity, 
             color: '#E75B44'

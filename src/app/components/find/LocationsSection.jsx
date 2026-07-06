@@ -287,7 +287,7 @@ export default function LocationsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center mb-16 d-flex flex-column align-items-center justify-center"
+          className="text-center mb-0 md:mb-16 d-flex flex-column align-items-center justify-center"
         >
            <div className="flex flex-col items-center mb-4">
             <span className="text-[#E65C38] font-bold text-[15px] twst upp font-sans-custom block">

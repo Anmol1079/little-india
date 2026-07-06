@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const STATS_DATA = [
   {
-    number: "100+",
+    number: "70+",
     labelLine1: "Total",
     labelLine2: "Reviews"
   },

@@ -204,8 +204,8 @@ export default function FooterWithCta() {
               src="/slogan/footer-slogan.png"
               alt="Good Food, Good Mood"
               width={300}
-              height={65}
-              className="object-none"
+              height={75}
+              className="object-cover md:object-none"
               priority
             />
           </div>
