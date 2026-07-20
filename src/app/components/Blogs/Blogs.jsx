@@ -97,9 +97,10 @@ const fadeUpVariants = {
   },
 };
 
-export default function Blog1() {
+// Added the bgColor prop defaulting to "bg-white"
+export default function Blog1({ bgColor = "bg-white" }) {
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20 overflow-hidden font-sans">
+    <section className={`w-full ${bgColor} py-12 md:py-16 px-6 md:px-12 lg:px-20 overflow-hidden font-sans`}>
       <div className="max-w-[1500px] mx-auto flex flex-col gap-10">
         
         {/* UPGRADED HEADER SECTION: Styled exactly like WhyChooseUsSection */}
@@ -112,14 +113,14 @@ export default function Blog1() {
         >
           <motion.span 
             variants={headerItemVariants}
-            className="text-[#e65c38] font-bold text-[15px] tracking-widest uppercase block font-sans"
+            className="text-[#e65c38] font-bold text-[15px] twst up block font-sans"
           >
            Tasty Stories
           </motion.span>
 
           <motion.h2 
             variants={headerItemVariants}
-            className="font-heavy text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[0.95] tracking-tight mb-1 font-black"
+            className="font-heavy text-[35px] sm:text-[48px] lg:text-[50px] text-black leading-[0.95] tw-tight mb-1 font-black"
           >
           Our Latest Blogs
           </motion.h2>
@@ -161,7 +162,7 @@ export default function Blog1() {
 
               {/* Overlay content details */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white z-10 flex flex-col gap-1.5">
-                <h3 className="text-[20px] sm:text-[20px] font-bold tracking-tight leading-snug group-hover:text-amber-100 transition-colors duration-200">
+                <h3 className="text-[20px] sm:text-[20px] font-bold tw-tight leading-snug group-hover:text-amber-100 transition-colors duration-200">
                   {MAIN_HIGHLIGHT_POST.title}
                 </h3>
                 <p className="text-[16px] opacity-75 font-medium mt-1">
@@ -197,7 +198,7 @@ export default function Blog1() {
                   <h3 className="text-[16px] md:text-[18px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200 leading-snug line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-[16px] sm:text-[16px] text-stone-400 font-medium mt-0.5">
+                  <p className="text-[16px] sm:text-[16px] text-stone-500 font-medium mt-0.5">
                     {post.date}
                   </p>
                 </div>
@@ -211,7 +212,7 @@ export default function Blog1() {
         <div className="flex justify-center pt-4">
           <Link
             href="/menu"
-            className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+            className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
           >
             <span>VIEW MORE</span>
             <svg

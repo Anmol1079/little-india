@@ -197,11 +197,11 @@ export default function NewDineno2() {
             
             {/* Left Column: Heading and description */}
             <div className="left-column-content lg:col-span-7 flex flex-col justify-center pointer-events-auto">
-              <span className="animate-text-item text-[#E94222] text-[15px] twst font-semibold block mb-3 uppercase font-sans">
+              <span className="animate-text-item text-[#E94222] text-[15px] twst font-semibold block mb-3 up font-sans">
                 {BANNER_DATA.tag}
               </span>
 
-              <h1 className="animate-text-item text-4xl sm:text-5xl md:text-7xl lg:text-[99px] leading-[0.98] tw-tight font-title font-black text-white whitespace-pre-line mb-8 uppercase">
+              <h1 className="animate-text-item text-4xl sm:text-5xl md:text-7xl lg:text-[99px] leading-[0.98] tw-tight font-title font-black text-white whitespace-pre-line mb-8 up">
                 {BANNER_DATA.title}
               </h1>
 
@@ -243,7 +243,7 @@ export default function NewDineno2() {
                 {/* select-none removed to enable highlighting and selection in card header */}
                 <div className="video-card-header flex justify-between items-center px-1">
                   <div className="overflow-hidden max-w-[85%]">
-                    <h2 className="text-[13px] font-extrabold uppercase text-stone-900 leading-tight font-sans">
+                    <h2 className="text-[13px] font-extrabold up text-stone-900 leading-tight font-sans">
                       Little India Denver Restaurant
                     </h2>
                   </div>
@@ -276,7 +276,7 @@ export default function NewDineno2() {
                 </div>
 
                 {/* Footnote / Label */}
-                <div className="video-card-footer flex justify-between items-center px-1 text-[11px] text-stone-500 font-bold font-sans tracking-wider">
+                <div className="video-card-footer flex justify-between items-center px-1 text-[11px] text-stone-500 font-bold font-sans twr">
                   <span>FRESH, AUTHENTIC INDIAN FOOD PREPARED LIVE</span>
                 </div>
 

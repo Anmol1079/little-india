@@ -35,7 +35,7 @@ function MenuItem({ item }) {
         }`}
       >
         <motion.h3
-          className="font-title font-black text-[35px] md:text-[40px] xl:text-[40px] mb-2 uppercase leading-none"
+          className="font-title font-black text-[35px] md:text-[40px] xl:text-[40px] mb-2 up leading-none"
           style={{ 
             opacity: textOpacity, 
             color: '#E75B44'
@@ -190,12 +190,12 @@ export default function SpecialMenu() {
         <div className="flex flex-col items-center text-center group cursor-pointer max-w-[1400px] mx-auto">
           
           {/* Tagline Bracket */}
-          <span className="text-[#E65C38] font-bold text-[15px] uppercase font-sans block mb-3">
+          <span className="text-[#E65C38] font-bold text-[15px] up font-sans block mb-3">
             Our Highlights
           </span>
 
           <div className="flex justify-center items-baseline mb-4">
-            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] text-[#fff] leading-none transition-colors duration-300 group-hover:text-[#E65C38] uppercase">
+            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] text-[#fff] leading-none transition-colors duration-300 group-hover:text-[#E65C38] up">
               Special Dishes
             </h2>
           </div>

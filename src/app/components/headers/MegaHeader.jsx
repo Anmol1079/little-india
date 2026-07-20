@@ -126,15 +126,15 @@ export default function MegaHeader() {
       isMegaAbout: true,
       items: [
         { name: "About Us", href: "/about" },
-        { name: "Our Story", href: "/about#story" },
-        { name: "Why Choose Us", href: "/about#why-us" },
+        { name: "Our Story", href: "/story" },
+        { name: "Why Choose Us", href: "/whychooseus" },
         { name: "Reviews", href: "/testimonial" },
-        { name: "Blogs", href: "/blog" },
+        { name: "Blogs", href: "/blogs" },
         { name: "Our Gallery", href: "/gallery" },
       ],
       card1: {
-        title: "Highlights",
-        href: "/gallery",
+        title: "Private Room",
+        href: "/private-room",
         desc: "Take a visual journey through our warm interior and signature dishes.",
         image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop"
       },
@@ -526,7 +526,7 @@ export default function MegaHeader() {
               {/* Desktop CTA Button */}
               <div className="hidden md:flex justify-center">
                 <Link
-                  href="/menu"
+                  href="/bookatable"
                   className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold twst px-6 py-3 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
                 >
                   <span>BOOK A TABLE</span>
@@ -612,111 +612,137 @@ export default function MegaHeader() {
 
                 {/* Scrollable Navigation inside Sidebar */}
                 <nav className="space-y-1 overflow-y-auto max-h-[calc(100vh-220px)] pr-2">
-                  {navigation.map((item) => (
-                    <div key={item.name} className="py-2">
-                      <button
-                        onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                        className="w-full flex items-center justify-between text-sm font-bold text-white py-2 upp twst focus:outline-none"
-                      >
-                        {item.name}
-                        {(item.items || item.isMega || item.isMegaAbout) && (
-                          <svg className={`w-4 h-4 transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                          </svg>
+                  {navigation.map((item) => {
+                    const hasDropdown = item.items || item.isMega || item.isMegaAbout;
+
+                    return (
+                      <div key={item.name} className="py-2">
+                        {hasDropdown ? (
+                          /* 
+                            Split Design: Clicking the text navigates directly to the page.
+                            Clicking the arrow icon on the right toggles the mobile sub-menu.
+                          */
+                          <div className="w-full flex items-center justify-between py-2">
+                            <Link
+                              href={item.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="text-sm font-bold text-white upp twst text-left flex-grow"
+                            >
+                              {item.name}
+                            </Link>
+                            <button
+                              onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                              className="p-2 -mr-2 text-stone-400 hover:text-white transition-colors focus:outline-none"
+                              aria-label={`Toggle ${item.name} menu`}
+                            >
+                              <svg className={`w-4 h-4 transition-transform duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </button>
+                          </div>
+                        ) : (
+                          /* Standard anchor link for top-level non-dropdown pages */
+                          <Link
+                            href={item.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="w-full flex items-center justify-between text-sm font-bold text-white py-2 upp twst focus:outline-none"
+                          >
+                            {item.name}
+                          </Link>
                         )}
-                      </button>
 
-                      {/* Mobile Menu for About */}
-                      {item.isMegaAbout && (
-                        <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[600px] mt-2' : 'max-h-0'}`}>
-                          <div className="pl-4 border-l border-[#E94222]/30 space-y-4">
-                            {item.items.map((subItem) => (
-                              <Link
-                                key={subItem.name}
-                                href={subItem.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="block text-[14px] font-bold twr text-stone-300"
-                              >
-                                {subItem.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Mobile Menu for Menu */}
-                      {item.isMega && (
-                        <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[1200px] mt-2' : 'max-h-0'}`}>
-                          <div className="pl-4 border-l border-[#E94222]/30 space-y-5">
-                            {item.columns.map((column) => (
-                              <div key={column.title} className="flex flex-col gap-2.5 pt-2">
-                                <span className="text-[10px] font-bold tw-[0.2em] text-stone-500 uppercase block">
-                                  {column.title}
-                                </span>
-                                <div className="flex flex-col gap-2.5">
-                                  {column.items.map((subItem) => (
-                                    <Link
-                                      key={subItem.name}
-                                      href={subItem.href}
-                                      onClick={() => setMobileMenuOpen(false)}
-                                      className="flex items-center gap-3.5 p-1.5 rounded-xl hover:bg-white/[0.02] transition-colors"
-                                    >
-                                      <div className="flex-shrink-0 w-8 h-8 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#E94222]">
-                                        {renderIcon(subItem.icon)}
-                                      </div>
-                                      <span className="text-[14px] font-bold twr text-stone-300">
-                                        {subItem.name}
-                                      </span>
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            ))}
-
-                            {item.featured && (
-                              <div className="pt-2">
-                                <span className="text-[10px] font-bold tw-[0.2em] text-stone-500 uppercase block mb-2">
-                                  Featured Offer
-                                </span>
+                        {/* Mobile Menu for About */}
+                        {item.isMegaAbout && (
+                          <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[600px] mt-2' : 'max-h-0'}`}>
+                            <div className="pl-4 border-l border-[#E94222]/30 space-y-4">
+                              {item.items.map((subItem) => (
                                 <Link
-                                  href={item.featured.href}
+                                  key={subItem.name}
+                                  href={subItem.href}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className="relative block w-full rounded-xl overflow-hidden p-4 border border-white/10 bg-[#1c1917]"
+                                  className="block text-[14px] font-bold twr text-stone-300"
                                 >
-                                  <h4 className="text-xs font-bold text-white uppercase twr flex items-center gap-1.5">
-                                    ⭐ {item.featured.title}
-                                  </h4>
-                                  <p className="text-[11px] text-stone-400 mt-1 font-sans font-medium leading-relaxed">
-                                    {item.featured.desc}
-                                  </p>
+                                  {subItem.name}
                                 </Link>
-                              </div>
-                            )}
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
 
-                      {/* Mobile Menu for Regular items */}
-                      {item.items && !item.isMega && !item.isMegaAbout && (
-                        <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[500px] mt-2' : 'max-h-0'}`}>
-                          <div className="pl-4 border-l border-[#E94222]/30 space-y-3">
-                            {item.items.map((subItem) => (
-                              <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans uppercase twr">
-                                {subItem.name}
-                              </Link>
-                            ))}
+                        {/* Mobile Menu for Menu */}
+                        {item.isMega && (
+                          <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[1200px] mt-2' : 'max-h-0'}`}>
+                            <div className="pl-4 border-l border-[#E94222]/30 space-y-5">
+                              {item.columns.map((column) => (
+                                <div key={column.title} className="flex flex-col gap-2.5 pt-2">
+                                  <span className="text-[10px] font-bold tw-[0.2em] text-stone-500 up block">
+                                    {column.title}
+                                  </span>
+                                  <div className="flex flex-col gap-2.5">
+                                    {column.items.map((subItem) => (
+                                      <Link
+                                        key={subItem.name}
+                                        href={subItem.href}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="flex items-center gap-3.5 p-1.5 rounded-xl hover:bg-white/[0.02] transition-colors"
+                                      >
+                                        <div className="flex-shrink-0 w-8 h-8 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#E94222]">
+                                          {renderIcon(subItem.icon)}
+                                        </div>
+                                        <span className="text-[14px] font-bold twr text-stone-300">
+                                          {subItem.name}
+                                        </span>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+
+                              {item.featured && (
+                                <div className="pt-2">
+                                  <span className="text-[10px] font-bold tw-[0.2em] text-stone-500 up block mb-2">
+                                    Featured Offer
+                                  </span>
+                                  <Link
+                                    href={item.featured.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="relative block w-full rounded-xl overflow-hidden p-4 border border-white/10 bg-[#1c1917]"
+                                  >
+                                    <h4 className="text-xs font-bold text-white up twr flex items-center gap-1.5">
+                                      ⭐ {item.featured.title}
+                                    </h4>
+                                    <p className="text-[11px] text-stone-400 mt-1 font-sans font-medium leading-relaxed">
+                                      {item.featured.desc}
+                                    </p>
+                                  </Link>
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                        )}
+
+                        {/* Mobile Menu for Regular items */}
+                        {item.items && !item.isMega && !item.isMegaAbout && (
+                          <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[500px] mt-2' : 'max-h-0'}`}>
+                            <div className="pl-4 border-l border-[#E94222]/30 space-y-3">
+                              {item.items.map((subItem) => (
+                                <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans up twr">
+                                  {subItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </nav>
               </div>
 
               {/* Book Table Button inside Drawer */}
               <div className="pt-4 border-t border-white/5 md:hidden flex justify-center">
                 <Link
-                  href="/menu"
+                  href="/bookatable"
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full justify-center group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
                 >

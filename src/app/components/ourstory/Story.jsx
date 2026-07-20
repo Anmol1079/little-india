@@ -28,7 +28,12 @@ const revealVariants = {
   },
 };
 
-export default function OurStorySection() {
+// Added isH1 parameter defaulting to false
+export default function OurStorySection({ isH1 = false }) {
+  
+  // Dynamic tag selector that integrates with framer-motion elements
+  const HeadingTag = isH1 ? motion.h1 : motion.h2;
+
   return (
     <section className="w-full bg-white text-stone-800 overflow-hidden relative">
       
@@ -41,25 +46,26 @@ export default function OurStorySection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
-          className="col-span-1 lg:col-span-6 flex flex-col justify-center px-8 sm:px-16 lg:pl-24 lg:pr-32 py-24 relative z-10 overflow-hidden text-left"
+          className="col-span-1 lg:col-span-6 flex flex-col justify-center px-8 sm:px-16 lg:pl-24 lg:pr-32 py-12 md:py-16 relative z-10 overflow-hidden text-left"
         >
           <div className="relative z-10 flex flex-col gap-6 max-w-2xl">
             
             {/* Tagline Indicator with Symmetrical Star Divider */}
             <div className="flex flex-col gap-3">
-              <span className="text-[#e94222] font-extrabold text-[15px] sm:text-[15px] tw-[0.2em] upp font-sans">
+              <span className="text-[#e94222] font-extrabold text-[15px] sm:text-[15px] tw-wider font-sans">
                 OUR STORY
               </span>
             </div>
 
             {/* Headline Title */}
             <div className="relative w-full">
-              <motion.h2 
+              {/* Dynamically assigned heading wrapper */}
+              <HeadingTag 
                 variants={revealVariants}
-                className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[0.95] tw-tight upp"
+                className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[0.95] tw-tight"
               >
                 Authentic Indian Cuisine in Denver
-              </motion.h2>
+              </HeadingTag>
             </div>
 
             {/* Custom Narrative Paragraphs */}
@@ -85,7 +91,7 @@ export default function OurStorySection() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tw text-[16px] upp">Fresh Spices</span>
+                  <span className="text-stone-900 font-black tw-normal text-[16px]">Fresh Spices</span>
                   <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Sourced from India, ground in-house</span>
                 </div>
               </div>
@@ -98,7 +104,7 @@ export default function OurStorySection() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tw text-[16px] upp font-sans">Experts Chefs</span>
+                  <span className="text-stone-900 font-black tw-normal text-[16px] font-sans">Experts Chefs</span>
                   <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Crafting authentic flavors with passion</span>
                 </div>
               </div>
@@ -111,7 +117,7 @@ export default function OurStorySection() {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tw text-[16px] upp font-sans">Made with Love</span>
+                  <span className="text-stone-900 font-black tw-normal text-[16px] font-sans">Made with Love</span>
                   <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Every dish prepared with care & devotion</span>
                 </div>
               </div>

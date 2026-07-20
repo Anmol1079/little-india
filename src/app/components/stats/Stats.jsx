@@ -110,15 +110,16 @@ const itemVariants = {
   },
 };
 
-export default function StatsSection() {
+// Added showCta parameter defaulting to true
+export default function StatsSection({ showCta = true }) {
   return (
-    <section className="w-full bg-[#fff6ea] pt-0 pb-16 px-6 md:px-12 overflow-hidden font-sans border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] pt-0 pb-12 md:pb-16 px-6 md:px-12 overflow-hidden font-sans border-b border-stone-200/50">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header Block: Centered title with horizontal line dividers */}
-        <div className="flex items-center justify-center gap-4 mb-10 pt-16">
+        <div className="flex items-center justify-center gap-4 mb-10 pt-12 md:pt-16">
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
-          <span className="text-[11px] sm:text-xs font-bold text-neutral-500 uppercase whitespace-nowrap">
+          <span className="text-[11px] sm:text-xs font-bold text-neutral-500 up whitespace-nowrap">
             Flavors Backed by Experience
           </span>
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
@@ -153,10 +154,10 @@ export default function StatsSection() {
 
                 {/* Stacked Labels */}
                 <div className="flex flex-col text-left shrink-0">
-                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight uppercase text-black">
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight up text-black">
                     {item.labelLine1}
                   </span>
-                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight uppercase text-black">
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight up text-black">
                     {item.labelLine2}
                   </span>
                 </div>
@@ -166,28 +167,30 @@ export default function StatsSection() {
           ))}
         </motion.div>
 
-        {/* Bottom CTA Button */}
-        <div className="flex justify-center pt-12">
-          <Link
-            href="/menu"
-            className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
-          >
-            <span>KNOW MORE</span>
-            <svg
-              className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2.5}
-              viewBox="0 0 24 24"
+        {/* Bottom CTA Button is now conditionally rendered */}
+        {showCta && (
+          <div className="flex justify-center pt-12">
+            <Link
+              href="/menu"
+              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </Link>
-        </div>
+              <span>KNOW MORE</span>
+              <svg
+                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

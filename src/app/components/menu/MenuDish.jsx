@@ -471,7 +471,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
 
             <div className="flex justify-center">
               <Link
-                href="/menu"
+                href="/booktable"
                 className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
               >
                 <span>BOOK A TABLE</span>

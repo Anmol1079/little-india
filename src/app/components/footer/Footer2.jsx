@@ -99,7 +99,7 @@ export default function Footer2() {
 
         {/* COLUMN 2: Explore (Spans 2/12) */}
         <div className="lg:col-span-2">
-          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] uppercase mb-6">
+          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] up mb-6">
             Explore
           </h3>
           <ul className="flex flex-col gap-3.5 text-sm font-semibold text-neutral-400">
@@ -123,7 +123,7 @@ export default function Footer2() {
 
         {/* COLUMN 3: Our Menu (Spans 3/12) */}
         <div className="lg:col-span-2">
-          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] uppercase mb-6">
+          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] up mb-6">
             Our Menu
           </h3>
           <ul className="flex flex-col gap-3.5 text-sm font-semibold text-neutral-400">
@@ -146,7 +146,7 @@ export default function Footer2() {
 
         {/* COLUMN 4: Contact Us & Operating Hours (Spans 3/12) */}
         <div className="lg:col-span-4">
-          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] uppercase mb-6">
+          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] up mb-6">
             Contact Us
           </h3>
           <div className="flex flex-col gap-5 text-sm font-medium text-neutral-400">
@@ -233,7 +233,7 @@ export default function Footer2() {
       <div className="border-t border-neutral-900/60 mt-8 pt-8 max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-center gap-6 relative z-10">
         
         {/* Copyright & Developed by */}
-        <p className="text-xs font-semibold text-neutral-500 uppercase twst text-center md:text-left leading-relaxed">
+        <p className="text-xs font-semibold text-neutral-500 up twst text-center md:text-left leading-relaxed">
           Copyright © {currentYear} <span className="text-[#c5a880]">One World Cuisine LLC DBA Little India Restaurant and Bar</span>. All Rights Reserved. | Developed by{' '}
           <a
             href="https://webtechnepal.com/"
@@ -253,7 +253,7 @@ export default function Footer2() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 11h.008" />
             </svg>
           </div>
-          <span className="text-[10px] font-bold tw-[0.2em] text-neutral-500 flex items-center gap-1.5 uppercase leading-none">
+          <span className="text-[10px] font-bold tw-[0.2em] text-neutral-500 flex items-center gap-1.5 up leading-none">
             Made with <span className="text-[#E94222]">❤</span> for food lovers
           </span>
         </div> */}

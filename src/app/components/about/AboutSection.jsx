@@ -70,14 +70,12 @@ function CountUpMetric({ targetString }) {
   const elementRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  // Extract the numeric portion and the suffix (e.g. "+", "%")
   const numericValue = parseInt(targetString.replace(/[^0-9]/g, ''), 10) || 0;
   const suffix = targetString.replace(/[0-9]/g, '');
 
   useEffect(() => {
     const currentElement = elementRef.current;
     
-    // Intersection Observer to trigger counting only when visible in viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
@@ -101,13 +99,11 @@ function CountUpMetric({ targetString }) {
     if (!hasAnimated) return;
 
     let startTimestamp = null;
-    const duration = 800; // Snappy counting speed matching other sections
+    const duration = 800;
 
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      
-      // Easing function: easeOutQuad (starts fast, slows down at the end)
       const easeProgress = progress * (2 - progress);
       
       setCount(Math.floor(easeProgress * numericValue));
@@ -128,9 +124,12 @@ function CountUpMetric({ targetString }) {
   );
 }
 
-export default function AboutSection() {
+// Added isH1 parameter defaulting to false alongside showCta
+export default function AboutSection({ showCta = true, isH1 = false }) {
   
-  // Render thin line icons matching the brand colors
+  // Dynamic tag selector that integrates with framer-motion elements
+  const HeadingTag = isH1 ? motion.h1 : motion.h2;
+
   const renderCardIcon = (iconName) => {
     const iconProps = {
       className: "w-5 h-5 text-[#E94222] transition-transform duration-300 group-hover:scale-105",
@@ -171,13 +170,11 @@ export default function AboutSection() {
   };
 
   return (
-    <section className="w-full bg-[#ffffff] py-16 px-6 md:px-12 lg:px-20">
+    <section className="w-full bg-[#ffffff] py-12 md:py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-[1500px] mx-auto flex flex-col gap-16 lg:gap-24">
         
-        {/* UPPER PART: Storyteller Column on Left, 5-Image Bento Grid on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Text narrative content */}
           <motion.div 
             variants={revealContainerVariants}
             initial="hidden"
@@ -185,57 +182,59 @@ export default function AboutSection() {
             viewport={{ once: true, margin: '-100px' }}
             className="lg:col-span-6 flex flex-col items-start text-left gap-4"
           >
-            {/* Tagline */}
             <motion.span 
               variants={fadeUpVariants}
-              className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tracking-[0.2em] uppercase font-sans block"
+              className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tw-wider block"
             >
               Best Indian Restaurant In Denver
             </motion.span>
 
-            {/* Main Title */}
-            <motion.h2 
+            {/* Dynamically assigned heading wrapper */}
+            <HeadingTag 
               variants={fadeUpVariants}
-              className="font-title font-black text-[40px] sm:text-[52px] lg:text-[60px] text-stone-950 leading-[0.95] tracking-tight uppercase"
+              className="font-title font-black text-[40px] sm:text-[52px] lg:text-[60px] text-stone-950 leading-[0.95] tw-tight"
             >
               Little India Restaurant & Bar
-            </motion.h2>
+            </HeadingTag>
             
-            {/* Balanced editorial layout */}
-            <div className="flex flex-col gap-5 text-[15px] text-stone-500 font-semibold leading-relaxed max-w-3xl mt-2">
+            <div className="flex flex-col gap-5 text-[18px] text-stone-500 font-semibold leading-relaxed max-w-3xl mt-2">
               <motion.p variants={fadeUpVariants}>
                 One World Cuisine LLC DBA Little India Restaurant and Bar is one of the most authentic Indian restaurants in Denver, Colorado. Since 1998, we have proudly served the best Indian food in Denver, made with carefully selected Indian spices and ingredients sourced locally, in-house, or imported directly from India.
               </motion.p>
               <motion.p variants={fadeUpVariants}>
                 Ranked among the top Indian restaurants in the Denver metro area, Little India Denver offers an exceptional dining experience with traditional North Indian recipes crafted by experienced chefs. Our menu features fresh, gluten-free, and vegan-friendly options prepared with minimal oil and no baking soda, ensuring delicious, healthy meals.
               </motion.p>
+              <motion.p variants={fadeUpVariants}>
+                Whether you’re craving flavorful samosas during happy hour or an elegant private dining experience in Lakewood, Little India Restaurant and Bar is your go-to destination for authentic Indian cuisine in the Denver and Lakewood area. We combine mouth-watering dishes with a clean, welcoming ambiance that feels like home.
+              </motion.p>
             </div>
 
-            {/* CTA Button */}
-            <motion.div variants={fadeUpVariants} className="pt-2">
-              <Link
-                href="/menu"
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tracking-widest px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans shadow-md"
-              >
-                <span>KNOW MORE</span>
-                <svg
-                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                  viewBox="0 0 24 24"
+            {/* CTA Button is now rendered conditionally */}
+            {showCta && (
+              <motion.div variants={fadeUpVariants} className="pt-2">
+                <Link
+                  href="/menu"
+                  className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tw-normal px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans shadow-md"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-            </motion.div>
+                  <span>KNOW MORE</span>
+                  <svg
+                    className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+              </motion.div>
+            )}
           </motion.div>
 
-          {/* Right Column: Custom Asymmetrical 5-Image Bento Gallery Grid */}
           <div className="lg:col-span-6 w-full">
             <motion.div 
               variants={revealContainerVariants}
@@ -245,7 +244,6 @@ export default function AboutSection() {
               className="grid grid-cols-12 gap-4 h-[505px] sm:h-[555px] relative"
             >
               
-              {/* Image 1: Restaurant Exterior (Top Left, Spans 7/12 cols) */}
               <motion.div 
                 variants={bentoItemVariants}
                 className="col-span-7 h-[240px] sm:h-[290px] relative overflow-hidden rounded-3xl border border-stone-200/40 bg-stone-50 group"
@@ -257,7 +255,6 @@ export default function AboutSection() {
                 />
               </motion.div>
 
-              {/* Image 2: Gourmet Food Spread (Top Right, Spans 5/12 cols) */}
               <motion.div 
                 variants={bentoItemVariants}
                 className="col-span-5 h-[240px] sm:h-[290px] relative overflow-hidden rounded-3xl border border-stone-200/40 bg-stone-50 group"
@@ -269,7 +266,6 @@ export default function AboutSection() {
                 />
               </motion.div>
 
-              {/* Image 3: Interior dining with seated guests (Bottom Left, Spans 4/12 cols) */}
               <motion.div 
                 variants={bentoItemVariants}
                 className="col-span-4 h-[160px] sm:h-[220px] relative overflow-hidden rounded-2xl border border-stone-200/40 bg-stone-50 group"
@@ -281,7 +277,6 @@ export default function AboutSection() {
                 />
               </motion.div>
 
-              {/* Image 4: Exotic Cocktails & Rum (Bottom Center, Spans 4/12 cols) */}
               <motion.div 
                 variants={bentoItemVariants}
                 className="col-span-4 h-[160px] sm:h-[220px] relative overflow-hidden rounded-2xl border border-stone-200/40 bg-stone-50 group"
@@ -293,7 +288,6 @@ export default function AboutSection() {
                 />
               </motion.div>
 
-              {/* Image 5: Set Tables with Roses (Bottom Right, Spans 4/12 cols) */}
               <motion.div 
                 variants={bentoItemVariants}
                 className="col-span-4 h-[160px] sm:h-[220px] relative overflow-hidden rounded-2xl border border-stone-200/40 bg-stone-50 group"

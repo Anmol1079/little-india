@@ -65,7 +65,7 @@ export default function CtaSection() {
           {/* Tagline */}
           <motion.span
             variants={childVariants}
-            className="text-[#E94222] font-black text-sm sm:text-base tw-[0.25em] uppercase block mb-1"
+            className="text-[#E94222] font-black text-sm sm:text-base tw-[0.25em] up block mb-1"
           >
             HUNGRY?
           </motion.span>
@@ -73,7 +73,7 @@ export default function CtaSection() {
           {/* Symmetrical Bold Title */}
           <motion.h2
             variants={childVariants}
-            className="font-title font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase leading-none tw-tight mb-4"
+            className="font-title font-black text-4xl sm:text-5xl md:text-6xl text-white up leading-none tw-tight mb-4"
           >
             WE’RE READY
           </motion.h2>

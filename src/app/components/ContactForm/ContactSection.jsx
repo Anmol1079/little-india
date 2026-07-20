@@ -182,7 +182,7 @@ export default function ContactSection() {
                     {/* Monday Row */}
                     <div className="flex justify-between items-center border-b border-stone-100 pb-4 mb-4 min-h-[50px]">
                       <span className="text-stone-500">Mon</span>
-                      <span className="text-stone-400 font-bold uppercase text-[13px] bg-stone-50 border border-stone-200/40 px-2 py-0.5 rounded">
+                      <span className="text-stone-400 font-bold up text-[13px] bg-stone-50 border border-stone-200/40 px-2 py-0.5 rounded">
                         Closed
                       </span>
                     </div>
