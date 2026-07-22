@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useScroll, useTransform, useMotionTemplate, motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 // Interactive menu item row with parallax plates and fading title text
 function MenuItem({ item }) {
@@ -28,14 +29,10 @@ function MenuItem({ item }) {
     >
       {/* Description Column */}
       <div
-        className={`xl:col-span-2 flex flex-col items-center text-center order-2 ${
-          item.align === 'left'
-            ? 'xl:order-2 xl:text-left xl:items-start'
-            : 'xl:order-1 xl:text-right xl:items-end'
-        }`}
+        className={`xl:col-span-2 flex flex-col items-center text-center order-2 ${ item.align === 'left' ? 'xl:order-2 xl:text-left xl:items-start' : 'xl:order-1 xl:text-right xl:items-end' }`}
       >
         <motion.h3
-          className="font-title font-black text-[35px] md:text-[40px] xl:text-[40px] mb-2 up leading-none"
+          className="font-title font-bold text-[35px] md:text-[40px] xl:text-[40px] mb-2 up leading-none"
           style={{ 
             opacity: textOpacity, 
             color: '#E75B44'
@@ -43,16 +40,14 @@ function MenuItem({ item }) {
         >
           {item.title}
         </motion.h3>
-        <p className="font-sans text-stone-300 text-sm md:text-base leading-relaxed max-w-md xl:max-w-[90%]">
+        <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-md xl:max-w-[90%] font-normal">
           {item.description}
         </p>
       </div>
 
       {/* Plate Image Column */}
       <div
-        className={`xl:col-span-3 relative flex items-center justify-center w-[300px] h-[300px] md:w-[450px] md:h-[450px] xl:size-[80vh] mx-auto order-1 ${
-          item.align === 'left' ? 'xl:order-1' : 'xl:order-2'
-        }`}
+        className={`xl:col-span-3 relative flex items-center justify-center w-[300px] h-[300px] md:w-[450px] md:h-[450px] xl:size-[80vh] mx-auto order-1 ${ item.align === 'left' ? 'xl:order-1' : 'xl:order-2' }`}
       >
         {/* Parallax-only motion container (No rotation) */}
         <motion.div
@@ -187,23 +182,16 @@ export default function SpecialMenu() {
 
       {/* Centered Header wrapper */}
       <div className="w-full px-4 md:px-8 xl:px-16 pt-16 pb-8">
-        <div className="flex flex-col items-center text-center group cursor-pointer max-w-[1400px] mx-auto">
-          
-          {/* Tagline Bracket */}
-          <span className="text-[#E65C38] font-bold text-[15px] up font-sans block mb-3">
-            Our Highlights
-          </span>
-
-          <div className="flex justify-center items-baseline mb-4">
-            <h2 className="font-title font-black text-[40px] sm:text-[60px] md:text-[60px] text-[#fff] leading-none transition-colors duration-300 group-hover:text-[#E65C38] up">
-              Special Dishes
-            </h2>
-          </div>
-          
-          <p className="font-sans text-[16px] md:text-[18px] text-[#fff]/60 leading-relaxed font-semibold max-w-2xl mx-auto">
-            Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch.
-          </p>
-        </div>
+        <SectionHeader
+          align="center"
+          theme="dark"
+          label="Our Highlights"
+          title="Special Dishes"
+          description="Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch."
+          className="mb-0 group cursor-pointer max-w-[1400px] mx-auto"
+          contentClassName="max-w-2xl"
+          titleClassName="sm:text-[56px] md:text-[56px] leading-none mb-4"
+        />
       </div>
 
       {/* Menu List */}

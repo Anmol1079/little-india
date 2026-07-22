@@ -20,6 +20,12 @@ export const metadata = {
       "A thoughtful and convenient way to treat someone to a memorable Indian dining experience in Denver and Lakewood, Colorado.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gift Cards | Little India Restaurant & Bar",
+    description:
+      "Give the gift of authentic Indian dining at Little India in Lakewood & Denver.",
+  },
 };
 
 export default function Page() {
@@ -27,13 +33,9 @@ export default function Page() {
     <main className="min-h-screen bg-[#FFF6EA]">
       {/* Navigation Header */}
       <MegaHeader />
-
-      {/* Symmetrical Split Gift Card Block */}
-      <section className="relative overflow-hidden flex-grow pt-32 lg:pt-36 pb-16 md:pb-16">
-      <GiftCard />
+      <section className="relative overflow-hidden flex-grow pt-32 md:pt-36 pb-16 md:pb-16 px-6">
+        <GiftCard />
       </section>
-
-      {/* Brand Footer */}
       <FooterWithCta />
     </main>
   );

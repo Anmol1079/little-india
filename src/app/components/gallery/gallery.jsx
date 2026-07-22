@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import SectionHeader from '../common/SectionHeader';
 
 // Dynamic Gallery Categories
 const GALLERY_CATEGORIES = [
@@ -11,7 +12,8 @@ const GALLERY_CATEGORIES = [
     title: "Appetizers",
     category: "appetizers",
     desc: "Crispy, flavorful starters to begin your journey.",
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=1200&q=80",
+    image: "/gallery/appetizers.webp",
+    fallbackImage: "/gallery/appetizers.webp",
     count: "6 Photos",
     url: "/gallery/appetizers"
   },
@@ -20,8 +22,8 @@ const GALLERY_CATEGORIES = [
     title: "Entrées From Clay Oven",
     category: "curries",
     desc: "Slow-cooked to perfection in traditional clay oven.",
-    image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg",
-    fallbackImage: "https://images.unsplash.com/photo-1610057099443-fde8c4d90ef8?auto=format&fit=crop&w=800&q=80",
+    image: "/gallery/entrees.webp",
+    fallbackImage: "/gallery/entrees.webp",
     count: "8 Photos",
     url: "/gallery/entrees-from-clay-oven"
   },
@@ -30,7 +32,8 @@ const GALLERY_CATEGORIES = [
     title: "Family Packages",
     category: "curries",
     desc: "Perfectly portioned feasts for sharing.",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+    image: "/gallery/veg-family-pack-1.webp",
+    fallbackImage: "/gallery/veg-family-pack-1.webp",
     count: "9 Photos",
     url: "/gallery/family-package"
   },
@@ -39,7 +42,8 @@ const GALLERY_CATEGORIES = [
     title: "Naan & Flatbreads",
     category: "breads",
     desc: "Freshly baked breads, the perfect companion.",
-    image: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80",
+    image: "/gallery/naan.webp",
+    fallbackImage: "/gallery/naan.webp",
     count: "5 Photos",
     url: "/gallery/naan"
   },
@@ -48,7 +52,8 @@ const GALLERY_CATEGORIES = [
     title: "Sides & Condiments",
     category: "sides",
     desc: "The little extras that complete every meal.",
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
+    image: "/gallery/side-orders.webp",
+    fallbackImage: "/gallery/side-orders.webp",
     count: "6 Photos",
     url: "/gallery/side-orders"
   },
@@ -57,18 +62,30 @@ const GALLERY_CATEGORIES = [
     title: "Soups & Salads",
     category: "soups",
     desc: "Light, healthy and full of goodness.",
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+    image: "/gallery/soup-and-salads.webp",
+    fallbackImage: "/gallery/soup-and-salads.webp",
     count: "7 Photos",
     url: "/gallery/soup-and-salads"
   },
   {
-    id: "desserts",
-    title: "Desserts",
-    category: "desserts",
+    id: "speciality",
+    title: "Speciality",
+    category: "speciality",
     desc: "Sweet endings to a memorable experience.",
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=1200&q=80",
+    image: "/gallery/specialty.webp",
+    fallbackImage: "/gallery/specialty.webp",
     count: "6 Photos",
-    url: "/gallery/desserts"
+    url: "/gallery/speciality"
+  },
+  {
+    id: "vegetarian",
+    title: "Vegetarian",
+    category: "vegetarian",
+    desc: "Sweet endings to a memorable experience.",
+    image: "/gallery/vegetarian.webp",
+    fallbackImage: "/gallery/vegetarian.webp",
+    count: "6 Photos",
+    url: "/gallery/vegetarian"
   }
 ];
 
@@ -108,12 +125,12 @@ export default function GalleryPage() {
   });
 
   return (
-    <section className="w-full bg-[#FFF6EA] text-[#FAF6EE] font-sans overflow-hidden min-h-screen pb-16 select-none pt-20">
+    <section className="w-full bg-[#FFF6EA] text-[#FAF6EE] overflow-hidden min-h-screen pb-16 pt-32 md:pt-36">
       
 
 
       {/* --- HERO HEADER --- */}
-      <div className="w-full pt-12 md:pt-16 px-6 md:px-12 lg:px-20 text-left relative ">
+      <div className="w-full px-6 md:px-12 lg:px-20 text-left relative">
         
         {/* Transparent Gold Mandala Overlay */}
         {/* <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none flex items-center justify-center">
@@ -123,23 +140,17 @@ export default function GalleryPage() {
           </svg>
         </div> */}
 
-        <motion.div
-          variants={revealContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          className="max-w-[1400px] flex flex-col items-baseline gap-5 relative z-10 mx-auto"
-        >
-          <span className="text-[#e65c38] font-bold text-[13px] sm:text-[14px] tw-[0.25em] up font-gallery-sans block">
-            Visual Feast
-          </span>
-          <h1 className="font-gallery-title font-black text-[40px] sm:text-[60px] lg:text-[60px] leading-[1.05] up tw-wide max-w-5xl text-black">
-            Our Culinary Gallery
-          </h1>
-          <p className="font-gallery-sans text-[15px] sm:text-[17px] text-[#333] leading-relaxed max-w-2xl font-medium">
-            Explore our diverse visual menu. Click on any category below to enter its dedicated high-resolution photo collection.
-          </p>
-        </motion.div>
+        <SectionHeader
+          as="h1"
+          theme="accent"
+          label="Visual Feast"
+          title="Our Culinary Gallery"
+          description="Explore our diverse visual menu. Click on any category below to enter its dedicated high-resolution photo collection."
+          className="mb-0 max-w-[1400px] relative z-10 mx-auto"
+          labelClassName="text-[13px] sm:text-[14px]"
+          titleClassName="sm:text-[56px] leading-[1.05] max-w-5xl text-black"
+          descriptionClassName="text-[15px] sm:text-[17px]"
+        />
       </div>
 
       {/* --- FILTER & VIEWS ROW --- */}
@@ -208,23 +219,23 @@ export default function GalleryPage() {
               {filteredCategories.map((cat) => (
                 <div
                   key={cat.id}
-                  className={`relative overflow-hidden rounded-[2rem] border border-stone-800/80 bg-stone-950 group cursor-pointer shadow-2xl transition-colors duration-300 ${cat.id === "desserts" ? "md:col-span-2 h-[340px]" : "h-[300px] sm:h-[350px] md:h-[400px]"}`}
+                  className={`relative overflow-hidden rounded-[2rem] border border-stone-800/80 bg-stone-950 group cursor-pointer shadow-2xl transition-colors duration-300 ${cat.id === "desserts" ? "md:col-span-2 h-[340px]" : "h-[300px] sm:h-[350px] md:h-[400px] "}`}
                 >
                   <Link href={cat.url} className="absolute inset-0 z-35"></Link>
 
                   <img
                     src={cat.image}
                     alt={cat.title}
-                    className="absolute inset-0 w-full h-full object-cover filter brightness-[0.88] saturate-[1.03] transition-transform duration-1000 ease-out group-hover:scale-103"
+                    className="absolute inset-0 w-full h-full object-cover filter brightness-[0.88] saturate-[1.03] transition-transform duration-1000 ease-out scale-110 group-hover:scale-115"
                     onError={(e) => { if (cat.fallbackImage) e.currentTarget.src = cat.fallbackImage; }}
                   />
 
                   <div className="absolute bottom-0 left-0 right-0 bg-black/65 backdrop-blur-md border-t border-white/5 py-6 px-8 flex justify-between items-center z-10 transition-colors duration-300 group-hover:bg-[#121110]/85">
                     <div className="flex flex-col text-left gap-1">
-                      <h2 className="font-gallery-title font-black text-[18px] sm:text-[20px] text-white up leading-none group-hover:text-[#C59B27] transition-colors duration-300">
+                      <h2 className="font-gallery-title font-bold text-[18px] sm:text-[20px] text-white up leading-none group-hover:text-[#C59B27] transition-colors duration-300">
                         {cat.title}
                       </h2>
-                      <p className="font-gallery-sans text-[12px] sm:text-[13px] text-stone-400 font-medium leading-none mt-1">
+                      <p className="font-gallery-sans text-[12px] sm:text-[13px] text-stone-400 leading-none mt-1 font-normal">
                         {cat.desc}
                       </p>
                     </div>
@@ -273,10 +284,10 @@ export default function GalleryPage() {
                     
                     {/* List Text descriptions */}
                     <div className="flex flex-col text-left gap-1">
-                      <h3 className="font-gallery-title font-black text-[18px] sm:text-[20px] text-white up leading-none group-hover:text-[#C59B27] transition-colors duration-300">
+                      <h3 className="font-gallery-title font-bold text-[18px] sm:text-[20px] text-white up leading-none group-hover:text-[#C59B27] transition-colors duration-300">
                         {cat.title}
                       </h3>
-                      <p className="font-gallery-sans text-[12.5px] sm:text-[13.5px] text-stone-400 font-medium mt-1 leading-snug">
+                      <p className="font-gallery-sans text-[12.5px] sm:text-[13.5px] text-stone-400 mt-1 leading-snug font-normal">
                         {cat.desc}
                       </p>
                     </div>

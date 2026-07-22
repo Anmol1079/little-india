@@ -44,6 +44,11 @@ export async function generateMetadata({ params }) {
       description: post.description,
       type: "article",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Little India Restaurant & Bar`,
+      description: post.description,
+    },
   };
 }
 
@@ -55,13 +60,7 @@ export default async function Page({ params }) {
     <main className="min-h-screen bg-[#FFF6EA]">
       {/* Brand Navigation Header */}
       <MegaHeader />
-
-      {/* Dynamic Blog Post Detail View */}
-      <section className="relative overflow-hidden flex-grow pt-16 md:pt-20">
-      <BlogDetail postId={id} />
-      </section>
-
-      {/* Brand Footer */}
+      <BlogDetail postId={id} className="pt-32 md:pt-36" />
       <FooterWithCta/>
     </main>
   );

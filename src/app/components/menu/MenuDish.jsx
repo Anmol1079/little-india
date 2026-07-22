@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import SectionHeader from '../common/SectionHeader';
 
 const MENU_CATEGORIES = {
   'Appetizer': [
@@ -301,7 +302,7 @@ export default function MenuDish() {
   const visibleDishes = activeDishes.slice(0, 9);
 
   return (
-    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-stone-900 overflow-hidden border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-[#333] overflow-hidden border-b border-stone-200/50">
       
       <style dangerouslySetInnerHTML={{ __html: `
         .scrollbar-none::-webkit-scrollbar {
@@ -315,27 +316,14 @@ export default function MenuDish() {
 
       <div className="max-w-[1500px] mx-auto">
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
-        >
-          <div className="flex flex-col max-w-[600px] sm:max-w-[100px] md:max-w-[1500px]">
-            <span className="text-[#B83A18] font-bold text-[15px] upp font-sans block mb-3">
-              Our menu
-            </span>
-            
-            <h2 className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] mb-4">
-              Our Special Food Items
-            </h2>
-
-            <p className="font-sans text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed mt-2">
-              Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch.
-            </p>
-          </div>
-        </motion.div>
+        <SectionHeader
+          theme="light"
+          label="Our menu"
+          title="Our Special Food Items"
+          description="Explore a selection of carefully crafted dishes inspired by tradition and elevated with a modern touch."
+          contentClassName="max-w-[1500px]"
+          titleClassName="sm:text-[56px]"
+        />
 
         {/* Categories slider wrapper preserved if uncommented in future */}
         <div className="w-full mb-16 overflow-visible select-none">
@@ -370,7 +358,7 @@ export default function MenuDish() {
           <div className="flex justify-center mt-14 select-none pointer-events-auto">
             <Link
               href="/menu"
-              className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 font-sans shadow-lg shadow-[#C13419]/15"
+              className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold px-8 py-4 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 shadow-lg shadow-[#C13419]/15"
             >
               <span>VIEW FULL MENU</span>
               <svg
@@ -420,15 +408,15 @@ function MenuItemCard({ item, isHovered, onHover }) {
       </div>
 
       <div className="mt-4 flex flex-col gap-1 border-b border-stone-200/50 pb-4">
-        <h3 className="font-title font-black text-2xl text-stone-950 upp leading-none mb-1.5 transition-colors duration-300 group-hover:text-[#E65C38]">
+        <h3 className="font-title font-bold text-2xl text-stone-950 upp leading-none mb-1.5 transition-colors duration-300 group-hover:text-[#E65C38]">
           {item.title}
         </h3>
-        <p className="font-sans text-sm font-bold text-[#B83A18] leading-none">
+        <p className="text-sm text-[#B83A18] leading-none font-normal">
           {item.price}
         </p>
         <div className="flex items-center gap-2 mt-1 select-none">
           <Stars />
-          <span className="font-sans text-[15px] font-semibold text-stone-600 mt-0.5">
+          <span className="text-[15px] font-semibold text-stone-600 mt-0.5">
             {item.rating} ({item.reviews} reviews)
           </span>
         </div>
@@ -447,11 +435,11 @@ function MenuItemCard({ item, isHovered, onHover }) {
             }}
             className="absolute top-1/2 left-1/2 w-[90%] bg-white rounded-2xl p-6 shadow-[0_25px_60px_rgba(0,0,0,0.18)] z-20 flex flex-col items-center text-center border border-stone-100/50 pointer-events-none"
           >
-            <h4 className="font-title font-black text-2xl text-stone-950 upp leading-none mb-2">
+            <h4 className="font-title font-bold text-2xl text-stone-950 upp leading-none mb-2">
               {item.title}
             </h4>
             
-            <p className="font-sans text-[12px] text-stone-500 font-semibold leading-relaxed mb-4 max-w-[92%]">
+            <p className="text-[12px] text-[#333] leading-relaxed mb-4 max-w-[92%] font-normal">
               {item.description}
             </p>
 
@@ -465,14 +453,14 @@ function MenuItemCard({ item, isHovered, onHover }) {
               />
             </div>
 
-            <p className="font-sans text-lg font-bold text-stone-950 mb-2">
+            <p className="text-lg text-stone-950 mb-2 font-normal">
               {item.price}
             </p>
 
             <div className="flex justify-center">
               <Link
                 href="/booktable"
-                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
               >
                 <span>BOOK A TABLE</span>
                 <svg
@@ -493,7 +481,7 @@ function MenuItemCard({ item, isHovered, onHover }) {
 
             <div className="flex items-center gap-1.5 mt-1 border-t border-stone-100 pt-3 w-full justify-center">
               <Stars />
-              <span className="font-sans text-[10px] font-bold text-stone-400 upp">
+              <span className="text-[10px] font-bold text-stone-400 upp">
                 {item.rating} ({item.reviews} reviews)
               </span>
             </div>

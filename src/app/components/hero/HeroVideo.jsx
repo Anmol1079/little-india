@@ -35,7 +35,7 @@ export default function HeroVideo() {
 
         {/* Multi-layered Overlay for Premium Depth */}
         <div className="absolute inset-0 bg-stone-950/40 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 " />
+        <div className="absolute inset-0" />
         <div className="absolute inset-0 bg-stone-950/10" />
       </div>
 
@@ -62,7 +62,7 @@ export default function HeroVideo() {
           </div>
 
           {/* Refined Sub-headline */}
-          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light twst upp opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
+          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed twst upp opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 font-normal">
             Savor the perfect blend of tradition <br className="hidden md:block" /> and contemporary Indian excellence
           </p>
 

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 const CARDS_DATA = [
   {
@@ -127,9 +128,6 @@ function CountUpMetric({ targetString }) {
 // Added isH1 parameter defaulting to false alongside showCta
 export default function AboutSection({ showCta = true, isH1 = false }) {
   
-  // Dynamic tag selector that integrates with framer-motion elements
-  const HeadingTag = isH1 ? motion.h1 : motion.h2;
-
   const renderCardIcon = (iconName) => {
     const iconProps = {
       className: "w-5 h-5 text-[#E94222] transition-transform duration-300 group-hover:scale-105",
@@ -182,39 +180,37 @@ export default function AboutSection({ showCta = true, isH1 = false }) {
             viewport={{ once: true, margin: '-100px' }}
             className="lg:col-span-6 flex flex-col items-start text-left gap-4"
           >
-            <motion.span 
-              variants={fadeUpVariants}
-              className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tw-wider block"
-            >
-              Best Indian Restaurant In Denver
-            </motion.span>
-
-            {/* Dynamically assigned heading wrapper */}
-            <HeadingTag 
-              variants={fadeUpVariants}
-              className="font-title font-black text-[40px] sm:text-[52px] lg:text-[60px] text-stone-950 leading-[0.95] tw-tight"
-            >
-              Little India Restaurant & Bar
-            </HeadingTag>
+            <motion.div variants={fadeUpVariants} className="w-full">
+              <SectionHeader
+                animated={false}
+                uppercase={false}
+                as={isH1 ? 'h1' : 'h2'}
+                theme="light"
+                label="Best Indian Restaurant In Denver"
+                title="Little India Restaurant & Bar"
+                className="mb-0"
+                titleClassName="sm:text-[52px] lg:text-[56px] mb-0"
+              />
+            </motion.div>
             
-            <div className="flex flex-col gap-5 text-[18px] text-stone-500 font-semibold leading-relaxed max-w-3xl mt-2">
-              <motion.p variants={fadeUpVariants}>
+            <div className="flex flex-col gap-5 text-[18px] text-[#333] leading-relaxed max-w-3xl mt-2">
+              <motion.p className="font-normal" variants={fadeUpVariants}>
                 One World Cuisine LLC DBA Little India Restaurant and Bar is one of the most authentic Indian restaurants in Denver, Colorado. Since 1998, we have proudly served the best Indian food in Denver, made with carefully selected Indian spices and ingredients sourced locally, in-house, or imported directly from India.
               </motion.p>
-              <motion.p variants={fadeUpVariants}>
+              <motion.p className="font-normal" variants={fadeUpVariants}>
                 Ranked among the top Indian restaurants in the Denver metro area, Little India Denver offers an exceptional dining experience with traditional North Indian recipes crafted by experienced chefs. Our menu features fresh, gluten-free, and vegan-friendly options prepared with minimal oil and no baking soda, ensuring delicious, healthy meals.
               </motion.p>
-              <motion.p variants={fadeUpVariants}>
+              <motion.p className="font-normal" variants={fadeUpVariants}>
                 Whether you’re craving flavorful samosas during happy hour or an elegant private dining experience in Lakewood, Little India Restaurant and Bar is your go-to destination for authentic Indian cuisine in the Denver and Lakewood area. We combine mouth-watering dishes with a clean, welcoming ambiance that feels like home.
               </motion.p>
             </div>
 
             {/* CTA Button is now rendered conditionally */}
-            {showCta && (
+            {/* {showCta && (
               <motion.div variants={fadeUpVariants} className="pt-2">
                 <Link
                   href="/menu"
-                  className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tw-normal px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans shadow-md"
+                  className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold tw-normal px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 shadow-md"
                 >
                   <span>KNOW MORE</span>
                   <svg
@@ -232,7 +228,7 @@ export default function AboutSection({ showCta = true, isH1 = false }) {
                   </svg>
                 </Link>
               </motion.div>
-            )}
+            )} */}
           </motion.div>
 
           <div className="lg:col-span-6 w-full">

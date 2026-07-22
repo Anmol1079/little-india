@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SectionHeader from "../common/SectionHeader";
 
 export default function AboutUs() {
   const sectionRef = useRef(null);
@@ -123,23 +124,25 @@ export default function AboutUs() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-16 bg-[#fdfbf7] text-stone-900 border-b border-stone-200/50 select-none overflow-hidden"
+      className="relative w-full py-16 bg-[#fdfbf7] text-[#333] border-b border-stone-200/50 overflow-hidden"
     >
       <div ref={containerRef} className="w-full max-w-7xl mx-auto px-6 md:px-12 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Storytelling */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <span className="modern-reveal text-[#E65C38] font-bold text-[15px] twst upp font-sans block mb-4">
-            Best Indian Restaurant In Denver
-            </span>
+            <SectionHeader
+              animated={false}
+              theme="accent"
+              label="Best Indian Restaurant In Denver"
+              title="Little India Restaurant & Bar"
+              className="mb-0"
+              labelClassName="modern-reveal mb-4"
+              titleClassName="modern-reveal text-4xl sm:text-5xl lg:text-6xl mb-6"
+            />
 
-            <h2 className="modern-reveal font-title font-black text-4xl sm:text-5xl lg:text-6xl text-stone-950 upp leading-[0.95] mb-6 tw-[0.01rem]">
-            Little India Restaurant & Bar
-            </h2>
-
-            <div className="modern-reveal flex flex-col gap-5 text-[15px] text-stone-500 font-semibold max-w-md mb-8 font-sans leading-relaxed">
-              <p>
+            <div className="modern-reveal flex flex-col gap-5 text-[15px] text-[#333] max-w-md mb-8 leading-relaxed">
+              <p className="font-normal">
                 Little India Restaurant & Bar is a recognized and celebrated
                 culinary landmark with expertise in crafting authentic northern
                 and southern Indian courses. We offer an attentive guest
@@ -147,13 +150,13 @@ export default function AboutUs() {
                 traditional spices, clay oven baking, and hand-ground spice
                 mixes.
               </p>
-              <p>
+              <p className="font-normal">
                 If you’re planning a family dinner, an intimate gathering, or a
                 corporate event, our hospitality team is here to assist. We
                 offer full private catering and custom menu curation to ensure
                 your celebrations are unforgettable.
               </p>
-              <p>
+              <p className="font-normal">
                 Our flagship culinary services include Concept Menus, Chef’s
                 Tastings, Private Event Dining, and Home Feast Delivery.
               </p>
@@ -204,7 +207,7 @@ export default function AboutUs() {
                 />
               </div>
 
-              <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
+              <p className="text-[15px] text-[#333] leading-relaxed font-normal">
                 Focusing on color, texture, and traditional heat to create
                 soulful dishes.
               </p>
@@ -218,14 +221,14 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4">
             <span
               id="counter-1"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight"
             >
               0+
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
+            <h4 className="text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Feasts Served
             </h4>
-            <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
+            <p className="text-[15px] text-[#333] leading-relaxed font-normal">
               From cozy family dinners to grand celebrations, each plate is an
               authentic story of tradition.
             </p>
@@ -235,14 +238,14 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4 sm:pl-6 sm:border-l border-stone-200/80">
             <span
               id="counter-2"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight"
             >
               0+
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
+            <h4 className="text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Signature Spices
             </h4>
-            <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
+            <p className="text-[15px] text-[#333] leading-relaxed font-normal">
               Hand-selected, custom blended, and roasted fresh in our tandoor
               rooms every morning.
             </p>
@@ -252,14 +255,14 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4 lg:pl-6 lg:border-l border-stone-200/80">
             <span
               id="counter-3"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight"
             >
               0%
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
+            <h4 className="text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Guest Satisfaction
             </h4>
-            <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
+            <p className="text-[15px] text-[#333] leading-relaxed font-normal">
               Our diners love the warm, attentive hospitality and return for
               unforgettable culinary journeys.
             </p>
@@ -269,14 +272,14 @@ export default function AboutUs() {
           <div className="stat-card flex flex-col gap-4 sm:pl-6 sm:border-l border-stone-200/80">
             <span
               id="counter-4"
-              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight font-sans"
+              className="text-4xl md:text-5xl font-extrabold text-stone-950 tw-tight"
             >
               0+
             </span>
-            <h4 className="font-sans text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
+            <h4 className="text-[15px] sm:text-sm font-bold text-stone-950 upp twr leading-none">
               Years of Craft
             </h4>
-            <p className="font-sans text-[15px] text-stone-500 font-semibold leading-relaxed">
+            <p className="text-[15px] text-[#333] leading-relaxed font-normal">
               A seasoned team of culinary masters bringing heritage, passion,
               and precision to every detail.
             </p>

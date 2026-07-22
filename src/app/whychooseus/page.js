@@ -25,6 +25,12 @@ export const metadata = {
       "Crafting authentic Indian dishes with fresh ingredients, traditional spices, and unmatched quality in Denver and Lakewood, CO.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Choose Us | Little India Restaurant & Bar",
+    description:
+      "Denver & Lakewood’s top choice for authentic, fresh, vegan- and gluten-friendly Indian cuisine.",
+  },
 };
 
 export default function WhyChooseUsPage() {
@@ -32,19 +38,7 @@ export default function WhyChooseUsPage() {
     <main className="min-h-screen bg-[#fff6ea]">
       {/* Site Header */}
       <MegaHeader />
-
-      {/* Main Why Choose Us Section */}
-      <div className="relative overflow-hidden flex-grow pt-16 md:pt-20">
-        <WhyChoose />
-      </div>
-
-      {/* Key Highlights & Statistics */}
-      {/* <StatsSection showCta={false} /> */}
-
-      {/* Latest Stories & Blog Section */}
-      {/* <Blog1/> */}
-
-      {/* Footer with CTA */}
+      <WhyChoose className="pt-32 md:pt-36" />
       <FooterWithCta />
     </main>
   );

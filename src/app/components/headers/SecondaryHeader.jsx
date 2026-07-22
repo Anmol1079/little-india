@@ -54,11 +54,7 @@ export default function SecondaryHeader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-stone-950/90 backdrop-blur-xl border-b border-white/5 py-4"
-          : "bg-black py-6"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${ isScrolled ? "bg-stone-950/90 backdrop-blur-xl border-b border-white/5 py-4" : "bg-black py-6" }`}
     >
       <div className="max-w-[1550px] mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
@@ -99,11 +95,7 @@ export default function SecondaryHeader() {
                 {/* UPGRADED DROPDOWN DESIGN */}
                 {item.items && (
                   <div
-                    className={`absolute top-full left-0 w-72 pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                      activeDropdown === item.name 
-                        ? "opacity-100 translate-y-0 visible" 
-                        : "opacity-0 -translate-y-4 invisible"
-                    }`}
+                    className={`absolute top-full left-0 w-72 pt-4 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${ activeDropdown === item.name ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-4 invisible" }`}
                   >
                     <div className="bg-stone-950/95 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-2">
                       <div className="flex flex-col">
@@ -111,11 +103,7 @@ export default function SecondaryHeader() {
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className={`group relative px-4 py-3 text-[10px] upp tw-[0.18em] transition-all rounded-xl flex items-center justify-between ${
-                              subItem.featured 
-                                ? "mt-2 bg-white/5 border border-white/10 text-white font-black" 
-                                : "text-stone-400 hover:text-white hover:bg-white/5"
-                            }`}
+                            className={`group relative px-4 py-3 text-[10px] upp tw-[0.18em] transition-all rounded-xl flex items-center justify-between ${ subItem.featured ? "mt-2 bg-white/5 border border-white/10 text-white font-bold" : "text-stone-400 hover:text-white hover:bg-white/5" }`}
                           >
                             <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
                               {subItem.name}
@@ -146,7 +134,7 @@ export default function SecondaryHeader() {
           <div className="flex items-center">
             <Link
               href="/reservations"
-              className="bg-[#E94222] hover:bg-[#d14b35] text-white text-[11px] font-bold twst px-6 py-3 rounded-full transition-all duration-300 hover:shadow-[0_8px_20px_rgba(233,66,34,0.3)] font-sans"
+              className="bg-[#E94222] hover:bg-[#d14b35] text-white text-[11px] font-bold twst px-6 py-3 rounded-full transition-all duration-300 hover:shadow-[0_8px_20px_rgba(233,66,34,0.3)]"
             >
               BOOK A TABLE
             </Link>
@@ -186,7 +174,7 @@ export default function SecondaryHeader() {
                   <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.name ? 'max-h-[500px] mt-2' : 'max-h-0'}`}>
                     <div className="pl-4 border-l border-[#E94222]/30 space-y-3">
                       {item.items.map((subItem) => (
-                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222] font-sans">
+                        <Link key={subItem.name} href={subItem.href} onClick={() => setMobileMenuOpen(false)} className="block text-[15px] text-stone-400 hover:text-[#E94222]">
                           {subItem.name}
                         </Link>
                       ))}

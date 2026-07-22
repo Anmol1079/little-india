@@ -24,6 +24,13 @@ import BlogSection from "@/app/components/Blogs/Blogs";
 import FaqSection from "@/app/components/faq/Faq";
 import CtaSection from "@/app/components/ctasection/Cta";
 
+export const metadata = {
+  title: "Home Variant 4 | Little India Restaurant & Bar",
+  description:
+    "Preview layout for Little India Restaurant & Bar — authentic Indian cuisine in Lakewood and Denver, Colorado.",
+  robots: { index: false, follow: false },
+};
+
 export default function Home4() {
   return (
     <main className="min-h-screen bg-stone-950">

@@ -5,6 +5,13 @@ import ThirdHeader from "@/app/components/headers/ThirdHeader";
 import FourthHeader from "@/app/components/headers/FourthHeader";
 import NewDineno from "@/app/components/hero/NewDineno";
 
+export const metadata = {
+  title: "Home Variant 2 | Little India Restaurant & Bar",
+  description:
+    "Preview layout for Little India Restaurant & Bar — authentic Indian cuisine in Lakewood and Denver, Colorado.",
+  robots: { index: false, follow: false },
+};
+
 export default function Home2() {
   return (
     <main className="min-h-screen bg-stone-950">

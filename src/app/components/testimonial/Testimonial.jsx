@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReviewPortals from './ReviewPortals';
+import SectionHeader from '../common/SectionHeader';
 
 const INITIAL_REVIEWS = [
   {
@@ -87,20 +89,12 @@ const titleVariants = {
 };
 
 export default function TestimonialsSection() {
-  const [reviews, setReviews] = useState(INITIAL_REVIEWS);
+  const [reviews] = useState(INITIAL_REVIEWS);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playingVideo, setPlayingVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [direction, setDirection] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
-
-  const [reviewType, setReviewType] = useState('text');
-  const [newAuthor, setNewAuthor] = useState('');
-  const [newRole, setNewRole] = useState('');
-  const [newText, setNewText] = useState('');
-  const [newVideoUrl, setNewVideoUrl] = useState('');
-  const [newImageUrl, setNewImageUrl] = useState('');
-  const [newRating, setNewRating] = useState(5);
 
   const loc = { orderUrl: '#' };
 
@@ -129,28 +123,6 @@ export default function TestimonialsSection() {
     setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
-  const handleSubmitReview = (e) => {
-    e.preventDefault();
-    if (!newAuthor) return;
-
-    const formattedDate = new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
-    let addedReview = {
-      id: Date.now(),
-      type: reviewType,
-      name: newAuthor,
-      role: newRole || (reviewType === 'text' ? 'Guest Diner' : 'Culinary Reviewer'),
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80',
-      stars: newRating,
-      date: formattedDate,
-      ...(reviewType === 'text' ? { text: `"${newText}"` } : { image: newImageUrl || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=800&q=80', videoUrl: newVideoUrl })
-    };
-
-    setReviews([addedReview, ...reviews]);
-    setIsModalOpen(false);
-    setNewAuthor(''); setNewRole(''); setNewText(''); setNewVideoUrl(''); setNewImageUrl(''); setNewRating(5);
-    setCurrentIndex(0);
-  };
-
   // Switch visible elements: 1 on mobile, 3 on tablet/desktop
   const visibleCards = isMobile
     ? [reviews[currentIndex % reviews.length]]
@@ -165,35 +137,13 @@ export default function TestimonialsSection() {
 
       <div className="max-w-[1500px] mx-auto flex flex-col gap-3 relative">
 
-        {/* Animated Staggered Header Block */}
-        <motion.div
-          variants={headerContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 w-full pb-6 border-b border-stone-200/40"
+        <SectionHeader
+          theme="light"
+          label="Tasty words"
+          title="Customer Reviews"
+          className="w-full pb-6 border-b border-stone-200/40 mb-0"
+          titleClassName="sm:text-[56px] mb-0"
         >
-          {/* Title Area */}
-          <div className="flex flex-col text-left">
-            <div className="overflow-hidden">
-              <motion.span
-                variants={taglineVariants}
-                className="text-[#B83A18] font-bold text-[15px] twst upp font-sans block mb-3"
-              >
-                Tasty words
-              </motion.span>
-            </div>
-            <div className="overflow-hidden py-1">
-              <motion.h2
-                variants={titleVariants}
-                className="font-title font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tw-tight"
-              >
-                Customer Reviews
-              </motion.h2>
-            </div>
-          </div>
-
-          {/* Desktop Right Header Button Area (Write a Review Restored Here - with exact matches applied) */}
           <div className="hidden md:flex items-center shrink-0 pointer-events-auto">
             <motion.div
               whileHover={{ scale: 1.04, y: -2 }}
@@ -203,7 +153,7 @@ export default function TestimonialsSection() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
               >
                 <span>WRITE A REVIEW</span>
                 <svg
@@ -222,7 +172,7 @@ export default function TestimonialsSection() {
               </button>
             </motion.div>
           </div>
-        </motion.div>
+        </SectionHeader>
 
         {/* Carousel Items (Dynamic horizontal padding) */}
         <div className="relative w-full px-6 md:px-6">
@@ -277,7 +227,7 @@ export default function TestimonialsSection() {
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
               >
                 <span>WRITE A REVIEW</span>
                 <svg
@@ -308,7 +258,7 @@ export default function TestimonialsSection() {
           >
             <Link
               href={loc.orderUrl}
-              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
+              className="w-full sm:w-auto group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center justify-center gap-2.5 transition-colors duration-200"
             >
               <span>READ ALL REVIEWS</span>
               <svg
@@ -346,49 +296,16 @@ export default function TestimonialsSection() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.92, y: 30 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative"
+              className="bg-white rounded-3xl p-8 max-w-lg w-full shadow-2xl relative"
             >
-              <button onClick={() => setIsModalOpen(false)} aria-label="Close review modal" className="absolute top-4 right-4 text-stone-400 hover:text-stone-900 transition-colors">
+              <button onClick={() => setIsModalOpen(false)} aria-label="Close review modal" className="absolute top-4 right-4 text-stone-400 hover:text-[#333] transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
 
-              <h3 className="font-title font-black text-2xl upp mb-4 tw text-stone-950">Share Your Experience</h3>
-
-              <div className="flex gap-2 p-1 bg-stone-100 rounded-xl mb-5 text-[10px] font-bold font-sans">
-                <button type="button" onClick={() => setReviewType('text')} className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'text' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}>TEXT REVIEW</button>
-                <button type="button" onClick={() => setReviewType('video')} className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'video' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}>VIDEO REVIEW</button>
-              </div>
-
-              <form onSubmit={handleSubmitReview} className="flex flex-col gap-4 font-sans text-[11px] font-bold upp text-stone-800">
-                <input type="text" value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} placeholder="Your Name" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" required />
-                <input type="text" value={newRole} onChange={(e) => setNewRole(e.target.value)} placeholder="Subtitle (e.g. Food Lover)" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" />
-
-                <select value={newRating} onChange={(e) => setNewRating(Number(e.target.value))} className="border border-stone-200 rounded-xl px-4 py-3 outline-none bg-white">
-                  {[5, 4, 3, 2, 1].map(n => <option key={n} value={n}>{n} Stars</option>)}
-                </select>
-
-                {reviewType === 'text' ? (
-                  <textarea value={newText} onChange={(e) => setNewText(e.target.value)} placeholder="What did you think of the spices?" className="border border-stone-200 rounded-xl px-4 py-3 h-24 resize-none outline-none focus:border-[#E65C38]" required />
-                ) : (
-                  <div className="flex flex-col gap-3">
-                    <input type="url" value={newImageUrl} onChange={(e) => setNewImageUrl(e.target.value)} placeholder="Cover Image URL" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" />
-                    <input type="url" value={newVideoUrl} onChange={(e) => setNewVideoUrl(e.target.value)} placeholder="Direct MP4 Video URL" className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#E65C38]" required />
-                  </div>
-                )}
-
-                <div className="inline-flex self-center backdrop-blur-md rounded-full p-1 shadow-2xl mt-4">
-                  <button
-                    type="submit"
-                    aria-label="Submit your review"
-                    className="group bg-[#E75B44] hover:bg-[#d14b35] text-white text-[11px] font-bold twst px-10 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
-                  >
-                    <span>SUBMIT REVIEW</span>
-                    <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </button>
-                </div>
-              </form>
+              <h3 className="font-title font-bold text-2xl upp mb-2 tw text-stone-950">
+                Share Your Experience
+              </h3>
+              <ReviewPortals />
             </motion.div>
           </motion.div>
         )}
@@ -437,7 +354,7 @@ function TextReviewCard({ item }) {
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center gap-3.5">
           <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-stone-100" />
-          <div className="flex flex-col gap-0.5 text-left font-sans">
+          <div className="flex flex-col gap-0.5 text-left">
             <div className="text-[15px] font-extrabold text-[#0B0C0E] leading-tight">{item.name}</div>
             <span className="text-[13px] font-bold text-stone-400 leading-none upp">{item.role}</span>
           </div>
@@ -445,11 +362,11 @@ function TextReviewCard({ item }) {
         <GoogleIcon />
       </div>
       <div className="my-6">
-        <p className="font-sans text-[15px] sm:text-[16px] text-stone-900 font-bold leading-relaxed text-left">{item.text}</p>
+        <p className="text-[15px] sm:text-[16px] text-[#333] leading-relaxed text-left font-normal">{item.text}</p>
       </div>
       <div className="flex justify-between items-center w-full pt-4 border-t border-stone-100">
         <Stars count={item.stars} />
-        <span className="font-sans text-[11.5px] font-bold text-stone-400">{item.date}</span>
+        <span className="text-[11.5px] font-bold text-stone-400">{item.date}</span>
       </div>
     </motion.div>
   );
@@ -469,7 +386,7 @@ function VideoReviewCard({ item, onPlay }) {
       <div className="relative z-20 flex justify-between items-center w-full">
         <div className="flex items-center gap-3.5">
           <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-white/20" />
-          <div className="flex flex-col gap-0.5 text-left font-sans">
+          <div className="flex flex-col gap-0.5 text-left">
             <div className="text-[15px] font-extrabold text-white leading-tight">{item.name}</div>
             <span className="text-[13px] font-bold text-stone-300/80 leading-none upp">{item.role}</span>
           </div>
@@ -484,14 +401,14 @@ function VideoReviewCard({ item, onPlay }) {
           whileTap={{ scale: 0.9 }}
           onClick={() => onPlay(item.videoUrl)}
           aria-label={`Play video review by ${item.name}`}
-          className="w-12 h-12 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-2xl transition-all duration-300"
+          className="w-12 h-12 rounded-full bg-white text-[#333] flex items-center justify-center shadow-2xl transition-all duration-300"
         >
           <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
         </motion.button>
       </div>
       <div className="relative z-20 flex justify-between items-center w-full pt-4 border-t border-white/10">
         <Stars count={item.stars} />
-        <span className="font-sans text-[11.5px] font-bold text-stone-300">{item.date}</span>
+        <span className="text-[11.5px] font-bold text-stone-300">{item.date}</span>
       </div>
     </motion.div>
   );

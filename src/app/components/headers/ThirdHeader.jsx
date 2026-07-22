@@ -47,23 +47,17 @@ export default function ThirdHeader() {
         <>
             {/* Main Header Container (Scrolls up/down dynamically) */}
             <header
-                className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-350 ease-in-out ${
-                    isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
-                }`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-350 ease-in-out ${ isHeaderVisible ? 'translate-y-0' : '-translate-y-full' }`}
             >
 
                 {/* TIER 2: Main Navigation Menu */}
-                <div className={`w-full transition-all duration-300 ${
-                    scrolled
-                        ? 'bg-black/95 backdrop-blur-md py-5 border-b border-white/5 shadow-xl'
-                        : 'bg-black/85 py-5 border-b border-white/5'
-                }`}>
+                <div className={`w-full transition-all duration-300 ${ scrolled ? 'bg-black/95 backdrop-blur-md py-5 border-b border-white/5 shadow-xl' : 'bg-black/85 py-5 border-b border-white/5' }`}>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         {/* Desktop & Tablet Symmetrical Grid */}
                         <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center">
 
                             {/* Left Side Navigation (Desktop only) */}
-                            <nav className="hidden md:flex items-center justify-end gap-[45px] lg:gap-[45px] pr-8 lg:pr-12 text-[12px] lg:text-[15px] font-bold twst upp font-sans-custom">
+                            <nav className="hidden md:flex items-center justify-end gap-[45px] lg:gap-[45px] pr-8 lg:pr-12 text-[12px] lg:text-[15px] font-bold twst upp">
                                 <a href="#home" className="text-white hover:text-[#E75B44] transition-colors duration-200">
                                     HOME
                                 </a>
@@ -79,9 +73,7 @@ export default function ThirdHeader() {
                                 >
                                     <button
                                         onClick={() => handleDropdownToggle('menu')}
-                                        className={`flex items-center gap-1 transition-colors duration-200 focus:outline-none ${
-                                            activeDropdown === 'menu' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]'
-                                        }`}
+                                        className={`flex items-center gap-1 transition-colors duration-200 focus:outline-none ${ activeDropdown === 'menu' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]' }`}
                                     >
                                         MENU
                                         <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'menu' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,9 +119,7 @@ export default function ThirdHeader() {
                                 >
                                     <button
                                         onClick={() => handleDropdownToggle('services')}
-                                        className={`flex items-center gap-1 transition-colors duration-200 focus:outline-none ${
-                                            activeDropdown === 'services' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]'
-                                        }`}
+                                        className={`flex items-center gap-1 transition-colors duration-200 focus:outline-none ${ activeDropdown === 'services' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]' }`}
                                     >
                                         SERVICES
                                         <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'services' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,7 +175,7 @@ export default function ThirdHeader() {
 
                             {/* Right Side Navigation (Desktop only) */}
                             <div className="hidden md:flex items-center justify-start pl-8 lg:pl-12">
-                                <nav className="hidden md:flex items-center gap-[45px] lg:gap-[45px] text-[12px] lg:text-[15px] font-bold twst upp font-sans-custom">
+                                <nav className="hidden md:flex items-center gap-[45px] lg:gap-[45px] text-[12px] lg:text-[15px] font-bold twst upp">
                                     <a href="#gallery" className="text-white hover:text-[#E75B44] transition-colors duration-200">
                                         GALLERY
                                     </a>
@@ -227,11 +217,9 @@ export default function ThirdHeader() {
 
             {/* Slide-out Mobile Navigation Drawer */}
             <div
-                className={`fixed inset-x-0 bottom-0 top-[82px] z-40 bg-neutral-950/95 backdrop-blur-lg border-t border-white/5 transition-transform duration-300 md:hidden overflow-y-auto ${
-                    mobileMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
-                }`}
+                className={`fixed inset-x-0 bottom-0 top-[82px] z-40 bg-neutral-950/95 backdrop-blur-lg border-t border-white/5 transition-transform duration-300 md:hidden overflow-y-auto ${ mobileMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none' }`}
             >
-                <div className="px-6 py-8 flex flex-col gap-6 text-sm font-bold twst upp font-sans-custom">
+                <div className="px-6 py-8 flex flex-col gap-6 text-sm twst upp">
                     <a
                         href="#home"
                         onClick={() => setMobileMenuOpen(false)}
@@ -251,9 +239,7 @@ export default function ThirdHeader() {
                     <div className="border-b border-white/5 pb-2">
                         <button
                             onClick={() => handleDropdownToggle('menu')}
-                            className={`flex items-center justify-between w-full font-bold twr py-1 focus:outline-none transition-colors duration-200 ${
-                                activeDropdown === 'menu' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]'
-                            }`}
+                            className={`flex items-center justify-between w-full font-bold twr py-1 focus:outline-none transition-colors duration-200 ${ activeDropdown === 'menu' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]' }`}
                         >
                             <span>MENU</span>
                             <svg className={`w-4 h-4 transition-transform ${activeDropdown === 'menu' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -305,9 +291,7 @@ export default function ThirdHeader() {
                     <div className="border-b border-white/5 pb-2">
                         <button
                             onClick={() => handleDropdownToggle('services')}
-                            className={`flex items-center justify-between w-full font-bold twr py-1 focus:outline-none transition-colors duration-200 ${
-                                activeDropdown === 'services' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]'
-                            }`}
+                            className={`flex items-center justify-between w-full font-bold twr py-1 focus:outline-none transition-colors duration-200 ${ activeDropdown === 'services' ? 'text-[#E75B44]' : 'text-white hover:text-[#E75B44]' }`}
                         >
                             <span>SERVICES</span>
                             <svg className={`w-4 h-4 transition-transform ${activeDropdown === 'services' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

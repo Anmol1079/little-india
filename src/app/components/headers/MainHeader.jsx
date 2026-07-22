@@ -29,10 +29,7 @@ export default function Mainheader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-350 ${isScrolled
-        ? "bg-stone-950/85 backdrop-blur-md border-b border-stone-800/50 shadow-md py-4"
-        : "bg-transparent py-6"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-350 ${isScrolled ? "bg-stone-950/85 backdrop-blur-md border-b border-stone-800/50 shadow-md py-4" : "bg-transparent py-6" }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -76,8 +73,7 @@ export default function Mainheader() {
             >
               <button
                 onClick={() => handleDropdownToggle("menu")}
-                className={`flex items-center gap-1 text-[15px] font-medium twst upp focus:outline-none transition-colors duration-300 ${activeDropdown === "menu" ? "text-amber-500" : "text-  hover:text-white"
-                  }`}
+                className={`flex items-center gap-1 text-[15px] font-medium twst upp focus:outline-none transition-colors duration-300 ${activeDropdown === "menu" ? "text-amber-500" : "text- hover:text-white" }`}
               >
                 MENU
                 <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "menu" ? "rotate-180 text-amber-500" : "text-stone-300"}`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -108,8 +104,7 @@ export default function Mainheader() {
             >
               <button
                 onClick={() => handleDropdownToggle("services")}
-                className={`flex items-center gap-1 text-[15px] font-medium twst upp focus:outline-none transition-colors duration-300 ${activeDropdown === "services" ? "text-amber-500" : "text-stone-300 hover:text-white"
-                  }`}
+                className={`flex items-center gap-1 text-[15px] font-medium twst upp focus:outline-none transition-colors duration-300 ${activeDropdown === "services" ? "text-amber-500" : "text-stone-300 hover:text-white" }`}
               >
                 SERVICES
                 <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "services" ? "rotate-180 text-amber-500" : "text-stone-300"}`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -199,8 +194,7 @@ export default function Mainheader() {
 
       {/* Mobile Drawer */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-stone-950 ${isOpen ? "max-h-screen border-b border-stone-800/80 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-          }`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-stone-950 ${isOpen ? "max-h-screen border-b border-stone-800/80 opacity-100" : "max-h-0 opacity-0 pointer-events-none" }`}
       >
         <div className="px-6 py-6 space-y-4">
           <Link
@@ -230,7 +224,7 @@ export default function Mainheader() {
               </svg>
             </button>
             {activeDropdown === "menu" && (
-              <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-400 twst upp font-medium">
+              <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-400 twst upp">
                 <Link href="/menu#lunch" onClick={() => setIsOpen(false)} className="hover:text-amber-500">LUNCH SPECIALS</Link>
                 <Link href="/menu#dinner" onClick={() => setIsOpen(false)} className="hover:text-amber-500">DINNER MENU</Link>
                 <Link href="/menu#drinks" onClick={() => setIsOpen(false)} className="hover:text-amber-500">WINE & SPIRITS</Link>
@@ -250,7 +244,7 @@ export default function Mainheader() {
               </svg>
             </button>
             {activeDropdown === "services" && (
-              <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-400 twst upp font-medium">
+              <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-400 twst upp">
                 <Link href="/services#catering" onClick={() => setIsOpen(false)} className="hover:text-amber-500">CATERING SERVICES</Link>
                 <Link href="/services#events" onClick={() => setIsOpen(false)} className="hover:text-amber-500">PRIVATE EVENTS</Link>
                 <Link href="/services#delivery" onClick={() => setIsOpen(false)} className="hover:text-amber-500">HOME DELIVERY</Link>

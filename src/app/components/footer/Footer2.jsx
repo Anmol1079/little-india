@@ -17,7 +17,7 @@ export default function Footer2() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full bg-[#070707] text-[#FAF8F5] select-none overflow-hidden font-sans border-t-2 border-[#c5a880]/20 pt-16 pb-8">
+    <footer className="relative w-full bg-[#070707] text-[#FAF8F5] select-none overflow-hidden border-t-2 border-[#c5a880]/20 pt-16 pb-8">
       
       {/* 1. Adjusted Background Image & Overlay Opacity */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
@@ -31,12 +31,12 @@ export default function Footer2() {
       </div>
 
       {/* Cursive Signature Font Import */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      {/* <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         .littleindia-cursive {
           font-family: 'Great Vibes', cursive;
         }
-      `}} />
+      `}} /> */}
 
       {/* Decorative Leaf Branch (Bottom Left Background) */}
       <div className="absolute left-[-20px] bottom-[-20px] w-48 h-48 opacity-[0.04] pointer-events-none select-none z-10">
@@ -81,7 +81,7 @@ export default function Footer2() {
           </Link>
 
           {/* Description */}
-          <p className="text-sm text-neutral-400 font-medium leading-relaxed max-w-sm">
+          <p className="text-sm text-neutral-400 leading-relaxed max-w-sm font-normal">
             Authentic Indian cuisine crafted with tradition, passion, and the finest ingredients. Experience rich flavors, warm hospitality, and unforgettable dining in every bite.
           </p>
 
@@ -99,7 +99,7 @@ export default function Footer2() {
 
         {/* COLUMN 2: Explore (Spans 2/12) */}
         <div className="lg:col-span-2">
-          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] up mb-6">
+          <h3 className="text-xs font-bold tw-[0.2em] text-[#c5a880] up mb-6">
             Explore
           </h3>
           <ul className="flex flex-col gap-3.5 text-sm font-semibold text-neutral-400">
@@ -123,7 +123,7 @@ export default function Footer2() {
 
         {/* COLUMN 3: Our Menu (Spans 3/12) */}
         <div className="lg:col-span-2">
-          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] up mb-6">
+          <h3 className="text-xs font-bold tw-[0.2em] text-[#c5a880] up mb-6">
             Our Menu
           </h3>
           <ul className="flex flex-col gap-3.5 text-sm font-semibold text-neutral-400">
@@ -146,10 +146,10 @@ export default function Footer2() {
 
         {/* COLUMN 4: Contact Us & Operating Hours (Spans 3/12) */}
         <div className="lg:col-span-4">
-          <h3 className="text-xs font-black tw-[0.2em] text-[#c5a880] up mb-6">
+          <h3 className="text-xs font-bold tw-[0.2em] text-[#c5a880] up mb-6">
             Contact Us
           </h3>
-          <div className="flex flex-col gap-5 text-sm font-medium text-neutral-400">
+          <div className="flex flex-col gap-5 text-sm text-neutral-400">
             
             {/* Address */}
             <div className="flex items-start gap-3">
@@ -159,7 +159,7 @@ export default function Footer2() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                 </svg>
               </span>
-              <p className="leading-snug">
+              <p className="leading-snug font-normal">
                 425 South Teller Street,<br />
                 Lakewood, Colorado
               </p>
@@ -194,7 +194,7 @@ export default function Footer2() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
                 </svg>
               </span>
-              <p className="leading-snug">
+              <p className="leading-snug font-normal">
                 Monday – Sunday<br />
                 11:00 AM – 9:30 PM
               </p>
@@ -233,7 +233,7 @@ export default function Footer2() {
       <div className="border-t border-neutral-900/60 mt-8 pt-8 max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-center gap-6 relative z-10">
         
         {/* Copyright & Developed by */}
-        <p className="text-xs font-semibold text-neutral-500 up twst text-center md:text-left leading-relaxed">
+        <p className="text-xs text-neutral-500 up twst text-center md:text-left leading-relaxed font-normal">
           Copyright © {currentYear} <span className="text-[#c5a880]">One World Cuisine LLC DBA Little India Restaurant and Bar</span>. All Rights Reserved. | Developed by{' '}
           <a
             href="https://webtechnepal.com/"

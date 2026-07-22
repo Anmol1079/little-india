@@ -20,6 +20,12 @@ export const metadata = {
       },
     ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Private Dining Room | Little India Lakewood',
+    description:
+      'Intimate private dining for up to 14 guests at Little India Restaurant & Bar in Lakewood, CO.',
+  },
 };
 
 

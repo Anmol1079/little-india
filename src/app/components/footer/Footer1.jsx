@@ -52,7 +52,7 @@ export default function Footer() {
               <Link href="/" className="flex items-center gap-4 group">
                 {/* Outlined "LI" Circle */}
                 <div className="w-14 h-14 rounded-full border-2 border-[#B49774] flex flex-col items-center justify-center relative shrink-0 transition-colors duration-300 group-hover:border-white">
-                  <span className="font-title font-black text-white text-lg twr leading-none">LI</span>
+                  <span className="font-title font-bold text-white text-lg twr leading-none">LI</span>
                   {/* Small Lotus underneath */}
                   <div className="absolute bottom-1 text-[#B49774] group-hover:text-white transition-colors duration-300">
                     <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -65,7 +65,7 @@ export default function Footer() {
                   <h3 className="font-serif text-white text-[28px] sm:text-[30px] font-medium leading-none tw">
                     Little India
                   </h3>
-                  <span className="text-[#B49774] font-bold text-[9px] sm:text-[10px] tw-[0.25em] upp mt-1 leading-none font-sans">
+                  <span className="text-[#B49774] font-bold text-[9px] sm:text-[10px] tw-[0.25em] upp mt-1 leading-none">
                     RESTAURANT & BAR
                   </span>
                 </div>
@@ -75,7 +75,7 @@ export default function Footer() {
               <LotusDivider />
 
               {/* Description */}
-              <p className="font-sans text-[15px] text-[#A69C8E] leading-relaxed max-w-sm">
+              <p className="text-[15px] text-[#A69C8E] leading-relaxed max-w-sm font-normal">
                 A culinary journey through India's rich heritage. Authentic flavors, warm hospitality, and unforgettable experiences await you.
               </p>
 
@@ -84,7 +84,7 @@ export default function Footer() {
 
               {/* FOLLOW US Section */}
               <div className="flex flex-col items-start gap-3 w-full">
-                <span className="text-[#B49774] font-bold text-[11px] tw-[0.2em] upp font-sans">
+                <span className="text-[#B49774] font-bold text-[11px] tw-[0.2em] upp">
                   FOLLOW US
                 </span>
                 <div className="flex gap-3">
@@ -137,7 +137,7 @@ export default function Footer() {
             {/* ================= COLUMN 2: EXPLORE ================= */}
             <div className="col-span-1 lg:col-span-2 lg:pl-4 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-6">
-                <h4 className="font-title font-black text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none font-sans">
+                <h4 className="font-title font-bold text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none">
                   EXPLORE
                 </h4>
                 {/* Small Symmetrical Lotus Line below header */}
@@ -147,7 +147,7 @@ export default function Footer() {
                   <div className="h-[1px] bg-[#B49774]/30 flex-1"></div>
                 </div>
               </div>
-              <ul className="font-sans flex flex-col items-start gap-4 text-[15px] text-[#A69C8E]">
+              <ul className="flex flex-col items-start gap-4 text-[15px] text-[#A69C8E]">
                 <li className="flex items-center gap-2.5 group">
                   <BulletIcon />
                   <a href="#" className="hover:text-[#B49774] transition-colors duration-200">Home</a>
@@ -182,7 +182,7 @@ export default function Footer() {
             {/* ================= COLUMN 3: OUR MENU ================= */}
             <div className="col-span-1 lg:col-span-3 lg:pl-4 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-6">
-                <h4 className="font-title font-black text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none font-sans">
+                <h4 className="font-title font-bold text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none">
                   OUR MENU
                 </h4>
                 {/* Small Symmetrical Lotus Line below header */}
@@ -192,7 +192,7 @@ export default function Footer() {
                   <div className="h-[1px] bg-[#B49774]/30 flex-1"></div>
                 </div>
               </div>
-              <ul className="font-sans flex flex-col items-start gap-4 text-[15px] text-[#A69C8E]">
+              <ul className="flex flex-col items-start gap-4 text-[15px] text-[#A69C8E]">
                 <li className="flex items-center gap-2.5 group">
                   <BulletIcon />
                   <a href="#" className="hover:text-[#B49774] transition-colors duration-200">Starters</a>
@@ -227,7 +227,7 @@ export default function Footer() {
             {/* ================= COLUMN 4: VISIT US ================= */}
             <div className="col-span-1 lg:col-span-3 flex flex-col items-start text-left">
               <div className="flex flex-col items-start mb-6">
-                <h4 className="font-title font-black text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none font-sans">
+                <h4 className="font-title font-bold text-[#B49774] text-[15px] tw-[0.18em] upp mb-1 leading-none">
                   VISIT US
                 </h4>
                 {/* Small Symmetrical Lotus Line below header */}
@@ -237,7 +237,7 @@ export default function Footer() {
                   <div className="h-[1px] bg-[#B49774]/30 flex-1"></div>
                 </div>
               </div>
-              <div className="font-sans flex flex-col gap-5 text-[15px] text-[#A69C8E] text-left w-full">
+              <div className="flex flex-col gap-5 text-[15px] text-[#A69C8E] text-left w-full">
 
                 {/* Address Row */}
                 <a
@@ -313,13 +313,13 @@ export default function Footer() {
           </div>
 
           {/* Symmetrical Bottom Copyright and Developer Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-[15px]text-[#A69C8E] font-sans w-full py-6 select-none relative z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-[15px]text-[#A69C8E] w-full py-6 select-none relative z-10">
             {/* Left side Copyright */}
-            <p className="text-center sm:text-left leading-relaxed">
+            <p className="text-center sm:text-left leading-relaxed font-normal">
               © 2026 One World Cuisine LLC DBA Little India Restaurant and Bar. All Rights Reserved.
             </p>
             {/* Right side Nepalese Developer (Styled in Gold) */}
-            <p className="shrink-0 leading-none">
+            <p className="shrink-0 leading-none font-normal">
               Developed by{" "}
               <a
                 href="https://webtechnepal.com/"

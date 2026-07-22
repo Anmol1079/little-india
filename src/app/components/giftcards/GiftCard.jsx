@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import SectionHeader from '../common/SectionHeader';
 
 // Defined animation variants to prevent undefined reference errors
 const revealContainerVariants = {
@@ -88,50 +89,28 @@ export default function GiftCard() {
 
           <div className="relative z-10 w-full">
             
-            {/* Animated Heading Section */}
-            <motion.div
-              variants={revealContainerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col items-center text-center mb-6 lg:mb-8 gap-4"
-            >
-              <motion.span
-                variants={fadeUpVariants}
-                className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tw-[0.2em] up font-sans block"
-              >
-                Little India
-              </motion.span>
-
-              <motion.h1
-                variants={fadeUpVariants}
-                className="font-title font-black text-[40px] sm:text-[55px] lg:text-[55px] text-stone-950 leading-[0.95] tw-tight up"
-              >
-                Gift Cards
-              </motion.h1>
-
-              {/* Center Decorative Divider */}
-              {/* <motion.div variants={fadeUpVariants} className="flex items-center justify-center w-36 mt-4">
-                <div className="h-[1px] bg-[#C59B27]/60 flex-1" />
-                <span className="text-[#C59B27] mx-2 text-[8px]">✦</span>
-                <span className="text-[#C59B27] mx-1 text-[12px]">❖</span>
-                <span className="text-[#C59B27] mx-2 text-[8px]">✦</span>
-                <div className="h-[1px] bg-[#C59B27]/60 flex-1" />
-              </motion.div> */}
-            </motion.div>
+            <SectionHeader
+              as="h1"
+              align="center"
+              theme="light"
+              label="Little India"
+              title="Gift Cards"
+              className="mb-6 lg:mb-8"
+              titleClassName="sm:text-[55px] lg:text-[55px]"
+            />
 
             {/* Main Copy Content */}
-            <div className="space-y-5 text-[18px] md:text-[16px] lg:text-[16px] text-[#4A4A4A] leading-7 max-w-[620px] mx-auto text-left font-bold">
-              <p>
+            <div className="space-y-5 text-[18px] md:text-[16px] lg:text-[16px] text-[#4A4A4A] leading-7 max-w-[620px] mx-auto text-left">
+              <p className="font-normal">
                 Give the gift of authentic Indian flavors with a Little India Gift Card! Whether for a birthday, anniversary, holiday or to show appreciation, our gift cards are the perfect way to share a delicious dining experience.
               </p>
-              <p>
+              <p className="font-normal">
                 With a Little India Gift Card, your friends and family can enjoy a variety of flavorful dishes, from rich curries to sizzling tandoori specialties. Our menu features fresh, high-quality ingredients, bringing the true essence of Indian cuisine to every meal.
               </p>
-              <p>
+              <p className="font-normal">
                 Easy to purchase and redeem, our gift cards are a thoughtful and convenient way to treat someone to a memorable dining experience.
               </p>
-              <p className="pt-2">
+              <p className="pt-2 font-normal">
                 Let them discover the vibrant <span className="text-[#8A151A] font-bold">flavors of India</span> at one of Denver's <span className="text-[#8A151A] font-bold">finest Indian restaurants!</span>
               </p>
 
@@ -139,7 +118,7 @@ export default function GiftCard() {
               <div className="pt-5 flex justify-evenly">
               <Link
               href="#"
-              className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans shadow-md"
+              className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 shadow-md"
             >
               <span>SEND NOW</span>
               <svg

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 const DRINK_SPECIALS = [
   {
@@ -101,41 +102,23 @@ export default function HappyHourSection() {
   const [activeFood, setActiveFood] = useState(0);   // Default to Samosas
 
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-16 text-stone-900 overflow-hidden border-b border-stone-200">
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-16 text-[#333] overflow-hidden border-b border-stone-200">
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
         
-        {/* TOP SECTION: Header Info */}
-        <motion.div 
-          variants={revealContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="flex flex-col text-center w-full pb-10 border-b border-stone-200/40 relative"
-        >
-          {/* Integrated Tagline & Timing details */}
-          <motion.span 
-            variants={headerItemVariants}
-            className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tw-[0.15em] upp font-sans block mb-3"
-          >
-            MON – FRI • 3:00 PM – 5:00 PM
-          </motion.span>
-
-          {/* Clean bold header using layout's Inter */}
-          <motion.h2 
-            variants={headerItemVariants}
-            className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] leading-none text-stone-950 tw-tight mb-4"
-          >
-            Happy Hour
-          </motion.h2>
-
-          {/* Subtitle using layout's Plus Jakarta Sans */}
-          <motion.p 
-            variants={headerItemVariants}
-            className="font-sans font-semibold text-[16px] md:text-[18px] leading-relaxed text-stone-500 max-w-[1500px]"
-          >
-            Good drinks. Great bites. Even better company. Unwind in a warm and inviting atmosphere where every sip and every flavor is crafted to elevate your evening experience.
-          </motion.p>
-        </motion.div>
+        <div className="flex flex-col text-center w-full pb-10 border-b border-stone-200/40 relative">
+          <SectionHeader
+            align="center"
+            theme="accent"
+            uppercase={false}
+            label="MON – FRI • 3:00 PM – 5:00 PM"
+            title="Happy Hour"
+            description="Good drinks. Great bites. Even better company. Unwind in a warm and inviting atmosphere where every sip and every flavor is crafted to elevate your evening experience."
+            className="mb-0"
+            labelClassName="text-[#E75B44]"
+            titleClassName="sm:text-[56px] lg:text-[56px] leading-none"
+            descriptionClassName="max-w-[1500px]"
+          />
+        </div>
 
         {/* ================= SECTION 1: DRINK SPECIALS (Image Right) ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-center">
@@ -144,27 +127,27 @@ export default function HappyHourSection() {
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
                 <i className="fa-solid fa-glass-martini-alt text-sm"></i>
               </div>
-              <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950">
+              <h3 className="font-title font-bold text-3xl sm:text-4xl upp tw-tight text-stone-950">
                 Drink Specials
               </h3>
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               {DRINK_SPECIALS.map((item, idx) => (
                 <div 
                   key={item.id}
                   onMouseEnter={() => setActiveDrink(idx)}
-                  className="flex justify-between items-start gap-6 cursor-pointer group pb-1.5"
+                  className="flex justify-between items-start gap-6 cursor-pointer group pb-1.5 border-b border-stone-100 pb-4"
                 >
                   <div className="flex flex-col gap-1 max-w-[80%]">
-                    <h4 className="font-sans font-bold text-[16px] sm:text-[17px] text-stone-900 group-hover:text-[#E75B44] transition-colors duration-200">
+                    <h4 className="font-bold text-[16px] sm:text-[17px] text-[#333] group-hover:text-[#E75B44] transition-colors duration-200">
                       {item.name || item.title}
                     </h4>
-                    <p className="font-sans text-[15px] sm:text-[15px] text-stone-600 font-medium leading-relaxed">
+                    <p className="text-[15px] sm:text-[15px] text-stone-600 leading-relaxed font-normal">
                       {item.description}
                     </p>
                   </div>
-                  <span className="font-sans font-bold text-[15px] sm:text-[16px] text-stone-900 shrink-0">
+                  <span className="font-bold text-[15px] sm:text-[16px] text-[#333] shrink-0">
                     {item.price}
                   </span>
                 </div>
@@ -180,14 +163,12 @@ export default function HappyHourSection() {
                   key={idx}
                   src={item.image}
                   alt={item.title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out ${
-                    activeDrink === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none'
-                  }`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out ${ activeDrink === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none' }`}
                 />
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] twst upp py-1.5 px-3 rounded shadow-md">
               {DRINK_SPECIALS[activeDrink].title}
             </span>
           </div>
@@ -206,14 +187,12 @@ export default function HappyHourSection() {
                   key={idx}
                   src={item.image}
                   alt={item.title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out ${
-                    activeFood === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none'
-                  }`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out ${ activeFood === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none' }`}
                 />
               ))}
             </div>
             {/* Absolute Label Overlap */}
-            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] twst upp py-1.5 px-3 rounded shadow-md font-sans">
+            <span className="absolute top-4 left-4 z-20 bg-[#e94222] text-white font-bold text-[11px] twst upp py-1.5 px-3 rounded shadow-md">
               {FOOD_SPECIALS[activeFood].title}
             </span>
           </div>
@@ -223,27 +202,27 @@ export default function HappyHourSection() {
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
                 <i className="fa-solid fa-plate-wheat text-sm"></i>
               </div>
-              <h3 className="font-title font-black text-3xl sm:text-4xl upp tw-tight text-stone-950">
+              <h3 className="font-title font-bold text-3xl sm:text-4xl upp tw-tight text-stone-950">
                 Food Specials
               </h3>
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               {FOOD_SPECIALS.map((item, idx) => (
                 <div 
                   key={item.id}
                   onMouseEnter={() => setActiveFood(idx)}
-                  className="flex justify-between items-start gap-6 cursor-pointer group pb-1.5"
+                  className="flex justify-between items-start gap-6 cursor-pointer group pb-1.5 border-b border-stone-100 pb-4"
                 >
                   <div className="flex flex-col gap-1 max-w-[80%]">
-                    <h4 className="font-sans font-bold text-[16px] sm:text-[17px] text-stone-900 group-hover:text-[#E75B44] transition-colors duration-200">
+                    <h4 className="font-bold text-[16px] sm:text-[17px] text-[#333] group-hover:text-[#E75B44] transition-colors duration-200">
                       {item.title}
                     </h4>
-                    <p className="font-sans text-[15px] sm:text-[15px] text-stone-600 font-medium leading-relaxed">
+                    <p className="text-[15px] sm:text-[15px] text-stone-600 leading-relaxed font-normal">
                       {item.description}
                     </p>
                   </div>
-                  <span className="font-sans font-bold text-[15px] sm:text-[16px] text-stone-900 shrink-0">
+                  <span className="font-bold text-[15px] sm:text-[16px] text-[#333] shrink-0">
                     {item.price}
                   </span>
                 </div>

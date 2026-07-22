@@ -20,6 +20,12 @@ export const metadata = {
       "A deep dive into generations-old Indian clay oven secrets, food safety protocols, and flavor pairing guides curated by our executive chefs.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Latest Blogs & Stories | Little India Restaurant & Bar",
+    description:
+      "Culinary stories, recipes, and food guides from Little India Lakewood & Denver.",
+  },
 };
 
 export default function Page() {
@@ -27,13 +33,7 @@ export default function Page() {
     <main className="min-h-screen bg-[#FFF6EA]">
       {/* Navigation Header */}
       <MegaHeader />
-
-      {/* Filterable, Interactive Blogs Grid & Features spotlight */}
-      <section className="relative overflow-hidden flex-grow pt-16 md:pt-20">
-      <BlogsPage />
-      </section>
-
-      {/* Brand Footer */}
+      <BlogsPage className="pt-32 md:pt-36" />
       <FooterWithCta />
     </main>
   );

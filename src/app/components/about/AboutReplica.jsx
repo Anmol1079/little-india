@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import SectionHeader from "../common/SectionHeader";
 
 // Deceleration Easing Curve
 const cubicEase = [0.16, 1, 0.3, 1];
@@ -40,7 +41,7 @@ const fadeUpVariants = {
 
 export default function AboutReplica() {
   return (
-    <section className="relative w-full bg-white py-12 md:py-16 px-6 md:px-12 lg:px-20 xl:px-28 overflow-hidden font-sans select-none">
+    <section className="relative w-full bg-white py-12 md:py-16 px-6 md:px-12 lg:px-20 xl:px-28 overflow-hidden">
       {/* BACKGROUND CORNER MANDALAS & DOUBLE BORDERS */}
       {/* Top Right Decorative Mandala */}
       <div className="absolute top-0 right-0 w-[250px] h-[250px] md:w-[400px] md:h-[400px] pointer-events-none select-none opacity-[0.08] text-[#B58A3C] translate-x-12 -translate-y-12">
@@ -164,28 +165,28 @@ export default function AboutReplica() {
             {/* Floral Motif */}
             {/* <span className="text-[#C59B27] text-xs mb-0.5">⚜</span> */}
 
-            <span className="text-[14px] sm:text-[14px]  font-medium text-[#FAF6EE]/80 up font-sans">
+            <span className="text-[14px] sm:text-[14px] font-medium text-[#FAF6EE]/80 up">
               Best Indian
             </span>
-            {/* <span className="text-[14px] sm:text-[14px]  font-medium text-[#FAF6EE]/80 up font-sans">
+            {/* <span className="text-[14px] sm:text-[14px] font-medium text-[#FAF6EE]/80 up">
          
             </span> */}
-            <span className="text-[14px] sm:text-[14px]  font-medium text-[#FAF6EE]/80 up font-sans">
+            <span className="text-[14px] sm:text-[14px] font-medium text-[#FAF6EE]/80 up">
               Restaurant
             </span>
-            <span className="text-[14px] sm:text-[14px]  font-medium text-[#FAF6EE]/80 up font-sans">
+            <span className="text-[14px] sm:text-[14px] font-medium text-[#FAF6EE]/80 up">
               Denver, Colorado
             </span>
-            {/* <span className="text-[14px] sm:text-[14px]  font-medium text-[#FAF6EE]/80 up font-sans">
+            {/* <span className="text-[14px] sm:text-[14px] font-medium text-[#FAF6EE]/80 up">
               Colorado
             </span>  */}
-            {/* <span className="text-xl sm:text-2xl font-editorial-title font-black text-[#C59B27] leading-none my-1 tw">
+            {/* <span className="text-xl sm:text-2xl font-editorial-title font-bold text-[#C59B27] leading-none my-1 tw">
               INDIAN
             </span> */}
-            {/* <span className="text-xl sm:text-2xl font-editorial-title font-black text-[#C59B27] leading-none my-1 tw">
+            {/* <span className="text-xl sm:text-2xl font-editorial-title font-bold text-[#C59B27] leading-none my-1 tw">
               INDIAN
             </span> */}
-            {/* <span className="text-xl sm:text-2xl font-editorial-title font-black text-[#C59B27] leading-none my-1 tw">
+            {/* <span className="text-xl sm:text-2xl font-editorial-title font-bold text-[#C59B27] leading-none my-1 tw">
               INDIAN
             </span> */}
 
@@ -199,31 +200,17 @@ export default function AboutReplica() {
         {/* RIGHT COLUMN: Editorial Storytelling Content */}
         <div className="lg:col-span-7 flex flex-col justify-center text-left">
           {/* Header cursive banner with delicate lines */}
-          <motion.div
-            variants={revealContainerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="flex flex-col items-start text-left gap-4"
-          >
-            <motion.span
-              variants={fadeUpVariants}
-              className="text-[#B83A18] font-bold text-[15px] sm:text-[15px] tw-[0.2em] up font-sans block"
-            >
-              About Us
-            </motion.span>
-
-            <motion.h2
-              variants={fadeUpVariants}
-              className="font-title font-black text-[35px] sm:text-[48px] lg:text-[50px] text-stone-950 leading-[0.95] tw-tight up"
-            >
-              What makes us stand out from the crowd?
-            </motion.h2>
-          </motion.div>
+          <SectionHeader
+            theme="light"
+            label="About Us"
+            title="What makes us stand out from the crowd?"
+            className="mb-0"
+            titleClassName="text-[35px] sm:text-[48px] lg:text-[50px]"
+          />
 
           {/* Clean Editorial Storytelling Body */}
-          <div className="font-editorial-body mt-6 text-[18px] sm:text-[18px] md:text-[18px] text-[#3D3A37] leading-[1.75] flex flex-col gap-5 max-w-[690px] font-normal">
-            <motion.p
+          <div className="font-editorial-body mt-6 text-[18px] sm:text-[18px] md:text-[18px] text-[#3D3A37] leading-[1.75] flex flex-col gap-5 max-w-[690px]">
+            <motion.p className="font-normal"
               variants={faderVariants}
               initial="hidden"
               whileInView="visible"
@@ -240,7 +227,7 @@ export default function AboutReplica() {
               surely melts your heart or even takes you to the dance floor.
             </motion.p>
 
-            <motion.p
+            <motion.p className="font-normal"
               variants={faderVariants}
               initial="hidden"
               whileInView="visible"
@@ -266,7 +253,7 @@ export default function AboutReplica() {
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
               </svg>
             </div>
-            <p className="font-sans text-[16px] sm:text-[16px] text-[#3D3A37] font-semibold tw">
+            <p className="text-[16px] sm:text-[16px] text-[#3D3A37] tw font-normal">
               Visit{" "}
               <a
                 href="https://maps.app.goo.gl/w4x4jVWTk4HYXRgK9"

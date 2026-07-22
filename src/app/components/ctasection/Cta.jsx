@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 // Custom Cubic-Bezier Deceleration Easing
 const cubicEase = [0.16, 1, 0.3, 1];
@@ -32,7 +33,7 @@ const childVariants = {
 
 export default function CtaSection() {
   return (
-    <section className="relative w-full min-h-[500px] md:min-h-[580px] lg:min-h-[620px] flex items-center justify-center overflow-hidden bg-[#070707] select-none">
+    <section className="relative w-full min-h-[500px] md:min-h-[580px] lg:min-h-[620px] flex items-center justify-center overflow-hidden bg-[#070707]">
       
       {/* 1. Background Image using standard HTML tag with warm glowing restaurant lights */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
@@ -62,80 +63,63 @@ export default function CtaSection() {
           viewport={{ once: true, margin: '-100px' }}
           className="bg-black/35 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-14 text-center flex flex-col items-center shadow-[0_30px_100px_rgba(0,0,0,0.5)]"
         >
-          {/* Tagline */}
-          <motion.span
-            variants={childVariants}
-            className="text-[#E94222] font-black text-sm sm:text-base tw-[0.25em] up block mb-1"
+          <SectionHeader
+            align="center"
+            animated={false}
+            theme="dark"
+            label="HUNGRY?"
+            title="WE’RE READY"
+            className="mb-0"
+            labelClassName="text-[#E94222] text-sm sm:text-base mb-1"
+            titleClassName="text-4xl sm:text-5xl md:text-6xl leading-none mb-4 group-hover:text-white"
+            footer={
+              <>
+                <div className="flex items-center justify-center gap-4 mb-5 select-none">
+                  <svg className="w-8 sm:w-12 h-2 text-[#C08A27]/60" viewBox="0 0 40 10" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                    <path d="M40 5 L10 5 Q5 5 0 9 M40 5 L15 2" />
+                  </svg>
+                  <span className="cta-cursive text-2xl sm:text-[34px] text-[#C08A27] leading-none">
+                    Come and Enjoy
+                  </span>
+                  <svg className="w-8 sm:w-12 h-2 text-[#C08A27]/60" viewBox="0 0 40 10" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                    <path d="M0 5 L30 5 Q35 5 40 9 M0 5 L25 2" />
+                  </svg>
+                </div>
+                <p className="text-sm sm:text-[15px] text-stone-300 leading-relaxed max-w-sm sm:max-w-md mb-8 font-normal mx-auto">
+                  Order your favorite meals now and enjoy fresh, flavorful food delivered fast right to your doorstep.
+                </p>
+              </>
+            }
           >
-            HUNGRY?
-          </motion.span>
-
-          {/* Symmetrical Bold Title */}
-          <motion.h2
-            variants={childVariants}
-            className="font-title font-black text-4xl sm:text-5xl md:text-6xl text-white up leading-none tw-tight mb-4"
-          >
-            WE’RE READY
-          </motion.h2>
-
-          {/* Cursive Handwriting with Ornaments */}
-          <motion.div 
-            variants={childVariants}
-            className="flex items-center justify-center gap-4 mb-5 select-none"
-          >
-            {/* Left Wing */}
-            <svg className="w-8 sm:w-12 h-2 text-[#C08A27]/60" viewBox="0 0 40 10" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
-              <path d="M40 5 L10 5 Q5 5 0 9 M40 5 L15 2" />
-            </svg>
-            <span className="cta-cursive text-2xl sm:text-[34px] text-[#C08A27] leading-none">
-              Come and Enjoy
-            </span>
-            {/* Right Wing */}
-            <svg className="w-8 sm:w-12 h-2 text-[#C08A27]/60" viewBox="0 0 40 10" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
-              <path d="M0 5 L30 5 Q35 5 40 9 M0 5 L25 2" />
-            </svg>
-          </motion.div>
-
-          {/* Description */}
-          <motion.p
-            variants={childVariants}
-            className="font-sans text-sm sm:text-[15px] text-stone-300 font-semibold leading-relaxed max-w-sm sm:max-w-md mb-8"
-          >
-            Order your favorite meals now and enjoy fresh, flavorful food delivered fast right to your doorstep.
-          </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div 
-            variants={childVariants}
-            className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center"
-          >
-            <Link
-              href="/menu"
-              className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans shadow-md"
-            >
-              <span>BOOK A TABLE</span>
-              <svg
-                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+              <Link
+                href="/menu"
+                className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 shadow-md"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
+                <span>BOOK A TABLE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
 
-            <Link
-              href="/menu"
-              className="group w-full sm:w-auto bg-transparent hover:bg-white border border-white/20 hover:border-white text-white hover:text-stone-950 text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans"
-            >
-              <span>VIEW MENU</span>
-            </Link>
-          </motion.div>
+              <Link
+                href="/menu"
+                className="group w-full sm:w-auto bg-transparent hover:bg-white border border-white/20 hover:border-white text-white hover:text-stone-950 text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200"
+              >
+                <span>VIEW MENU</span>
+              </Link>
+            </div>
+          </SectionHeader>
 
         </motion.div>
       </div>

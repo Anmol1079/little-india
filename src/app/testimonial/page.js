@@ -21,6 +21,12 @@ export const metadata = {
       "Explore honest feedback and culinary video stories about our award-winning traditional family recipes, clay-oven baking, and signature spiced dishes.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Guest Reviews & Stories | Little India Restaurant & Bar",
+    description:
+      "Real guest reviews and stories from Little India in Lakewood & Denver, Colorado.",
+  },
 };
 
 export default function Page() {
@@ -28,13 +34,7 @@ export default function Page() {
     <main className="min-h-screen bg-[#FFF6EA]">
       {/* Premium Navigation Header */}
       <MegaHeader />
-
-      {/* Filtered, Interactive Reviews & Video Stories Grid */}
-      <section className=" relative overflow-hidden flex-grow pt-16 md:pt-20">
-   <TestimonialsPage />
-   </section>
-
-      {/* Integrated Footer with Call to Action */}
+      <TestimonialsPage className="pt-32 md:pt-36" />
       <FooterWithCta />
     </main>
   );

@@ -31,12 +31,11 @@ export default function FourthHeader() {
 
     return (
         <header
-            className={`fixed top-6 left-0 right-0 z-50 w-full max-w-7xl mx-auto  transition-all duration-300 ${jakarta.className}`}
+            className={`fixed top-6 left-0 right-0 z-50 w-full max-w-7xl mx-auto transition-all duration-300 ${jakarta.className}`}
         >
             {/* Symmetrical Floating Pill Container */}
             <div
-                className={`bg-white px-5 md:px-6 lg:px-8 py-3.5 rounded-[20px] border border-stone-200/50 flex justify-between items-center transition-shadow duration-300 ${scrolled ? 'shadow-lg shadow-black/5' : 'shadow-sm'
-                    }`}
+                className={`bg-white px-5 md:px-6 lg:px-8 py-3.5 rounded-[20px] border border-stone-200/50 flex justify-between items-center transition-shadow duration-300 ${scrolled ? 'shadow-lg shadow-black/5' : 'shadow-sm' }`}
             >
                 {/* Left Section: Logo Image Link (Tastiva style placement) */}
                 <Link href="/" className="flex items-center shrink-0 focus:outline-none">
@@ -68,8 +67,7 @@ export default function FourthHeader() {
                     >
                         <button
                             onClick={() => handleDropdownToggle('menu')}
-                            className={`flex items-center gap-1 font-extrabold focus:outline-none transition-colors duration-200 ${activeDropdown === 'menu' ? 'text-[#E75B44]' : 'hover:text-[#E75B44]'
-                                }`}
+                            className={`flex items-center gap-1 font-extrabold focus:outline-none transition-colors duration-200 ${activeDropdown === 'menu' ? 'text-[#E75B44]' : 'hover:text-[#E75B44]' }`}
                         >
                             MENU
                             <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'menu' ? 'rotate-180 text-[#E75B44]' : 'text-stone-800'}`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -79,13 +77,13 @@ export default function FourthHeader() {
 
                         {activeDropdown === 'menu' && (
                             <div className="absolute left-0 mt-3 w-56 bg-white border border-stone-200/60 rounded-xl py-2 shadow-xl animate-fadeIn">
-                                <Link href="#lunch" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-stone-700 hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
+                                <Link href="#lunch" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-[#333] hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
                                     LUNCH SPECIALS
                                 </Link>
-                                <Link href="#dinner" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-stone-700 hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
+                                <Link href="#dinner" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-[#333] hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
                                     DINNER MENU
                                 </Link>
-                                <Link href="#drinks" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-stone-700 hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
+                                <Link href="#drinks" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-[#333] hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
                                     WINE & SPIRITS
                                 </Link>
                             </div>
@@ -100,8 +98,7 @@ export default function FourthHeader() {
                     >
                         <button
                             onClick={() => handleDropdownToggle('services')}
-                            className={`flex items-center gap-1 font-extrabold focus:outline-none transition-colors duration-200 ${activeDropdown === 'services' ? 'text-[#E75B44]' : 'hover:text-[#E75B44]'
-                                }`}
+                            className={`flex items-center gap-1 font-extrabold focus:outline-none transition-colors duration-200 ${activeDropdown === 'services' ? 'text-[#E75B44]' : 'hover:text-[#E75B44]' }`}
                         >
                             SERVICES
                             <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'services' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -111,13 +108,13 @@ export default function FourthHeader() {
 
                         {activeDropdown === 'services' && (
                             <div className="absolute left-0 mt-3 w-56 bg-white border border-stone-200/60 rounded-xl py-2 shadow-xl animate-fadeIn">
-                                <Link href="#catering" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-stone-700 hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
+                                <Link href="#catering" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-[#333] hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
                                     CATERING SERVICES
                                 </Link>
-                                <Link href="#events" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-stone-700 hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
+                                <Link href="#events" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-[#333] hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
                                     PRIVATE EVENTS
                                 </Link>
-                                <Link href="#delivery" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-stone-700 hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
+                                <Link href="#delivery" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-[11px] font-bold twst text-[#333] hover:text-[#E75B44] hover:bg-stone-50 transition-all upp">
                                     HOME DELIVERY
                                 </Link>
                             </div>
@@ -141,7 +138,7 @@ export default function FourthHeader() {
                 {/* Right Section: Utilities & Actions */}
                 <div className="hidden xl:flex items-center gap-6 shrink-0">
                     {/* Shopping Cart Button */}
-                    {/* <button className="relative p-1.5 text-stone-900 hover:text-[#E75B44] transition-colors focus:outline-none" aria-label="Open cart">
+                    {/* <button className="relative p-1.5 text-[#333] hover:text-[#E75B44] transition-colors focus:outline-none" aria-label="Open cart">
                         <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
@@ -162,7 +159,7 @@ export default function FourthHeader() {
                 {/* Mobile Navigation Controls */}
                 <div className="flex xl:hidden items-center gap-4">
                     {/* Mobile Cart */}
-                    {/* <button className="relative p-1.5 text-stone-900 hover:text-[#E75B44] transition-colors focus:outline-none" aria-label="Open cart">
+                    {/* <button className="relative p-1.5 text-[#333] hover:text-[#E75B44] transition-colors focus:outline-none" aria-label="Open cart">
                         <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
@@ -174,7 +171,7 @@ export default function FourthHeader() {
                     {/* Hamburger Menu Trigger */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="p-1.5 text-stone-900 hover:text-[#E75B44] transition-colors focus:outline-none"
+                        className="p-1.5 text-[#333] hover:text-[#E75B44] transition-colors focus:outline-none"
                         aria-label="Toggle navigation menu"
                     >
                         {mobileMenuOpen ? (
@@ -193,10 +190,9 @@ export default function FourthHeader() {
 
             {/* Slide-out Mobile Drawer */}
             <div
-                className={`fixed inset-x-0 top-[90px] z-40 mx-4 bg-white/95 backdrop-blur-lg border border-stone-200/50 rounded-2xl shadow-xl transition-all duration-300 xl:hidden overflow-y-auto ${mobileMenuOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
-                    }`}
+                className={`fixed inset-x-0 top-[90px] z-40 mx-4 bg-white/95 backdrop-blur-lg border border-stone-200/50 rounded-2xl shadow-xl transition-all duration-300 xl:hidden overflow-y-auto ${mobileMenuOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none' }`}
             >
-                <div className="p-6 flex flex-col gap-5 text-sm font-bold twst upp text-stone-800">
+                <div className="p-6 flex flex-col gap-5 text-sm twst upp text-stone-800">
                     <Link
                         href="#home"
                         onClick={() => setMobileMenuOpen(false)}
@@ -224,7 +220,7 @@ export default function FourthHeader() {
                             </svg>
                         </button>
                         {activeDropdown === 'menu' && (
-                            <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-600 font-semibold twr">
+                            <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-600 twr">
                                 <Link href="#lunch" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#E75B44] transition-colors">LUNCH SPECIALS</Link>
                                 <Link href="#dinner" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#E75B44] transition-colors">DINNER MENU</Link>
                                 <Link href="#drinks" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#E75B44] transition-colors">WINE & SPIRITS</Link>
@@ -244,7 +240,7 @@ export default function FourthHeader() {
                             </svg>
                         </button>
                         {activeDropdown === 'services' && (
-                            <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-600 font-semibold twr">
+                            <div className="flex flex-col gap-3 pl-4 pt-3 text-[15px] text-stone-600 twr">
                                 <Link href="#catering" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#E75B44] transition-colors">CATERING SERVICES</Link>
                                 <Link href="#events" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#E75B44] transition-colors">PRIVATE EVENTS</Link>
                                 <Link href="#delivery" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#E75B44] transition-colors">HOME DELIVERY</Link>

@@ -12,6 +12,18 @@ export const metadata = {
     "Indian Restaurant Photos Denver",
     "Best Indian Food Lakewood Gallery",
   ],
+  openGraph: {
+    title: "Culinary Gallery | Little India Restaurant & Bar",
+    description:
+      "Browse photos of authentic Indian dishes, tandoori grills, and fresh naan from Little India in Lakewood & Denver.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Culinary Gallery | Little India Restaurant & Bar",
+    description:
+      "Visual collections of authentic Indian cuisine from Little India Denver & Lakewood.",
+  },
 };
 
 export default function Page() {

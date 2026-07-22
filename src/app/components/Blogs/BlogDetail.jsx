@@ -8,43 +8,73 @@ import Link from 'next/link';
 const ALL_BLOG_POSTS = [
   {
     id: "blog-highlight",
-    tag: "CELEBRATION",
+    tag: "FOOD",
     title: "Celebrate Easter Dinner in Denver at Little India",
-    summary: "Easter is a time to gather, enjoy meaningful conversations, and share a memorable meal with the people you love. Discover why Little India offers an inviting holiday dine-in experience in Denver.",
+    summary: "Discover our newly curated seasonal menu, featuring hand-ground traditional spices, slow-smoked tandoori specialties, and vibrant, gluten-free vegan dishes crafted by our expert chefs.",
     date: "April 02, 2026",
-    image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg",
-    fallbackImage: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80",
-    url: "/blogs/new-menu-launch"
+    image: "/blogs/blog-highlight.webp",
+    fallbackImage: "/blogs/blog-highlight.webp",
+    url: "/blog-detail"
   },
   {
     id: "blog-1",
     tag: "CUISINE",
-    title: "Food & Drink Combos For Special Occasions",
+    title: "Is Indian Food the Healthiest Cuisine in the World?",
     summary: "Pairing authentic curries with high-end exotic cocktails. Learn how to balance robust spices with premium wines and local craft beers.",
-    date: "Jan 07, 2026",
-    image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg",
-    fallbackImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
-    url: "/blogs/food-drink-combos"
+    date: "April 02, 2026",
+    image: "/blogs/blog-1.webp",
+    fallbackImage: "/blogs/blog-1.webp",
+    url: "/blog-detail"
   },
   {
     id: "blog-2",
     tag: "FOOD",
-    title: "How We Ensure Food Safety And Hygiene",
+    title: "Where to Eat the Best Pakora in Denver?",
     summary: "An inside look at our immaculate open-kitchen design, sourcing protocols, and how we deliver consistent premium quality in every single course.",
-    date: "Jan 07, 2026",
-    image: "/menu/chicken-tikka-little-india-belmar-scaled.jpg",
-    fallbackImage: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
-    url: "/blogs/food-safety-hygiene"
+    date: "March 29, 2026",
+    image: "/blogs/blog-2.webp",
+    fallbackImage: "/blogs/blog-2.webp",
+    url: "/blog-detail"
   },
   {
     id: "blog-3",
     tag: "DINING",
-    title: "Why Atmosphere Matters In A Dining Experience",
+    title: "17 Best Indian Appetizers to Try at Little India Restaurant in Denver",
     summary: "From Rajasthani artwork to soft, ambient lighting—how our interior decor transports our guests straight to India's rich cultural heritage.",
-    date: "Jan 08, 2026",
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
-    fallbackImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
-    url: "/blogs/atmosphere-matters"
+    date: "March 26, 2026",
+    image: "/blogs/blog-3.webp",
+    fallbackImage: "/blogs/blog-3.webp",
+    url: "/blog-detail"
+  },
+  {
+    id: "blog-4",
+    tag: "CUISINE",
+    title: "Why Little India Is the Top Choice for Vegan and Gluten‑Free Indian Foode",
+    summary: "Combining locally sourced, organic Colorado produce with imported spices from India to perfect family recipes passed down through generations.",
+    date: "March 19, 2026",
+    image: "/blogs/blog-4.webp",
+    fallbackImage: "/blogs/blog-4.webp",
+    url: "/blog-detail"
+  },
+  {
+    id: "blog-5",
+    tag: "FOOD",
+    title: "Celebrate Special Occasions with Private Dining at Little India Denver",
+    summary: "Delving deep into traditional tandoor baking techniques, showing how high-heat clay ovens seal in juices and create authentic smoky textures.",
+    date: "March 09, 2026",
+    image: "/blogs/blog-5.webp",
+    fallbackImage: "/blogs/blog-5.webp",
+    url: "/blog-detail"
+  },
+  {
+    id: "blog-6",
+    tag: "FOOD",
+    title: "Celebrate Easter Dinner in Denver at Little India",
+    summary: "Delving deep into traditional tandoor baking techniques, showing how high-heat clay ovens seal in juices and create authentic smoky textures.",
+    date: "March 09, 2026",
+    image: "/blogs/blog-highlight.webp",
+    fallbackImage: "/blogs/blog-highlight.webp",
+    url: "/blog-detail"
   }
 ];
 
@@ -60,7 +90,7 @@ const fadeUpVariants = {
   }
 };
 
-export default function BlogDetail({ postId = "blog-highlight" }) {
+export default function BlogDetail({ postId = "blog-highlight", className = '' }) {
   const [copied, setCopied] = useState(false);
 
   // Find current post by ID
@@ -76,18 +106,18 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
   };
 
   return (
-    <article className="w-full bg-white text-[#0C0B0A] font-sans overflow-hidden min-h-screen pb-12 md:pb-16 select-none">
+    <article className={`w-full bg-white text-[#0C0B0A] overflow-hidden min-h-screen pb-12 md:pb-16 ${className}`.trim()}>
 
       {/* --- HERO ARTICLE HEADER --- */}
-      <div className="max-w-[1450px] mx-auto px-6 pb-8 pt-12 md:pt-16 flex flex-col gap-3 text-left">
+      <div className="max-w-[1450px] mx-auto px-6 pb-8 flex flex-col gap-3 text-left">
         
         {/* Title */}
-        <h1 className="font-luxury-title font-black text-[38px] sm:text-[50px] lg:text-[60px] leading-[1.05] text-[#121110] tracking-wide max-w-5xl">
+        <h1 className="font-luxury-title font-bold text-[38px] sm:text-[50px] lg:text-[56px] leading-[1.05] text-[#121110] tw-wide max-w-[1500px]">
           {post.title}
         </h1>
 
         {/* Date */}
-        <div className="font-luxury-sans text-[15px] sm:text-[16px] font-bold text-stone-600 tracking-widest uppercase mt-4">
+        <div className="font-luxury-sans text-[15px] sm:text-[16px] font-bold text-stone-600 tw-widest  mt-4">
           <span>Published on: {post.date}</span>
         </div>
       </div>
@@ -110,10 +140,10 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
       </div>
 
       {/* --- PROSE BODY COLUMN (Optimized to max-w-3xl for premium readability) --- */}
-      <div className="max-w-[1450px] mx-auto px-6 font-luxury-body text-[16px] sm:text-[18px] text-stone-700 leading-relaxed flex flex-col gap-6 md:gap-8 text-left font-medium">
+      <div className="max-w-[1450px] mx-auto px-6 font-luxury-body text-[16px] sm:text-[18px] text-[#333] leading-relaxed flex flex-col gap-6 md:gap-8 text-left">
         
         {/* Paragraph 1 */}
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -122,7 +152,7 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           Easter is a time to gather, enjoy meaningful conversations, and share a memorable meal with the people you love. If you are looking for a fresh way to celebrate Easter dinner in Denver, Little India offers an inviting dine-in experience with authentic Indian food, warm hospitality, and a menu full of vibrant flavors for every palate.
         </motion.p>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -137,13 +167,13 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-[30px] tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-[30px] tw-wider text-[#121110] mt-4 leading-none"
         >
           Why Choose Indian Food for Easter Dinner in Denver
         </motion.h2>
 
         {/* Paragraph 2 */}
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -152,7 +182,7 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           Easter dinner is often about connection, celebration, and sharing dishes around the table. Indian cuisine is a natural fit for that experience because it brings people together through its colors, aromas, and variety. Instead of a predictable holiday meal, guests can enjoy a spread filled with bold spices, creamy sauces, grilled meats, fresh herbs, and handmade breads.
         </motion.p>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -180,13 +210,13 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
 
           <motion.p
             variants={fadeUpVariants}
-            className="relative z-10 font-serif italic text-xl sm:text-3xl md:text-4xl text-stone-900 leading-normal mb-6"
+            className="relative z-10 font-serif italic text-xl sm:text-3xl md:text-4xl text-[#333] leading-normal mb-6 font-normal"
           >
             “Friendly’s has a new Conehead Sundae, but it does that pretty much every month. Ditto Ice Cream with new sundaes & Paris Baguette with a bunch of pastries & suchlike.”
           </motion.p>
           {/* <motion.p
             variants={fadeUpVariants}
-            className="relative z-10 font-sans font-bold text-sm sm:text-base text-[#E94222] tracking-wider uppercase"
+            className="relative z-10 text-sm sm:text-base text-[#E94222] tw-wider  font-normal"
           >
             NATALIA T. MORGAN
           </motion.p> */}
@@ -198,12 +228,12 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-[30px] tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-[30px] tw-wider text-[#121110] mt-4 leading-none"
         >
           Experience Authentic Indian Cuisine at Little India
         </motion.h2>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -213,7 +243,7 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
         </motion.p>
 
         {/* Clean Checkmark List */}
-        <div className="flex flex-col gap-3 font-luxury-sans text-[18px] font-bold text-stone-700 my-4 pl-1">
+        <div className="flex flex-col gap-3 font-luxury-sans text-[18px] text-[#333] my-4 pl-1">
           {[
             "A warm, family-friendly setting for holiday meals",
             "Authentic Indian dishes made with traditional spices",
@@ -234,7 +264,7 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-[30px] tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-[30px] tw-wider text-[#121110] mt-4 leading-none"
         >
           5 Must-Try Indian Dishes for Your Easter Celebration
         </motion.h2>
@@ -289,10 +319,10 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
                 <span className="text-[#e65c38] font-bold text-xs tw-widest leading-none font-luxury-sans">
                   DISH 0{i + 1}
                 </span>
-                <h4 className="font-luxury-title text-[22px] sm:text-[24px] font-black text-stone-900 leading-none">
+                <h4 className="font-luxury-title text-[22px] sm:text-[24px] font-bold text-[#333] leading-none">
                   {dish.title}
                 </h4>
-                <p className="font-luxury-sans text-[18px] sm:text-[18px] text-stone-600 leading-relaxed">
+                <p className="font-luxury-sans text-[18px] sm:text-[18px] text-stone-600 leading-relaxed font-normal">
                   {dish.desc}
                 </p>
               </div>
@@ -306,12 +336,12 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-2xl tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-2xl tw-wider text-[#121110] mt-4 leading-none"
         >
           Spice Levels and Customization
         </motion.h3>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -326,12 +356,12 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-2xl tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-2xl tw-wider text-[#121110] mt-4 leading-none"
         >
           Vegetarian and Family-Friendly Options
         </motion.h3>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -346,12 +376,12 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-2xl tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-2xl tw-wider text-[#121110] mt-4 leading-none"
         >
           Pair Your Easter Dinner with the Right Sides
         </motion.h3>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -361,7 +391,7 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
         </motion.p>
 
         {/* Sides List: background, border, shadow, and padding removed cleanly per your screenshot */}
-        <div className="flex flex-col gap-3 font-luxury-sans text-[18px] font-medium text-stone-700 my-4 pl-1">
+        <div className="flex flex-col gap-3 font-luxury-sans text-[18px] text-[#333] my-4 pl-1">
           {[
             "Garlic naan for dipping into Indian curry dish favorites",
             "Basmati rice to complement rich sauces",
@@ -383,12 +413,12 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-2xl tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-2xl tw-wider text-[#121110] mt-4 leading-none"
         >
           Ambiance and Dining Experience
         </motion.h3>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -403,12 +433,12 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="font-luxury-title font-black text-2xl tracking-wider text-[#121110] mt-4 leading-none"
+          className="font-luxury-title font-bold text-2xl tw-wider text-[#121110] mt-4 leading-none"
         >
           Plan Your Easter Visit to Little India
         </motion.h3>
 
-        <motion.p 
+        <motion.p className="font-normal" 
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
@@ -419,8 +449,8 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
 
         {/* --- SOCIAL SHARE PANEL --- */}
         <div className="w-full border-t border-b border-stone-200/50 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-luxury-sans text-[16px] font-bold text-stone-600">
-          <span className="tracking-widest uppercase">Share This Article</span>
-          <div className="flex items-center gap-4 text-stone-500">
+          <span className="tw-widest ">Share This Article</span>
+          <div className="flex items-center gap-4 text-[#333]">
             {/* Facebook */}
             <a href="#" aria-label="Share on Facebook" className="hover:text-[#3b5998] transition-colors duration-200">
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -449,7 +479,7 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
             <button 
               onClick={handleCopyLink} 
               aria-label="Copy article link" 
-              className="hover:text-stone-900 transition-colors duration-200 relative flex items-center justify-center"
+              className="hover:text-[#333] transition-colors duration-200 relative flex items-center justify-center"
             >
               <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.75" />
@@ -467,8 +497,8 @@ export default function BlogDetail({ postId = "blog-highlight" }) {
       </div>
 
       {/* --- RELATED ARTICLES SECTION --- */}
-      <div className="max-w-[1450px] mx-auto px-6 mt-16  border-stone-200/50">
-        <h2 className="font-luxury-title font-black text-[30px] tracking-wider text-stone-900 text-left mb-6">
+      <div className="max-w-[1450px] mx-auto px-6 mt-16 border-stone-200/50">
+        <h2 className="font-luxury-title font-bold text-[30px] tw-wider text-[#333] text-left mb-6">
           Related Articles
         </h2>
 
@@ -502,17 +532,17 @@ function BlogCard({ post }) {
       </div>
 
       {/* Date */}
-      <div className="font-luxury-sans text-[14px] font-bold text-[#e65c38] tracking-widest text-left uppercase">
+      <div className="font-luxury-sans text-[14px] font-bold text-[#e65c38] tw-widest text-left ">
         <span>{post.date}</span>
       </div>
 
       {/* Title */}
-      <h3 className="font-luxury-title text-[20px] font-black text-stone-900 leading-snug uppercase text-left hover:text-[#e65c38] transition-colors duration-200">
+      <h3 className="font-luxury-title text-[20px] font-bold text-[#333] leading-snug  text-left hover:text-[#e65c38] transition-colors duration-200">
         <Link href={post.url}>{post.title}</Link>
       </h3>
 
       {/* Summary */}
-      <p className="font-luxury-body text-[14.5px] text-stone-500 leading-relaxed text-left font-medium line-clamp-3">
+      <p className="font-luxury-body text-[14.5px] text-[#333] leading-relaxed text-left line-clamp-3 font-normal">
         {post.summary}
       </p>
     </motion.div>

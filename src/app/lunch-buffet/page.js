@@ -23,6 +23,12 @@ export const metadata = {
       },
     ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Indian Lunch Buffet | Little India Lakewood',
+    description:
+      'Daily Indian lunch buffet 11:00 AM–2:30 PM at Little India, 425 South Teller Street, Lakewood.',
+  },
 };
 
 export default function Page() {

@@ -8,8 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-title: var(--font-inter);
+  --font-sans: "Inter";
+  --font-serif: "Inter";
+  --font-title: "Inter";
+  --default-font-family: "Inter";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,19 +21,28 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+@layer base {
+  html,
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: "Inter";
+  }
+
+  /* Use the browser default text-selection highlight site-wide */
+  ::selection {
+    background-color: Highlight;
+    color: HighlightText;
+  }
 }
 
-/* Global Typography classes */
-.font-sans-custom {
-  font-family: var(--font-inter), sans-serif !important;
-}
-
-.font-heavy,
-.font-impact,
-.font-serif-italic {
-  font-family: var(--font-inter), sans-serif !important;
+@layer utilities {
+  .font-sans,
+  .font-serif,
+  .font-title,
+  .font-heavy,
+  .font-impact,
+  .font-serif-italic {
+    font-family: "Inter" !important;
+  }
 }

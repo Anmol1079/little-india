@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80";
 
@@ -63,36 +64,16 @@ export default function WhyChooseUsSection() {
 
       <div className="max-w-[1500px] mx-auto flex flex-col gap-12 relative">
 
-        {/* TOP SECTION: Title & Description */}
-        <motion.div
-          variants={revealContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.35, margin: "0px 0px -100px 0px" }}
-          className="flex flex-col items-center text-center max-w-7xl mx-auto gap-3"
-        >
-          <motion.span
-            variants={headerItemVariants}
-            className="text-[#e65c38] font-bold text-[15px] twst up font-sans block"
-          >
-           Why we best
-          </motion.span>
-
-          <motion.h2
-            variants={headerItemVariants}
-            className="font-heavy text-[39px] sm:text-[52px] lg:text-[60px] text-[#000] up leading-[0.95] tw-tight mb-2 font-black"
-          >
-            Authentic Flavors & Inviting Ambiance
-          </motion.h2>
-
-          {/* Grouped and constrained paragraphs to optimal reading width (max-w-4xl) */}
-          <div className="flex flex-col gap-5 text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed max-w-4xl mx-auto mt-2">
-            <motion.p variants={headerItemVariants}>
-              Little India Restaurant and Bar is proud to be one of the best Indian restaurants in Denver and Lakewood, Colorado, serving authentic Indian cuisine for over 20 years. Our passion lies in delivering a perfect fusion of mouth-watering traditional Indian dishes combined with a warm, inviting ambiance that genuinely feels like home.
-            </motion.p>
-
-          </div>
-        </motion.div>
+        <SectionHeader
+          align="center"
+          theme="accent"
+          label="Why we best"
+          title="Authentic Flavors & Inviting Ambiance"
+          description="Little India Restaurant and Bar is proud to be one of the best Indian restaurants in Denver and Lakewood, Colorado, serving authentic Indian cuisine for over 20 years. Our passion lies in delivering a perfect fusion of mouth-watering traditional Indian dishes combined with a warm, inviting ambiance that genuinely feels like home."
+          className="mb-0 max-w-7xl mx-auto"
+          titleClassName="text-[39px] sm:text-[52px] lg:text-[56px] text-[#000] mb-2"
+          descriptionClassName="max-w-4xl"
+        />
 
         {/* BOTTOM SECTION: Symmetrical Columns (Left Cards, Center Auto-stretching Image, Right Cards) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch w-full mt-6">
@@ -119,10 +100,10 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#e3ebd9] text-[#4d6645] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-leaf text-xl"></i>
               </div>
-              <h3 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
+              <h3 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
                 Fresh Food
               </h3>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 We use fresh, high-quality ingredients to craft authentic Indian flavors, ensuring every dish is rich and aromatic.
               </p>
             </motion.div>
@@ -136,15 +117,15 @@ export default function WhyChooseUsSection() {
                 boxShadow: '0 20px 40px -15px rgba(212, 121, 38, 0.08)'
               }}
               transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-              className="bg-white border border-[#f5ebcb] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
+              className="bg-white border border-[#ebfffd] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
-              <div className="w-14 h-14 rounded-full bg-[#f5ebcb] text-[#d47926] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
+              <div className="w-14 h-14 rounded-full bg-[#ebfffd] text-[#d47926] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-seedling text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
+              <h4 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
                 Vegan Friendly
               </h4>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 Our menu features a variety of delicious vegan-friendly Indian dishes, packed with authentic flavors.
               </p>
             </motion.div>
@@ -192,10 +173,10 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-[#ede2f2] text-[#6d4f8d] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-wheat-awn text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
+              <h4 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
                 Gluten Free
               </h4>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 We offer delicious gluten-free Indian meals, perfect for those with dietary restrictions without sacrificing taste.
               </p>
             </motion.div>
@@ -214,10 +195,10 @@ export default function WhyChooseUsSection() {
               <div className="w-14 h-14 rounded-full bg-white text-[#d85507] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-award text-xl"></i>
               </div>
-              <h4 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
+              <h4 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
                 Quality Maintain
               </h4>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 We maintain top quality by using fresh ingredients and authentic recipes in every dish we serve.
               </p>
             </motion.div>

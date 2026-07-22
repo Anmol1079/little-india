@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 const FAQ_ITEMS = [
   {
@@ -127,31 +128,15 @@ export default function FaqSection() {
         >
           
           <div className="flex flex-col gap-6">
-            {/* Tagline */}
-            <div className="flex items-center gap-2">
-              <motion.span 
-                variants={revealItemVariants}
-                className="text-[#E65C38] font-bold text-[15px] twst upp font-sans-custom block"
-              >
-                FAQs
-              </motion.span>
-            </div>
-
-            {/* Title */}
-            <motion.h2 
-              variants={revealItemVariants}
-              className="font-heavy text-[40px] sm:text-[60px] lg:text-6xl text-stone-950 upp leading-[0.95] tw-[0.01rem] font-black"
-            >
-              Frequently Asked<br />Questions
-            </motion.h2>
-
-            {/* Subtext description */}
-            <motion.p 
-              variants={revealItemVariants}
-              className="font-sans-custom text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed max-w-2xl mx-auto"
-            >
-              Explore answers to the most common questions from our trusted guests, partners, and diners.
-            </motion.p>
+            <SectionHeader
+              animated={false}
+              theme="accent"
+              label="FAQs"
+              title={<>Frequently Asked<br />Questions</>}
+              description="Explore answers to the most common questions from our trusted guests, partners, and diners."
+              className="mb-0"
+              titleClassName="sm:text-[56px] lg:text-6xl"
+            />
           </div>
 
           {/* Bottom Left Image Card */}
@@ -182,14 +167,14 @@ export default function FaqSection() {
               <motion.div 
                 key={index}
                 variants={accordionRowVariants}
-                className="flex flex-col pb-5 pt-5 border-b border-stone-200/60 first:pt-0 last:border-b-0 last:pb-0 cursor-pointer"
+                className="flex flex-col pb-5 pt-2.5 border-b border-stone-200/60 first:pt-0 last:border-b-0 last:pb-0 cursor-pointer"
               >
                 {/* Trigger Button */}
                 <button
                   onClick={() => handleToggle(index)}
                   className="w-full flex items-center justify-between text-left focus:outline-none group cursor-pointer"
                 >
-                  <span className="font-sans-custom text-[16px] md:text-[18px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200">
+                  <span className="fs text-[16px] md:text-[18px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200">
                     {item.question}
                   </span>
                   
@@ -218,7 +203,7 @@ export default function FaqSection() {
                   transition={{ duration: 0.5, ease: cubicBezierEase }}
                   className="overflow-hidden"
                 >
-                  <div className="font-sans-custom text-[14px] md:text-[16px] text-stone-500 font-semibold leading-relaxed max-w-3xl pr-4 pb-1">
+                  <div className="fs text-[14px] md:text-[16px] text-[#333] leading-relaxed max-w-3xl pr-4 pb-1">
                     {item.answer}
                   </div>
                 </motion.div>

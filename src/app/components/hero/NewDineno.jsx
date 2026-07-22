@@ -349,9 +349,7 @@ export default function NewDineno() {
           return (
             <div
               key={index}
-              className={`bg-slide-item absolute inset-0 transition-opacity duration-1000 ${
-                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
+              className={`bg-slide-item absolute inset-0 transition-opacity duration-1000 ${ isActive ? 'opacity-100 z-10' : 'opacity-0 z-0' }`}
             >
               <img
                 src={slide.bgImage}
@@ -391,7 +389,7 @@ export default function NewDineno() {
               <div className="overflow-hidden">
                 <p 
                   key={`desc-${currentSlide}`}
-                  className="text-[16px] text-gray-300 font-light leading-relaxed whitespace-pre-line tw animate-fadeIn"
+                  className="text-[16px] text-gray-300 leading-relaxed whitespace-pre-line tw animate-fadeIn font-normal"
                 >
                   {slides[currentSlide].avatarText}
                 </p>
@@ -433,7 +431,7 @@ export default function NewDineno() {
                   {/* Single Heading 3 element to display the active dish title */}
                   <h3 
                     key={`dish-title-${currentDish}`}
-                    className="text-[11px] font-extrabold upp twr text-stone-900 leading-tight animate-fadeIn"
+                    className="text-[11px] font-extrabold upp twr text-[#333] leading-tight animate-fadeIn"
                   >
                     {cardDishes[currentDish].title}
                   </h3>
@@ -453,9 +451,7 @@ export default function NewDineno() {
                       key={index}
                       src={dish.img} 
                       alt="Signature Dish Presentation" 
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                        isActive ? 'opacity-100 scale-100 animate-dish-reveal' : 'opacity-0 scale-95 pointer-events-none'
-                      }`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${ isActive ? 'opacity-100 scale-100 animate-dish-reveal' : 'opacity-0 scale-95 pointer-events-none' }`}
                     />
                   );
                 })}
@@ -487,9 +483,7 @@ export default function NewDineno() {
                 key={index}
                 onClick={() => handleDotClick(index)}
                 disabled={isTransitioning}
-                className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
-                  isActive ? 'w-6 bg-[#E75B44]' : 'w-2 bg-white/40 hover:bg-white/80'
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${ isActive ? 'w-6 bg-[#E75B44]' : 'w-2 bg-white/40 hover:bg-white/80' }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             );

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import SectionHeader from '../common/SectionHeader';
 
 // Easing definition
 const cubicBezierEase = [0.16, 1, 0.3, 1];
@@ -28,60 +29,86 @@ const fadeUpVariants = {
   },
 };
 
+/** Turn a file path into a readable dish name, e.g. allu-tikki.jpg → Allu Tikki */
+function nameFromSrc(src) {
+  if (!src) return '';
+  const file = src.split('/').pop() || '';
+  const base = file
+    .replace(/\.(jpg|jpeg|png|webp|avif|gif)(\.webp)?$/i, '')
+    .replace(/-little-india.*$/i, '')
+    .replace(/-scaled$/i, '')
+    .replace(/[_-]+/g, ' ')
+    .trim();
+  if (!base || /^photo-/i.test(base)) return '';
+  return base.replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function withDishName(item) {
+  return {
+    ...item,
+    title: item.title || nameFromSrc(item.src) || 'Signature Dish',
+  };
+}
+
 // Detailed Image Databases for every single album category
 const ALBUM_IMAGES = {
   "appetizers": [
-    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80" }
-  ],
+    { src: "/gallery/appetizers/allu-tikki.jpg", title: "Allu Tikki" },
+    { src: "/gallery/appetizers/calamari.jpg", title: "Calamari" },
+    { src: "/gallery/appetizers/chicken-pakora.jpg", title: "Chicken Pakora" },
+    { src: "/gallery/appetizers/coconut-shrimp.jpg", title: "Coconut Shrimp" },
+    { src: "/gallery/appetizers/jaipuri-samosa.jpg", title: "Jaipuri Samosa" },
+    { src: "/gallery/appetizers/onion-bhaji.jpg", title: "Onion Bhaji" },
+    { src: "/gallery/appetizers/paneer-chilli.jpg.webp", title: "Paneer Chilli" },
+    { src: "/gallery/appetizers/punjabi-samosa.jpg", title: "Punjabi Samosa" },
+    { src: "/gallery/appetizers/tandoori-wings.jpg", title: "Tandoori Wings" },
+    { src: "/gallery/appetizers/vegetable-pakora.jpg", title: "Vegetable Pakora" },
+    { src: "/gallery/appetizers/momo.jpg.webp", title: "Momo" },
+  ].map(withDishName),
   "entrees-from-clay-oven": [
-    { src: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg" },
-    { src: "/menu/seekh-kabob-little-india-belmar.jpg" },
-    { src: "/menu/chicken-tikka-little-india-belmar-scaled.jpg" },
-    { src: "https://images.unsplash.com/photo-1610057099443-fde8c4d90ef8?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80" }
-  ],
+    { src: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg", title: "Tandoori Mixed Grill" },
+    { src: "/menu/seekh-kabob-little-india-belmar.jpg", title: "Seekh Kabob" },
+    { src: "/menu/chicken-tikka-little-india-belmar-scaled.jpg", title: "Chicken Tikka" },
+    { src: "https://images.unsplash.com/photo-1610057099443-fde8c4d90ef8?auto=format&fit=crop&w=800&q=80", title: "Tandoori Chicken" },
+    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80", title: "Clay Oven Special" },
+    { src: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80", title: "Paneer Tikka" },
+  ].map(withDishName),
   "family-package": [
-    { src: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80" }
-  ],
+    { src: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80", title: "Family Feast Platter" },
+    { src: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=800&q=80", title: "Vegetarian Family Pack" },
+    { src: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80", title: "Shared Curry Spread" },
+    { src: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80", title: "Naan & Curry Combo" },
+    { src: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80", title: "Biryani Family Pack" },
+    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80", title: "Thali Experience" },
+  ].map(withDishName),
   "naan": [
-    { src: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80" }
-  ],
+    { src: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80", title: "Garlic Naan" },
+    { src: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=800&q=80", title: "Butter Naan" },
+    { src: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80", title: "Plain Naan" },
+    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80", title: "Peshwari Naan" },
+    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80", title: "Cheese Naan" },
+    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80", title: "Onion Kulcha" },
+  ].map(withDishName),
   "side-orders": [
-    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1605333396515-47b577803e51?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" }
-  ],
+    { src: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80", title: "Raita" },
+    { src: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80", title: "Mango Chutney" },
+    { src: "https://images.unsplash.com/photo-1605333396515-47b577803e51?auto=format&fit=crop&w=800&q=80", title: "Papadum" },
+    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80", title: "Mixed Pickles" },
+    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80", title: "Mint Chutney" },
+    { src: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80", title: "Basmati Rice" },
+  ].map(withDishName),
   "soup-and-salads": [
-    { src: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1605333396515-47b577803e51?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" },
-    { src: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" }
-  ]
+    { src: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80", title: "Garden Salad" },
+    { src: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80", title: "Kachumber Salad" },
+    { src: "https://images.unsplash.com/photo-1605333396515-47b577803e51?auto=format&fit=crop&w=800&q=80", title: "Dal Soup" },
+    { src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80", title: "Tomato Shorba" },
+    { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80", title: "Chicken Soup" },
+    { src: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80", title: "House Salad" },
+  ].map(withDishName),
 };
 
 const ALBUM_METADATA = {
-  "appetizers": { title: "Appetizers Gallery", desc: "A colorful, crisp selection of our popular, authentic pan-fried starters." },
+  "appetizers": { title: "Appetizers", desc: "A colorful, crisp selection of our popular, authentic pan-fried starters." },
   "entrees-from-clay-oven": { title: "Clay Oven Specialties", desc: "Tandoori skewers and mixed grills roasted over 100% wood charcoal." },
   "family-package": { title: "Family Packages", desc: "Generous communal feasts structured for sharing with your loved ones." },
   "naan": { title: "Naans & Breads", desc: "Blistered flatbreads, hand-slapped and cured in our clay ovens." },
@@ -89,7 +116,7 @@ const ALBUM_METADATA = {
   "soup-and-salads": { title: "Soups & Salads", desc: "Clear lentil-broths and freshly chopped garden salads." }
 };
 
-export default function AlbumPage({ category }) {
+export default function AlbumPage({ category, className = '' }) {
   const images = ALBUM_IMAGES[category] || ALBUM_IMAGES["appetizers"];
   const meta = ALBUM_METADATA[category] || ALBUM_METADATA["appetizers"];
 
@@ -107,29 +134,25 @@ export default function AlbumPage({ category }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxIndex, images]);
 
+  const activeImage = lightboxIndex !== null ? images[lightboxIndex] : null;
+
   return (
-    <section className="w-full bg-[#FAF5EF] text-[#0C0B0A] font-sans overflow-hidden min-h-screen pb-12 md:pb-16">
+    <section className={`w-full bg-[#FAF5EF] text-[#0C0B0A] overflow-hidden min-h-screen pb-12 md:pb-16 ${className}`.trim()}>
 
       {/* --- HERO BANNER & BREADCRUMB --- */}
-      <div className="max-w-[1450px] mx-auto px-6 pt-12 md:pt-16 pb-6 flex flex-col gap-5 text-left">
+      <div className="max-w-[1450px] mx-auto px-6 pb-6 flex flex-col gap-5 text-left">
         
-        <motion.div
-          variants={revealContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          className="max-w-[1400px] flex flex-col items-baseline gap-5 relative z-10"
-        >
-          <span className="text-[#e65c38] font-bold text-[13px] sm:text-[14px] tw-[0.25em] up font-gallery-sans block text-transform uppercase tw-wider">
-            Visual Feast
-          </span>
-          <h1 className="font-gallery-title font-black text-[40px] sm:text-[60px] lg:text-[60px] leading-[1.05] up tw-wide max-w-5xl text-black">
-            {meta.title}
-          </h1>
-          <p className="font-gallery-sans text-[15px] sm:text-[17px] text-[#333] leading-relaxed max-w-2xl font-medium">
-            {meta.desc}
-          </p>
-        </motion.div>
+        <SectionHeader
+          as="h1"
+          theme="accent"
+          label="Visual Feast"
+          title={meta.title}
+          description={meta.desc}
+          className="mb-0 max-w-[1400px] relative z-10"
+          labelClassName="text-[13px] sm:text-[14px]"
+          titleClassName="sm:text-[56px] leading-[1.05] max-w-5xl text-black"
+          descriptionClassName="text-[15px] sm:text-[17px]"
+        />
       </div>
 
       {/* --- ALBUM IMAGES GRID --- */}
@@ -150,6 +173,11 @@ export default function AlbumPage({ category }) {
                 className="absolute inset-0 w-full h-full object-cover filter brightness-[0.98] transition-transform duration-700 ease-out group-hover:scale-103"
                 onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80"; }}
               />
+              {/* <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent px-5 pb-4 pt-10 pointer-events-none">
+                <p className="text-white text-[15px] sm:text-base font-bold leading-snug">
+                  {img.title}
+                </p>
+              </div> */}
             </motion.div>
           ))}
         </div>
@@ -157,19 +185,19 @@ export default function AlbumPage({ category }) {
 
       {/* --- PREMIUM LIGHTBOX SYSTEM --- */}
       <AnimatePresence>
-        {lightboxIndex !== null && (
+        {lightboxIndex !== null && activeImage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setLightboxIndex(null)} // Clicking outside on the dark backdrop closes it
+            onClick={() => setLightboxIndex(null)}
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0D0C0A]/95 backdrop-blur-md cursor-zoom-out"
           >
             
             {/* CLOSE BUTTON */}
             <button 
               onClick={(e) => {
-                e.stopPropagation(); // Prevents close event collision with backdrop click
+                e.stopPropagation();
                 setLightboxIndex(null);
               }}
               className="fixed top-[86px] right-6 md:top-[86px] md:right-8 z-[200] bg-black/70 hover:bg-[#E94222] rounded-full p-4 hover:scale-110 active:scale-95 transition-all duration-300 shadow-2xl border border-white/10 cursor-pointer flex items-center justify-center"
@@ -221,28 +249,28 @@ export default function AlbumPage({ category }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.35, ease: cubicBezierEase }}
-              onClick={(e) => e.stopPropagation()} // Stop propagation so clicking inside the image area doesn't close backdrop
+              onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-4xl max-h-[70vh] aspect-video px-6 cursor-default"
             >
               <img
-                src={images[lightboxIndex].src}
-                alt={images[lightboxIndex].title || `${meta.title} - Image ${lightboxIndex + 1}`}
+                src={activeImage.src}
+                alt={activeImage.title || `${meta.title} - Image ${lightboxIndex + 1}`}
                 className="w-full h-full object-contain rounded-2xl shadow-2xl"
                 onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80"; }}
               />
             </motion.div>
 
-            {/* Slide Details */}
+            {/* Slide Details — dish name above IMAGE X OF Y */}
             <div 
               className="mt-8 text-center text-white px-6 select-none"
               onClick={(e) => e.stopPropagation()}
             >
-              <span className="text-xs up font-bold tw-[0.2em] text-[#C59B27] font-album-sans tw-widest block uppercase">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-wide mb-2">
+                {activeImage.title}
+              </h2>
+              <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#C59B27] block">
                 IMAGE {lightboxIndex + 1} OF {images.length}
               </span>
-              {/* <h2 className="text-xl sm:text-2xl font-album-title font-black up tw-wide mt-1">
-                {images[lightboxIndex].title || `${meta.title} #${lightboxIndex + 1}`}
-              </h2> */}
             </div>
           </motion.div>
         )}

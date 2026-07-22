@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 // Framer Motion Animation Variants
 const cardContainerVariants = {
@@ -80,29 +81,17 @@ export default function ContactSection() {
             viewport={{ once: true, margin: '-100px' }}
             className="bg-[#FDFBF7] rounded-[2rem] p-6 sm:p-10 md:p-12 w-full shadow-[0_15px_60px_rgba(0,0,0,0.04)] border border-stone-200/35"
           >
-            {/* Tagline */}
-            <motion.span 
-              variants={childElementVariants}
-              className="text-[#E65C38] font-bold text-[15px] twst upp font-sans block mb-3.5"
-            >
-              Get in Touch
-            </motion.span>
-
-            {/* Editorial Headline */}
-            <motion.h2 
-              variants={childElementVariants}
-              className="font-title font-black text-4xl sm:text-[46px] md:text-[50px] text-stone-950 leading-[1.1] mb-3.5 tw-tight"
-            >
-             Best Indian Restaurant in Denver
-            </motion.h2>
-
-            {/* Subtext description */}
-            <motion.p 
-              variants={childElementVariants}
-              className="font-sans text-[16px] sm:text-[16px] text-stone-500 font-semibold mb-8 max-w-xl leading-relaxed"
-            >
-              Our dishes are made with only fresh and local ingredients.
-            </motion.p>
+            <SectionHeader
+              animated={false}
+              theme="accent"
+              uppercase={false}
+              label="Get in Touch"
+              title="Best Indian Restaurant in Denver"
+              description="Our dishes are made with only fresh and local ingredients."
+              className="mb-0"
+              titleClassName="text-4xl sm:text-[46px] md:text-[50px] leading-[1.1] mb-3.5"
+              descriptionClassName="mb-8 max-w-xl"
+            />
 
             {/* Inner Cards Grid */}
             <motion.div 
@@ -113,7 +102,7 @@ export default function ContactSection() {
               {/* FIND US CARD */}
               <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.01)] border border-stone-200/40 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-title font-black text-lg text-stone-950 tw mb-6 leading-none">
+                  <h3 className="font-title font-bold text-lg text-stone-950 tw mb-6 leading-none">
                     Find Us
                   </h3>
 
@@ -130,7 +119,7 @@ export default function ContactSection() {
                           <circle cx="12" cy="10" r="3" />
                         </svg>
                       </div>
-                      <a href="#map" className="font-sans text-[15px] sm:text-sm font-bold text-stone-800 group-hover:text-[#E65C38] transition-all duration-300 leading-snug">
+                      <a href="#map" className="text-[15px] sm:text-sm font-bold text-stone-800 group-hover:text-[#E65C38] transition-all duration-300 leading-snug">
                         425 South Teller Street, Lakewood, Colorado
                       </a>
                     </motion.div>
@@ -146,7 +135,7 @@ export default function ContactSection() {
                           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                         </svg>
                       </div>
-                      <a href="tel:+1 303-937-9777" className="font-sans text-[15px] sm:text-sm font-bold text-stone-800 group-hover:text-[#E65C38] transition-all duration-300 leading-none">
+                      <a href="tel:+1 303-937-9777" className="text-[15px] sm:text-sm font-bold text-stone-800 group-hover:text-[#E65C38] transition-all duration-300 leading-none">
                         +1 303-937-9777
                       </a>
                     </motion.div>
@@ -163,7 +152,7 @@ export default function ContactSection() {
                           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                         </svg>
                       </div>
-                      <a href="mailto:info@littleindiadenvercolorado.com" className="font-sans text-[15px] sm:text-sm font-bold text-stone-800 group-hover:text-[#E65C38] transition-all duration-300 break-all leading-normal">
+                      <a href="mailto:info@littleindiadenvercolorado.com" className="text-[15px] sm:text-sm font-bold text-stone-800 group-hover:text-[#E65C38] transition-all duration-300 break-all leading-normal">
                         info@littleindiadenvercolorado.com
                       </a>
                     </motion.div>
@@ -174,14 +163,14 @@ export default function ContactSection() {
               {/* OPENING HOURS CARD */}
               <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.01)] border border-stone-200/40 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-title font-black text-lg text-stone-950 tw mb-6 leading-none">
+                  <h3 className="font-title font-bold text-lg text-stone-950 tw mb-6 leading-none">
                     Opening Hours
                   </h3>
 
-                  <div className="flex flex-col font-sans text-sm font-bold text-stone-800">
+                  <div className="flex flex-col text-sm font-bold text-stone-800">
                     {/* Monday Row */}
                     <div className="flex justify-between items-center border-b border-stone-100 pb-4 mb-4 min-h-[50px]">
-                      <span className="text-stone-500">Mon</span>
+                      <span className="text-[#333]">Mon</span>
                       <span className="text-stone-400 font-bold up text-[13px] bg-stone-50 border border-stone-200/40 px-2 py-0.5 rounded">
                         Closed
                       </span>
@@ -189,13 +178,13 @@ export default function ContactSection() {
 
                     {/* Tue - Fri Row */}
                     <div className="flex justify-between items-center border-b border-stone-100 pb-4 mb-4 min-h-[50px]">
-                      <span className="text-stone-500">Tue to Fri</span>
+                      <span className="text-[#333]">Tue to Fri</span>
                       <span className="text-neutral-900">11 AM – 10 PM</span>
                     </div>
 
                     {/* Sat - Sun Row */}
                     <div className="flex justify-between items-center min-h-[50px]">
-                      <span className="text-stone-500">Sat to Sun</span>
+                      <span className="text-[#333]">Sat to Sun</span>
                       <span className="text-neutral-900">12 PM – 7 PM</span>
                     </div>
                   </div>

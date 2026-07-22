@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 const orderOptions = [
   {
@@ -111,30 +112,16 @@ export default function OrderSection() {
 
       <div className="max-w-[1500px] mx-auto flex flex-col items-center">
 
-        {/* Header Block with Scroll Reveal */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="flex flex-col max-w-[1500px] sm:max-w-[1500px] md:max-w-[1500px] self-start mb-16"
-        >
-          <div className="flex flex-col items-start mb-4">
-            <span className="text-[#B83A18] font-bold text-[15px] twst upp font-sans-custom block">
-              Crafted for you
-            </span>
-          </div>
-
-          <div className="flex items-baseline space-x-2 md:space-x-3 mt-1">
-            <h2 className="font-heavy font-black text-[40px] sm:text-[60px] text-stone-950 upp leading-[0.95] tw-[0.01rem]">
-              Order Indian Food in Denver
-            </h2>
-          </div>
-          <p className="text-[16px] md:text-[18px] text-stone-500 font-semibold font-sans-custom mt-4 leading-relaxed max-w-7xl">
-            Order online, reserve a table, or surprise someone special with a gift card.
-            Find an Indian restaurant near you or explore Indian food near you.
-          </p>
-        </motion.div>
+        <SectionHeader
+          theme="light"
+          label="Crafted for you"
+          title="Order Indian Food in Denver"
+          description="Order online, reserve a table, or surprise someone special with a gift card. Find an Indian restaurant near you or explore Indian food near you."
+          className="self-start mb-16 w-full max-w-[1500px]"
+          contentClassName="max-w-[1500px] w-full"
+          titleClassName="sm:text-[56px]"
+          descriptionClassName="max-w-7xl mt-0"
+        />
 
         {/* 2. Optimized Cascading Card Grid */}
         <motion.div
@@ -167,12 +154,12 @@ export default function OrderSection() {
                 </div>
 
                 {/* 2. Card Title */}
-                <h3 className="font-heavy text-[28px] text-stone-900 upp tw-tight mb-4 leading-none font-extrabold transition-colors duration-300 group-hover:text-[#E65C38]">
+                <h3 className="font-heavy text-[28px] text-[#333] upp tw-tight mb-4 leading-none font-extrabold transition-colors duration-300 group-hover:text-[#E65C38]">
                   {option.title}
                 </h3>
 
                 {/* 3. Subtext description */}
-                <p className="font-sans-custom text-[16px] md:text-[18px] leading-[1.65] text-stone-500 max-w-[90%] mb-12 h-14 flex items-center justify-center font-semibold">
+                <p className="fs text-[16px] md:text-[18px] leading-[1.65] text-[#333] max-w-[90%] mb-12 h-14 flex items-center justify-center font-normal">
                   {option.description}
                 </p>
 
@@ -180,7 +167,7 @@ export default function OrderSection() {
                 <div className="flex justify-center">
                   <Link
                     href="/menu"
-                    className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                    className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
                   >
                     <span>KNOW MORE</span>
                     <svg

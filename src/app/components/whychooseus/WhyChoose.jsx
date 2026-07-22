@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import SectionHeader from "../common/SectionHeader";
 
 // Deceleration Easing Curve
 const cubicEase = [0.16, 1, 0.3, 1];
@@ -45,9 +46,9 @@ const centerImageVariants = {
   },
 };
 
-export default function WhyChoose() {
+export default function WhyChoose({ className = '' }) {
   return (
-    <section className="w-full bg-[#FFF6EA] py-12 md:py-16 overflow-hidden text-center select-none font-sans">
+    <section className={`w-full bg-white py-12 md:py-16 overflow-hidden text-center ${className}`.trim()}>
 
 
       {/* PART 1: TOP CONTENT BLOCK (Elegant Split-Editorial Grid) */}
@@ -73,23 +74,20 @@ export default function WhyChoose() {
             />
           </motion.div> */}
 
-          <motion.span
-            variants={headerItemVariants}
-            className="text-[#e65c38] font-bold text-[14px] sm:text-[15px] tw-[0.2em] up font-luxury-sans block"
-          >
-            Why we best
-          </motion.span>
-
-          <motion.h1
-            variants={headerItemVariants}
-            className="font-luxury-title font-black text-[36px] sm:text-[46px] lg:text-[52px] text-black up leading-[1.02] tw mb-2"
-          >
-            Authentic Flavors & Inviting Ambiance
-          </motion.h1>
+          <SectionHeader
+            animated={false}
+            as="h1"
+            theme="accent"
+            label="Why we best"
+            title="Authentic Flavors & Inviting Ambiance"
+            className="mb-0"
+            labelClassName="text-[14px] sm:text-[15px]"
+            titleClassName="text-[36px] sm:text-[46px] lg:text-[52px] text-black leading-[1.02] mb-2"
+          />
 
           {/* Left-Aligned Paragraph Group */}
-          <div className="flex flex-col gap-5 text-[18px] sm:text-[18px] text-[#333] leading-relaxed opacity-95 font-medium ">
-            <motion.p variants={fadeUpVariants}>
+          <div className="flex flex-col gap-5 text-[18px] sm:text-[18px] text-[#333] leading-relaxed opacity-95">
+            <motion.p className="font-normal" variants={fadeUpVariants}>
               Little India Restaurant and Bar is proud to be one of the best Indian
               restaurants in Denver and Lakewood, Colorado, serving authentic Indian
               cuisine for over 20 years. Our passion lies in delivering a perfect
@@ -97,7 +95,7 @@ export default function WhyChoose() {
               warm, inviting ambiance that genuinely feels like home.
             </motion.p>
 
-            <motion.p variants={fadeUpVariants}>
+            <motion.p className="font-normal" variants={fadeUpVariants}>
               Since our establishment, we have maintained a strong commitment to
               treating every customer as family, creating a friendly and welcoming
               atmosphere for over 15 years. Our menu features fresh, high-quality
@@ -107,7 +105,7 @@ export default function WhyChoose() {
               delicious, healthy meals without discomfort.
             </motion.p>
 
-            <motion.p variants={fadeUpVariants}>
+            <motion.p className="font-normal" variants={fadeUpVariants}>
               Located in the heart of Belmar, Lakewood, Denver, Little India offers
               an immaculate and hygienic dining experience. Our open kitchen design
               builds customer confidence by showcasing our dedication to quality and
@@ -117,7 +115,7 @@ export default function WhyChoose() {
               cooking.
             </motion.p>
 
-            <motion.p variants={fadeUpVariants}>
+            <motion.p className="font-normal" variants={fadeUpVariants}>
               Discover Little India Restaurant and Bar in Denver and Lakewood,
               Colorado, for an unmatched blend of authentic flavors, warm
               hospitality, and a cozy atmosphere that draws our loyal customers back
@@ -176,10 +174,10 @@ export default function WhyChoose() {
               <div className="w-14 h-14 rounded-full bg-[#e3ebd9] text-[#4d6645] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-leaf text-xl"></i>
               </div>
-              <h2 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
+              <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
                 Fresh Food
               </h2>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 We use fresh, high-quality ingredients to craft authentic Indian flavors, ensuring every dish is rich and aromatic.
               </p>
             </motion.div>
@@ -193,15 +191,15 @@ export default function WhyChoose() {
                 boxShadow: '0 20px 40px -15px rgba(212, 121, 38, 0.08)'
               }}
               transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-              className="bg-white border border-[#f5ebcb] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
+              className="bg-[#ebfffd] border border-[#f5ebcb] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-[#f5ebcb] text-[#d47926] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-seedling text-xl"></i>
               </div>
-              <h2 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
+              <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
                 Vegan Friendly
               </h2>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 Our menu features a variety of delicious vegan-friendly Indian dishes, packed with authentic flavors.
               </p>
             </motion.div>
@@ -220,10 +218,10 @@ export default function WhyChoose() {
               <div className="w-14 h-14 rounded-full bg-[#ede2f2] text-[#6d4f8d] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-wheat-awn text-xl"></i>
               </div>
-              <h2 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
+              <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
                 Gluten Free
               </h2>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 We offer delicious gluten-free Indian meals, perfect for those with dietary restrictions without sacrificing taste.
               </p>
             </motion.div>
@@ -242,10 +240,10 @@ export default function WhyChoose() {
               <div className="w-14 h-14 rounded-full bg-white text-[#d85507] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
                 <i className="fa-solid fa-award text-xl"></i>
               </div>
-              <h2 className="font-heavy text-2xl text-stone-900 up leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
+              <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
                 Quality Maintain
               </h2>
-              <p className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed pr-6">
+              <p className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed pr-6 font-normal">
                 We maintain top quality by using fresh ingredients and authentic recipes in every dish we serve.
               </p>
             </motion.div>

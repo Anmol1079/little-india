@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SectionHeader from '../components/common/SectionHeader';
 
 // Premium momentum easing
 const cubicBezierEase = [0.16, 1, 0.3, 1];
@@ -42,158 +43,182 @@ const fadeUpVariants = {
 };
 
 export default function BookATable() {
-  const [fullName, setFullName] = useState('');
-  const [emailAddress, setEmailAddress] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [guestCount, setGuestCount] = useState('04');
+  const sectionRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // --- CUSTOM DATEPICKER STATES ---
-  const [date, setDate] = useState(''); // Stores raw date (e.g., '2026-07-20')
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const [currentMonth, setCurrentMonth] = useState(6); // Default: July (0-indexed)
-  const [currentYear, setCurrentYear] = useState(2026); // Default: 2026
+  // Custom Dropdowns Toggle States
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
+  const [isGuestDropdownOpen, setIsGuestDropdownOpen] = useState(false);
 
-  // --- CUSTOM TIMEPICKER STATES ---
-  const [time, setTime] = useState(''); // Stores raw time string (e.g. '04:30 PM')
-  const [showTimePicker, setShowTimePicker] = useState(false);
-  const [selectedHour, setSelectedHour] = useState('04');
-  const [selectedMinute, setSelectedMinute] = useState('30');
-  const [selectedAmPm, setSelectedAmPm] = useState('PM');
-
-  // Refs for click outside handling
+  // References to detect clicks outside popups
   const datePickerRef = useRef(null);
-  const timePickerRef = useRef(null);
+  const timeDropdownRef = useRef(null);
+  const guestDropdownRef = useRef(null);
 
-  // Click outside to close pickers
+  // Initialize selected date to Friday, July 3rd, 2026
+  const defaultDate = new Date(2026, 6, 3); // Month is 0-indexed (6 = July)
+  const [selectedDate, setSelectedDate] = useState(defaultDate);
+  const [viewingMonth, setViewingMonth] = useState(new Date(2026, 6, 1));
+
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    guests: '2 Guests',
+    time: '12:30 PM',
+    notes: '',
+  });
+
+  // Time Slot Options
+  const timeSlots = [
+    '12:00 PM',
+    '12:30 PM',
+    '1:00 PM',
+    '1:30 PM',
+    '2:00 PM',
+    '2:30 PM'
+  ];
+
+  // Guest Options
+  const guestOptions = [
+    '1 Guest',
+    '2 Guests',
+    '3 Guests',
+    '4 Guests',
+    '5+ Guests (Group)'
+  ];
+
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
-        setShowDatePicker(false);
-      }
-      if (timePickerRef.current && !timePickerRef.current.contains(event.target)) {
-        setShowTimePicker(false);
-      }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => observer.disconnect();
   }, []);
 
+  // Form Submission
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({ name: '', phone: '', guests: '2 Guests', time: '12:30 PM', notes: '' });
+      setSelectedDate(defaultDate);
+    }, 2000);
   };
 
-  // --- CALENDAR HELPERS ---
-  const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
-  const getFirstDayOfMonth = (month, year) => new Date(year, month, 1).getDay();
-
-  const handlePrevMonth = () => {
-    if (currentMonth === 0) {
-      setCurrentMonth(11);
-      setCurrentYear(currentYear - 1);
-    } else {
-      setCurrentMonth(currentMonth - 1);
+  // Close custom dropdowns if clicked outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+        setIsDatePickerOpen(false);
+      }
+      if (timeDropdownRef.current && !timeDropdownRef.current.contains(event.target)) {
+        setIsTimeDropdownOpen(false);
+      }
+      if (guestDropdownRef.current && !guestDropdownRef.current.contains(event.target)) {
+        setIsGuestDropdownOpen(false);
+      }
     }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Format Helper for Input Display (e.g., "July 3, 2026")
+  const formatDateString = (date) => {
+    if (!date) return '';
+    return date.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    });
+  };
+
+  // Build Interactive Calendar Grid Logic
+  const getDaysInMonthGrid = (dateObj) => {
+    const year = dateObj.getFullYear();
+    const month = dateObj.getMonth();
+
+    // First weekday of the month
+    const firstDayIndex = new Date(year, month, 1).getDay();
+
+    // Total days in the current month
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    // Total days in the previous month
+    const prevTotalDays = new Date(year, month, 0).getDate();
+
+    const grid = [];
+
+    // Previous month's leading days
+    for (let i = firstDayIndex - 1; i >= 0; i--) {
+      grid.push({
+        day: prevTotalDays - i,
+        isCurrentMonth: false,
+        dateValue: new Date(year, month - 1, prevTotalDays - i)
+      });
+    }
+
+    // Current month days
+    for (let i = 1; i <= totalDays; i++) {
+      grid.push({
+        day: i,
+        isCurrentMonth: true,
+        dateValue: new Date(year, month, i)
+      });
+    }
+
+    // Next month's trailing days to fill complete 6-week calendar matrix (42 cells)
+    const remaining = 42 - grid.length;
+    for (let i = 1; i <= remaining; i++) {
+      grid.push({
+        day: i,
+        isCurrentMonth: false,
+        dateValue: new Date(year, month + 1, i)
+      });
+    }
+
+    return grid;
+  };
+
+  const calendarDays = getDaysInMonthGrid(viewingMonth);
+  const weekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
+  // Navigate months
+  const handlePrevMonth = () => {
+    setViewingMonth(new Date(viewingMonth.getFullYear(), viewingMonth.getMonth() - 1, 1));
   };
 
   const handleNextMonth = () => {
-    if (currentMonth === 11) {
-      setCurrentMonth(0);
-      setCurrentYear(currentYear + 1);
-    } else {
-      setCurrentMonth(currentMonth + 1);
-    }
+    setViewingMonth(new Date(viewingMonth.getFullYear(), viewingMonth.getMonth() + 1, 1));
   };
 
-  const handleDateSelect = (day) => {
-    if (!day) return;
-    const formattedMonth = String(currentMonth + 1).padStart(2, '0');
-    const formattedDay = String(day).padStart(2, '0');
-    setDate(`${currentYear}-${formattedMonth}-${formattedDay}`);
-    setShowDatePicker(false);
-  };
-
-  const handleTodaySelect = () => {
-    const today = new Date();
-    const y = today.getFullYear();
-    const m = today.getMonth();
-    const d = today.getDate();
-    setCurrentYear(y);
-    setCurrentMonth(m);
-    setDate(`${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`);
-    setShowDatePicker(false);
-  };
-
-  // Render Calendar Grid
-  const renderCalendarCells = () => {
-    const firstDayIndex = getFirstDayOfMonth(currentMonth, currentYear);
-    const totalDays = getDaysInMonth(currentMonth, currentYear);
-    const cells = [];
-
-    const todayObj = new Date();
-    const isCurrentMonthYear = todayObj.getMonth() === currentMonth && todayObj.getFullYear() === currentYear;
-
-    // Empty spaces before first day of month
-    for (let i = 0; i < firstDayIndex; i++) {
-      cells.push(<div key={`empty-${i}`} className="aspect-square flex items-center justify-center" />);
-    }
-
-    // Days in current month
-    for (let day = 1; day <= totalDays; day++) {
-      const formattedMonth = String(currentMonth + 1).padStart(2, '0');
-      const formattedDay = String(day).padStart(2, '0');
-      const isSelected = date === `${currentYear}-${formattedMonth}-${formattedDay}`;
-      const isToday = isCurrentMonthYear && todayObj.getDate() === day;
-
-      cells.push(
-        <button
-          key={`day-${day}`}
-          type="button"
-          onClick={() => handleDateSelect(day)}
-          className={`aspect-square w-full rounded-full flex flex-col items-center justify-center text-xs font-bold transition-all relative ${
-            isSelected 
-              ? 'bg-[#E94222] text-white shadow-md shadow-[#E94222]/30 scale-105' 
-              : isToday
-              ? 'text-[#E94222] bg-[#E94222]/5 border border-[#E94222]/20'
-              : 'text-stone-800 hover:bg-stone-50 hover:text-[#E94222] active:scale-95'
-          }`}
-        >
-          {day}
-        </button>
-      );
-    }
-
-    return cells;
-  };
-
-  // --- TIME PICKER HELPERS ---
-  const applyTimeSelection = (hour = selectedHour, minute = selectedMinute, ampm = selectedAmPm) => {
-    setTime(`${hour}:${minute} ${ampm}`);
-  };
-
-  const selectHourPart = (h) => {
-    setSelectedHour(h);
-    applyTimeSelection(h, selectedMinute, selectedAmPm);
-  };
-
-  const selectMinutePart = (m) => {
-    setSelectedMinute(m);
-    applyTimeSelection(selectedHour, m, selectedAmPm);
-  };
-
-  const selectAmPmPart = (period) => {
-    setSelectedAmPm(period);
-    applyTimeSelection(selectedHour, selectedMinute, period);
+  // Match comparison helper to check selected state
+  const isSameDay = (d1, d2) => {
+    if (!d1 || !d2) return false;
+    return d1.getFullYear() === d2.getFullYear() &&
+      d1.getMonth() === d2.getMonth() &&
+      d1.getDate() === d2.getDate();
   };
 
   return (
-    <div className="w-full bg-[#FAF6EE] text-[#2E2A25] selection:bg-[#B23E25] selection:text-white overflow-x-clip min-h-screen">
+    <main className="w-full bg-[#FAF6EE] text-[#2E2A25] overflow-x-clip min-h-screen">
       
       {/* =========================================================================
           SECTION 1: HERO CONTAINER (FULL-WIDTH BACKGROUND WITH LEFT OVERLAY)
           ========================================================================= */}
-      <section className="relative w-full min-h-[80vh] lg:min-h-screen flex items-center justify-start overflow-hidden select-none pt-12 lg:pt-16">
+      {/* Removed select-none to allow standard text selection dragging */}
+      <section className="relative w-full min-h-[80vh] lg:min-h-[100vh] flex items-center justify-start overflow-hidden pt-12 lg:pt-16">
         
         {/* Full-bleed background dining table image */}
         <div className="absolute inset-0 z-0">
@@ -205,10 +230,7 @@ export default function BookATable() {
           {/* Premium dark gradient overlay: solid black on left, fading to transparent on the right */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0E0F0C] via-[#0E0F0C]/95 to-transparent z-10 hidden lg:block" />
           
-          {/* 
-            Optimized mobile gradient overlay: 
-            Transitioning vertically with high opacity (92% - 98%) to completely block image noise behind text 
-          */}
+          {/* Optimized mobile gradient overlay: Transitioning vertically */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0E0F0C]/98 via-[#0E0F0C]/92 to-[#0E0F0C]/96 z-10 lg:hidden" />
         </div>
 
@@ -228,24 +250,22 @@ export default function BookATable() {
                 animate="visible"
                 className="flex flex-col gap-5 text-left text-white"
               >
-                <motion.span
-                  variants={fadeUpVariants}
-                  className="text-[#B83A18] font-bold text-[14px] sm:text-[15px] tw-wider uppercase block"
-                >
-                  Private Room for 14 people
-                </motion.span>
-
-                <motion.h1
-                  variants={fadeUpVariants}
-                  className="font-black text-[40px] sm:text-[60px] lg:text-[60px] text-white leading-[1.1] sm:leading-[0.95] tw-tight"
-                >
-                  For Your Special Occasion and Meeting
-                </motion.h1>
+                <SectionHeader
+                  animated={false}
+                  uppercase={false}
+                  as="h1"
+                  theme="dark"
+                  label="Private Room for 14 people"
+                  title="For Your Special Occasion and Meeting"
+                  className="mb-0"
+                  labelClassName="text-[#B83A18] text-[14px] sm:text-[15px]"
+                  titleClassName="sm:text-[56px] lg:text-[56px] text-white leading-[1.1] sm:leading-[0.95] group-hover:text-white mb-0"
+                />
 
                 {/* Paragraph 1 */}
                 <motion.p 
                   variants={revealVariants}
-                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-semibold mt-2"
+                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] mt-2 font-normal"
                 >
                   Are you looking for an energetic, elegant, and comfortable dinner setting to fulfill your private dining needs in the Lakewood area? At <span className="text-[#E94222] font-extrabold">Little India Restaurant</span>, our <span className="text-white font-extrabold">Private Room for Dining</span> offers the perfect ambiance for your special occasions.
                 </motion.p>
@@ -253,7 +273,7 @@ export default function BookATable() {
                 {/* Paragraph 2 */}
                 <motion.p 
                   variants={revealVariants}
-                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-semibold"
+                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-normal"
                 >
                   In your most memorable moments, you want more than an average dining experience. Our Private Room for Dining at Little India Restaurant, an authentic <span className="text-[#E94222] font-extrabold">Indian Restaurant</span>, provides the intimacy, inspiration, and invigoration you need in a secluded dining space.
                 </motion.p>
@@ -261,7 +281,7 @@ export default function BookATable() {
                 {/* Paragraph 3 */}
                 <motion.p 
                   variants={revealVariants}
-                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-semibold"
+                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-normal"
                 >
                   Blending classic elegance with vibrant energy in a modern setting that pays homage to tradition, we offer a fresh, flavorful, and lively dining experience infused with Indian culture, perfect for any occasion. Plan for an upscale-casual dress for your private dining occasion, and choose Little India Restaurant's Private Room for Dining for these occasions and more:
                 </motion.p>
@@ -275,7 +295,7 @@ export default function BookATable() {
       {/* =========================================================================
           SECTION 3: THE SEAT RESERVATION (DARK CONTAINER WITH FORM & GOOGLE MAP)
           ========================================================================= */}
-      <section className="relative w-full py-12 md:py-16 px-6 md:px-12 lg:px-20 overflow-visible">
+      <section ref={sectionRef} className="relative w-full py-12 md:py-16 px-6 md:px-12 lg:px-20 overflow-visible">
         
         {/* Full-bleed background of warm restaurant kitchen overlay */}
         <div className="absolute inset-0 z-0">
@@ -287,368 +307,316 @@ export default function BookATable() {
           />
         </div>
 
-        <div className="max-w-[1200px] mx-auto flex flex-col items-center relative z-20">
+        <div className="max-w-[1400px] mx-auto flex flex-col items-center relative z-20">
           
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col gap-5 text-left text-white self-start"
-          >
-            <motion.span
-              variants={fadeUpVariants}
-              className="text-[#E94222] font-bold text-[15px] sm:text-[15px] tracking-wider block"
-            >
-              For an Unforgettable Experience
-            </motion.span>
-
-            <motion.h2
-              variants={fadeUpVariants}
-              className="font-black text-[40px] sm:text-[50px] lg:text-[50px] text-black leading-[0.95] tracking-tight"
-            >
-              Reserve Your Seat Today
-            </motion.h2>
-
-          </motion.div>
+          <SectionHeader
+            animated={false}
+            uppercase={false}
+            theme="brand"
+            label="For an Unforgettable Experience"
+            title="Reserve Your Seat Today"
+            className="mb-0 self-start"
+            titleClassName="sm:text-[50px] lg:text-[50px] text-black mb-0"
+          />
 
           {/* Two-Column Form & Map Layout Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-stretch pt-10">
             
             {/* Left Column: White Reservation Form */}
-            <div className="bg-white rounded-[2.5rem] p-8 sm:p-10 shadow-md w-full text-left relative z-20 flex flex-col justify-center">
-              <AnimatePresence mode="wait">
-                {!isSubmitted ? (
-                  <motion.form 
-                    key="form"
-                    onSubmit={handleSubmit}
-                    className="flex flex-col gap-4 text-left font-sans font-bold text-stone-700 text-xs w-full"
-                  >
-                    {/* Full Name */}
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[#121110] font-black text-[14px] tracking-wider">Full Name</label>
-                      <input 
-                        type="text" 
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        placeholder="Jonathon Mike" 
-                        className="w-full bg-[#fff6ea] border border-stone-200 focus:border-[#E94222] rounded-xl p-3.5 text-stone-900 outline-none text-sm font-semibold transition-colors"
+            <div className="relative w-full max-w-3xl bg-[#FCFCFB] text-neutral-800 rounded-2xl shadow-2xl border border-stone-200 p-6 md:p-8 animate-fadeIn flex flex-col justify-center">
+
+              {/* Success State */}
+              {isSubmitted ? (
+                <div className="py-12 flex flex-col items-center justify-center text-center space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-2 animate-fadeIn">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-bold text-neutral-900">Reservation Confirmed!</h4>
+                  <p className="text-sm text-neutral-500 font-normal">We look forward to hosting your dining experience.</p>
+                </div>
+              ) : (
+                /* Reservation Form */
+                <form onSubmit={handleSubmit} className="space-y-4">
+
+                  {/* Full Name */}
+                  <div>
+                    <label className="block text-[15px] font-semibold text-neutral-700 upp twr mb-1.5">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="John Doe"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-200 bg-white text-sm focus:outline-none focus:border-[#E94222] transition-colors"
+                    />
+                  </div>
+
+                  {/* Phone & Guests Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[15px] font-semibold text-neutral-700 upp twr mb-1.5">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
                         required
+                        placeholder="+1 (555) 000-0000"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-200 bg-white text-sm focus:outline-none focus:border-[#E94222] transition-colors"
                       />
                     </div>
 
-                    {/* Email address */}
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[#121110] font-black text-[14px] tracking-wider">Email address</label>
-                      <input 
-                        type="email" 
-                        value={emailAddress}
-                        onChange={(e) => setEmailAddress(e.target.value)}
-                        placeholder="info@yourmail.com" 
-                        className="w-full bg-[#fff6ea] border border-stone-200 focus:border-[#E94222] rounded-xl p-3.5 text-stone-900 outline-none text-sm font-semibold transition-colors"
-                        required
-                      />
-                    </div>
-
-                    {/* Phone number */}
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[#121110] font-black text-[14px] tracking-wider">Phone number</label>
-                      <input 
-                        type="tel" 
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                        placeholder="+1 303-937-9777" 
-                        className="w-full bg-[#fff6ea] border border-stone-200 focus:border-[#E94222] rounded-xl p-3.5 text-stone-900 outline-none text-sm font-semibold transition-colors"
-                        required
-                      />
-                    </div>
-
-                    {/* Number of guests */}
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[#121110] font-black text-[14px] tracking-wider">Number of guests</label>
-                      <input 
-                        type="text" 
-                        value={guestCount}
-                        onChange={(e) => setGuestCount(e.target.value)}
-                        placeholder="04" 
-                        className="w-full bg-[#fff6ea] border border-stone-200 focus:border-[#E94222] rounded-xl p-3.5 text-stone-900 outline-none text-sm font-semibold transition-colors"
-                        required
-                      />
-                    </div>
-
-                    {/* Date & Time Grid with custom design updates */}
-                    <div className="grid grid-cols-2 gap-4">
-                      
-                      {/* --- DATEPICKER FIELD WITH UPGRADED CALENDAR MODAL --- */}
-                      <div ref={datePickerRef} className="flex flex-col gap-1.5 relative group">
-                        <label className="text-stone-800 font-extrabold text-[12px] tracking-wider uppercase mb-0.5">
-                          Reservation date
-                        </label>
-                        <div className="relative w-full">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setShowDatePicker(!showDatePicker);
-                              setShowTimePicker(false);
-                            }}
-                            className="w-full text-left bg-[#fff6ea] border border-stone-200/80 focus:border-[#E94222] rounded-xl p-3.5 pr-3.5 text-stone-900 outline-none text-sm font-semibold transition-all shadow-sm focus:shadow-md cursor-pointer flex items-center justify-between"
-                          >
-                            <span>
-                              {date 
-                                ? new Date(date + "T00:00:00").toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) 
-                                : 'Select Date'}
-                            </span>
-                            <div className="text-stone-400 group-hover:text-[#E94222] transition-colors">
-                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                <line x1="16" y1="2" x2="16" y2="6" />
-                                <line x1="8" y1="2" x2="8" y2="6" />
-                                <line x1="3" y1="10" x2="21" y2="10" />
-                              </svg>
-                            </div>
-                          </button>
-
-                          {/* UPGRADED PORTAL/CALENDAR MODAL */}
-                          <AnimatePresence>
-                            {showDatePicker && (
-                              <motion.div
-                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                transition={{ duration: 0.2, ease: cubicBezierEase }}
-                                className="absolute bottom-full left-0 mb-2 z-[100] bg-white border border-stone-100 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-5 w-[310px] sm:w-[320px] select-none"
-                              >
-                                {/* Symmetrical Header Navigation */}
-                                <div className="flex items-center justify-between mb-4 px-1">
-                                  <span className="font-extrabold text-sm text-stone-950">
-                                    {MONTH_NAMES[currentMonth]} {currentYear}
-                                  </span>
-                                  <div className="flex gap-1.5">
-                                    <button 
-                                      type="button" 
-                                      onClick={handlePrevMonth}
-                                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-50 border border-stone-100 text-stone-500 hover:text-[#E94222] transition-all"
-                                    >
-                                      {/* Left Chevron SVG */}
-                                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                                      </svg>
-                                    </button>
-                                    <button 
-                                      type="button" 
-                                      onClick={handleNextMonth}
-                                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-50 border border-stone-100 text-stone-500 hover:text-[#E94222] transition-all"
-                                    >
-                                      {/* Right Chevron SVG */}
-                                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                      </svg>
-                                    </button>
-                                  </div>
-                                </div>
-
-                                {/* Week Day Header Layout */}
-                                <div className="grid grid-cols-7 gap-1 text-center mb-3">
-                                  {WEEK_DAYS.map((day) => (
-                                    <div key={day} className="text-[10px] font-black tracking-wider text-stone-400 uppercase">
-                                      {day}
-                                    </div>
-                                  ))}
-                                </div>
-
-                                {/* Symmetrical Grid Cells */}
-                                <div className="grid grid-cols-7 gap-1 text-center">
-                                  {renderCalendarCells()}
-                                </div>
-
-                                {/* Header action link controls */}
-                                <div className="flex justify-between border-t border-stone-100 mt-5 pt-3 text-[11px] font-bold">
-                                  <button 
-                                    type="button" 
-                                    onClick={() => { setDate(''); setShowDatePicker(false); }}
-                                    className="text-stone-400 hover:text-[#E94222] transition-colors"
-                                  >
-                                    Clear
-                                  </button>
-                                  <button 
-                                    type="button" 
-                                    onClick={handleTodaySelect}
-                                    className="text-[#E94222] hover:text-[#d14b35] transition-colors"
-                                  >
-                                    Today
-                                  </button>
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </div>
-
-                      {/* --- TIMEPICKER FIELD WITH UPGRADED WHEEL MODAL --- */}
-                      <div ref={timePickerRef} className="flex flex-col gap-1.5 relative group">
-                        <label className="text-stone-800 font-extrabold text-[12px] tracking-wider uppercase mb-0.5">
-                          Reservation time
-                        </label>
-                        <div className="relative w-full">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setShowTimePicker(!showTimePicker);
-                              setShowDatePicker(false);
-                            }}
-                            className="w-full text-left bg-[#fff6ea] border border-stone-200/80 focus:border-[#E94222] rounded-xl p-3.5 pr-3.5 text-stone-900 outline-none text-sm font-semibold transition-all shadow-sm focus:shadow-md cursor-pointer flex items-center justify-between"
-                          >
-                            <span>{time || 'Select Time'}</span>
-                            <div className="text-stone-400 group-hover:text-[#E94222] transition-colors">
-                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                              </svg>
-                            </div>
-                          </button>
-
-                          {/* UPGRADED WHEEL POPUP */}
-                          <AnimatePresence>
-                            {showTimePicker && (
-                              <motion.div
-                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                transition={{ duration: 0.2, ease: cubicBezierEase }}
-                                className="absolute bottom-full right-0 mb-2 z-[100] bg-white border border-stone-100 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-5 w-[250px] flex flex-col gap-4 select-none"
-                              >
-                                <div className="grid grid-cols-3 gap-2 text-center h-44 overflow-hidden relative">
-                                  {/* Hours Column (Scrollbar completely hidden) */}
-                                  <div className="flex flex-col gap-1 overflow-y-auto pr-1 h-full py-1 border-r border-stone-100 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                                    <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-2 block sticky top-0 bg-white">Hour</span>
-                                    {["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"].map((h) => (
-                                      <button
-                                        key={h}
-                                        type="button"
-                                        onClick={() => selectHourPart(h)}
-                                        className={`py-1.5 rounded-lg text-xs font-bold transition-all ${
-                                          selectedHour === h 
-                                            ? 'bg-[#E94222] text-white shadow-sm shadow-[#E94222]/20 scale-105' 
-                                            : 'text-stone-700 hover:bg-stone-50 hover:text-[#E94222]'
-                                        }`}
-                                      >
-                                        {h}
-                                      </button>
-                                    ))}
-                                  </div>
-
-                                  {/* Minutes Column (Scrollbar completely hidden) */}
-                                  <div className="flex flex-col gap-1 overflow-y-auto pr-1 h-full py-1 border-r border-stone-100 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                                    <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-2 block sticky top-0 bg-white">Min</span>
-                                    {["00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"].map((m) => (
-                                      <button
-                                        key={m}
-                                        type="button"
-                                        onClick={() => selectMinutePart(m)}
-                                        className={`py-1.5 rounded-lg text-xs font-bold transition-all ${
-                                          selectedMinute === m 
-                                            ? 'bg-[#E94222] text-white shadow-sm shadow-[#E94222]/20 scale-105' 
-                                            : 'text-stone-700 hover:bg-stone-50 hover:text-[#E94222]'
-                                        }`}
-                                      >
-                                        {m}
-                                      </button>
-                                    ))}
-                                  </div>
-
-                                  {/* AM/PM Column */}
-                                  <div className="flex flex-col gap-1 justify-center h-full">
-                                    <span className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-3 block">AM/PM</span>
-                                    {["AM", "PM"].map((period) => (
-                                      <button
-                                        key={period}
-                                        type="button"
-                                        onClick={() => selectAmPmPart(period)}
-                                        className={`py-2 rounded-lg text-xs font-bold transition-all ${
-                                          selectedAmPm === period 
-                                            ? 'bg-[#E94222] text-white shadow-sm shadow-[#E94222]/20 scale-105' 
-                                            : 'text-stone-700 hover:bg-stone-50 hover:text-[#E94222]'
-                                        }`}
-                                      >
-                                        {period}
-                                      </button>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                {/* Done Footer Button */}
-                                <button
-                                  type="button"
-                                  onClick={() => setShowTimePicker(false)}
-                                  className="w-full py-2.5 bg-stone-50 hover:bg-[#FAF6EE] border border-stone-100 rounded-xl text-center text-xs font-bold text-stone-800 hover:text-[#E94222] transition-all"
-                                >
-                                  Done
-                                </button>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </div>
-
-                    </div>
-
-                    {/* Single Clean Submit Button Wrapper */}
-                    <div className="flex justify-center mt-4 w-full flex flex-col sm:flex-row items-center gap-4 justify-center animate-fadeIn">
-                      <button 
-                        type="submit"
-                        className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans shadow-md"
+                    {/* Custom Upgraded Guest Selector Dropdown */}
+                    <div className="relative" ref={guestDropdownRef}>
+                      <label className="block text-[15px] font-semibold text-neutral-700 upp twr mb-1.5">
+                        Number of Guests
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setIsGuestDropdownOpen(!isGuestDropdownOpen)}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-200 bg-white text-sm flex items-center justify-between focus:outline-none focus:border-[#E94222] hover:bg-neutral-50/50 transition-colors cursor-pointer"
                       >
-                        <span>RESERVE A TABLE</span>
-                        <svg
-                          className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2.5}
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
+                        <span>{formData.guests}</span>
+                        <svg className={`w-4 h-4 text-neutral-400 transition-transform ${isGuestDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
+
+                      {isGuestDropdownOpen && (
+                        <div className="absolute left-0 right-0 z-30 mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg overflow-hidden py-1 max-h-[220px] overflow-y-auto">
+                          {guestOptions.map((opt) => (
+                            <button
+                              key={opt}
+                              type="button"
+                              onClick={() => {
+                                setFormData({ ...formData, guests: opt });
+                                setIsGuestDropdownOpen(false);
+                              }}
+                              className={`w-full px-4 py-2.5 text-left text-sm hover:bg-[#E94222] hover:text-white transition-colors flex items-center justify-between ${formData.guests === opt ? 'bg-[#E94222]/10 text-[#E94222]' : 'text-neutral-700'}`}
+                            >
+                              <span>{opt}</span>
+                              {formData.guests === opt && (
+                                <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                              )}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Date & Time Grid with Custom Upgrades */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                    {/* Custom Calendar Date Selector */}
+                    <div className="relative" ref={datePickerRef}>
+                      <label className="block text-[15px] font-semibold text-neutral-700 upp twr mb-1.5">
+                        Date
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-200 bg-white text-sm flex items-center justify-between focus:outline-none focus:border-[#E94222] hover:bg-neutral-50/50 transition-colors cursor-pointer"
+                      >
+                        <span className={selectedDate ? 'text-neutral-800 font-medium' : 'text-neutral-400'}>
+                          {selectedDate ? formatDateString(selectedDate) : 'Select date'}
+                        </span>
+                        <svg className="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                          <line x1="16" y1="2" x2="16" y2="6" />
+                          <line x1="8" y1="2" x2="8" y2="6" />
+                          <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                      </button>
+
+                      {/* Upgraded Calendar Dropdown Dialog */}
+                      {isDatePickerOpen && (
+                        <div className="absolute left-0 mt-1 w-[290px] bg-white border border-neutral-200 rounded-lg shadow-xl z-40 p-4 select-none animate-fadeIn">
+
+                          {/* Calendar Header */}
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="relative group">
+                              <button
+                                type="button"
+                                className="text-sm font-bold text-neutral-900 hover:text-[#E94222] transition-colors flex items-center gap-1"
+                              >
+                                {viewingMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </button>
+                            </div>
+
+                            {/* Arrows conforming to system design UI */}
+                            <div className="flex items-center gap-1.5">
+                              <button
+                                type="button"
+                                onClick={handlePrevMonth}
+                                className="p-1 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 rounded-md transition-colors"
+                              >
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                                </svg>
+                              </button>
+                              <button
+                                type="button"
+                                onClick={handleNextMonth}
+                                className="p-1 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 rounded-md transition-colors"
+                              >
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Weekday Grid Label */}
+                          <div className="grid grid-cols-7 gap-1 text-center mb-1">
+                            {WEEK_DAYS.map((wd) => (
+                              <span key={wd} className="text-[11px] font-semibold text-neutral-500 twr">
+                                {wd}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Calendar Matrix Block */}
+                          <div className="grid grid-cols-7 gap-1">
+                            {calendarDays.map((item, idx) => {
+                              const isChosen = isSameDay(item.dateValue, selectedDate);
+                              return (
+                                <button
+                                  key={idx}
+                                  type="button"
+                                  onClick={() => {
+                                    setSelectedDate(item.dateValue);
+                                    setIsDatePickerOpen(false);
+                                  }}
+                                  className={`h-8 text-[15px] font-semibold rounded flex items-center justify-center transition-colors cursor-pointer ${!item.isCurrentMonth ? 'text-neutral-300' : 'text-neutral-700'} ${isChosen ? 'bg-[#E94222] border border-black text-white font-bold' : 'hover:bg-neutral-100'}`}
+                                >
+                                  {item.day}
+                                </button>
+                              );
+                            })}
+                          </div>
+
+                          {/* Calendar Popover Action links */}
+                          <div className="flex items-center justify-between border-t border-neutral-100 mt-3 pt-2.5">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setSelectedDate(null);
+                                setIsDatePickerOpen(false);
+                              }}
+                              className="text-[15px] font-bold text-[#E94222] hover:underline"
+                            >
+                              Clear
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const today = new Date();
+                                setSelectedDate(today);
+                                setViewingMonth(new Date(today.getFullYear(), today.getMonth(), 1));
+                                setIsDatePickerOpen(false);
+                              }}
+                              className="text-[15px] font-bold text-[#E94222] hover:underline"
+                            >
+                              Today
+                            </button>
+                          </div>
+
+                        </div>
+                      )}
                     </div>
 
-                  </motion.form>
-                ) : (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-10 flex flex-col items-center gap-4 bg-[#FAF6EE]/50 rounded-[2rem] p-8 shadow-sm"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center shadow-sm">
-                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
+                    {/* Custom Time Selection Dropdown */}
+                    <div className="relative" ref={timeDropdownRef}>
+                      <label className="block text-[15px] font-semibold text-neutral-700 upp twr mb-1.5">
+                        Time Slot
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-[#E94222] bg-white text-sm flex items-center justify-between focus:outline-none focus:border-[#E94222] transition-colors cursor-pointer"
+                      >
+                        <span className="font-medium text-neutral-800">{formData.time}</span>
+                        <svg className={`w-4 h-4 text-neutral-400 transition-transform ${isTimeDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+
+                      {isTimeDropdownOpen && (
+                        <div className="absolute left-0 right-0 z-35 mt-1 bg-white border border-neutral-200 rounded-lg shadow-xl overflow-hidden py-1 max-h-[220px] overflow-y-auto animate-fadeIn">
+                          {timeSlots.map((slot) => (
+                            <button
+                              key={slot}
+                              type="button"
+                              onClick={() => {
+                                setFormData({ ...formData, time: slot });
+                                setIsTimeDropdownOpen(false);
+                              }}
+                              className={`w-full px-4 py-2.5 text-left text-sm hover:bg-[#E94222] hover:text-white transition-colors flex items-center justify-between ${formData.time === slot ? 'bg-[#E94222] text-white font-medium' : 'text-neutral-700'}`}
+                            >
+                              <span>{slot}</span>
+                              {formData.time === slot && (
+                                <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                              )}
+                            </button>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    <h3 className="font-sans font-black text-2xl text-stone-900 leading-tight">
-                      Seat Requested!
-                    </h3>
-                    <p className="font-sans text-[14px] text-stone-600 leading-relaxed max-w-sm text-center font-medium">
-                      Thank you, <span className="font-bold text-stone-900">{fullName}</span>. We've successfully requested a seat for a party of <span className="font-bold text-stone-900">{guestCount}</span> on <span className="font-bold text-stone-900">{date}</span> at <span className="font-bold text-stone-900">{time}</span>.
-                    </p>
-                    <button 
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setFullName('');
-                        setEmailAddress('');
-                        setPhoneNumber('');
-                        setDate('');
-                        setTime('');
-                      }}
-                      className="text-[#E94222] font-bold text-xs tracking-wider underline hover:text-[#121110] mt-4"
+                  </div>
+
+                  {/* Special Requests */}
+                  <div>
+                    <label className="block text-[15px] font-semibold text-neutral-700 upp twr mb-1.5">
+                      Special Requests (Optional)
+                    </label>
+                    <textarea
+                      rows={2}
+                      placeholder="Dietary requirements, seating preference..."
+                      value={formData.notes}
+                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                      className="min-h-[100px] w-full px-3.5 py-2.5 rounded-lg border border-neutral-200 bg-white text-sm focus:outline-none focus:border-[#E94222] transition-colors resize-none"
+                    />
+                  </div>
+
+                  {/* Submit Action */}
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      className="w-full group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200 cursor-pointer upp"
                     >
-                      Request Another Seat
+                      <span>RESERVE A TABLE</span>
+                      <svg
+                        className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
                     </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+
+                </form>
+              )}
+
             </div>
 
             {/* Right Column: Google Maps Location Iframe (Lakewood, Colorado) */}
@@ -671,6 +639,6 @@ export default function BookATable() {
         </div>
       </section>
 
-    </div>
+    </main>
   );
 }

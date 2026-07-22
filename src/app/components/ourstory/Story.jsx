@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 // Custom Deceleration Cubic-Bezier Easing (Smooth slow-out)
 const cubicBezierEase = [0.16, 1, 0.3, 1];
@@ -29,13 +30,10 @@ const revealVariants = {
 };
 
 // Added isH1 parameter defaulting to false
-export default function OurStorySection({ isH1 = false }) {
+export default function OurStorySection({ isH1 = false, className = '' }) {
   
-  // Dynamic tag selector that integrates with framer-motion elements
-  const HeadingTag = isH1 ? motion.h1 : motion.h2;
-
   return (
-    <section className="w-full bg-white text-stone-800 overflow-hidden relative">
+    <section className={`w-full bg-white text-stone-800 overflow-hidden relative ${className}`.trim()}>
       
       {/* Symmetrical Left and Right Grid Layout */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 relative items-stretch">
@@ -49,31 +47,23 @@ export default function OurStorySection({ isH1 = false }) {
           className="col-span-1 lg:col-span-6 flex flex-col justify-center px-8 sm:px-16 lg:pl-24 lg:pr-32 py-12 md:py-16 relative z-10 overflow-hidden text-left"
         >
           <div className="relative z-10 flex flex-col gap-6 max-w-2xl">
-            
-            {/* Tagline Indicator with Symmetrical Star Divider */}
-            <div className="flex flex-col gap-3">
-              <span className="text-[#e94222] font-extrabold text-[15px] sm:text-[15px] tw-wider font-sans">
-                OUR STORY
-              </span>
-            </div>
-
-            {/* Headline Title */}
-            <div className="relative w-full">
-              {/* Dynamically assigned heading wrapper */}
-              <HeadingTag 
-                variants={revealVariants}
-                className="font-title font-black text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[0.95] tw-tight"
-              >
-                Authentic Indian Cuisine in Denver
-              </HeadingTag>
-            </div>
+            <SectionHeader
+              animated={false}
+              uppercase={false}
+              as={isH1 ? 'h1' : 'h2'}
+              theme="brand"
+              label="OUR STORY"
+              title="Authentic Indian Cuisine in Denver"
+              className="mb-0"
+              titleClassName="sm:text-[56px] lg:text-[56px] text-black mb-0"
+            />
 
             {/* Custom Narrative Paragraphs */}
-            <div className="font-sans text-[16px] md:text-[18px] text-stone-600 font-semibold leading-relaxed flex flex-col gap-5">
-              <motion.p variants={revealVariants}>
+            <div className="text-[16px] md:text-[18px] text-stone-600 leading-relaxed flex flex-col gap-5">
+              <motion.p className="font-normal" variants={revealVariants}>
                 Since opening our doors in 2010, Little India Denver Restaurant has been dedicated to bringing the true taste of authentic Indian cuisine to Denver. Inspired by generations of traditional recipes, every dish reflects the rich heritage, culture, and bold flavors of India—crafted to deliver an unforgettable dining experience.
               </motion.p>
-              <motion.p variants={revealVariants}>
+              <motion.p className="font-normal" variants={revealVariants}>
                 We carefully source premium spices directly from India, grind them fresh in-house, and prepare every meal with precision and passion. From aromatic curries to flavorful tandoori specialties, each bite captures the essence of Indian cooking. More than just a meal, we offer a complete culinary journey that delights your senses and celebrates authenticity.
               </motion.p>
             </div>
@@ -81,7 +71,7 @@ export default function OurStorySection({ isH1 = false }) {
             {/* Symmetrical Features Row - Color Coded with Icons */}
             <motion.div 
               variants={revealVariants}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4 font-sans"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4"
             >
               {/* Feature 1 */}
               <div className="flex flex-col items-start text-left gap-3">
@@ -91,8 +81,8 @@ export default function OurStorySection({ isH1 = false }) {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tw-normal text-[16px]">Fresh Spices</span>
-                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Sourced from India, ground in-house</span>
+                  <span className="text-[#333] font-bold tw-normal text-[16px]">Fresh Spices</span>
+                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1">Sourced from India, ground in-house</span>
                 </div>
               </div>
 
@@ -104,8 +94,8 @@ export default function OurStorySection({ isH1 = false }) {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tw-normal text-[16px] font-sans">Experts Chefs</span>
-                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Crafting authentic flavors with passion</span>
+                  <span className="text-[#333] font-bold tw-normal text-[16px]">Experts Chefs</span>
+                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1">Crafting authentic flavors with passion</span>
                 </div>
               </div>
 
@@ -117,8 +107,8 @@ export default function OurStorySection({ isH1 = false }) {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-stone-900 font-black tw-normal text-[16px] font-sans">Made with Love</span>
-                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1 font-sans">Every dish prepared with care & devotion</span>
+                  <span className="text-[#333] font-bold tw-normal text-[16px]">Made with Love</span>
+                  <span className="text-stone-600 font-bold text-[15px] leading-tight mt-1">Every dish prepared with care & devotion</span>
                 </div>
               </div>
             </motion.div>
@@ -127,7 +117,7 @@ export default function OurStorySection({ isH1 = false }) {
         </motion.div>
 
         {/* ================= RIGHT COLUMN: FLAGSHIP ROOM (With Native Arched Clip) ================= */}
-        <div className="col-span-1 lg:col-span-6 relative h-full w-full overflow-hidden rounded-l-[12rem] lg:rounded-l-[16rem] hidden lg:block min-h-[700px] shadow-inner ">
+        <div className="col-span-1 lg:col-span-6 relative h-full w-full overflow-hidden rounded-l-[12rem] lg:rounded-l-[16rem] hidden lg:block min-h-[700px] shadow-inner">
           <div className="absolute inset-0 bg-black/15 z-10 pointer-events-none"></div>
           <motion.img 
             src="/story.png" 

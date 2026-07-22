@@ -113,13 +113,13 @@ const itemVariants = {
 // Added showCta parameter defaulting to true
 export default function StatsSection({ showCta = true }) {
   return (
-    <section className="w-full bg-[#fff6ea] pt-0 pb-12 md:pb-16 px-6 md:px-12 overflow-hidden font-sans border-b border-stone-200/50">
+    <section className="w-full bg-[#fff6ea] pt-0 pb-12 md:pb-16 px-6 md:px-12 overflow-hidden border-b border-stone-200/50">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header Block: Centered title with horizontal line dividers */}
         <div className="flex items-center justify-center gap-4 mb-10 pt-12 md:pt-16">
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
-          <span className="text-[11px] sm:text-xs font-bold text-neutral-500 up whitespace-nowrap">
+          <span className="text-[16px] sm:text-[16px] font-bold text-neutral-500 up whitespace-nowrap">
             Flavors Backed by Experience
           </span>
           <div className="h-[1px] bg-stone-300 w-16 sm:w-28 shrink-0"></div>
@@ -137,27 +137,24 @@ export default function StatsSection({ showCta = true }) {
             <motion.div
               key={idx}
               variants={itemVariants}
-              className={`
-                flex items-center justify-center w-full
-                ${idx !== STATS_DATA.length - 1 ? 'lg:border-r lg:border-stone-200/80' : ''}
-              `}
+              className={`flex items-center justify-center w-full ${idx !== STATS_DATA.length - 1 ? 'lg:border-r lg:border-stone-200/80' : ''}`}
             >
               {/* Inner Flex Wrapper: Restrains width and left-aligns items for vertical alignment */}
               <div className="flex items-center gap-3 sm:gap-4 w-full max-w-[165px] xs:max-w-[185px] sm:max-w-[230px] lg:max-w-none justify-start lg:justify-center">
                 
                 {/* Fixed-Width Number Container: Expanded from w-14 to w-20 (80px) to prevent character overlap */}
                 <div className="w-15 sm:w-24 lg:w-auto shrink-0 text-right">
-                  <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#E94222] leading-none">
+                  <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#E94222] leading-none">
                     <CountUpMetric targetString={item.number} />
                   </span>
                 </div>
 
                 {/* Stacked Labels */}
                 <div className="flex flex-col text-left shrink-0">
-                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight up text-black">
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-[#333] leading-tight up text-black">
                     {item.labelLine1}
                   </span>
-                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-stone-850 leading-tight up text-black">
+                  <span className="text-[12px] sm:text-xs md:text-sm font-extrabold text-[#333] leading-tight up text-black">
                     {item.labelLine2}
                   </span>
                 </div>
@@ -172,7 +169,7 @@ export default function StatsSection({ showCta = true }) {
           <div className="flex justify-center pt-12">
             <Link
               href="/menu"
-              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+              className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
             >
               <span>KNOW MORE</span>
               <svg

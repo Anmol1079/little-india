@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="w-full bg-[#fdfbf7] py-0 pt-0 px-0 md:px-0 font-sans flex justify-center items-center select-none">
+    <div className="w-full bg-[#fdfbf7] py-0 pt-0 px-0 md:px-0 flex justify-center items-center select-none">
       {/* Scope-contained style block for high-fidelity LAB colors */}
       <style>{`
         .brand-color-text {
@@ -72,7 +72,7 @@ export default function Footer() {
                   className="object-contain"
                 />
               </Link>
-              <p className="font-sans-custom text-sm text-[#d1c9bd] leading-relaxed max-w-sm">
+              <p className="text-sm text-[#d1c9bd] leading-relaxed max-w-sm font-normal">
                 Authentic Indian cuisine crafted with tradition, passion, and the finest ingredients, bringing together rich flavors and timeless recipes passed down through generations.
               </p>
 
@@ -115,7 +115,7 @@ export default function Footer() {
                   EXPLORE
                 </h4>
               </div>
-              <ul className="font-sans-custom flex flex-col items-start gap-3.5 text-sm text-[#d1c9bd]">
+              <ul className="flex flex-col items-start gap-3.5 text-sm text-[#d1c9bd]">
                 <li>
                   <a href="#" className="brand-color-hover-text transition-colors duration-200">
                     Home
@@ -161,7 +161,7 @@ export default function Footer() {
                   OUR MENU
                 </h4>
               </div>
-              <ul className="font-sans-custom flex flex-col items-start gap-3.5 text-sm text-[#d1c9bd]">
+              <ul className="flex flex-col items-start gap-3.5 text-sm text-[#d1c9bd]">
                 <li>
                   <a href="#" className="brand-color-hover-text transition-colors duration-200">
                     Starters
@@ -207,7 +207,7 @@ export default function Footer() {
                   VISIT US
                 </h4>
               </div>
-              <div className="font-sans-custom flex flex-col gap-3 text-sm text-[#d1c9bd] text-left w-full">
+              <div className="flex flex-col gap-3 text-sm text-[#d1c9bd] text-left w-full">
 
                 {/* Address */}
                 <a
@@ -266,16 +266,16 @@ export default function Footer() {
           <hr className="brand-color-border opacity-20 mt-12 mb-5" />
 
           {/* Bottom Bar Content - base size text-[15px] left aligned */}
-          <div className="flex flex-col md:flex-row items-start justify-start gap-6 text-[15px] text-[#9e9587] font-sans w-full">
+          <div className="flex flex-col md:flex-row items-start justify-start gap-6 text-[15px] text-[#9e9587] w-full">
             {/* Copyright with clickable Webtech Nepal link */}
-            <p className="font-sans-custom text-left tw w-full leading-relaxed">
+            <p className="text-left tw w-full leading-relaxed font-normal">
               Copyright © 2026 One World Cuisine LLC DBA Little India Restaurant
               and Bar. All Rights Reserved. | Developed by{" "}
               <a
                 href="https://webtechnepal.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans-custom brand-color-hover-text text-[#D14B35] transition-colors duration-200"
+                className="brand-color-hover-text text-[#D14B35] transition-colors duration-200"
               >
                 Webtech Nepal
               </a>

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import SectionHeader from '../common/SectionHeader';
 
 const LEFT_COLUMN_POSTS = [
   {
@@ -100,38 +101,20 @@ const fadeUpVariants = {
 // Added the bgColor prop defaulting to "bg-white"
 export default function Blog1({ bgColor = "bg-white" }) {
   return (
-    <section className={`w-full ${bgColor} py-12 md:py-16 px-6 md:px-12 lg:px-20 overflow-hidden font-sans`}>
+    <section className={`w-full ${bgColor} py-12 md:py-16 px-6 md:px-12 lg:px-20 overflow-hidden`}>
       <div className="max-w-[1500px] mx-auto flex flex-col gap-10">
         
-        {/* UPGRADED HEADER SECTION: Styled exactly like WhyChooseUsSection */}
-        <motion.div 
-          variants={revealContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.35, margin: "0px 0px -100px 0px" }}
-          className="flex flex-col items-center text-center max-w-7xl mx-auto gap-3 mb-4"
-        >
-          <motion.span 
-            variants={headerItemVariants}
-            className="text-[#e65c38] font-bold text-[15px] twst up block font-sans"
-          >
-           Tasty Stories
-          </motion.span>
-
-          <motion.h2 
-            variants={headerItemVariants}
-            className="font-heavy text-[35px] sm:text-[48px] lg:text-[50px] text-black leading-[0.95] tw-tight mb-1 font-black"
-          >
-          Our Latest Blogs
-          </motion.h2>
-
-          <motion.p 
-            variants={headerItemVariants}
-            className="font-sans-custom text-[16px] md:text-[18px] text-stone-500 font-semibold leading-relaxed max-w-2xl max-w-[1500px]"
-          >
-            Since opening our doors in 2017, Little India has been on a mission to bring the real flavors of India to Denver. Our recipes are passed down through generations, each dish telling a story of tradition, culture, and love.
-          </motion.p>
-        </motion.div>
+        <SectionHeader
+          align="center"
+          theme="accent"
+          uppercase={false}
+          label="Tasty Stories"
+          title="Our Latest Blogs"
+          description="Since opening our doors in 2017, Little India has been on a mission to bring the real flavors of India to Denver. Our recipes are passed down through generations, each dish telling a story of tradition, culture, and love."
+          className="mb-4 max-w-7xl mx-auto"
+          titleClassName="text-[35px] sm:text-[48px] lg:text-[50px] text-black mb-1"
+          descriptionClassName="max-w-[1500px]"
+        />
 
         {/* main grid container */}
         <motion.div 
@@ -165,7 +148,7 @@ export default function Blog1({ bgColor = "bg-white" }) {
                 <h3 className="text-[20px] sm:text-[20px] font-bold tw-tight leading-snug group-hover:text-amber-100 transition-colors duration-200">
                   {MAIN_HIGHLIGHT_POST.title}
                 </h3>
-                <p className="text-[16px] opacity-75 font-medium mt-1">
+                <p className="text-[16px] opacity-75 mt-1 font-normal">
                  {MAIN_HIGHLIGHT_POST.date}
                 </p>
               </div>
@@ -198,7 +181,7 @@ export default function Blog1({ bgColor = "bg-white" }) {
                   <h3 className="text-[16px] md:text-[18px] font-bold text-stone-950 group-hover:text-[#E65C38] transition-colors duration-200 leading-snug line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-[16px] sm:text-[16px] text-stone-500 font-medium mt-0.5">
+                  <p className="text-[16px] sm:text-[16px] text-[#333] mt-0.5 font-normal">
                     {post.date}
                   </p>
                 </div>
@@ -212,7 +195,7 @@ export default function Blog1({ bgColor = "bg-white" }) {
         <div className="flex justify-center pt-4">
           <Link
             href="/menu"
-            className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+            className="group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
           >
             <span>VIEW MORE</span>
             <svg

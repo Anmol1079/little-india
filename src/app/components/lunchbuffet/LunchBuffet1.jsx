@@ -175,7 +175,7 @@ export default function LunchBuffet1() {
   };
 
   return (
-    <section ref={sectionRef} className="relative w-full min-h-[650px] md:h-screen overflow-hidden bg-neutral-900 font-sans">
+    <section ref={sectionRef} className="relative w-full min-h-[650px] md:h-screen overflow-hidden bg-neutral-900">
       {/* Background Video Container */}
       <div className="absolute inset-0 w-full h-full bg-[#171717]">
         {isInView ? (
@@ -199,7 +199,7 @@ export default function LunchBuffet1() {
 
         {/* Left Side: Headline Text */}
         <div className="max-w-xl self-center md:mb-4">
-          <h2 className="text-white text-4xl md:text-[60px] lg:text-[60px] font-heavy font-extrabold leading-tight tw-tight drop-shadow-md">
+          <h2 className="text-white text-4xl md:text-[56px] lg:text-[56px] font-heavy font-extrabold leading-tight tw-tight drop-shadow-md">
             Authentic Lunch Buffet In Indian Restaurant
           </h2>
         </div>
@@ -213,13 +213,13 @@ export default function LunchBuffet1() {
 
               {/* Subtle Category Tag & Title */}
               <div className="space-y-1.5">
-                <span className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tw-[0.15em] upp font-sans block mb-2">
+                <span className="text-[#E75B44] font-bold text-[15px] sm:text-[15px] tw-[0.15em] upp block mb-2">
                   Lunch Buffet
                 </span>
                 <h3 className="text-3xl md:text-3xl font-extrabold text-neutral-900 tw-tight leading-snug">
                   Reserve for Denver’s Best Indian Buffet
                 </h3>
-                <p className="text-[16px] md:text-[18px] text-neutral-500 leading-relaxed font-normal pt-1">
+                <p className="text-[16px] md:text-[18px] text-neutral-500 leading-relaxed pt-1 font-normal">
                   Step into a space where refined ambiance, masterfully crafted gourmet dishes, and impeccable hospitality await you.
                 </p>
               </div>
@@ -270,7 +270,7 @@ export default function LunchBuffet1() {
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(true)}
-                    className="group w-full bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans shadow-md cursor-pointer"
+                    className="group w-full bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200 shadow-md cursor-pointer"
                   >
                     <span>RESERVE</span>
                     <svg
@@ -291,9 +291,9 @@ export default function LunchBuffet1() {
                   {/* Right Action Button (Outline) */}
                   <Link
                     href="/menu"
-                    className="group w-full bg-white hover:bg-[#d14b35] text-[#d14b35] border border-[#d14b35] hover:text-white text-[15px] font-bold twst py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans"
+                    className="group w-full bg-white hover:bg-[#d14b35] text-[#d14b35] border border-[#d14b35] hover:text-white text-[15px] font-bold twst py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200"
                   >
-                    <span>EXPLORE</span>
+                    <span>VIEW MENU</span>
                     <svg
                       className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
                       fill="none"
@@ -352,7 +352,7 @@ export default function LunchBuffet1() {
                   </svg>
                 </div>
                 <h4 className="text-xl font-bold text-neutral-900">Reservation Confirmed!</h4>
-                <p className="text-sm text-neutral-500">We look forward to hosting your dining experience.</p>
+                <p className="text-sm text-neutral-500 font-normal">We look forward to hosting your dining experience.</p>
               </div>
             ) : (
               /* Reservation Form */
@@ -516,11 +516,7 @@ export default function LunchBuffet1() {
                                   setSelectedDate(item.dateValue);
                                   setIsDatePickerOpen(false);
                                 }}
-                                className={`
-                                  h-8 text-[15px] font-semibold rounded flex items-center justify-center transition-colors cursor-pointer
-                                  ${!item.isCurrentMonth ? 'text-neutral-300' : 'text-neutral-700'}
-                                  ${isChosen ? 'bg-[#E94222] border border-black text-white font-bold' : 'hover:bg-neutral-100'}
-                                `}
+                                className={`h-8 text-[15px] font-semibold rounded flex items-center justify-center transition-colors cursor-pointer ${!item.isCurrentMonth ? 'text-neutral-300' : 'text-neutral-700'} ${isChosen ? 'bg-[#E94222] border border-black text-white font-bold' : 'hover:bg-neutral-100'}`}
                               >
                                 {item.day}
                               </button>
@@ -618,7 +614,7 @@ export default function LunchBuffet1() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200 font-sans cursor-pointer upp"
+                    className="w-full group bg-[#E94222] hover:bg-[#d14b35] text-white text-[15px] font-bold twst py-3.5 rounded-full flex items-center justify-center gap-2.5 transition-colors duration-200 cursor-pointer upp"
                   >
                     <span>CONFIRM RESERVATION</span>
                     <svg

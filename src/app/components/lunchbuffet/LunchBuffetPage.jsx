@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionHeader from '../common/SectionHeader';
 
 // Custom Deceleration Easing for premium momentum feel
 const cubicBezierEase = [0.16, 1, 0.3, 1];
@@ -36,12 +37,7 @@ const headerItemVariants = {
 
 export default function LunchBuffetPage() {
   return (
-    <div className="w-full bg-[#FAF6EE] text-stone-800 selection:bg-[#B23E25] selection:text-white overflow-x-hidden py-12 md:py-16 pb-0 md:pb-0">
-      
-      {/* =========================================================================
-          SECTION 2: DETAILED STORY & PORTRAITS SECTION
-          ========================================================================= */}
-      <section className="py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-white">
+    <section className="w-full bg-white text-stone-800 overflow-x-hidden pt-32 md:pt-36 pb-16 md:pb-20 px-6 md:px-12 lg:px-20">
         <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
           
           {/* Visual Collages / Image Matrix */}
@@ -77,44 +73,31 @@ export default function LunchBuffetPage() {
 
           {/* Core Copy Narrative */}
           <div className="lg:col-span-6 flex flex-col gap-6 text-left">
-            <motion.span
-              variants={headerItemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-[#e65c38] font-bold text-[14px] sm:text-[15px] tw-wider font-luxury-sans block"
-            >
-              Private Room for 14 people
-            </motion.span>
+            <SectionHeader
+              as="h1"
+              theme="accent"
+              uppercase={false}
+              label="Private Room for 14 people"
+              title="For Your Special Occasion and Meeting"
+              className="mb-0"
+              labelClassName="text-[14px] sm:text-[15px]"
+              titleClassName="sm:text-[56px] lg:text-[56px] text-black leading-[1.02] mb-2"
+            />
 
-            <motion.h1
-              variants={headerItemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="font-luxury-title font-black text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[1.02] mb-2"
-            >
-             For Your Special Occasion and Meeting
-            </motion.h1>
-
-            {/* <div className="h-[1px] bg-stone-200 w-24"></div> */}
-
-            <p className="font-sans text-[16px] leading-relaxed text-stone-600 font-semibold">
-              You’re in luck! Visit <span className="text-stone-900 font-bold">Little India Restaurant & Bar</span> at 425 South Teller Street, Lakewood, Colorado. Our Lunch buffet is open <span className="text-[#C0321F] font-extrabold">7 days a week from 11:00 AM to 2:30 PM</span>, serving a lunch menu featuring rich flavors and comforting favorites.
+            <p className="text-[16px] leading-relaxed text-stone-600 font-normal">
+              You’re in luck! Visit <span className="text-[#333] font-bold">Little India Restaurant & Bar</span> at 425 South Teller Street, Lakewood, Colorado. Our Lunch buffet is open <span className="text-[#C0321F] font-extrabold">7 days a week from 11:00 AM to 2:30 PM</span>, serving a lunch menu featuring rich flavors and comforting favorites.
             </p>
 
-            <p className="font-sans text-[16px] leading-relaxed text-stone-600 font-semibold">
-              Our Indian lunch buffet is a unique culinary experience, featuring traditional favorites like <span className="text-stone-900 font-bold">butter chicken, channa masala, tandoori chicken, saag paneer, naan bread</span>, and cool side dishes, all prepared with fresh ingredients and a love of traditional Indian flavor. <span className="text-[#C0321F] font-extrabold">All of the dishes are gluten-free by nature</span>, so that everyone can partake in our robust flavors without compromise. Our chefs respect conventional dishes while adding a modern spin, preparing meals that are both traditional and innovative.
+            <p className="text-[16px] leading-relaxed text-stone-600 font-normal">
+              Our Indian lunch buffet is a unique culinary experience, featuring traditional favorites like <span className="text-[#333] font-bold">butter chicken, channa masala, tandoori chicken, saag paneer, naan bread</span>, and cool side dishes, all prepared with fresh ingredients and a love of traditional Indian flavor. <span className="text-[#C0321F] font-extrabold">All of the dishes are gluten-free by nature</span>, so that everyone can partake in our robust flavors without compromise. Our chefs respect conventional dishes while adding a modern spin, preparing meals that are both traditional and innovative.
             </p>
 
-            <p className="font-sans text-[16px] leading-relaxed text-stone-600 font-semibold">
+            <p className="text-[16px] leading-relaxed text-stone-600 font-normal">
               Our lunch buffet is perfect for groups, families, friends, or a personal indulgence. Our cozy and friendly environment ensures that each visit is pleasurable. To make your lunch experience even more hassle-free, we offer the convenience of reservations. Reach us at <a href="tel:+13039379777" className="text-[#C0321F] font-extrabold hover:underline">+1 303-937-9777</a> for inquiries or availability, and book your table for a stress-free lunch experience.
             </p>
           </div>
 
         </div>
-      </section>
-
-    </div>
+    </section>
   );
 }

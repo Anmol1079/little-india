@@ -114,11 +114,7 @@ export default function SixthHeader() {
                   <button
                     key={item.name}
                     onClick={() => setActiveTab(item.name)}
-                    className={`flex flex-col items-center justify-center transition-all duration-300 relative group focus:outline-none ${
-                      isActive
-                        ? 'bg-white shadow-[0_3px_10px_rgba(0,0,0,0.02)] border border-[#e2ded6] rounded-xl px-4 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3'
-                        : 'hover:opacity-80 px-2'
-                    }`}
+                    className={`flex flex-col items-center justify-center transition-all duration-300 relative group focus:outline-none ${ isActive ? 'bg-white shadow-[0_3px_10px_rgba(0,0,0,0.02)] border border-[#e2ded6] rounded-xl px-4 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3' : 'hover:opacity-80 px-2' }`}
                   >
                     {/* Icon */}
                     {item.icon !== 'home' && (
@@ -129,9 +125,7 @@ export default function SixthHeader() {
                     
                     {/* Text Label */}
                     <span
-                      className={`text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] font-bold tw-[0.16em] transition-colors duration-300 ${
-                        isActive ? 'text-[#2C2723]' : 'text-[#7D756D]'
-                      }`}
+                      className={`text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] font-bold tw-[0.16em] transition-colors duration-300 ${ isActive ? 'text-[#2C2723]' : 'text-[#7D756D]' }`}
                     >
                       {item.name}
                     </span>

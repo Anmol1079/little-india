@@ -344,7 +344,7 @@ export default function NewHero() {
               </h2>
 
               {/* Rich Body Paragraph */}
-              <p className="animate-reveal-text text-stone-300 text-sm sm:text-[15px] leading-relaxed max-w-xl mb-12 font-light">
+              <p className="animate-reveal-text text-stone-300 text-sm sm:text-[15px] leading-relaxed max-w-xl mb-12 font-normal">
                 {slide.description}
               </p>
             </div>
@@ -420,9 +420,7 @@ export default function NewHero() {
                 key={index}
                 onClick={() => handleDotClick(index)}
                 disabled={isTransitioning}
-                className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
-                  isActive ? 'w-6 bg-[#E75B44]' : 'w-2 bg-white/40 hover:bg-white/80'
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${ isActive ? 'w-6 bg-[#E75B44]' : 'w-2 bg-white/40 hover:bg-white/80' }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             );

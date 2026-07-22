@@ -82,7 +82,7 @@ export default function Hero_2() {
                             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-heavy font-medium leading-[1.12] text-stone-950 mb-6">
                                 Where Every Meal Becomes a Memory
                             </h1>
-                            <p className="text-sm md:text-[15px] text-stone-600 font-light leading-relaxed max-w-2xl">
+                            <p className="text-sm md:text-[15px] text-stone-600 leading-relaxed max-w-2xl font-normal">
                                 From sizzling pizzas to creamy pastas and chilled drinks, we serve more than food—we serve connection. Every bite brings people closer.
                             </p>
                         </div>
@@ -95,7 +95,7 @@ export default function Hero_2() {
                             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-heavy font-medium leading-[1.12] text-white mb-6">
                                 Where Every Meal Becomes a Memory
                             </h1>
-                            <p className="text-sm md:text-[15px] text-stone-200 font-light leading-relaxed max-w-2xl">
+                            <p className="text-sm md:text-[15px] text-stone-200 leading-relaxed max-w-2xl font-normal">
                                 From sizzling pizzas to creamy pastas and chilled drinks, we serve more than food—we serve connection. Every bite brings people closer.
                             </p>
                         </div>

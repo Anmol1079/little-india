@@ -20,9 +20,7 @@ const LogoIcon = () => (
 
 const MenuIcon = ({ active }) => (
   <svg 
-    className={`w-5 h-5 transition-colors duration-300 ${
-      active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-stone-700'
-    }`} 
+    className={`w-5 h-5 transition-colors duration-300 ${ active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-[#333]' }`} 
     viewBox="0 0 24 24" 
     fill="none" 
     stroke="currentColor" 
@@ -37,9 +35,7 @@ const MenuIcon = ({ active }) => (
 
 const RecipesIcon = ({ active }) => (
   <svg 
-    className={`w-5 h-5 transition-colors duration-300 ${
-      active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-stone-700'
-    }`} 
+    className={`w-5 h-5 transition-colors duration-300 ${ active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-[#333]' }`} 
     viewBox="0 0 24 24" 
     fill="none" 
     stroke="currentColor" 
@@ -54,9 +50,7 @@ const RecipesIcon = ({ active }) => (
 
 const AboutIcon = ({ active }) => (
   <svg 
-    className={`w-5 h-5 transition-colors duration-300 ${
-      active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-stone-700'
-    }`} 
+    className={`w-5 h-5 transition-colors duration-300 ${ active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-[#333]' }`} 
     viewBox="0 0 24 24" 
     fill="none" 
     stroke="currentColor" 
@@ -70,9 +64,7 @@ const AboutIcon = ({ active }) => (
 
 const EventsIcon = ({ active }) => (
   <svg 
-    className={`w-5 h-5 transition-colors duration-300 ${
-      active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-stone-700'
-    }`} 
+    className={`w-5 h-5 transition-colors duration-300 ${ active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-[#333]' }`} 
     viewBox="0 0 24 24" 
     fill="none" 
     stroke="currentColor" 
@@ -86,9 +78,7 @@ const EventsIcon = ({ active }) => (
 
 const ContactIcon = ({ active }) => (
   <svg 
-    className={`w-5 h-5 transition-colors duration-300 ${
-      active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-stone-700'
-    }`} 
+    className={`w-5 h-5 transition-colors duration-300 ${ active ? 'text-[#a68658]' : 'text-stone-400 group-hover:text-[#333]' }`} 
     viewBox="0 0 24 24" 
     fill="none" 
     stroke="currentColor" 
@@ -118,7 +108,7 @@ export default function FifthHeader() {
       <div className="w-full max-w-6xl overflow-x-auto scrollbar-none py-2">
         
         {/* Knife Navigation Wrapper */}
-        <div className="relative w-full aspect-[1012/158] min-w-[950px] select-none font-sans">
+        <div className="relative w-full aspect-[1012/158] min-w-[950px] select-none">
           
           {/* 1. Underlying Knife Image (Includes the background padding) */}
           <img 
@@ -151,19 +141,11 @@ export default function FifthHeader() {
                   <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`group relative flex flex-col items-center justify-center min-w-[95px] px-2 h-full rounded-2xl transition-all duration-300 ${
-                      isActive 
-                        ? 'bg-white shadow-[0_4px_16px_rgba(0,0,0,0.03)] border border-stone-200/40' 
-                        : 'hover:bg-white/20'
-                    }`}
+                    className={`group relative flex flex-col items-center justify-center min-w-[95px] px-2 h-full rounded-2xl transition-all duration-300 ${ isActive ? 'bg-white shadow-[0_4px_16px_rgba(0,0,0,0.03)] border border-stone-200/40' : 'hover:bg-white/20' }`}
                   >
                     {IconComponent && <IconComponent active={isActive} />}
                     
-                    <span className={`tw-[0.25em] text-[10px] font-semibold transition-colors duration-300 ${
-                      IconComponent ? 'mt-1.5' : 'mt-0'
-                    } ${
-                      isActive ? 'text-stone-800' : 'text-stone-400 group-hover:text-stone-700'
-                    }`}>
+                    <span className={`tw-[0.25em] text-[10px] font-semibold transition-colors duration-300 ${ IconComponent ? 'mt-1.5' : 'mt-0' } ${ isActive ? 'text-stone-800' : 'text-stone-400 group-hover:text-[#333]' }`}>
                       {item.label}
                     </span>
 

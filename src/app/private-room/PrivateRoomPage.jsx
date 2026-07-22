@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionHeader from '../components/common/SectionHeader';
 
 // Premium momentum easing
 const cubicBezierEase = [0.16, 1, 0.3, 1];
@@ -76,12 +77,13 @@ export default function PrivateRoomPage() {
   ];
 
   return (
-    <div className="w-full bg-[#FAF6EE] text-[#2E2A25] selection:bg-[#B23E25] selection:text-white overflow-x-clip min-h-screen">
+    <main className="w-full bg-[#FAF6EE] text-[#2E2A25] overflow-x-clip min-h-screen">
       
       {/* =========================================================================
           SECTION 1: HERO CONTAINER (FULL-WIDTH BACKGROUND WITH LEFT OVERLAY)
           ========================================================================= */}
-      <section className="relative w-full min-h-[80vh] lg:min-h-screen flex items-center justify-start overflow-hidden select-none pt-12 lg:pt-16">
+      {/* Removed "select-none" from className below */}
+      <section className="relative w-full min-h-[80vh] lg:min-h-[92vh] flex items-center justify-start overflow-hidden pt-12 lg:pt-16">
         
         {/* Full-bleed background dining table image */}
         <div className="absolute inset-0 z-0">
@@ -116,24 +118,22 @@ export default function PrivateRoomPage() {
                 animate="visible"
                 className="flex flex-col gap-5 text-left text-white"
               >
-                <motion.span
-                  variants={fadeUpVariants}
-                  className="text-[#B83A18] font-bold text-[14px] sm:text-[15px] tw-wider uppercase block"
-                >
-                  Private Room
-                </motion.span>
-
-                <motion.h1
-                  variants={fadeUpVariants}
-                  className="font-black text-[28px] sm:text-[45px] lg:text-[60px] text-white leading-[1.1] sm:leading-[0.95] tw-tight"
-                >
-                  Private Dining Room in Denver
-                </motion.h1>
+                <SectionHeader
+                  animated={false}
+                  uppercase={false}
+                  as="h1"
+                  theme="dark"
+                  label="Private Room"
+                  title="Private Dining Room in Denver"
+                  className="mb-0"
+                  labelClassName="text-[#B83A18] text-[14px] sm:text-[15px]"
+                  titleClassName="text-[28px] sm:text-[45px] lg:text-[56px] text-white leading-[1.1] sm:leading-[0.95] group-hover:text-white mb-0"
+                />
 
                 {/* Paragraph 1 */}
                 <motion.p 
                   variants={revealVariants}
-                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-semibold mt-2"
+                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] mt-2 font-normal"
                 >
                   Are you looking for an energetic, elegant, and comfortable dinner setting to fulfill your private dining needs in the Lakewood area? At <span className="text-[#E94222] font-extrabold">Little India Restaurant</span>, our <span className="text-white font-extrabold">Private Room for Dining</span> offers the perfect ambiance for your special occasions.
                 </motion.p>
@@ -141,7 +141,7 @@ export default function PrivateRoomPage() {
                 {/* Paragraph 2 */}
                 <motion.p 
                   variants={revealVariants}
-                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-semibold"
+                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-normal"
                 >
                   In your most memorable moments, you want more than an average dining experience. Our Private Room for Dining at Little India Restaurant, an authentic <span className="text-[#E94222] font-extrabold">Indian Restaurant</span>, provides the intimacy, inspiration, and invigoration you need in a secluded dining space.
                 </motion.p>
@@ -149,7 +149,7 @@ export default function PrivateRoomPage() {
                 {/* Paragraph 3 */}
                 <motion.p 
                   variants={revealVariants}
-                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-semibold"
+                  className="text-[14px] sm:text-[16px] lg:text-[18px] text-stone-200 leading-[1.6] sm:leading-[1.65] font-normal"
                 >
                   Blending classic elegance with vibrant energy in a modern setting that pays homage to tradition, we offer a fresh, flavorful, and lively dining experience infused with Indian culture, perfect for any occasion. Plan for an upscale-casual dress for your private dining occasion, and choose Little India Restaurant's Private Room for Dining for these occasions and more:
                 </motion.p>
@@ -165,22 +165,17 @@ export default function PrivateRoomPage() {
           ========================================================================= */}
       <section className="relative bg-[#FAF6EE] py-20 md:py-16 px-4 sm:px-8 md:px-12 lg:px-20 overflow-visible">
         
-        {/* Editorial Section Header */}
         <div className="max-w-[1500px] mx-auto mb-10 text-left px-4">
-          <motion.span
-            variants={headerItemVariants}
-            className="text-[#e65c38] font-bold text-[13px] sm:text-[14px] tw-wider uppercase font-sans block mb-3"
-          >
-            Exclusive Offerings
-          </motion.span>
-
-          <motion.h2
-            variants={headerItemVariants}
-            className="font-black text-[32px] sm:text-[40px] lg:text-[48px] leading-[1.1] text-[#121110] tw-tight"
-          >
-            Services Tailored for Every Celebration
-          </motion.h2>
-          <div className="h-[1px] bg-stone-300 w-24 mt-6"></div>
+          <SectionHeader
+            theme="accent"
+            uppercase={false}
+            label="Exclusive Offerings"
+            title="Services Tailored for Every Celebration"
+            className="mb-0"
+            labelClassName="text-[13px] sm:text-[14px]"
+            titleClassName="text-[32px] sm:text-[40px] lg:text-[48px] leading-[1.1] text-[#121110] mb-0"
+            footer={<div className="h-[1px] bg-stone-300 w-24 mt-6" />}
+          />
         </div>
 
         {/* Sticky Track Container */}
@@ -210,11 +205,11 @@ export default function PrivateRoomPage() {
 
                 {/* Right Column: Centered Text Content */}
                 <div className="flex flex-col justify-center text-left p-5 sm:p-12 lg:p-16 relative">
-                  <h3 className="font-black text-2xl sm:text-4xl text-stone-900 mb-4 leading-tight max-w-sm">
+                  <h3 className="font-bold text-2xl sm:text-4xl text-[#333] mb-4 leading-tight max-w-sm">
                     {service.title}
                   </h3>
                   
-                  <p className="text-stone-500 font-medium text-[13px] sm:text-base leading-relaxed">
+                  <p className="text-[#333] text-[13px] sm:text-base leading-relaxed font-normal">
                     {service.desc}
                   </p>
                   
@@ -227,6 +222,6 @@ export default function PrivateRoomPage() {
         </div>
       </section>
 
-    </div>
+    </main>
   );
 }

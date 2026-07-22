@@ -25,6 +25,11 @@ export async function generateMetadata({ params }) {
       description: `Exploring our premium, handmade local dishes for ${category ? category.replace("-", " ") : "dishes"}.`,
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${album.title} | Little India Restaurant & Bar`,
+      description: `Browse photos of our traditional ${category ? category.replace(/-/g, " ") : "dishes"} at Little India Denver & Lakewood.`,
+    },
   };
 }
 
@@ -34,13 +39,7 @@ export default async function Page({ params }) {
   return (
     <main className="min-h-screen bg-[#FFF6EA]">
       <MegaHeader />
-
-      {/* Symmetrical Image grid and fully navigable Lightbox component */}
-      <section className="relative overflow-hidden flex-grow pt-16 md:pt-20">
-      <AlbumPage category={category} />
-      </section>
-
-      {/* Brand Footer */}
+      <AlbumPage category={category} className="pt-32 md:pt-36" />
       <FooterWithCta />
     </main>
   );

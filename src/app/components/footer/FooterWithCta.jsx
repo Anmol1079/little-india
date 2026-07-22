@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import SectionHeader from "../common/SectionHeader";
 
 const LOCATIONS = [
   {
@@ -45,7 +46,7 @@ export default function FooterWithCta() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full bg-[#070707] text-[#FAF8F5] overflow-hidden font-sans border-t-2 border-[#c5a880]/20">
+    <footer className="relative w-full bg-[#070707] text-[#FAF8F5] overflow-hidden border-t-2 border-[#c5a880]/20">
       {/* Shared Background Image across both CTA and Footer */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
         <img
@@ -84,91 +85,76 @@ export default function FooterWithCta() {
           {/* Top subtle highlight reflection line */}
           <div className="absolute top-0 left-10 right-10 h-[1.5px] bg-gradient-to-r from-transparent via-white/15 to-transparent rounded-full" />
 
-          {/* Tagline */}
-          <motion.span
-            variants={childVariants}
-            className="text-[#E94222] font-black text-sm sm:text-base tw-[0.25em] up block mb-1"
+          <SectionHeader
+            align="center"
+            animated={false}
+            theme="dark"
+            label="HUNGRY?"
+            title="WE’RE READY"
+            className="mb-0"
+            labelClassName="text-[#E94222] text-sm sm:text-base mb-1"
+            titleClassName="text-[36px] sm:text-[60px] md:text-[60px] leading-none mb-4 group-hover:text-white"
+            footer={
+              <>
+                <div className="my-6 flex justify-center select-none">
+                  <Image
+                    src="/slogan/cta-slogan.png"
+                    alt="Come and Enjoy"
+                    width={380}
+                    height={85}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <p className="text-sm sm:text-[15px] text-stone-300 font-semibold leading-relaxed max-w-sm sm:max-w-md mb-8 mx-auto">
+                  Order your favorite meals now and enjoy fresh, flavorful food
+                  delivered fast right to your doorstep.
+                </p>
+              </>
+            }
           >
-            HUNGRY?
-          </motion.span>
-
-          {/* Symmetrical Bold Title */}
-          <motion.h2
-            variants={childVariants}
-            className="font-title font-black text-[36px] sm:text-[60px] md:text-[60px] text-white up leading-none tw-tight mb-4"
-          >
-            WE’RE READY
-          </motion.h2>
-
-          {/* Come and Enjoy Golden Script Image */}
-          <motion.div
-            variants={childVariants}
-            className="my-6 flex justify-center select-none"
-          >
-            <Image
-              src="/slogan/cta-slogan.png"
-              alt="Come and Enjoy"
-              width={380}
-              height={85}
-              className="object-contain"
-              priority
-            />
-          </motion.div>
-
-          {/* Description */}
-          <motion.p
-            variants={childVariants}
-            className="font-sans text-sm sm:text-[15px] text-stone-300 font-semibold leading-relaxed max-w-sm sm:max-w-md mb-8"
-          >
-            Order your favorite meals now and enjoy fresh, flavorful food
-            delivered fast right to your doorstep.
-          </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div
-            variants={childVariants}
-            className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center animate-fadeIn"
-          >
-            <Link
-              href="/menu"
-              className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans shadow-md"
-            >
-              <span>BOOK A TABLE</span>
-              <svg
-                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center animate-fadeIn">
+              <Link
+                href="/menu"
+                className="group w-full sm:w-auto bg-[#E94222] hover:bg-[#d14b35] text-white text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 shadow-md"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
+                <span>BOOK A TABLE</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
 
-            <Link
-              href="/menu"
-              className="group w-full sm:w-auto bg-transparent hover:bg-white border border-white/20 hover:border-white text-white hover:text-stone-950 text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200 font-sans"
-            >
-              <span>GET DIRECTION</span>
-              <svg
-                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
+              <Link
+                href="/menu"
+                className="group w-full sm:w-auto bg-transparent hover:bg-white border border-white/20 hover:border-white text-white hover:text-stone-950 text-[13px] font-bold twst px-8 py-4 rounded-full inline-flex items-center justify-center gap-2.5 transition-all duration-200"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          </motion.div>
+                <span>GET DIRECTION</span>
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </SectionHeader>
         </motion.div>
       </div>
 
@@ -214,7 +200,7 @@ export default function FooterWithCta() {
 
         {/* COLUMN 2: Explore */}
         <div className="col-span-6 lg:col-span-2">
-          <h3 className="text-[15px] font-black tw-[0.2em] text-[#e94222] up mb-6">
+          <h3 className="text-[15px] font-bold tw-[0.2em] text-[#e94222] up mb-6">
             Explore
           </h3>
           <ul className="flex flex-col gap-3.5 text-sm font-semibold text-neutral-400">
@@ -241,7 +227,7 @@ export default function FooterWithCta() {
 
         {/* COLUMN 3: Our Menu */}
         <div className="col-span-6 lg:col-span-2">
-          <h3 className="text-[15px] font-black tw-[0.2em] text-[#e94222] up mb-6">
+          <h3 className="text-[15px] font-bold tw-[0.2em] text-[#e94222] up mb-6">
             Our Menu
           </h3>
           <ul className="flex flex-col gap-3.5 text-sm font-semibold text-neutral-400">
@@ -270,7 +256,7 @@ export default function FooterWithCta() {
 
         {/* COLUMN 4: Contact Us & Operating Hours */}
         <div className="col-span-12 lg:col-span-4 md:ml-[50px] ml-0">
-          <h3 className="text-[15px] font-black tw-[0.2em] text-[#e94222] up mb-6">
+          <h3 className="text-[15px] font-bold tw-[0.2em] text-[#e94222] up mb-6">
             Contact Us
           </h3>
           <div className="flex flex-col gap-5 text-sm font-medium text-neutral-400">
@@ -416,7 +402,7 @@ export default function FooterWithCta() {
       </div>
 
       {/* FOOTER BOTTOM BAR */}
-      <div className="border-t border-neutral-900/60 mt-8 pt-8 max-w-7xl mx-auto px-6 md:px-12 pb-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 text-xs font-semibold text-neutral-500 up twst">
+      <div className="border-t border-neutral-900/60 mt-8 pt-8 max-w-7xl mx-auto px-6 md:px-12 pb-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 text-[14px] font-semibold text-neutral-500 up twst">
         {/* Copyright */}
         <p className="text-center md:text-left leading-relaxed">
           Copyright © {currentYear}{" "}

@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import SectionHeader from '../common/SectionHeader';
 
 const MENU_CATEGORIES = {
   'Appetizer': {
@@ -82,21 +83,22 @@ const revealItemVariants = {
 
 export default function MenuCategoriesPage() {
   return (
-    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-stone-900 min-h-screen font-[family-name:var(--font-inter)]">
+    <section className="w-full bg-[#fff6ea] py-16 px-6 md:px-12 lg:px-20 text-[#333] min-h-screen font-[family-name:var(--font-inter)]">
       <div className="max-w-[1500px] mx-auto">
         
-        {/* Page Header */}
-        <div className="flex flex-col justify-start mb-16 max-w-[800px]">
-          <span className="text-[#B83A18] font-bold text-xs tw-[0.25em] uppercase block mb-3">
-            Exploration
-          </span>
-          <h1 className="font-black text-4xl sm:text-6xl text-stone-950 uppercase tw-tight leading-[1.05] mb-5">
-            Browse Our Menu Categories
-          </h1>
-          <p className="text-sm sm:text-base text-stone-500 font-semibold leading-relaxed">
-            Select a category below to explore our handpicked selection of authentic tandoor dishes, robust curries, fresh breads, and handcrafted desserts.
-          </p>
-        </div>
+        <SectionHeader
+          as="h1"
+          animated={false}
+          uppercase={false}
+          theme="light"
+          label="Exploration"
+          title="Browse Our Menu Dishes"
+          description="Select a category below to explore our handpicked selection of authentic tandoor dishes, robust curries, fresh breads, and handcrafted desserts."
+          className="mb-16 max-w-[800px]"
+          labelClassName="text-xs"
+          titleClassName="text-4xl sm:text-6xl leading-[1.05] mb-5"
+          descriptionClassName="text-sm sm:text-base"
+        />
 
         {/* Categories Grid */}
         <motion.div
@@ -124,16 +126,16 @@ export default function MenuCategoriesPage() {
                   {/* Category Details Overlay */}
                   <div className="absolute inset-0 p-6 flex flex-col justify-between text-white z-10">
                     <div className="flex justify-end">
-                      <span className="bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold tw-wider uppercase">
+                      <span className="bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-bold tw-wider up">
                         {details.count} {details.count === 1 ? 'Item' : 'Items'}
                       </span>
                     </div>
 
                     <div className="space-y-1.5">
-                      <h3 className="font-black text-2xl uppercase tw-wide group-hover:text-[#FF7D54] transition-colors duration-300 leading-none">
+                      <h3 className="font-bold text-2xl up tw-wide group-hover:text-[#FF7D54] transition-colors duration-300 leading-none">
                         {catName}
                       </h3>
-                      <p className="text-xs text-white/80 font-medium leading-relaxed max-w-[90%]">
+                      <p className="text-xs text-white/80 leading-relaxed max-w-[90%] font-normal">
                         {details.tagline}
                       </p>
                       

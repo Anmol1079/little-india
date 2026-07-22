@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,11 +12,34 @@ if (typeof window !== 'undefined') {
 
 const BANNER_DATA = {
   tag: 'The Best Indian Food Restaurant In Denver Colorado',
-  title: 'EXPERIENCE THE FLAVOURS OF INDIA',
+  title: 'Authentic Indian Restaurant in Denver',
   bgImage: '/19996.jpg',
   avatarText: 'Experience the rich and authentic flavors of India at Little India Denver, one of the most loved Indian restaurants in Denver, Colorado. From aromatic curries and perfectly spiced biryanis to freshly baked naan and sizzling tandoori specialties.',
   featuredVideo: 'https://res.cloudinary.com/dezd0troy/video/upload/v1783310647/7818015-hd_1920_1080_24fps_xrsft9.mp4',
 };
+
+function getYouTubeId(url) {
+  if (!url || typeof url !== 'string') return null;
+  const match = url.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([a-zA-Z0-9_-]{11})/
+  );
+  return match ? match[1] : null;
+}
+
+function getYouTubeEmbedUrl(videoId) {
+  const params = new URLSearchParams({
+    autoplay: '1',
+    mute: '1',
+    loop: '1',
+    playlist: videoId,
+    controls: '0',
+    playsinline: '1',
+    rel: '0',
+    modestbranding: '1',
+    enablejsapi: '1',
+  });
+  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+}
 
 export default function NewDineno2() {
   const heroRef = useRef(null);
@@ -28,6 +51,13 @@ export default function NewDineno2() {
   const [isFullyZoomed, setIsFullyZoomed] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const isAtEndRef = useRef(false);
+
+  const youtubeId = useMemo(
+    () => getYouTubeId(BANNER_DATA.featuredVideo),
+    []
+  );
+  const isYouTube = Boolean(youtubeId);
+  const youtubeEmbedUrl = youtubeId ? getYouTubeEmbedUrl(youtubeId) : null;
 
   // 1. Infinite Text Scroll Animation
   useEffect(() => {
@@ -145,6 +175,22 @@ export default function NewDineno2() {
   }, []);
 
   const togglePlay = () => {
+    if (isYouTube) {
+      const iframe = videoRef.current;
+      if (!iframe?.contentWindow) return;
+
+      iframe.contentWindow.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func: isPlaying ? 'pauseVideo' : 'playVideo',
+          args: [],
+        }),
+        '*'
+      );
+      setIsPlaying(!isPlaying);
+      return;
+    }
+
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
@@ -156,8 +202,8 @@ export default function NewDineno2() {
   };
 
   return (
-    <div ref={pinSpacerRef} className="relative w-full h-screen min-h-[650px]">
-      <section 
+    <section ref={pinSpacerRef} className="relative w-full h-screen min-h-[650px]">
+      <div 
         ref={heroRef}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -175,7 +221,7 @@ export default function NewDineno2() {
 
         {/* Infinite scrolling typography layer */}
         <div className="absolute inset-y-0 flex items-center overflow-hidden z-0 select-none pointer-events-none w-[200vw]">
-          <div className="scrolling-text text-[13vw] font-title font-black tw-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
+          <div className="scrolling-text text-[13vw] font-title font-bold tw-[0.25em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.035)] upp whitespace-nowrap">
             ELEGANCE • FLAVOR • HERITAGE • ELEGANCE • FLAVOR • HERITAGE •
           </div>
         </div>
@@ -197,17 +243,17 @@ export default function NewDineno2() {
             
             {/* Left Column: Heading and description */}
             <div className="left-column-content lg:col-span-7 flex flex-col justify-center pointer-events-auto">
-              <span className="animate-text-item text-[#E94222] text-[15px] twst font-semibold block mb-3 up font-sans">
+              <span className="animate-text-item text-[#E94222] text-[15px] twst font-semibold block mb-3 up">
                 {BANNER_DATA.tag}
               </span>
 
-              <h1 className="animate-text-item text-4xl sm:text-5xl md:text-7xl lg:text-[99px] leading-[0.98] tw-tight font-title font-black text-white whitespace-pre-line mb-8 up">
+              <h1 className="animate-text-item text-4xl sm:text-5xl md:text-7xl lg:text-[83px] leading-[0.98] tw-tight font-title font-bold text-white whitespace-pre-line mb-8 up">
                 {BANNER_DATA.title}
               </h1>
 
               {/* Narrative / Info Block */}
-              <div className="animate-text-item flex items-start gap-4 mb-8 max-w-lg">
-                <p className="text-[16px] md:text-[18px] text-gray-300 font-light leading-relaxed whitespace-pre-line tw font-sans">
+              <div className="animate-text-item flex items-start gap-4 mb-8 max-w-3xl">
+                <p className="text-[16px] md:text-[18px] text-gray-300 leading-relaxed whitespace-pre-line tw font-normal">
                   {BANNER_DATA.avatarText}
                 </p>
               </div>
@@ -216,7 +262,7 @@ export default function NewDineno2() {
               <div className="animate-text-item inline-flex self-start backdrop-blur-md rounded-full p-1 shadow-2xl pointer-events-auto">
                 <Link
                   href="/menu"
-                  className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200 font-sans"
+                  className="group bg-[#C13419] hover:bg-[#a82c14] text-white text-[15px] font-bold twst px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 transition-colors duration-200"
                 >
                   <span>EXPLORE MENU</span>
                   <svg
@@ -243,7 +289,7 @@ export default function NewDineno2() {
                 {/* select-none removed to enable highlighting and selection in card header */}
                 <div className="video-card-header flex justify-between items-center px-1">
                   <div className="overflow-hidden max-w-[85%]">
-                    <h2 className="text-[13px] font-extrabold up text-stone-900 leading-tight font-sans">
+                    <h2 className="text-[13px] font-extrabold up text-[#333] leading-tight">
                       Little India Denver Restaurant
                     </h2>
                   </div>
@@ -261,22 +307,33 @@ export default function NewDineno2() {
                   {/* Video viewport (Decorative layer remains select-none to protect clicks) */}
                   <div 
                     ref={videoContainerRef}
-                    className="video-container w-full h-full rounded-xl overflow-hidden bg-stone-100 select-none shadow-inner origin-center"
+                    className="video-container relative w-full h-full rounded-xl overflow-hidden bg-stone-100 select-none shadow-inner origin-center"
                   >
-                    <video
-                      ref={videoRef}
-                      src={BANNER_DATA.featuredVideo}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                    />
+                    {isYouTube ? (
+                      <iframe
+                        ref={videoRef}
+                        src={youtubeEmbedUrl}
+                        title="Little India Denver featured video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="pointer-events-none absolute inset-0 h-full w-full border-0"
+                      />
+                    ) : (
+                      <video
+                        ref={videoRef}
+                        src={BANNER_DATA.featuredVideo}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                 </div>
 
                 {/* Footnote / Label */}
-                <div className="video-card-footer flex justify-between items-center px-1 text-[11px] text-stone-500 font-bold font-sans twr">
+                <div className="video-card-footer flex justify-between items-center px-1 text-[11px] text-[#333] font-bold twr tracking-[0.8px]">
                   <span>FRESH, AUTHENTIC INDIAN FOOD PREPARED LIVE</span>
                 </div>
 
@@ -290,27 +347,23 @@ export default function NewDineno2() {
         <button
           type="button"
           onClick={togglePlay}
-          className={`play-pause-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-white text-stone-900 w-16 h-16 rounded-full border border-stone-200 shadow-2xl flex items-center justify-center cursor-pointer hover:bg-stone-50 hover:scale-105 active:scale-95 transition-all duration-300 ${
-            isFullyZoomed && isHovered 
-              ? "opacity-100 scale-100 visible pointer-events-auto" 
-              : "opacity-0 scale-90 invisible pointer-events-none"
-          }`}
+          className={`play-pause-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-white text-[#333] w-16 h-16 rounded-full border border-stone-200 shadow-2xl flex items-center justify-center cursor-pointer hover:bg-stone-50 hover:scale-105 active:scale-95 transition-all duration-300 ${ isFullyZoomed && isHovered ? "opacity-100 scale-100 visible pointer-events-auto" : "opacity-0 scale-90 invisible pointer-events-none" }`}
           aria-label={isPlaying ? "Pause Video" : "Play Video"}
         >
           {isPlaying ? (
             /* Big clean Pause Icon */
-            <svg className="w-6 h-6 text-stone-900" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-6 h-6 text-[#333]" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
             </svg>
           ) : (
             /* Big clean Play Icon */
-            <svg className="w-6 h-6 text-stone-900 translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-6 h-6 text-[#333] translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8 5v14l11-7z"/>
             </svg>
           )}
         </button>
 
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

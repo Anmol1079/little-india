@@ -3,36 +3,36 @@ import MegaHeader from '../components/headers/MegaHeader';
 import ContactPage from './ContactPage';
 
 export const metadata = {
-  title: 'Contact Us & Reservations | UMAMI Premium Experience',
-  description: 'Book your table online instantly. Experience premium dining, bespoke hamburgers, and legendary hospitality at UMAMI. Open Tue - Sun.',
-  keywords: ['Contact UMAMI', 'UMAMI Table Reservation', 'Burger Restaurant Reservations', 'UMAMI Denver'],
+  title: 'Contact Us & Reservations | Little India Restaurant & Bar Denver & Lakewood',
+  description:
+    'Contact Little India Restaurant & Bar in Lakewood, Colorado. Call +1 303-937-9777, visit 425 South Teller Street, or reserve a table for authentic Indian dining.',
+  keywords: [
+    'Contact Little India Denver',
+    'Indian Restaurant Lakewood Reservations',
+    'Book Table Little India',
+    'Little India Phone Number',
+    '425 South Teller Street Lakewood',
+  ],
   openGraph: {
-    title: 'Contact Us & Reservations | UMAMI Premium Experience',
-    description: 'Experience premium dining, bespoke hamburgers, and legendary hospitality at UMAMI. Book your table online instantly.',
-    url: 'https://umamipremium.com/contact',
+    title: 'Contact Us | Little India Restaurant & Bar',
+    description:
+      'Get in touch or reserve your seat at Little India in Lakewood & Denver — authentic Indian cuisine and warm hospitality.',
     type: 'website',
-    images: [
-      {
-        url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80',
-        width: 1200,
-        height: 630,
-        alt: 'Contact UMAMI',
-      },
-    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | Little India Restaurant & Bar',
+    description:
+      'Reserve a table or reach Little India Restaurant & Bar in Lakewood, Colorado.',
   },
 };
 
-
 export default function Page() {
-    return (
-      <>
+  return (
+    <>
       <MegaHeader />
-
-      <section className="relative overflow-hidden flex-grow pt-16 md:pt-20">
-        <ContactPage />
-        </section>
-        
-        <FooterWithCta />
-      </>
-    );
-  }
+      <ContactPage />
+      <FooterWithCta />
+    </>
+  );
+}

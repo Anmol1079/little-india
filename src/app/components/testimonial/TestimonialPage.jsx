@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReviewPortals from './ReviewPortals';
+import SectionHeader from '../common/SectionHeader';
 
 const INITIAL_REVIEWS = [
   {
@@ -122,19 +124,11 @@ const headerItemVariants = {
   },
 };
 
-export default function TestimonialsPage() {
-  const [reviews, setReviews] = useState(INITIAL_REVIEWS);
+export default function TestimonialsPage({ className = '' }) {
+  const [reviews] = useState(INITIAL_REVIEWS);
   const [filter, setFilter] = useState('all');
   const [playingVideo, setPlayingVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [reviewType, setReviewType] = useState('text');
-  const [newAuthor, setNewAuthor] = useState('');
-  const [newRole, setNewRole] = useState('');
-  const [newText, setNewText] = useState('');
-  const [newVideoUrl, setNewVideoUrl] = useState('');
-  const [newImageUrl, setNewImageUrl] = useState('');
-  const [newRating, setNewRating] = useState(5);
 
   const handleFilterChange = (type) => {
     setFilter(type);
@@ -145,60 +139,24 @@ export default function TestimonialsPage() {
     return review.type === filter;
   });
 
-  const handleSubmitReview = (e) => {
-    e.preventDefault();
-    if (!newAuthor) return;
-
-    const formattedDate = new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
-    let addedReview = {
-      id: Date.now(),
-      type: reviewType,
-      name: newAuthor,
-      role: newRole || (reviewType === 'text' ? 'Guest Diner' : 'Culinary Reviewer'),
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80',
-      stars: newRating,
-      date: formattedDate,
-      ...(reviewType === 'text' ? { text: `"${newText}"` } : { image: newImageUrl || 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&h=800&q=80', videoUrl: newVideoUrl })
-    };
-
-    setReviews([addedReview, ...reviews]);
-    setIsModalOpen(false);
-    setNewAuthor(''); setNewRole(''); setNewText(''); setNewVideoUrl(''); setNewImageUrl(''); setNewRating(5);
-  };
-
   return (
-    <section className="w-full min-h-screen bg-[#FFF6EA] text-[#0C0B0A] font-sans overflow-hidden">
+    <section className={`w-full min-h-screen bg-[#FFF6EA] text-[#0C0B0A] overflow-hidden ${className}`.trim()}>
     
 
       {/* --- REVIEWS BODY & FILTER NAVIGATION (Now incorporating the left-aligned header directly) --- */}
-      <div className="max-w-[1400px] mx-auto px-6 py-12 md:py-16 flex flex-col gap-8">
+      <div className="max-w-[1400px] mx-auto px-6 pb-12: md:pb-16 flex flex-col gap-8">
 
-        {/* --- LEFT ALIGNED HEADER BLOCK (Directly on the main page background) --- */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-stone-200/40 w-full">
-          <div className="flex flex-col items-start text-left gap-3 max-w-3xl">
-            <motion.span
-              variants={headerItemVariants}
-              className="text-[#e65c38] font-bold text-[13px] sm:text-[14px] tw-[0.25em] up font-luxury-sans block"
-            >
-              Tasty Words
-            </motion.span>
-
-            <motion.h1
-              variants={headerItemVariants}
-              className="font-luxury-title font-black text-[40px] sm:text-[60px] lg:text-[60px] leading-[1.05] text-[#121110] up tw"
-            >
-              Customer Reviews
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUpVariants}
-              className="font-luxury-sans text-[15px] sm:text-[17px] text-stone-600 leading-relaxed font-medium mt-1"
-            >
-              Each review tells a story of generations-old traditional family recipes brought to life with hand-ground spices and local, fresh ingredients.
-            </motion.p>
-          </div>
-
-          {/* Write a Review Button: Aligned on the right for desktop, stacks on mobile */}
+        <SectionHeader
+          as="h1"
+          theme="accent"
+          label="Tasty Words"
+          title="Customer Reviews"
+          description="Each review tells a story of generations-old traditional family recipes brought to life with hand-ground spices and local, fresh ingredients."
+          className="pb-6 border-b border-stone-200/40 w-full mb-0"
+          labelClassName="text-[13px] sm:text-[14px]"
+          titleClassName="sm:text-[56px] leading-[1.05] text-[#121110] mb-0"
+          descriptionClassName="text-[15px] sm:text-[17px] text-stone-600 mt-1"
+        >
           <div className="flex items-center shrink-0 self-center md:self-center">
             <motion.button
               whileHover={{ scale: 1.04, y: -2 }}
@@ -212,26 +170,26 @@ export default function TestimonialsPage() {
               </svg>
             </motion.button>
           </div>
-        </div>
+        </SectionHeader>
         
         {/* Navigation Filters */}
         <div className="flex items-center justify-between border-b border-stone-200/50 pb-8 flex-wrap gap-4">
           <div className="flex items-center gap-2 p-1 bg-stone-200/40 rounded-full font-luxury-sans text-[11px] sm:text-[12px] font-bold">
             <button
               onClick={() => handleFilterChange('all')}
-              className={`px-6 py-2.5 rounded-full transition-all duration-300 ${filter === 'all' ? 'bg-[#e65c38] text-white' : 'text-stone-600 hover:text-stone-900'}`}
+              className={`px-6 py-2.5 rounded-full transition-all duration-300 ${filter === 'all' ? 'bg-[#e65c38] text-white' : 'text-stone-600 hover:text-[#333]'}`}
             >
               ALL REVIEWS
             </button>
             <button
               onClick={() => handleFilterChange('video')}
-              className={`px-6 py-2.5 rounded-full transition-all duration-300 ${filter === 'video' ? 'bg-[#e65c38] text-white' : 'text-stone-600 hover:text-stone-900'}`}
+              className={`px-6 py-2.5 rounded-full transition-all duration-300 ${filter === 'video' ? 'bg-[#e65c38] text-white' : 'text-stone-600 hover:text-[#333]'}`}
             >
               VIDEO STORIES
             </button>
             <button
               onClick={() => handleFilterChange('text')}
-              className={`px-6 py-2.5 rounded-full transition-all duration-300 ${filter === 'text' ? 'bg-[#e65c38] text-white' : 'text-stone-600 hover:text-stone-900'}`}
+              className={`px-6 py-2.5 rounded-full transition-all duration-300 ${filter === 'text' ? 'bg-[#e65c38] text-white' : 'text-stone-600 hover:text-[#333]'}`}
             >
               WRITTEN REVIEWS
             </button>
@@ -320,99 +278,26 @@ export default function TestimonialsPage() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.92, y: 30 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="mt-[85px] md:mt-6 lg:mt-0 bg-white rounded-[2rem] p-8 max-w-md w-full shadow-2xl relative border border-stone-100"
+              className="mt-[85px] md:mt-6 lg:mt-0 bg-white rounded-[2rem] p-8 max-w-lg w-full shadow-2xl relative border border-stone-100"
             >
               <button 
                 onClick={() => setIsModalOpen(false)} 
                 aria-label="Close review modal" 
-                className="absolute top-5 right-5 text-stone-400 hover:text-stone-900 transition-colors"
+                className="absolute top-5 right-5 text-stone-400 hover:text-[#333] transition-colors"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
 
-              <h3 className="font-luxury-title font-black text-2xl up mb-2 text-stone-950 text-left">Share Your Story</h3>
-              <p className="font-luxury-sans text-xs text-stone-500 text-left mb-5">We appreciate your feedback and look forward to welcoming you back.</p>
+              <h3 className="font-luxury-title font-bold text-2xl up mb-2 text-stone-950 text-left">
+                Share Your Story
+              </h3>
+              <p className="font-luxury-sans text-xs text-[#333] text-left mb-5 font-normal">
+                We appreciate your feedback and look forward to welcoming you back.
+              </p>
 
-              <div className="flex gap-2 p-1 bg-stone-100 rounded-xl mb-5 text-[10px] font-bold font-luxury-sans">
-                <button 
-                  type="button" 
-                  onClick={() => setReviewType('text')} 
-                  className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'text' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}
-                >
-                  TEXT REVIEW
-                </button>
-                <button 
-                  type="button" 
-                  onClick={() => setReviewType('video')} 
-                  className={`flex-1 py-2 rounded-lg transition-all ${reviewType === 'video' ? 'bg-white shadow-sm text-stone-900' : 'text-stone-500'}`}
-                >
-                  VIDEO STORY
-                </button>
-              </div>
-
-              <form onSubmit={handleSubmitReview} className="flex flex-col gap-4 font-luxury-sans text-[11px] font-bold up text-stone-850">
-                <input 
-                  type="text" 
-                  value={newAuthor} 
-                  onChange={(e) => setNewAuthor(e.target.value)} 
-                  placeholder="Your Name" 
-                  className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#e65c38] bg-[#FAF5EF]/45 text-sm" 
-                  required 
-                />
-                
-                <input 
-                  type="text" 
-                  value={newRole} 
-                  onChange={(e) => setNewRole(e.target.value)} 
-                  placeholder="Subtitle (e.g. Local Foodie)" 
-                  className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#e65c38] bg-[#FAF5EF]/45 text-sm" 
-                />
-
-                <select 
-                  value={newRating} 
-                  onChange={(e) => setNewRating(Number(e.target.value))} 
-                  className="border border-stone-200 rounded-xl px-4 py-3 outline-none bg-white text-sm"
-                >
-                  {[5, 4, 3, 2, 1].map(n => <option key={n} value={n}>{n} Stars</option>)}
-                </select>
-
-                {reviewType === 'text' ? (
-                  <textarea 
-                    value={newText} 
-                    onChange={(e) => setNewText(e.target.value)} 
-                    placeholder="Write your culinary review here..." 
-                    className="border border-stone-200 rounded-xl px-4 py-3 h-24 resize-none outline-none focus:border-[#e65c38] bg-[#FAF5EF]/45 text-sm" 
-                    required 
-                  />
-                ) : (
-                  <div className="flex flex-col gap-3">
-                    <input 
-                      type="url" 
-                      value={newImageUrl} 
-                      onChange={(e) => setNewImageUrl(e.target.value)} 
-                      placeholder="Cover Image URL (Optional)" 
-                      className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#e65c38] bg-[#FAF5EF]/45 text-sm" 
-                    />
-                    <input 
-                      type="url" 
-                      value={newVideoUrl} 
-                      onChange={(e) => setNewVideoUrl(e.target.value)} 
-                      placeholder="Direct MP4 Video Link" 
-                      className="border border-stone-200 rounded-xl px-4 py-3 outline-none focus:border-[#e65c38] bg-[#FAF5EF]/45 text-sm" 
-                      required 
-                    />
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#e65c38] hover:bg-[#d14b35] text-white text-[12px] font-bold twst py-4 rounded-xl transition-colors duration-200 mt-2 font-luxury-sans"
-                >
-                  SUBMIT REVIEW
-                </button>
-              </form>
+              <ReviewPortals />
             </motion.div>
           </motion.div>
         )}
@@ -477,7 +362,7 @@ function TextReviewCard({ item }) {
       </div>
       
       <div className="my-6 text-left">
-        <p className="font-luxury-sans text-[15px] sm:text-[16px] text-stone-850 font-medium leading-relaxed leading-snug">
+        <p className="font-luxury-sans text-[15px] sm:text-[16px] text-[#333] leading-relaxed leading-snug font-normal">
           {item.text}
         </p>
       </div>
@@ -524,7 +409,7 @@ function VideoReviewCard({ item, onPlay }) {
           whileTap={{ scale: 0.9 }}
           onClick={() => onPlay(item.videoUrl)}
           aria-label={`Play video review by ${item.name}`}
-          className="w-13 h-13 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-2xl transition-all duration-300"
+          className="w-13 h-13 rounded-full bg-white text-[#333] flex items-center justify-center shadow-2xl transition-all duration-300"
         >
           <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z" />

@@ -31,7 +31,7 @@ export default function Hero() {
           </h1>
 
           {/* Subheader */}
-          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed font-light tw">
+          <p className="text-stone-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed tw font-normal">
             From sizzling pizzas to creamy pastas and chilled drinks, we serve
             more than food—we serve connection. Every bite brings people closer.
           </p>

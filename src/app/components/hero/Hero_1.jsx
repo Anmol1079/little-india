@@ -144,8 +144,7 @@ export default function Hero_1() {
             {/* Base Slide Layer (Static background) */}
             <div className="absolute inset-0 z-0">
                 <div
-                    className={`absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms] ease-out ${!isTransitioning ? 'scale-105' : 'scale-100'
-                        }`}
+                    className={`absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms] ease-out ${!isTransitioning ? 'scale-105' : 'scale-100' }`}
                     style={{ backgroundImage: `url(${slides[prevSlide].image})` }}
                 />
                 <div className="absolute inset-0 bg-black/55" />
@@ -189,7 +188,7 @@ export default function Hero_1() {
                     {slides[isTransitioning ? currentSlide : prevSlide].title}
                 </h1>
 
-                <p className="animate-text-item text-sm md:text-base text-gray-100 max-w-2xl font-light leading-relaxed mb-10">
+                <p className="animate-text-item text-sm md:text-base text-gray-100 max-w-2xl leading-relaxed mb-10 font-normal">
                     {slides[isTransitioning ? currentSlide : prevSlide].description}
                 </p>
 
@@ -225,7 +224,7 @@ export default function Hero_1() {
                             <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 30+
                             </h3>
-                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-medium">
+                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-normal">
                                 Healthy Sushi's
                             </p>
                         </div>
@@ -233,7 +232,7 @@ export default function Hero_1() {
                             <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 15+
                             </h3>
-                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-medium">
+                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-normal">
                                 Years Of Experience
                             </p>
                         </div>
@@ -241,7 +240,7 @@ export default function Hero_1() {
                             <h3 className="text-2xl md:text-3xl text-white font-heavy font-medium mb-1">
                                 95%
                             </h3>
-                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-medium">
+                            <p className="text-[10px] md:text-[15px] text-gray-400 twst upp font-normal">
                                 Happy Customer's
                             </p>
                         </div>
@@ -256,13 +255,11 @@ export default function Hero_1() {
                                     key={index}
                                     disabled={isTransitioning}
                                     onClick={() => handleSlideSelect(index)}
-                                    className={`w-5 h-5 border flex items-center justify-center transition-all duration-300 focus:outline-none ${isActive ? 'border-white' : 'border-white/20 hover:border-white/50'
-                                        } ${isTransitioning ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                                    className={`w-5 h-5 border flex items-center justify-center transition-all duration-300 focus:outline-none ${isActive ? 'border-white' : 'border-white/20 hover:border-white/50' } ${isTransitioning ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                                     aria-label={`Go to slide ${index + 1}`}
                                 >
                                     <span
-                                        className={`w-2.5 h-2.5 bg-[#ff5c40] transition-transform duration-300 ${isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-                                            }`}
+                                        className={`w-2.5 h-2.5 bg-[#ff5c40] transition-transform duration-300 ${isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0' }`}
                                     />
                                 </button>
                             );

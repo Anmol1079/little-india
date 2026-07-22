@@ -54,7 +54,7 @@ export default function SpecialSection() {
 
   return (
     /* Full-width outer section containing background color */
-    <section className="w-full bg-[#F2F2F2] text-[#0B0C0E] font-sans relative overflow-hidden select-none">
+    <section className="w-full bg-[#F2F2F2] text-[#0B0C0E] relative overflow-hidden">
       
       {/* Custom Stylesheet */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -71,17 +71,17 @@ export default function SpecialSection() {
       <div className="max-w-[1500px] mx-auto px-4 min-h-screen flex flex-col justify-between pt-16 pb-16">
         
         {/* 1. ASYMMETRICAL HEADER WITH DESCRIPTION */}
-        <header className="w-full flex justify-between items-start px-6 md:px-16 py-6 md:py-8 border-b border-neutral-200/60 font-sans-custom">
+        <header className="w-full flex justify-between items-start px-6 md:px-16 py-6 md:py-8 border-b border-neutral-200/60">
           
           {/* Left Side: Bold 'Special Dishes' Title & Description */}
           <div className="flex flex-col group cursor-pointer max-w-[240px] sm:max-w-[1400px] md:max-w-[1500px]">
             <div className="flex items-baseline space-x-2 md:space-x-3">
-              <h1 className="font-impact text-[60px] sm:text-[60px] md:text-[60px] text-[#0B0C0E] tw-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38]">
+              <h1 className="font-impact text-[60px] sm:text-[56px] md:text-[56px] text-[#0B0C0E] tw-tight leading-none transition-colors duration-300 group-hover:text-[#E65C38]">
                 SPECIAL DISHES
               </h1>
              
             </div>
-            <p className="text-[16px] md:text-[16px] text-[#0B0C0E]/60 twr font-sans-custom mt-2 leading-relaxed font-semibold">
+            <p className="text-[16px] md:text-[16px] text-[#0B0C0E]/60 twr mt-2 leading-relaxed font-normal">
               A curated selection of our chef&apos;s signature recipes, blending traditional culinary heritage with contemporary flair.
             </p>
           </div>
@@ -104,9 +104,7 @@ export default function SpecialSection() {
                 >
                   {/* Text Layout */}
                   <h2
-                    className={`font-impact text-[3rem] sm:text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[3rem] leading-none tw upp transition-colors duration-300 ${
-                      isActive ? 'text-[#E65C38]' : 'text-[#0B0C0E]'
-                    }`}
+                    className={`font-impact text-[3rem] sm:text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[3rem] leading-none tw upp transition-colors duration-300 ${ isActive ? 'text-[#E65C38]' : 'text-[#0B0C0E]' }`}
                   >
                     <span className="inline-block mr-4">{item.number}</span>
                     {item.text}
@@ -114,11 +112,7 @@ export default function SpecialSection() {
 
                   {/* Smooth Sliding Active Arrow */}
                   <span
-                    className={`text-2xl sm:text-3xl md:text-4xl text-[#E65C38] font-bold ml-6 transition-all duration-500 transform ${
-                      isActive 
-                        ? 'opacity-100 translate-x-2 scale-105' 
-                        : 'opacity-0 -translate-x-4 scale-75 pointer-events-none'
-                    }`}
+                    className={`text-2xl sm:text-3xl md:text-4xl text-[#E65C38] font-bold ml-6 transition-all duration-500 transform ${ isActive ? 'opacity-100 translate-x-2 scale-105' : 'opacity-0 -translate-x-4 scale-75 pointer-events-none' }`}
                     style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
                   >
                     →
