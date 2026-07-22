@@ -83,7 +83,7 @@ export default function PrivateRoomPage() {
           SECTION 1: HERO CONTAINER (FULL-WIDTH BACKGROUND WITH LEFT OVERLAY)
           ========================================================================= */}
       {/* Removed "select-none" from className below */}
-      <section className="relative w-full min-h-[80vh] lg:min-h-[92vh] flex items-center justify-start overflow-hidden pt-12 lg:pt-16">
+      <section className="relative w-full min-h-[80vh] lg:min-h-[100vh] flex items-center justify-start overflow-hidden pt-12 lg:pt-16">
         
         {/* Full-bleed background dining table image */}
         <div className="absolute inset-0 z-0">
