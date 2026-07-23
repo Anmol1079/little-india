@@ -60,10 +60,11 @@ export default function ContactSection() {
           className="absolute inset-0 w-full h-full"
         >
           <Image
-            src="/get-in-touch.jpg"
+            src="/get-in-touch.webp"
             alt="Gourmet food background"
             fill
-            priority
+            sizes="(max-width: 1024px) 100vw, 1400px"
+            quality={65}
             className="object-cover pointer-events-none"
           />
         </motion.div>

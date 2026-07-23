@@ -98,7 +98,7 @@ export default function BlogsPage({ className = '' }) {
   const filteredGridPosts = ALL_BLOG_POSTS.filter(post => post.id !== "blog-highlight");
 
   return (
-    <section className={`w-full bg-[#FAF5EF] text-[#0C0B0A] overflow-hidden min-h-screen ${className}`.trim()}>
+    <section className={`w-full bg-white text-[#0C0B0A] overflow-hidden min-h-screen ${className}`.trim()}>
 
       {/* --- MAIN PAGE CONTAINER --- */}
       <div className="max-w-[1450px] mx-auto px-6 pb-12 md:pb-16 flex flex-col gap-8">
@@ -141,7 +141,7 @@ function BlogCard({ post }) {
         boxShadow: '0 20px 40px -15px rgba(0,0,0,0.06)' 
       }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className="bg-white rounded-[2.5rem] p-8 border flex flex-col justify-start gap-4 min-h-[360px] h-full relative w-full shadow-[0_10px_35px_rgba(0,0,0,0.02)] transition-colors duration-300"
+      className="bg-[#FFF6EA] rounded-[2.5rem] p-8 border flex flex-col justify-start gap-4 min-h-[360px] h-full relative w-full shadow-[0_10px_35px_rgba(0,0,0,0.02)] transition-colors duration-300"
     >
       {/* Post Cover image */}
       <div className="relative w-full h-[180px] rounded-[1.8rem] overflow-hidden shadow-sm bg-stone-100 mb-1">

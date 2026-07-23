@@ -25,7 +25,10 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`h-full antialiased ${inter.variable}`}
     >
-      <body className={`${inter.className} min-h-full flex flex-col`}>
+      <body
+        suppressHydrationWarning
+        className={`${inter.className} min-h-full flex flex-col`}
+      >
         {children}
         <ScrollToTop />
       </body>

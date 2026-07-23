@@ -140,7 +140,7 @@ export default function TestimonialsPage({ className = '' }) {
   });
 
   return (
-    <section className={`w-full min-h-screen bg-[#FFF6EA] text-[#0C0B0A] overflow-hidden ${className}`.trim()}>
+    <section className={`w-full min-h-screen bg-white text-[#0C0B0A] overflow-hidden ${className}`.trim()}>
     
 
       {/* --- REVIEWS BODY & FILTER NAVIGATION (Now incorporating the left-aligned header directly) --- */}
@@ -348,7 +348,7 @@ function TextReviewCard({ item }) {
     <motion.div
       whileHover={{ y: -8, borderColor: 'rgba(197, 155, 39, 0.25)', boxShadow: '0 20px 40px -15px rgba(0,0,0,0.04)' }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className="bg-white rounded-[2.5rem] p-8 sm:p-10 border border-stone-200/40 flex flex-col justify-between min-h-[380px] h-full relative w-full shadow-[0_15px_50px_rgba(0,0,0,0.01)] transition-colors duration-300"
+      className="bg-[#FFF6EA] rounded-[2.5rem] p-8 sm:p-10 border border-[#D6D3D1] hover:border-[rgba(197,155,39,0.60)] flex flex-col justify-between min-h-[380px] h-full relative w-full shadow-[0_15px_50px_rgba(0,0,0,0.01)] transition-colors duration-300"
     >
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center gap-3.5">

@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SectionHeader from '../common/SectionHeader';
 
@@ -119,15 +120,22 @@ export default function OurStorySection({ isH1 = false, className = '' }) {
         {/* ================= RIGHT COLUMN: FLAGSHIP ROOM (With Native Arched Clip) ================= */}
         <div className="col-span-1 lg:col-span-6 relative h-full w-full overflow-hidden rounded-l-[12rem] lg:rounded-l-[16rem] hidden lg:block min-h-[700px] shadow-inner">
           <div className="absolute inset-0 bg-black/15 z-10 pointer-events-none"></div>
-          <motion.img 
-            src="/story.png" 
-            alt="Little India Flagship Dining Room" 
+          <motion.div
             initial={{ scale: 1.08 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.8, ease: cubicBezierEase }}
-            className="w-full h-full object-cover"
-          />
+            className="absolute inset-0"
+          >
+            <Image
+              src="/story.webp"
+              alt="Little India Flagship Dining Room"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={65}
+              className="object-cover"
+            />
+          </motion.div>
         </div>
 
       </div>

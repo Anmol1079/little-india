@@ -113,21 +113,13 @@ function SaltSeparator({ direction = '135deg', rotateClass = '' }) {
           WebkitMaskSize: 'contain',
         }}
       >
-        <img
+        <Image
           alt="salt separator decor"
-          loading="lazy"
+          src="/salt-decor.webp"
+          fill
+          sizes="(max-width: 1280px) 320px, 50vh"
+          quality={55}
           className={`object-contain ${rotateClass}`}
-          style={{
-            position: 'absolute',
-            height: '100%',
-            width: '100%',
-            left: 0,
-            top: 0,
-            right: 0,
-            bottom: 0,
-            color: 'transparent',
-          }}
-          src="/salt-2.webp"
         />
       </motion.div>
     </div>

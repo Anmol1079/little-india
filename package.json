@@ -11,7 +11,9 @@
     "chrome >= 111",
     "edge >= 111",
     "firefox >= 111",
-    "safari >= 16.4"
+    "safari >= 16.4",
+    "not dead",
+    "not op_mini all"
   ],
   "dependencies": {
     "framer-motion": "^12.40.0",

@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
 const BANNER_DATA = {
   tag: 'The Best Indian Food Restaurant In Denver Colorado',
   title: 'Authentic Indian Restaurant in Denver',
-  bgImage: '/19996.webp',
+  bgImage: '/hero-banner.webp',
   avatarText: 'Experience the rich and authentic flavors of India at Little India Denver, one of the most loved Indian restaurants in Denver, Colorado. From aromatic curries and perfectly spiced biryanis to freshly baked naan and sizzling tandoori specialties.',
   featuredVideo: 'https://res.cloudinary.com/dezd0troy/video/upload/v1783310647/7818015-hd_1920_1080_24fps_xrsft9.mp4',
 };
@@ -234,8 +234,8 @@ export default function NewDineno2() {
             alt="Artisanal wood-fired pizza with bubbling cheese"
             fill
             priority
-            sizes="100vw"
-            quality={75}
+            sizes="(max-width: 1400px) 100vw, 1400px"
+            quality={60}
             className="object-cover animate-kenburns filter saturate-[1.1]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent z-10" />

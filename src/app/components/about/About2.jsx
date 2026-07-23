@@ -11,6 +11,7 @@ const SLIDES_DATA = [
   {
     id: 0,
     img: "/indian-restaurant-denver-1.webp",
+    thumb: "/indian-restaurant-denver-1-sm.webp",
     title: "A Welcoming Ambiance",
     desc: "Where tradition meets warm hospitality.",
     alt: "Little India Storefront Exterior"
@@ -18,6 +19,7 @@ const SLIDES_DATA = [
   {
     id: 1,
     img: "/indian-restaurant-denver-2.webp",
+    thumb: "/indian-restaurant-denver-2-sm.webp",
     title: "Traditional Recipes",
     desc: "Carefully selected spices cooked by experienced chefs.",
     alt: "Overhead Food Spread"
@@ -25,6 +27,7 @@ const SLIDES_DATA = [
   {
     id: 2,
     img: "/indian-restaurant-denver-3.webp",
+    thumb: "/indian-restaurant-denver-3-sm.webp",
     title: "Signature Cocktails",
     desc: "Vibrant cocktails, premium spirits, and happy hour.",
     alt: "Fresh cocktails bar"
@@ -32,6 +35,7 @@ const SLIDES_DATA = [
   {
     id: 3,
     img: "/indian-restaurant-denver-4.webp",
+    thumb: "/indian-restaurant-denver-4-sm.webp",
     title: "Cozy Dining Rooms",
     desc: "Elegant and comfortable spaces for memorable evenings.",
     alt: "Diners at tables"
@@ -39,6 +43,7 @@ const SLIDES_DATA = [
   {
     id: 4,
     img: "/indian-restaurant-denver-5.webp",
+    thumb: "/indian-restaurant-denver-5-sm.webp",
     title: "Savory Starters",
     desc: "Mouth-watering traditional samosas and appetizers.",
     alt: "Cozy dining tables"
@@ -179,16 +184,24 @@ export default function About2({ showCta = true, isH1 = false, className = '' })
               
               {/* Removed mode="wait" to enable simultaneous crossfading */}
               <AnimatePresence>
-                <motion.img
+                <motion.div
                   key={activeSlide}
-                  src={SLIDES_DATA[activeSlide].img}
-                  alt={SLIDES_DATA[activeSlide].alt}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }} // Made the transition duration snappier (0.4s)
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={SLIDES_DATA[activeSlide].img}
+                    alt={SLIDES_DATA[activeSlide].alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={65}
+                    className="object-cover"
+                    priority={activeSlide === 0}
+                  />
+                </motion.div>
               </AnimatePresence>
 
               {/* Darkened Gradient Vignette overlay for visual clarity */}
@@ -260,10 +273,11 @@ export default function About2({ showCta = true, isH1 = false, className = '' })
                     }`}
                   >
                     <Image
-                      src={slide.img}
+                      src={slide.thumb}
                       alt={slide.alt}
                       fill
-                      sizes="(max-width: 1024px) 45vw, 20vw"
+                      sizes="96px"
+                      quality={60}
                       className="object-cover select-none pointer-events-none"
                     />
                   </div>
