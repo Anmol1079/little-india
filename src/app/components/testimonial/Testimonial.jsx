@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReviewPortals from './ReviewPortals';
 import SectionHeader from '../common/SectionHeader';
@@ -353,7 +354,7 @@ function TextReviewCard({ item }) {
     >
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center gap-3.5">
-          <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-stone-100" />
+          <Image src={item.avatar} alt="" width={48} height={48} className="w-12 h-12 rounded-full object-cover border border-stone-100" />
           <div className="flex flex-col gap-0.5 text-left">
             <div className="text-[15px] font-extrabold text-[#0B0C0E] leading-tight">{item.name}</div>
             <span className="text-[13px] font-bold text-stone-400 leading-none upp">{item.role}</span>
@@ -381,11 +382,11 @@ function VideoReviewCard({ item, onPlay }) {
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/65 z-10"></div>
-        <img src={item.image} alt="" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        <Image src={item.image} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
       </div>
       <div className="relative z-20 flex justify-between items-center w-full">
         <div className="flex items-center gap-3.5">
-          <img src={item.avatar} alt="" className="w-12 h-12 rounded-full object-cover border border-white/20" />
+          <Image src={item.avatar} alt="" width={48} height={48} className="w-12 h-12 rounded-full object-cover border border-white/20" />
           <div className="flex flex-col gap-0.5 text-left">
             <div className="text-[15px] font-extrabold text-white leading-tight">{item.name}</div>
             <span className="text-[13px] font-bold text-stone-300/80 leading-none upp">{item.role}</span>

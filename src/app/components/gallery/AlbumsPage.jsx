@@ -66,9 +66,9 @@ const ALBUM_IMAGES = {
     { src: "/gallery/appetizers/momo.jpg.webp", title: "Momo" },
   ].map(withDishName),
   "entrees-from-clay-oven": [
-    { src: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg", title: "Tandoori Mixed Grill" },
-    { src: "/menu/seekh-kabob-little-india-belmar.jpg", title: "Seekh Kabob" },
-    { src: "/menu/chicken-tikka-little-india-belmar-scaled.jpg", title: "Chicken Tikka" },
+    { src: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.webp", title: "Tandoori Mixed Grill" },
+    { src: "/menu/seekh-kabob-little-india-belmar.webp", title: "Seekh Kabob" },
+    { src: "/menu/chicken-tikka-little-india-belmar-scaled.webp", title: "Chicken Tikka" },
     { src: "https://images.unsplash.com/photo-1610057099443-fde8c4d90ef8?auto=format&fit=crop&w=800&q=80", title: "Tandoori Chicken" },
     { src: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80", title: "Clay Oven Special" },
     { src: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80", title: "Paneer Tikka" },

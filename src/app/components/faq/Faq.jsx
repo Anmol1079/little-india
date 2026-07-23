@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeader from '../common/SectionHeader';
 
@@ -144,10 +145,12 @@ export default function FaqSection() {
             variants={imageVariants}
             className="relative aspect-[4/3] w-full rounded-[2rem] overflow-hidden shadow-lg border border-stone-200/40 mt-4 shrink-0"
           >
-            <img 
-              src="/menu/Hummus-WGarlic-Naan.avif" 
-              alt="Gourmet Indian buffet spread" 
-              className="w-full h-full object-cover filter saturate-[0.95]"
+            <Image
+              src="/menu/Hummus-WGarlic-Naan.avif"
+              alt="Gourmet Indian buffet spread"
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover filter saturate-[0.95]"
             />
           </motion.div>
 

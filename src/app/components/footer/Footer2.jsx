@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const LOCATIONS = [
   {
@@ -21,22 +22,18 @@ export default function Footer2() {
       
       {/* 1. Adjusted Background Image & Overlay Opacity */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
-        <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
+        <Image
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=70"
           alt="Restaurant Interior Bokeh Background"
-          className="w-full h-full object-cover opacity-35 filter brightness-[0.4] saturate-[0.6]"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-35 filter brightness-[0.4] saturate-[0.6]"
         />
         {/* Softer dark wash overlay to allow the background texture to show through cleanly */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
       </div>
 
-      {/* Cursive Signature Font Import */}
-      {/* <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-        .littleindia-cursive {
-          font-family: 'Great Vibes', cursive;
-        }
-      `}} /> */}
+      {/* Cursive Signature Font Import removed — use site Inter font */}
 
       {/* Decorative Leaf Branch (Bottom Left Background) */}
       <div className="absolute left-[-20px] bottom-[-20px] w-48 h-48 opacity-[0.04] pointer-events-none select-none z-10">

@@ -139,7 +139,7 @@ export default function OurMenuSection() {
       title: 'BBQ Ribs',
       description:
         'Slow roasted pork baby back ribs basted in sticky, sweet honey BBQ sauce, glazed to caramelized excellence and topped with sesame seeds.',
-      imgSrc: '/ribs.png',
+      imgSrc: '/ribs.webp',
       alt: 'BBQ Ribs plate',
       align: 'left',
       rotationStart: 0,
@@ -149,7 +149,7 @@ export default function OurMenuSection() {
       title: 'Chicken Ginger Kabob',
       description:
         'Boneless chicken breast cubes marinated in ginger mint sauce.',
-      imgSrc: '/chicken-chilly.png',
+      imgSrc: '/chicken-chilly.webp',
       alt: 'Chicken Chilly plate',
       align: 'right',
       rotationStart: 0,
@@ -159,7 +159,7 @@ export default function OurMenuSection() {
       title: 'Grilled Chicken',
       description:
         'Succulent chicken marinated in secret spices and grilled to perfection.',
-      imgSrc: '/chicken-tandoori.png',
+      imgSrc: '/chicken-tandoori.webp',
       alt: 'Grilled Chicken plate',
       align: 'left',
       rotationStart: 0,
@@ -170,7 +170,7 @@ export default function OurMenuSection() {
       title: 'BBQ Prawn',
       description:
         'Plump, premium jumbo prawns marinated in a spicy zesty BBQ dry rub and char-grilled on skewers, finished with fresh garlic butter.',
-      imgSrc: '/prawn.png',
+      imgSrc: '/prawn.webp',
       alt: 'BBQ Prawn plate',
       align: 'right',
       rotationStart: 0,

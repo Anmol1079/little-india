@@ -13,25 +13,25 @@ const CATEGORIES_CONFIG = {
   'appetizer': {
     name: 'Appetizer',
     desc: 'Crispy starters, golden fritters, and clay tandoor-fired bites to begin your feast.',
-    image: '/menu/chicken-zinger-kabob-little-india-belmar.jpg',
+    image: '/menu/chicken-zinger-kabob-little-india-belmar.webp',
     dishCount: 2,
   },
   'biryani': {
     name: 'Biryani',
     desc: 'Fragrant basmati rice slow-cooked with aromatic spices, fresh herbs, and tender paneer or chicken.',
-    image: '/menu/chicken-tikka-little-india-belmar-scaled.jpg',
+    image: '/menu/chicken-tikka-little-india-belmar-scaled.webp',
     dishCount: 2,
   },
   'tandoori-specialties': {
     name: 'Tandoori Specialties',
     desc: 'Marinated meats, skewered seafood, and paneer roasted to perfection in our traditional tandoor.',
-    image: '/menu/seekh-kabob-little-india-belmar.jpg',
+    image: '/menu/seekh-kabob-little-india-belmar.webp',
     dishCount: 2,
   },
   'soup-and-salad': {
     name: 'Soup & Salad',
     desc: 'Light house bowls, cooling sides, and fish steaks cooked tandoori-style.',
-    image: '/menu/fish-tandoori-scaled.jpg',
+    image: '/menu/fish-tandoori-scaled.webp',
     dishCount: 2,
   },
   'non-veg-entrees': {

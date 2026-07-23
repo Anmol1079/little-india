@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionHeader from "../common/SectionHeader";
+import { IconLeaf, IconSeedling, IconWheat, IconAward } from "../common/Icons";
 
 // Deceleration Easing Curve
 const cubicEase = [0.16, 1, 0.3, 1];
@@ -133,13 +135,12 @@ export default function WhyChoose({ className = '' }) {
           viewport={{ once: true, amount: 0.15 }}
           className="lg:col-span-5 relative w-full h-[590px] sm:h-[640px] lg:h-[690px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#C59B27]/15 group cursor-pointer"
         >
-          <img
-            src="/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg"
+          <Image
+            src="/menu/tandoori-mixed-grill-little-india-belmar-scaled.webp"
             alt="Authentic Tandoori Mixed Grill Feast"
-            className="absolute inset-0 w-full h-full object-cover filter brightness-90 saturate-[1.05] transition-transform duration-1000 group-hover:scale-105"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80";
-            }}
+            fill
+            sizes="(max-width: 1024px) 100vw, 42vw"
+            className="object-cover filter brightness-90 saturate-[1.05] transition-transform duration-1000 group-hover:scale-105"
           />
           {/* Subtle vignette gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D0C0A]/95 via-transparent to-[#0D0C0A]/35 pointer-events-none transition-opacity duration-300 group-hover:opacity-85" />
@@ -172,7 +173,7 @@ export default function WhyChoose({ className = '' }) {
               className="bg-[#f4f7f2] border border-[#e3ebd9] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-[#e3ebd9] text-[#4d6645] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-leaf text-xl"></i>
+                <IconLeaf className="w-5 h-5" />
               </div>
               <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
                 Fresh Food
@@ -194,7 +195,7 @@ export default function WhyChoose({ className = '' }) {
               className="bg-[#ebfffd] border border-[#f5ebcb] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-[#f5ebcb] text-[#d47926] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-seedling text-xl"></i>
+                <IconSeedling className="w-5 h-5" />
               </div>
               <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
                 Vegan Friendly
@@ -216,7 +217,7 @@ export default function WhyChoose({ className = '' }) {
               className="bg-[#f7f1fa] border border-[#ede2f2] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-[#ede2f2] text-[#6d4f8d] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-wheat-awn text-xl"></i>
+                <IconWheat className="w-5 h-5" />
               </div>
               <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
                 Gluten Free
@@ -238,7 +239,7 @@ export default function WhyChoose({ className = '' }) {
               className="bg-[#ffeed0] border border-[#f5e4d2] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-white text-[#d85507] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-award text-xl"></i>
+                <IconAward className="w-5 h-5" />
               </div>
               <h2 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
                 Quality Maintain

@@ -13,25 +13,25 @@ const CATEGORIES_CONFIG = {
   'appetizer': {
     name: 'Appetizers',
     desc: 'Crispy starters, golden fritters, and clay tandoor-fired bites to begin your feast.',
-    image: '/menu/chicken-zinger-kabob-little-india-belmar.jpg',
+    image: '/menu/chicken-zinger-kabob-little-india-belmar.webp',
     dishCount: 2,
   },
   'biryani': {
     name: 'Biryani Specialties',
     desc: 'Fragrant basmati rice slow-cooked with aromatic spices, fresh herbs, and tender paneer or chicken.',
-    image: '/menu/chicken-tikka-little-india-belmar-scaled.jpg',
+    image: '/menu/chicken-tikka-little-india-belmar-scaled.webp',
     dishCount: 2,
   },
   'tandoori-specialties': {
     name: 'Tandoori Specialties',
     desc: 'Marinated meats, skewered seafood, and paneer roasted to perfection in our traditional tandoor.',
-    image: '/menu/seekh-kabob-little-india-belmar.jpg',
+    image: '/menu/seekh-kabob-little-india-belmar.webp',
     dishCount: 2,
   },
   'soup-and-salad': {
     name: 'Soup & Salad',
     desc: 'Light house bowls, cooling sides, and fish steaks cooked tandoori-style.',
-    image: '/menu/fish-tandoori-scaled.jpg',
+    image: '/menu/fish-tandoori-scaled.webp',
     dishCount: 2,
   },
   'non-veg-entrees': {
@@ -85,7 +85,7 @@ const MENU_CATEGORIES = {
         price: '$5.00',
         rating: 4.9,
         reviews: 142,
-        image: '/menu/chicken-zinger-kabob-little-india-belmar.jpg',
+        image: '/menu/chicken-zinger-kabob-little-india-belmar.webp',
       },
       {
         id: 'app-2',
@@ -109,7 +109,7 @@ const MENU_CATEGORIES = {
         price: '$16.00',
         rating: 4.9,
         reviews: 215,
-        image: '/menu/chicken-tikka-little-india-belmar-scaled.jpg',
+        image: '/menu/chicken-tikka-little-india-belmar-scaled.webp',
       },
       {
         id: 'bir-2',
@@ -133,7 +133,7 @@ const MENU_CATEGORIES = {
         price: '$15.00',
         rating: 4.8,
         reviews: 180,
-        image: '/menu/seekh-kabob-little-india-belmar.jpg',
+        image: '/menu/seekh-kabob-little-india-belmar.webp',
       },
       {
         id: 'tan-2',
@@ -142,7 +142,7 @@ const MENU_CATEGORIES = {
         price: '$19.00',
         rating: 4.9,
         reviews: 64,
-        image: '/menu/shrimp-tandoori-little-india-belmar-scaled.jpg',
+        image: '/menu/shrimp-tandoori-little-india-belmar-scaled.webp',
       }
     ]
   },
@@ -157,7 +157,7 @@ const MENU_CATEGORIES = {
         price: '$6.00',
         rating: 4.6,
         reviews: 73,
-        image: '/menu/fish-tandoori-scaled.jpg',
+        image: '/menu/fish-tandoori-scaled.webp',
       },
       {
         id: 'soup-2',

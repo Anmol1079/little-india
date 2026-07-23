@@ -8,22 +8,22 @@ import SectionHeader from '../common/SectionHeader';
 
 const MENU_CATEGORIES = {
   'Appetizer': {
-    image: '/menu/chicken-zinger-kabob-little-india-belmar.jpg',
+    image: '/menu/chicken-zinger-kabob-little-india-belmar.webp',
     count: 2,
     tagline: 'Savor crisp, spiced tandoor-baked starters.'
   },
   'Biryani': {
-    image: '/menu/chicken-tikka-little-india-belmar-scaled.jpg',
+    image: '/menu/chicken-tikka-little-india-belmar-scaled.webp',
     count: 2,
     tagline: 'Fragrant saffron rice slow-cooked with fresh spices.'
   },
   'Tandoori Specialties': {
-    image: '/menu/seekh-kabob-little-india-belmar.jpg',
+    image: '/menu/seekh-kabob-little-india-belmar.webp',
     count: 2,
     tagline: 'Traditional clay-oven roasted delicacies.'
   },
   'Soup & Salad': {
-    image: '/menu/fish-tandoori-scaled.jpg',
+    image: '/menu/fish-tandoori-scaled.webp',
     count: 2,
     tagline: 'Light, comforting starters and fresh pairings.'
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SectionHeader from '../components/common/SectionHeader';
 
@@ -87,10 +88,13 @@ export default function PrivateRoomPage() {
         
         {/* Full-bleed background dining table image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80" 
-            alt="Intimate long wooden dining table setup" 
-            className="w-full h-full object-cover object-center"
+          <Image
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=70"
+            alt="Intimate long wooden dining table setup"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
           />
           {/* Premium dark gradient overlay: solid black on left, fading to transparent on the right */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0E0F0C] via-[#0E0F0C]/95 to-transparent z-10 hidden lg:block" />
@@ -196,10 +200,12 @@ export default function PrivateRoomPage() {
               >
                 {/* Left Column: Full-Height Image */}
                 <div className="w-full min-h-[250px] md:min-h-0 relative overflow-hidden bg-stone-100">
-                  <img 
-                    src={service.img} 
-                    alt={service.title} 
-                    className="w-full h-full object-cover absolute inset-0 transition-transform duration-[1200ms] hover:scale-103"
+                  <Image
+                    src={service.img}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[1200ms] hover:scale-103"
                   />
                 </div>
 

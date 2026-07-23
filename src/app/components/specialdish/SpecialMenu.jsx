@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useScroll, useTransform, useMotionTemplate, motion } from 'framer-motion';
+import Image from 'next/image';
 import SectionHeader from '../common/SectionHeader';
 
 // Interactive menu item row with parallax plates and fading title text
@@ -61,11 +62,12 @@ function MenuItem({ item }) {
             
             {/* Inner Food Image Container (decreased to 74% to create an elegant plate rim) */}
             <div className="relative w-[100%] h-[100%] rounded-full overflow-hidden shadow-[inset_0_4px_10px_rgba(0,0,0,0.5),0_8px_20px_rgba(0,0,0,0.3)]">
-              <img
+              <Image
                 alt={item.alt}
-                loading="lazy"
                 src={item.imgSrc}
-                className="w-full h-full object-cover select-none pointer-events-none filter brightness-[0.93] saturate-[1.05]"
+                fill
+                sizes="(max-width: 768px) 70vw, 40vw"
+                className="object-cover select-none pointer-events-none filter brightness-[0.93] saturate-[1.05]"
               />
               {/* Inner Well Recessed Shadow */}
               <div className="absolute inset-0 rounded-full shadow-[inset_0_6px_12px_rgba(0,0,0,0.4)] pointer-events-none" />
@@ -139,7 +141,7 @@ export default function SpecialMenu() {
       title: 'Tandoori Chicken',
       description:
         'Savor our succulent bone-in chicken leg quarters marinated in yogurt and traditional tandoori spices, clay-oven roasted to perfection.',
-      imgSrc: '/tandoori.png',
+      imgSrc: '/tandoori.webp',
       alt: 'Tandoori Chicken',
       align: 'left',
       rotationStart: 0,
@@ -149,7 +151,7 @@ export default function SpecialMenu() {
       title: 'Chicken Ginger Kabob',
       description:
         'Boneless chicken breast cubes marinated in ginger mint sauce',
-      imgSrc: '/chicken-ginger-kabob.png',
+      imgSrc: '/chicken-ginger-kabob.webp',
       alt: 'Chicken Ginger Kabob',
       align: 'right',
       rotationStart: 0,
@@ -159,7 +161,7 @@ export default function SpecialMenu() {
       title: 'Shrimp Biryani',
       description:
         'Fragrant, layered basmati rice slow-cooked with heavily spiced prawns, fresh mint, toasted nuts, saffron, and aromatic herbs.',
-      imgSrc: '/shrimp-biryani.png',
+      imgSrc: '/shrimp-biryani.webp',
       alt: 'Shrimp Biryani',
       align: 'left',
       rotationStart: 0,
@@ -169,7 +171,7 @@ export default function SpecialMenu() {
       title: 'Lamb Roghan Josh',
       description:
         'Tender chunks of boneless lamb slow-cooked in a rich, aromatic gravy of tomatoes, caramelized onions, Kashmiri chilies, and spices.',
-      imgSrc: '/lamb.png',
+      imgSrc: '/lamb.webp',
       alt: 'Lamb Roghan Josh',
       align: 'right',
       rotationStart: 0,

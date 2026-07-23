@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import SectionHeader from '../common/SectionHeader';
 
@@ -74,12 +75,13 @@ function LocationStackCard({ loc, index, isMobile, isOpenNow }) {
             <span className="text-[15px] font-semibold upp twr fs text-[#333]">Image Unavailable</span>
           </div>
         ) : (
-          <img
+          <Image
             src={loc.image}
             alt={loc.neighborhood}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             onError={() => setImageError(true)}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105 z-0"
-            style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+            className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105 z-0"
           />
         )}
 

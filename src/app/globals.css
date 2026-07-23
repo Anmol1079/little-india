@@ -8,10 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Inter";
-  --font-serif: "Inter";
-  --font-title: "Inter";
-  --default-font-family: "Inter";
+  --font-sans: var(--font-inter), "Inter";
+  --font-serif: var(--font-inter), "Inter";
+  --font-title: var(--font-inter), "Inter";
+  --default-font-family: var(--font-inter), "Inter";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +26,7 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: "Inter";
+    font-family: var(--font-inter), "Inter", sans-serif;
   }
 
   /* Use the browser default text-selection highlight site-wide */
@@ -43,6 +43,6 @@
   .font-heavy,
   .font-impact,
   .font-serif-italic {
-    font-family: "Inter" !important;
+    font-family: var(--font-inter), "Inter", sans-serif !important;
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeader from '../components/common/SectionHeader';
 
@@ -237,10 +238,13 @@ export default function BookATable() {
         
         {/* Full-bleed background dining table image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80" 
-            alt="Intimate long wooden dining table setup" 
-            className="w-full h-full object-cover object-center"
+          <Image
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=70"
+            alt="Intimate long wooden dining table setup"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
           />
           {/* Premium dark gradient overlay: solid black on left, fading to transparent on the right */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0E0F0C] via-[#0E0F0C]/95 to-transparent z-10 hidden lg:block" />
@@ -315,10 +319,12 @@ export default function BookATable() {
         {/* Full-bleed background of warm restaurant kitchen overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[#FFF6EA] z-10" />
-          <img 
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80" 
-            alt="Warm Cozy Indian Restaurant Interior" 
-            className="w-full h-full object-cover object-center absolute inset-0 opacity-40"
+          <Image
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=70"
+            alt="Warm Cozy Indian Restaurant Interior"
+            fill
+            sizes="100vw"
+            className="object-cover object-center opacity-40"
           />
         </div>
 

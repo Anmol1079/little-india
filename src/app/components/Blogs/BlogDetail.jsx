@@ -275,31 +275,31 @@ export default function BlogDetail({ postId = "blog-highlight", className = '' }
             {
               title: "Butter Chicken",
               desc: "Butter Chicken is one of the most popular dishes on Indian-inspired restaurant menus and a favorite among first-time diners. Tender chicken is simmered in a creamy tomato-based sauce with warm spices, creating a dish that feels rich, comforting, and festive without being overwhelmingly spicy.",
-              image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg",
+              image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.webp",
               fallback: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80"
             },
             {
               title: "Chicken Tikka Masala",
               desc: "Chicken Tikka Masala remains one of the best-known Indian curry dishes for a reason. Marinated chicken is cooked until tender and finished in a flavorful sauce that beautifully balances tomato, cream, and spices. It pairs especially well with naan or basmati rice, making it a satisfying Easter dinner favorite.",
-              image: "/menu/chicken-tikka-little-india-belmar-scaled.jpg",
+              image: "/menu/chicken-tikka-little-india-belmar-scaled.webp",
               fallback: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80"
             },
             {
               title: "Biryani",
               desc: "Biryani is a celebratory dish in many traditions, making it a natural fit for Easter dinner in Denver. This fragrant rice dish is layered with spices, herbs, and your choice of protein or vegetables. The aroma alone makes biryani one of the most memorable food dishes in India.",
-              image: "/menu/fish-tandoori-scaled.jpg",
+              image: "/menu/fish-tandoori-scaled.webp",
               fallback: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80"
             },
             {
               title: "Saag Paneer",
               desc: "For vegetarian guests, Saag Paneer offers a delicious combination of fresh spinach, Indian cheese, and aromatic spices. It is creamy, savory, and deeply satisfying, proving why Indian vegetarian specialties feel so rich and celebratory.",
-              image: "/menu/paneer-shashilk-little-india-belmar-scaled.jpeg",
+              image: "/menu/paneer-shashilk-little-india-belmar-scaled.webp",
               fallback: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" // Updated to highly active Unsplash ID for Palak Paneer
             },
             {
               title: "Tandoori Specialties",
               desc: "Tandoori dishes bring smoky flavor and visual appeal to the Easter table. Meats are marinated in yogurt and spices, then cooked in a traditional clay oven for a charred, juicy finish. These dishes are excellent for diners who enjoy grilled, robust options.",
-              image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg",
+              image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.webp",
               fallback: "https://images.unsplash.com/photo-1610057099443-fde8c4d90ef8?auto=format&fit=crop&w=600&q=80"
             }
           ].map((dish, i) => (

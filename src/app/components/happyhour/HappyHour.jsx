@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SectionHeader from '../common/SectionHeader';
+import { IconMartini, IconPlate } from '../common/Icons';
 
 const DRINK_SPECIALS = [
   {
@@ -48,7 +50,7 @@ const FOOD_SPECIALS = [
     title: 'Chicken Ginger Kabob',
     price: '$5',
     description: 'Boneless chicken breast cubes marinated in ginger mint sauce.',
-    image: '/menu/chicken-zinger-kabob-little-india-belmar.jpg'
+    image: '/menu/chicken-zinger-kabob-little-india-belmar.webp'
   },
   {
     id: 'food-2',
@@ -62,14 +64,14 @@ const FOOD_SPECIALS = [
     title: 'Chicken Tikka',
     price: '$6',
     description: 'Boneless marinated chicken breast cubes.',
-    image: '/menu/chicken-tikka-little-india-belmar-scaled.jpg'
+    image: '/menu/chicken-tikka-little-india-belmar-scaled.webp'
   },
   {
     id: 'food-4',
     title: 'Paneer Shashlik',
     price: '$8',
     description: 'Marinated paneer cubes served with masala sauce.',
-    image: '/menu/paneer-shashilk-little-india-belmar-scaled.jpeg'
+    image: '/menu/paneer-shashilk-little-india-belmar-scaled.webp'
   }
 ];
 
@@ -125,7 +127,7 @@ export default function HappyHourSection() {
           <div className="lg:col-span-7 flex flex-col">
             <div className="flex items-center gap-3 mb-8 border-b border-stone-100 pb-4">
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
-                <i className="fa-solid fa-glass-martini-alt text-sm"></i>
+                <IconMartini className="w-4 h-4" />
               </div>
               <h3 className="font-title font-bold text-3xl sm:text-4xl upp tw-tight text-stone-950">
                 Drink Specials
@@ -159,11 +161,13 @@ export default function HappyHourSection() {
           <div className="lg:col-span-5 relative w-full h-[400px] sm:h-[480px] lg:h-[500px] overflow-hidden rounded-3xl shadow-lg bg-stone-100">
             <div className="relative w-full h-full">
               {DRINK_SPECIALS.map((item, idx) => (
-                <img 
+                <Image
                   key={idx}
                   src={item.image}
                   alt={item.title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out ${ activeDrink === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none' }`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className={`object-cover transition-all duration-500 ease-in-out ${ activeDrink === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none' }`}
                 />
               ))}
             </div>
@@ -183,11 +187,13 @@ export default function HappyHourSection() {
           <div className="lg:col-span-5 relative w-full h-[400px] sm:h-[480px] lg:h-[500px] overflow-hidden rounded-3xl shadow-lg bg-stone-100 lg:order-1 order-2">
             <div className="relative w-full h-full">
               {FOOD_SPECIALS.map((item, idx) => (
-                <img 
+                <Image
                   key={idx}
                   src={item.image}
                   alt={item.title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out ${ activeFood === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none' }`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className={`object-cover transition-all duration-500 ease-in-out ${ activeFood === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0 pointer-events-none' }`}
                 />
               ))}
             </div>
@@ -200,7 +206,7 @@ export default function HappyHourSection() {
           <div className="lg:col-span-7 flex flex-col lg:order-2 order-1">
             <div className="flex items-center gap-3 mb-8 border-b border-stone-100 pb-4">
               <div className="w-10 h-10 bg-[#e94222] text-white rounded-full flex items-center justify-center shadow-md shrink-0">
-                <i className="fa-solid fa-plate-wheat text-sm"></i>
+                <IconPlate className="w-4 h-4" />
               </div>
               <h3 className="font-title font-bold text-3xl sm:text-4xl upp tw-tight text-stone-950">
                 Food Specials

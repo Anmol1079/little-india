@@ -56,14 +56,14 @@ export default function LunchBuffetPage() {
             <div className="hidden lg:flex flex-col gap-4">
               <div className="rounded-[20px] overflow-hidden h-[300px] shadow-sm border border-stone-100">
                 <img 
-                  src="/menu/chicken-tikka-little-india-belmar-scaled.jpg" 
+                  src="/menu/chicken-tikka-little-india-belmar-scaled.webp" 
                   alt="Fresh Indian side dishes" 
                   className="w-full h-full object-cover" 
                 />
               </div>
               <div className="rounded-[20px] overflow-hidden h-[300px] shadow-sm border border-stone-100">
                 <img 
-                  src="/menu/seekh-kabob-little-india-belmar.jpg" 
+                  src="/menu/seekh-kabob-little-india-belmar.webp" 
                   alt="Traditional Naan Breads" 
                   className="w-full h-full object-cover" 
                 />

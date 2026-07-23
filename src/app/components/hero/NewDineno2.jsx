@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,7 +14,7 @@ if (typeof window !== 'undefined') {
 const BANNER_DATA = {
   tag: 'The Best Indian Food Restaurant In Denver Colorado',
   title: 'Authentic Indian Restaurant in Denver',
-  bgImage: '/19996.jpg',
+  bgImage: '/19996.webp',
   avatarText: 'Experience the rich and authentic flavors of India at Little India Denver, one of the most loved Indian restaurants in Denver, Colorado. From aromatic curries and perfectly spiced biryanis to freshly baked naan and sizzling tandoori specialties.',
   featuredVideo: 'https://res.cloudinary.com/dezd0troy/video/upload/v1783310647/7818015-hd_1920_1080_24fps_xrsft9.mp4',
 };
@@ -228,11 +229,14 @@ export default function NewDineno2() {
 
         {/* Main Background - Single Banner Image */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none bg-black">
-          <img
+          <Image
             src={BANNER_DATA.bgImage}
             alt="Artisanal wood-fired pizza with bubbling cheese"
-            loading="eager"
-            className="absolute inset-0 w-full h-full object-cover animate-kenburns filter saturate-[1.1]"
+            fill
+            priority
+            sizes="100vw"
+            quality={75}
+            className="object-cover animate-kenburns filter saturate-[1.1]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent z-10" />
         </div>

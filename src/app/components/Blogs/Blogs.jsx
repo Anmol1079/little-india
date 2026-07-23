@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SectionHeader from '../common/SectionHeader';
@@ -12,7 +13,7 @@ const LEFT_COLUMN_POSTS = [
     title: "Food & Drink Combos For Special Occasions",
     author: "rizal",
     date: "January 7, 2026",
-    image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.jpg",
+    image: "/menu/tandoori-mixed-grill-little-india-belmar-scaled.webp",
     url: "#"
   },
   {
@@ -21,7 +22,7 @@ const LEFT_COLUMN_POSTS = [
     title: "How We Ensure Food Safety And Hygiene",
     author: "rizal",
     date: "January 7, 2026",
-    image: "/menu/chicken-tikka-little-india-belmar-scaled.jpg",
+    image: "/menu/chicken-tikka-little-india-belmar-scaled.webp",
     url: "#"
   },
   {
@@ -41,7 +42,7 @@ const MAIN_HIGHLIGHT_POST = {
   title: "New Menu Launch: What's New This Season",
   author: "rizal",
   date: "January 11, 2026",
-  image: "/menu/seekh-kabob-little-india-belmar.jpg",
+  image: "/menu/seekh-kabob-little-india-belmar.webp",
   url: "#"
 };
 
@@ -135,10 +136,12 @@ export default function Blog1({ bgColor = "bg-white" }) {
               className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden group block shadow-sm bg-stone-100"
             >
               {/* Image */}
-              <img
+              <Image
                 src={MAIN_HIGHLIGHT_POST.image}
                 alt={MAIN_HIGHLIGHT_POST.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-103"
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover transition-transform duration-[1200ms] group-hover:scale-103"
               />
               {/* Bottom Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
@@ -169,10 +172,12 @@ export default function Blog1({ bgColor = "bg-white" }) {
               >
                 {/* Thumbnail Image */}
                 <div className="relative w-[120px] sm:w-[170px] h-[80px] sm:h-[110px] rounded-lg overflow-hidden shrink-0 bg-stone-100">
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    sizes="170px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
 

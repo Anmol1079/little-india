@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import SectionHeader from '../common/SectionHeader';
+import Image from 'next/image';
+import { IconLeaf, IconSeedling, IconWheat, IconAward } from '../common/Icons';
 
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80";
 
@@ -98,7 +100,7 @@ export default function WhyChooseUsSection() {
               className="bg-[#f4f7f2] border border-[#e3ebd9] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-[#e3ebd9] text-[#4d6645] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-leaf text-xl"></i>
+                <IconLeaf className="w-5 h-5" />
               </div>
               <h3 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#4d6645] transition-colors duration-300 font-bold">
                 Fresh Food
@@ -120,7 +122,7 @@ export default function WhyChooseUsSection() {
               className="bg-white border border-[#ebfffd] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-[#ebfffd] text-[#d47926] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-seedling text-xl"></i>
+                <IconSeedling className="w-5 h-5" />
               </div>
               <h4 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d47926] transition-colors duration-300 font-bold">
                 Vegan Friendly
@@ -142,11 +144,12 @@ export default function WhyChooseUsSection() {
           >
             {/* lg:absolute and lg:inset-0 binds height seamlessly to the outer row container */}
             <div className="lg:absolute lg:inset-0 w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border border-stone-200/40 bg-white">
-              <img
-                src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80"
+              <Image
+                src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=75"
                 alt="Indian Curry Pot with Fresh Naan"
-                className="w-full h-full object-cover filter saturate-[0.95]"
-                onError={(e) => { e.currentTarget.src = FALLBACK_IMAGE; }}
+                fill
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                className="object-cover filter saturate-[0.95]"
               />
             </div>
           </motion.div>
@@ -171,7 +174,7 @@ export default function WhyChooseUsSection() {
               className="bg-[#f7f1fa] border border-[#ede2f2] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-[#ede2f2] text-[#6d4f8d] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-wheat-awn text-xl"></i>
+                <IconWheat className="w-5 h-5" />
               </div>
               <h4 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#6d4f8d] transition-colors duration-300 font-bold">
                 Gluten Free
@@ -193,7 +196,7 @@ export default function WhyChooseUsSection() {
               className="bg-[#ffeed0] border border-[#f5e4d2] rounded-[2rem] p-8 flex flex-col gap-4 text-left relative overflow-hidden group flex-1 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-full bg-white text-[#d85507] flex items-center justify-center shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                <i className="fa-solid fa-award text-xl"></i>
+                <IconAward className="w-5 h-5" />
               </div>
               <h4 className="font-heavy text-2xl text-[#333] up leading-none mt-2 group-hover:text-[#d85507] transition-colors duration-300 font-bold">
                 Quality Maintain

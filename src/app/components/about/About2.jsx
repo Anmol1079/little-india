@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeader from '../common/SectionHeader';
 
@@ -258,10 +259,12 @@ export default function About2({ showCta = true, isH1 = false, className = '' })
                         : 'border-transparent hover:border-stone-200/50'
                     }`}
                   >
-                    <img
+                    <Image
                       src={slide.img}
                       alt={slide.alt}
-                      className="w-full h-full object-cover select-none pointer-events-none"
+                      fill
+                      sizes="(max-width: 1024px) 45vw, 20vw"
+                      className="object-cover select-none pointer-events-none"
                     />
                   </div>
                 );

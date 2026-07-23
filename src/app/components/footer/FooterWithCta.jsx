@@ -49,10 +49,12 @@ export default function FooterWithCta() {
     <footer className="relative w-full bg-[#070707] text-[#FAF8F5] overflow-hidden border-t-2 border-[#c5a880]/20">
       {/* Shared Background Image across both CTA and Footer */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
-        <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
+        <Image
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=70"
           alt="Unified Cozy Restaurant Interior"
-          className="w-full h-full object-cover opacity-25 filter brightness-[0.35] saturate-[0.65]"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-25 filter brightness-[0.35] saturate-[0.65]"
         />
         {/* Continuous gradient wash to ensure strong legibility and clean contrast across the entire footprint */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/90 via-black/20 to-[#070707]" />

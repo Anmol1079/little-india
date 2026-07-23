@@ -31,19 +31,6 @@ const fadeUpVariants = {
 export default function GiftCard() {
   return (
     <>
-      {/* Load fonts directly to ensure they render identical to the mockup */}
-      
-      <link 
-        rel="stylesheet" 
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" 
-      />
-
-      <style dangerouslySetInnerHTML={{__html: `
-
-        .font-great-vibes { font-family: 'Great Vibes', cursive; }
-
-      `}} />
-
       {/* Main container with 690px fixed desktop height */}
       <div className="w-full max-w-[1500px] mx-auto flex flex-col lg:flex-row rounded-2xl overflow-hidden shadow-xl h-auto lg:h-[710px] bg-[#FAF6F0] border border-stone-200/80">
         
@@ -65,7 +52,7 @@ export default function GiftCard() {
             <div className="flex items-center justify-center w-full max-w-[300px] md:max-w-[360px] mx-auto">
               <div className="flex-1 h-[1px] bg-[#C59B27]/70" />
               <span className="text-[#E5C158] mx-3 text-[10px] select-none">✦</span>
-              <span className="font-great-vibes text-4xl md:text-[46px] text-[#E5C158] leading-none drop-shadow-md select-none">
+              <span className="font-title text-4xl md:text-[46px] text-[#E5C158] leading-none drop-shadow-md select-none italic font-bold">
                 Loved Ones
               </span>
               <span className="text-[#E5C158] mx-3 text-[10px] select-none">✦</span>

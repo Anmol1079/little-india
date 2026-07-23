@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SectionHeader from '../common/SectionHeader';
 
@@ -37,22 +38,16 @@ export default function CtaSection() {
       
       {/* 1. Background Image using standard HTML tag with warm glowing restaurant lights */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
-        <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
+        <Image
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=70"
           alt="Warm Cozy Restaurant Interior"
-          className="w-full h-full object-cover opacity-35 filter brightness-[0.35] saturate-[0.8]"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-35 filter brightness-[0.35] saturate-[0.8]"
         />
         {/* Soft, progressive gradient that melts cleanly into the solid black footer */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/60 to-[#070707]" />
       </div>
-
-      {/* Handwriting Font Import */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-        .cta-cursive {
-          font-family: 'Great Vibes', cursive;
-        }
-      `}} />
 
       {/* 2. Glassmorphic Central Card Container */}
       <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-12">
@@ -78,7 +73,7 @@ export default function CtaSection() {
                   <svg className="w-8 sm:w-12 h-2 text-[#C08A27]/60" viewBox="0 0 40 10" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
                     <path d="M40 5 L10 5 Q5 5 0 9 M40 5 L15 2" />
                   </svg>
-                  <span className="cta-cursive text-2xl sm:text-[34px] text-[#C08A27] leading-none">
+                  <span className="font-title italic text-2xl sm:text-[34px] text-[#C08A27] leading-none">
                     Come and Enjoy
                   </span>
                   <svg className="w-8 sm:w-12 h-2 text-[#C08A27]/60" viewBox="0 0 40 10" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
