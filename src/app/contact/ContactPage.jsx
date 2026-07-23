@@ -227,7 +227,7 @@ export default function ContactPage() {
                 title="Contact Us"
                 description="Whether you have a question, feedback, or want to make a reservation, our team is here to assist you. Let's create a memorable dining experience together."
                 className="mb-0"
-                titleClassName="text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[1.1] mt-4 mb-4"
+                titleClassName="text-[40px] sm:text-[60px] lg:text-[60px] text-black leading-[1.1] mb-4"
                 descriptionClassName="font-serif text-sm sm:text-base mb-8 max-w-md"
               />
 
