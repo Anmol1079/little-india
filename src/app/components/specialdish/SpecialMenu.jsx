@@ -66,7 +66,8 @@ function MenuItem({ item }) {
                 alt={item.alt}
                 src={item.imgSrc}
                 fill
-                sizes="(max-width: 768px) 70vw, 40vw"
+                sizes="(max-width: 768px) 85vw, (max-width: 1280px) 40vw, 36vw"
+                quality={60}
                 className="object-cover select-none pointer-events-none filter brightness-[0.93] saturate-[1.05]"
               />
               {/* Inner Well Recessed Shadow */}

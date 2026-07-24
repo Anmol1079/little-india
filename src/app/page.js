@@ -1,23 +1,58 @@
 import dynamic from "next/dynamic";
 import MegaHeader from "./components/headers/MegaHeader";
 import NewDineno2 from "./components/hero/NewDineno2";
-import About2 from "./components/about/About2";
-import StatsSection from "./components/stats/Stats";
-import FooterWithCta from "./components/footer/FooterWithCta";
+import LazyMount from "./components/common/LazyMount";
 
-// Below-the-fold sections: load only when needed to cut unused JS on first paint
-const SpecialMenu = dynamic(() => import("./components/specialdish/SpecialMenu"));
-const MenuDish = dynamic(() => import("./components/menu/MenuDish"));
-const ContactSection = dynamic(() => import("./components/ContactForm/ContactSection"));
-const OrderSection = dynamic(() => import("./components/OrderSection/OrderSection"));
-const LocationsSection = dynamic(() => import("./components/find/LocationsSection"));
-const TestimonialsSection = dynamic(() => import("./components/testimonial/Testimonial"));
-const HappyHourSection = dynamic(() => import("./components/happyhour/HappyHour"));
-const LunchBuffet1 = dynamic(() => import("./components/lunchbuffet/LunchBuffet1"));
-const WhyChooseUsSection = dynamic(() => import("./components/whychooseus/WhyChooseUs"));
-const OurStorySection = dynamic(() => import("./components/ourstory/Story"));
-const FaqSection = dynamic(() => import("./components/faq/Faq"));
-const BlogSection = dynamic(() => import("./components/Blogs/Blogs"));
+const loadingBlock = (minH = "min-h-[50vh]") => (
+  <div className={`w-full ${minH} bg-transparent`} aria-hidden />
+);
+
+// Heavy client sections — code-split + mount only when near viewport (mobile TBT/LCP win)
+const About2 = dynamic(() => import("./components/about/About2"), {
+  loading: () => loadingBlock("min-h-[70vh]"),
+});
+const StatsSection = dynamic(() => import("./components/stats/Stats"), {
+  loading: () => loadingBlock("min-h-[30vh]"),
+});
+const SpecialMenu = dynamic(() => import("./components/specialdish/SpecialMenu"), {
+  loading: () => loadingBlock("min-h-[80vh]"),
+});
+const MenuDish = dynamic(() => import("./components/menu/MenuDish"), {
+  loading: () => loadingBlock("min-h-[70vh]"),
+});
+const ContactSection = dynamic(() => import("./components/ContactForm/ContactSection"), {
+  loading: () => loadingBlock("min-h-[60vh]"),
+});
+const OrderSection = dynamic(() => import("./components/OrderSection/OrderSection"), {
+  loading: () => loadingBlock("min-h-[40vh]"),
+});
+const LocationsSection = dynamic(() => import("./components/find/LocationsSection"), {
+  loading: () => loadingBlock("min-h-[50vh]"),
+});
+const TestimonialsSection = dynamic(() => import("./components/testimonial/Testimonial"), {
+  loading: () => loadingBlock("min-h-[50vh]"),
+});
+const HappyHourSection = dynamic(() => import("./components/happyhour/HappyHour"), {
+  loading: () => loadingBlock("min-h-[60vh]"),
+});
+const LunchBuffet1 = dynamic(() => import("./components/lunchbuffet/LunchBuffet1"), {
+  loading: () => loadingBlock("min-h-[60vh]"),
+});
+const WhyChooseUsSection = dynamic(() => import("./components/whychooseus/WhyChooseUs"), {
+  loading: () => loadingBlock("min-h-[50vh]"),
+});
+const OurStorySection = dynamic(() => import("./components/ourstory/Story"), {
+  loading: () => loadingBlock("min-h-[50vh]"),
+});
+const FaqSection = dynamic(() => import("./components/faq/Faq"), {
+  loading: () => loadingBlock("min-h-[50vh]"),
+});
+const BlogSection = dynamic(() => import("./components/Blogs/Blogs"), {
+  loading: () => loadingBlock("min-h-[40vh]"),
+});
+const FooterWithCta = dynamic(() => import("./components/footer/FooterWithCta"), {
+  loading: () => loadingBlock("min-h-[40vh]"),
+});
 
 export const metadata = {
   title: "Little India Restaurant & Bar | Best Indian Food in Denver & Lakewood",
@@ -52,21 +87,52 @@ export default function Home() {
     <main className="min-h-screen bg-stone-950">
       <MegaHeader />
       <NewDineno2 />
-      <About2 />
-      <StatsSection />
-      <SpecialMenu />
-      <MenuDish />
-      <ContactSection />
-      <OrderSection />
-      <LocationsSection />
-      <TestimonialsSection />
-      <HappyHourSection />
-      <LunchBuffet1 />
-      <WhyChooseUsSection />
-      <OurStorySection />
-      <FaqSection />
-      <BlogSection />
-      <FooterWithCta />
+
+      <LazyMount minHeight="70vh" rootMargin="200px 0px">
+        <About2 />
+      </LazyMount>
+      <LazyMount minHeight="30vh">
+        <StatsSection />
+      </LazyMount>
+      <LazyMount minHeight="80vh">
+        <SpecialMenu />
+      </LazyMount>
+      <LazyMount minHeight="70vh">
+        <MenuDish />
+      </LazyMount>
+      <LazyMount minHeight="60vh">
+        <ContactSection />
+      </LazyMount>
+      <LazyMount minHeight="40vh">
+        <OrderSection />
+      </LazyMount>
+      <LazyMount minHeight="50vh">
+        <LocationsSection />
+      </LazyMount>
+      <LazyMount minHeight="50vh">
+        <TestimonialsSection />
+      </LazyMount>
+      <LazyMount minHeight="60vh">
+        <HappyHourSection />
+      </LazyMount>
+      <LazyMount minHeight="60vh">
+        <LunchBuffet1 />
+      </LazyMount>
+      <LazyMount minHeight="50vh">
+        <WhyChooseUsSection />
+      </LazyMount>
+      <LazyMount minHeight="50vh">
+        <OurStorySection />
+      </LazyMount>
+      <LazyMount minHeight="50vh">
+        <FaqSection />
+      </LazyMount>
+      <LazyMount minHeight="40vh">
+        <BlogSection />
+      </LazyMount>
+      <LazyMount minHeight="40vh" rootMargin="100px 0px">
+        <FooterWithCta />
+      </LazyMount>
     </main>
   );
 }

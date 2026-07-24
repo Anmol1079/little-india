@@ -19,18 +19,24 @@ export default function MegaHeader() {
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let ticking = false;
 
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 10);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        setIsScrolled(currentScrollY > 10);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
 
-      lastScrollY = currentScrollY;
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

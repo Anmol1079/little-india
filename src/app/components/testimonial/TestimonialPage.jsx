@@ -144,7 +144,7 @@ export default function TestimonialsPage({ className = '' }) {
     
 
       {/* --- REVIEWS BODY & FILTER NAVIGATION (Now incorporating the left-aligned header directly) --- */}
-      <div className="max-w-[1400px] mx-auto px-6 pb-12: md:pb-16 flex flex-col gap-8">
+      <div className="max-w-[1400px] mx-auto px-6 pb-12 md:pb-16 flex flex-col gap-8">
 
         <SectionHeader
           as="h1"
